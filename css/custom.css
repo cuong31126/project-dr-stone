@@ -13,21 +13,52 @@
   height: 100%;
 }
 
-/* ── Scroll reveal (Dr. Stone Depetrification Breakout) ── */
+/* ── Multi-Directional Scroll Reveal System (Dr. Stone Depetrification Breakout) ── */
 [data-reveal] {
   opacity: 0;
-  transform: translateY(36px) scale(0.96);
-  filter: blur(4px) grayscale(70%);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: blur(5px) grayscale(70%);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform, filter;
   position: relative;
 }
 
-[data-reveal].visible {
+/* Default & Up */
+[data-reveal], [data-reveal="up"] {
+  transform: translateY(45px) scale(0.96);
+}
+
+/* From Left */
+[data-reveal="left"] {
+  transform: translateX(-70px) scale(0.95);
+}
+
+/* From Right */
+[data-reveal="right"] {
+  transform: translateX(70px) scale(0.95);
+}
+
+/* Optical Lens Zoom Out */
+[data-reveal="zoom"] {
+  transform: scale(0.82);
+  filter: blur(8px) grayscale(90%);
+}
+
+/* 3D Tech Flip */
+[data-reveal="flip"] {
+  transform: perspective(1000px) rotateX(25deg) translateY(35px) scale(0.95);
+}
+
+/* Visible Activated States */
+[data-reveal].visible,
+[data-reveal="up"].visible,
+[data-reveal="left"].visible,
+[data-reveal="right"].visible,
+[data-reveal="zoom"].visible,
+[data-reveal="flip"].visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translate(0, 0) scale(1) rotate(0deg) rotateX(0deg) rotateY(0deg);
   filter: blur(0) grayscale(0);
 }
 
@@ -60,11 +91,41 @@
   }
 }
 
+/* Delays */
 [data-reveal][data-delay="1"] { transition-delay: 0.08s; }
 [data-reveal][data-delay="2"] { transition-delay: 0.16s; }
 [data-reveal][data-delay="3"] { transition-delay: 0.24s; }
 [data-reveal][data-delay="4"] { transition-delay: 0.32s; }
 [data-reveal][data-delay="5"] { transition-delay: 0.40s; }
+
+/* Holographic Sheen Sweep across cards */
+.hologram-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.hologram-sheen::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(0, 229, 255, 0.25) 50%,
+    rgba(57, 255, 20, 0.15) 60%,
+    transparent 100%
+  );
+  transform: rotate(30deg);
+  pointer-events: none;
+  transition: all 0.8s ease;
+  z-index: 15;
+}
+.hologram-sheen:hover::before {
+  left: 200%;
+}
 
 /* ── Keyframes ── */
 @keyframes fadeInUp {
