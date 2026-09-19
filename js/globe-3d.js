@@ -1,5 +1,6 @@
-// js/globe-3d.js — Interactive Three.js 3D Holographic Globe for Dr. Stone Perseus Navigation
+// js/globe-3d.js — Interactive High-Definition 3D Earth Globe for Dr. Stone Perseus Navigation
 // Tác giả: Antigravity | Dự án: Dr. Stone Fan Website
+// Đột phá: NASA HD Satellite Texture + Cloud Layer + Cyber Medusa Epicenter + Perseus 3D Flight Path
 
 import * as THREE from 'three';
 
@@ -9,31 +10,32 @@ class PerseusHologramGlobe {
     if (!this.container) return;
 
     this.width = this.container.clientWidth || 800;
-    this.height = this.container.clientHeight || 500;
+    this.height = this.container.clientHeight || 520;
     this.radius = 2.4;
 
     // Trạng thái tương tác
     this.isDragging = false;
     this.previousMousePosition = { x: 0, y: 0 };
-    this.targetRotation = { x: 0.2, y: -1.2 };
-    this.currentRotation = { x: 0.2, y: -1.2 };
+    this.targetRotation = { x: 0.15, y: -1.35 };
+    this.currentRotation = { x: 0.15, y: -1.35 };
     this.autoRotate = true;
-    this.autoRotateSpeed = 0.0025;
+    this.autoRotateSpeed = 0.0018;
     this.lastInteractionTime = performance.now();
     this.shockwaveTime = 0;
     this.routeProgress = 0;
+    this.currentTextureMode = 'satellite'; // 'satellite' | 'cyber'
 
-    // Tọa độ các địa danh chuẩn Dr. Stone
+    // Tọa độ các trạm hải trình chuẩn Dr. Stone
     this.waypoints = [
       { id: 'arc-village', name: 'Làng Ishigami (Nhật Bản)', lat: 35.6, lon: 139.7, color: 0x00f5a0, label: 'TRẠM 1' },
       { id: 'arc-treasure', name: 'Đảo Kho Báu (Thái Bình Dương)', lat: 20.0, lon: 165.0, color: 0x00d4ff, label: 'TRẠM 2' },
       { id: 'arc-america', name: 'Tân Thành Phố Mỹ (California)', lat: 37.7, lon: -122.4, color: 0xf97316, label: 'TRẠM 3' },
-      { id: 'arc-south-america', name: 'Tâm Chấn Hóa Đá (Manaus, Amazon)', lat: -3.1, lon: -60.0, color: 0xff3366, label: 'TÂM CHẤN', isEpicenter: true },
-      { id: 'arc-moon', name: 'Mặt Trăng (Whyman)', lat: 0, lon: 0, color: 0xffffff, label: 'TRẠM 5', isMoon: true }
+      { id: 'arc-south-america', name: 'Tâm Chấn Hóa Đá (Manaus, Amazon)', lat: -3.1, lon: -60.0, color: 0xff2255, label: 'TÂM CHẤN', isEpicenter: true },
+      { id: 'arc-moon', name: 'Mặt Trăng (Whyman)', lat: 0, lon: 0, color: 0xdde4ec, label: 'TRẠM 5', isMoon: true }
     ];
 
     this.initScene();
-    this.createGlobe();
+    this.loadTexturesAndBuildGlobe();
     this.createAtmosphere();
     this.createPetrificationEpicenter();
     this.createWaypoints();
@@ -41,6 +43,7 @@ class PerseusHologramGlobe {
     this.createMoon();
     this.setupEventListeners();
     this.bindWaypointButtons();
+    this.setupModeSwitcher();
     this.animate();
   }
 
@@ -48,7 +51,7 @@ class PerseusHologramGlobe {
     this.scene = new THREE.Scene();
 
     this.camera = new THREE.PerspectiveCamera(45, this.width / this.height, 0.1, 100);
-    this.camera.position.set(0, 0, 7.2);
+    this.camera.position.set(0, 0, 7.0);
 
     this.renderer = new THREE.WebGLRenderer({
       antialias: true,
@@ -57,26 +60,29 @@ class PerseusHologramGlobe {
     });
     this.renderer.setSize(this.width, this.height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    this.renderer.toneMappingExposure = 1.35;
     this.container.appendChild(this.renderer.domElement);
 
-    // Ánh sáng Sci-Fi
-    const ambientLight = new THREE.AmbientLight(0x0a192f, 2.5);
+    // Hệ thống ánh sáng không gian
+    const ambientLight = new THREE.AmbientLight(0x1a2e4a, 1.8);
     this.scene.add(ambientLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0x00d4ff, 2.0);
-    dirLight1.position.set(5, 3, 5);
-    this.scene.add(dirLight1);
+    // Ánh sáng mặt trời chiếu từ góc Tây Bắc
+    this.sunLight = new THREE.DirectionalLight(0xffffff, 2.8);
+    this.sunLight.position.set(6, 4, 5);
+    this.scene.add(this.sunLight);
 
-    const dirLight2 = new THREE.DirectionalLight(0x00f5a0, 1.5);
-    dirLight2.position.set(-5, -2, -3);
-    this.scene.add(dirLight2);
+    // Ánh sáng phản quang xanh neon nhẹ
+    const rimLight = new THREE.DirectionalLight(0x00d4ff, 1.6);
+    rimLight.position.set(-6, -3, -4);
+    this.scene.add(rimLight);
 
     // Nhóm xoay toàn bộ địa cầu
     this.globeGroup = new THREE.Group();
     this.scene.add(this.globeGroup);
   }
 
-  // Chuyển đổi Tọa độ Địa lý (Lat, Lon) thành Vector3D trên mặt cầu
   latLonToVector3(lat, lon, radius = this.radius, altitude = 0) {
     const phi = (90 - lat) * (Math.PI / 180);
     const theta = (lon + 180) * (Math.PI / 180);
@@ -88,145 +94,60 @@ class PerseusHologramGlobe {
     );
   }
 
-  // Tạo Texture Bản Đồ Địa Cầu Lục Địa Chuẩn Bằng HTML Canvas (Offline 100%)
-  generateEarthTexture() {
-    const canvas = document.createElement('canvas');
-    canvas.width = 2048;
-    canvas.height = 1024;
-    const ctx = canvas.getContext('2d');
+  loadTexturesAndBuildGlobe() {
+    const textureLoader = new THREE.TextureLoader();
 
-    // Nền đại dương sâu thẳm
-    ctx.fillStyle = '#040b18';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-    // Vẽ lưới tọa độ kinh vĩ tuyến mờ
-    ctx.strokeStyle = 'rgba(0, 212, 255, 0.08)';
-    ctx.lineWidth = 1;
-    for (let x = 0; x < canvas.width; x += 128) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvas.height);
-      ctx.stroke();
-    }
-    for (let y = 0; y < canvas.height; y += 64) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvas.width, y);
-      ctx.stroke();
-    }
-
-    // Xích đạo nổi bật
-    ctx.strokeStyle = 'rgba(0, 245, 160, 0.2)';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(0, canvas.height / 2);
-    ctx.lineTo(canvas.width, canvas.height / 2);
-    ctx.stroke();
-
-    // Vẽ các lục địa phủ cây xanh rêu phong (Kỷ nguyên 5738)
-    ctx.fillStyle = '#0d3824';
-    ctx.strokeStyle = '#00f5a0';
-    ctx.lineWidth = 2.5;
-
-    const toX = (lon) => ((lon + 180) / 360) * canvas.width;
-    const toY = (lat) => ((90 - lat) / 180) * canvas.height;
-
-    const drawPoly = (points) => {
-      ctx.beginPath();
-      ctx.moveTo(toX(points[0][0]), toY(points[0][1]));
-      for (let i = 1; i < points.length; i++) {
-        ctx.lineTo(toX(points[i][0]), toY(points[i][1]));
-      }
-      ctx.closePath();
-      ctx.fill();
-      ctx.stroke();
-    };
-
-    // 1. Nam Mỹ (South America) — Đầy đủ lòng chảo Amazon
-    drawPoly([
-      [-81, 9], [-75, 12], [-60, 10], [-50, -1], [-35, -5],
-      [-37, -13], [-42, -23], [-53, -33], [-65, -42], [-68, -54],
-      [-75, -48], [-73, -38], [-71, -15], [-76, -4], [-81, 4]
-    ]);
-
-    // 2. Bắc Mỹ (North America)
-    drawPoly([
-      [-168, 65], [-140, 70], [-95, 75], [-60, 60], [-55, 48],
-      [-70, 42], [-76, 35], [-81, 25], [-97, 26], [-97, 20],
-      [-88, 16], [-78, 8], [-85, 10], [-105, 22], [-117, 32],
-      [-124, 40], [-125, 49], [-135, 57], [-160, 58]
-    ]);
-
-    // 3. Châu Phi (Africa)
-    drawPoly([
-      [-17, 15], [-5, 36], [10, 37], [32, 31], [43, 12],
-      [51, 12], [41, -11], [35, -24], [26, -34], [18, -34],
-      [12, -18], [9, 5], [0, 6], [-10, 5], [-17, 15]
-    ]);
-
-    // 4. Châu Âu (Europe)
-    drawPoly([
-      [-10, 36], [0, 43], [-5, 48], [5, 54], [10, 60],
-      [28, 71], [40, 65], [30, 46], [22, 38], [14, 38],
-      [5, 36], [-9, 38]
-    ]);
-
-    // 5. Châu Á & Nhật Bản (Asia & Japan)
-    drawPoly([
-      [40, 65], [60, 70], [100, 78], [140, 72], [170, 65],
-      [140, 50], [120, 32], [105, 20], [80, 13], [70, 22],
-      [60, 25], [50, 30], [35, 33], [35, 48], [40, 60]
-    ]);
-
-    // Quần đảo Nhật Bản (Japan Archipelago)
-    drawPoly([[130, 32], [132, 34], [136, 35], [140, 36], [142, 43], [140, 44], [135, 37], [130, 33]]);
-
-    // 6. Châu Đại Dương (Australia)
-    drawPoly([
-      [114, -22], [123, -15], [136, -12], [142, -11], [150, -22],
-      [153, -28], [148, -37], [138, -35], [129, -32], [115, -34]
-    ]);
-
-    const texture = new THREE.CanvasTexture(canvas);
-    texture.wrapS = THREE.RepeatWrapping;
-    texture.wrapT = THREE.ClampToEdgeWrapping;
-    return texture;
-  }
-
-  createGlobe() {
-    // 1. Khối cầu lục địa lõi
+    // 1. Quả Cầu Trái Đất Chính
     const earthGeo = new THREE.SphereGeometry(this.radius, 64, 64);
-    const earthTex = this.generateEarthTexture();
 
-    const earthMat = new THREE.MeshStandardMaterial({
-      map: earthTex,
-      roughness: 0.8,
-      metalness: 0.2,
-      emissive: 0x02161b,
-      emissiveIntensity: 0.6
+    // Tải Texture Vệ Tinh NASA và Texture Cyber Dark
+    this.satTexture = textureLoader.load('assets/images/earth_atmos_2048.jpg');
+    this.cyberTexture = textureLoader.load('assets/images/earth_dark.jpg');
+
+    this.earthMaterial = new THREE.MeshStandardMaterial({
+      map: this.satTexture,
+      roughness: 0.65,
+      metalness: 0.1,
+      emissive: 0x051a24,
+      emissiveIntensity: 0.4
     });
 
-    this.earthMesh = new THREE.Mesh(earthGeo, earthMat);
+    this.earthMesh = new THREE.Mesh(earthGeo, this.earthMaterial);
     this.globeGroup.add(this.earthMesh);
 
-    // 2. Lưới kinh vĩ tuyến Hologram phát sáng (Wireframe Cage)
-    const wireGeo = new THREE.SphereGeometry(this.radius * 1.015, 36, 18);
-    const wireMat = new THREE.MeshBasicMaterial({
+    // 2. Lớp Mây Khí Quyển 3D Bồng Bềnh (Cloud Layer)
+    const cloudGeo = new THREE.SphereGeometry(this.radius * 1.018, 48, 48);
+    const cloudTexture = textureLoader.load('assets/images/earth_clouds_1024.png');
+
+    const cloudMaterial = new THREE.MeshStandardMaterial({
+      map: cloudTexture,
+      transparent: true,
+      opacity: 0.42,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+
+    this.cloudMesh = new THREE.Mesh(cloudGeo, cloudMaterial);
+    this.globeGroup.add(this.cloudMesh);
+
+    // 3. Lưới Tọa Độ Kinh Vĩ Tuyến Hologram Neon (Sci-Fi Grid)
+    const gridGeo = new THREE.SphereGeometry(this.radius * 1.025, 36, 18);
+    const gridMat = new THREE.MeshBasicMaterial({
       color: 0x00d4ff,
       wireframe: true,
       transparent: true,
       opacity: 0.12
     });
-    this.wireMesh = new THREE.Mesh(wireGeo, wireMat);
-    this.globeGroup.add(this.wireMesh);
+    this.gridMesh = new THREE.Mesh(gridGeo, gridMat);
+    this.globeGroup.add(this.gridMesh);
 
-    // 3. Vành đai xích đạo Cyber Neon
-    const equatorGeo = new THREE.RingGeometry(this.radius * 1.1, this.radius * 1.15, 64);
+    // 4. Vành đai xích đạo phát quang
+    const equatorGeo = new THREE.RingGeometry(this.radius * 1.08, this.radius * 1.11, 64);
     const equatorMat = new THREE.MeshBasicMaterial({
       color: 0x00f5a0,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.25
+      opacity: 0.28
     });
     const equator = new THREE.Mesh(equatorGeo, equatorMat);
     equator.rotation.x = Math.PI / 2;
@@ -234,7 +155,7 @@ class PerseusHologramGlobe {
   }
 
   createAtmosphere() {
-    // Lớp khí quyển phát quang Fresnel Glow
+    // Lớp hào quang xanh ngọc vũ trụ (Atmospheric Glow)
     const atmosGeo = new THREE.SphereGeometry(this.radius * 1.18, 48, 48);
     const atmosMat = new THREE.ShaderMaterial({
       transparent: true,
@@ -250,8 +171,8 @@ class PerseusHologramGlobe {
       fragmentShader: `
         varying vec3 vNormal;
         void main() {
-          float intensity = pow(0.65 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.2);
-          gl_FragColor = vec4(0.0, 0.85, 1.0, 1.0) * intensity * 0.7;
+          float intensity = pow(0.68 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.2);
+          gl_FragColor = vec4(0.0, 0.85, 1.0, 1.0) * intensity * 0.8;
         }
       `
     });
@@ -259,46 +180,57 @@ class PerseusHologramGlobe {
     this.scene.add(atmosphere);
   }
 
-  // 💥 TÂM CHẤN HÓA ĐÁ TẠI MANAUS, BRAZIL (RỪNG AMAZON - NAM MỸ)
+  // 💥 TÂM CHẤN HÓA ĐÁ MEDUSA TẠI LÒNG CHẢO AMAZON (MANAUS, BRAZIL)
   createPetrificationEpicenter() {
     this.epicenterCoords = { lat: -3.1, lon: -60.0 };
-    const epicPos = this.latLonToVector3(this.epicenterCoords.lat, this.epicenterCoords.lon, this.radius, 0.02);
+    const epicPos = this.latLonToVector3(this.epicenterCoords.lat, this.epicenterCoords.lon, this.radius, 0.03);
 
-    // Điểm nhân phát sáng năng lượng Medusa
-    const coreGeo = new THREE.SphereGeometry(0.08, 16, 16);
-    const coreMat = new THREE.MeshBasicMaterial({ color: 0xff2255 });
+    // 1. Điểm lõi phát sáng đỏ rực
+    const coreGeo = new THREE.SphereGeometry(0.075, 16, 16);
+    const coreMat = new THREE.MeshBasicMaterial({ color: 0xff1144 });
     const core = new THREE.Mesh(coreGeo, coreMat);
     core.position.copy(epicPos);
     this.globeGroup.add(core);
 
-    // Các vòng sóng xung kích lan tỏa (Concentric Pulsing Shockwave Rings)
+    // 2. Vòng hào quang đa lớp
+    const glowGeo = new THREE.SphereGeometry(0.14, 16, 16);
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: 0xff3366,
+      transparent: true,
+      opacity: 0.5
+    });
+    const glow = new THREE.Mesh(glowGeo, glowMat);
+    glow.position.copy(epicPos);
+    this.globeGroup.add(glow);
+
+    // 3. Các vòng sóng xung kích Medusa lan tỏa tuần hoàn (Concentric Pulsing Waves)
     this.shockwaveRings = [];
     const ringCount = 3;
 
     for (let i = 0; i < ringCount; i++) {
-      const ringGeo = new THREE.RingGeometry(0.12, 0.16, 32);
+      const ringGeo = new THREE.RingGeometry(0.12, 0.17, 36);
       const ringMat = new THREE.MeshBasicMaterial({
-        color: 0x00ff88,
+        color: 0x00ffaa,
         side: THREE.DoubleSide,
         transparent: true,
-        opacity: 0.8
+        opacity: 0.85
       });
       const ring = new THREE.Mesh(ringGeo, ringMat);
       ring.position.copy(epicPos);
-      ring.lookAt(0, 0, 0); // Hướng mặt phẳng vòng tròn áp sát bề mặt cầu
+      ring.lookAt(0, 0, 0); // Tiếp tuyến áp sát bề mặt địa cầu
       this.globeGroup.add(ring);
       this.shockwaveRings.push({ mesh: ring, offset: i * (Math.PI * 2 / ringCount) });
     }
 
-    // Cột tia sáng laser thẳng đứng bắn ra từ tâm chấn
-    const beamGeo = new THREE.CylinderGeometry(0.015, 0.015, 1.2, 8);
+    // 4. Cột tia sáng năng lượng bắn thẳng lên quỹ đạo
+    const beamGeo = new THREE.CylinderGeometry(0.012, 0.012, 1.4, 8);
     const beamMat = new THREE.MeshBasicMaterial({
-      color: 0xff3366,
+      color: 0xff2255,
       transparent: true,
-      opacity: 0.8
+      opacity: 0.85
     });
     const beam = new THREE.Mesh(beamGeo, beamMat);
-    beam.position.copy(this.latLonToVector3(this.epicenterCoords.lat, this.epicenterCoords.lon, this.radius, 0.6));
+    beam.position.copy(this.latLonToVector3(this.epicenterCoords.lat, this.epicenterCoords.lon, this.radius, 0.7));
     beam.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), epicPos.clone().normalize());
     this.globeGroup.add(beam);
   }
@@ -307,23 +239,23 @@ class PerseusHologramGlobe {
     this.waypointMeshes = [];
 
     this.waypoints.forEach(wp => {
-      if (wp.isMoon) return; // Mặt Trăng vẽ riêng
+      if (wp.isMoon) return;
 
       const pos = this.latLonToVector3(wp.lat, wp.lon, this.radius, 0.04);
 
-      // Cột pin phát sáng
-      const pinGeo = new THREE.CylinderGeometry(0.02, 0.005, 0.35, 8);
+      // Cột định vị
+      const pinGeo = new THREE.CylinderGeometry(0.018, 0.006, 0.38, 8);
       const pinMat = new THREE.MeshBasicMaterial({ color: wp.color });
       const pin = new THREE.Mesh(pinGeo, pinMat);
-      pin.position.copy(this.latLonToVector3(wp.lat, wp.lon, this.radius, 0.18));
+      pin.position.copy(this.latLonToVector3(wp.lat, wp.lon, this.radius, 0.19));
       pin.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), pos.clone().normalize());
       this.globeGroup.add(pin);
 
       // Viên ngọc phát quang trên đỉnh
-      const beaconGeo = new THREE.SphereGeometry(0.045, 12, 12);
+      const beaconGeo = new THREE.SphereGeometry(0.05, 16, 16);
       const beaconMat = new THREE.MeshBasicMaterial({ color: wp.color });
       const beacon = new THREE.Mesh(beaconGeo, beaconMat);
-      beacon.position.copy(this.latLonToVector3(wp.lat, wp.lon, this.radius, 0.35));
+      beacon.position.copy(this.latLonToVector3(wp.lat, wp.lon, this.radius, 0.38));
       this.globeGroup.add(beacon);
 
       this.waypointMeshes.push({ wp, beacon, pin });
@@ -335,25 +267,25 @@ class PerseusHologramGlobe {
     const routePoints = [
       this.latLonToVector3(35.6, 139.7),   // Nhật Bản
       this.latLonToVector3(20.0, 165.0),   // Đảo Kho Báu
-      this.latLonToVector3(30.0, -150.0, this.radius, 0.35), // Vượt Thái Bình Dương
+      this.latLonToVector3(32.0, -155.0, this.radius, 0.4), // Băng qua Thái Bình Dương
       this.latLonToVector3(37.7, -122.4),  // California, Bắc Mỹ
-      this.latLonToVector3(15.0, -95.0, this.radius, 0.25),  // Trung Mỹ
+      this.latLonToVector3(18.0, -98.0, this.radius, 0.28),  // Vịnh Mexico / Trung Mỹ
       this.latLonToVector3(9.0, -79.5),    // Kênh Panama
       this.latLonToVector3(-3.1, -60.0)    // Rừng Amazon, Nam Mỹ (Tâm chấn)
     ];
 
     const curve = new THREE.CatmullRomCurve3(routePoints);
-    const tubeGeo = new THREE.TubeGeometry(curve, 128, 0.016, 8, false);
+    const tubeGeo = new THREE.TubeGeometry(curve, 160, 0.018, 8, false);
     const tubeMat = new THREE.MeshBasicMaterial({
       color: 0xffaa00,
       transparent: true,
-      opacity: 0.85
+      opacity: 0.9
     });
     const routeTube = new THREE.Mesh(tubeGeo, tubeMat);
     this.globeGroup.add(routeTube);
 
     // Hạt photon đại diện cho tàu Perseus lướt sóng
-    const shipGeo = new THREE.SphereGeometry(0.06, 16, 16);
+    const shipGeo = new THREE.SphereGeometry(0.065, 16, 16);
     const shipMat = new THREE.MeshBasicMaterial({ color: 0x39ff14 });
     this.shipMesh = new THREE.Mesh(shipGeo, shipMat);
     this.globeGroup.add(this.shipMesh);
@@ -361,37 +293,36 @@ class PerseusHologramGlobe {
   }
 
   createMoon() {
-    // Mặt Trăng bay trên quỹ đạo bao quanh Trái Đất (Arc Whyman)
-    const moonGeo = new THREE.SphereGeometry(0.35, 24, 24);
+    // Mô hình Mặt Trăng 3D bay trên quỹ đạo
+    const moonGeo = new THREE.SphereGeometry(0.36, 24, 24);
     const moonMat = new THREE.MeshStandardMaterial({
       color: 0xdde4ec,
-      roughness: 0.9,
+      roughness: 0.85,
       metalness: 0.1,
       emissive: 0x112233
     });
     this.moonMesh = new THREE.Mesh(moonGeo, moonMat);
-    this.moonOrbitRadius = 5.2;
+    this.moonOrbitRadius = 5.3;
     this.moonMesh.position.set(this.moonOrbitRadius, 1.2, 0);
     this.scene.add(this.moonMesh);
 
-    // Vòng quỹ đạo Mặt Trăng
-    const orbitGeo = new THREE.RingGeometry(this.moonOrbitRadius - 0.01, this.moonOrbitRadius + 0.01, 64);
+    // Vòng quỹ đạo phát sáng
+    const orbitGeo = new THREE.RingGeometry(this.moonOrbitRadius - 0.015, this.moonOrbitRadius + 0.015, 64);
     const orbitMat = new THREE.MeshBasicMaterial({
       color: 0x00d4ff,
       side: THREE.DoubleSide,
       transparent: true,
-      opacity: 0.15
+      opacity: 0.18
     });
     const orbitRing = new THREE.Mesh(orbitGeo, orbitMat);
     orbitRing.rotation.x = Math.PI / 2.3;
     this.scene.add(orbitRing);
   }
 
-  // Tương tác chuột & cảm ứng di động
   setupEventListeners() {
     const el = this.renderer.domElement;
 
-    // Chuột xuống (Bắt đầu kéo)
+    // Chuột xuống
     el.addEventListener('mousedown', (e) => {
       this.isDragging = true;
       this.autoRotate = false;
@@ -399,7 +330,7 @@ class PerseusHologramGlobe {
       this.previousMousePosition = { x: e.clientX, y: e.clientY };
     });
 
-    // Di chuyển chuột (Xoay cầu)
+    // Di chuyển chuột
     window.addEventListener('mousemove', (e) => {
       if (!this.isDragging) return;
       const deltaX = e.clientX - this.previousMousePosition.x;
@@ -408,7 +339,6 @@ class PerseusHologramGlobe {
       this.targetRotation.y += deltaX * 0.005;
       this.targetRotation.x += deltaY * 0.005;
 
-      // Giới hạn góc nghiêng trục đứng
       this.targetRotation.x = Math.max(-Math.PI / 2.2, Math.min(Math.PI / 2.2, this.targetRotation.x));
 
       this.previousMousePosition = { x: e.clientX, y: e.clientY };
@@ -428,7 +358,7 @@ class PerseusHologramGlobe {
       this.lastInteractionTime = performance.now();
     }, { passive: false });
 
-    // Touch trên di động
+    // Cảm ứng điện thoại
     el.addEventListener('touchstart', (e) => {
       if (e.touches.length === 1) {
         this.isDragging = true;
@@ -451,26 +381,24 @@ class PerseusHologramGlobe {
       this.isDragging = false;
     });
 
-    // Tự động điều chỉnh kích thước khung khi resize
+    // Resize
     window.addEventListener('resize', () => {
       if (!this.container) return;
       this.width = this.container.clientWidth;
-      this.height = this.container.clientHeight || 500;
+      this.height = this.container.clientHeight || 520;
       this.camera.aspect = this.width / this.height;
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(this.width, this.height);
     });
-
-    this.setupModeSwitcher();
   }
 
-  // Chuyển đổi linh hoạt giữa Địa Cầu 3D và Bản Đồ Phẳng 2D
   setupModeSwitcher() {
     const btn3D = document.getElementById('btn-toggle-globe-3d');
     const btn2D = document.getElementById('btn-toggle-map-2d');
     const wrap3D = document.getElementById('perseus-3d-globe-wrapper');
     const wrap2D = document.getElementById('perseus-2d-map-wrapper');
     const btnReset = document.getElementById('btn-reset-globe');
+    const btnTheme = document.getElementById('btn-toggle-globe-theme');
 
     if (btn3D && btn2D && wrap3D && wrap2D) {
       btn3D.addEventListener('click', () => {
@@ -481,7 +409,7 @@ class PerseusHologramGlobe {
 
         setTimeout(() => {
           this.width = this.container.clientWidth;
-          this.height = this.container.clientHeight || 500;
+          this.height = this.container.clientHeight || 520;
           this.camera.aspect = this.width / this.height;
           this.camera.updateProjectionMatrix();
           this.renderer.setSize(this.width, this.height);
@@ -501,13 +429,30 @@ class PerseusHologramGlobe {
         this.focusCoordinates(-3.1, -60.0);
       });
     }
+
+    // Đổi qua lại giữa Vệ Tinh NASA và Cyber Dark
+    if (btnTheme) {
+      btnTheme.addEventListener('click', () => {
+        if (this.currentTextureMode === 'satellite') {
+          this.currentTextureMode = 'cyber';
+          this.earthMaterial.map = this.cyberTexture;
+          this.earthMaterial.emissive.setHex(0x021a24);
+          btnTheme.textContent = '⚡ Chế độ: Cyber Dark';
+        } else {
+          this.currentTextureMode = 'satellite';
+          this.earthMaterial.map = this.satTexture;
+          this.earthMaterial.emissive.setHex(0x051a24);
+          btnTheme.textContent = '🛰️ Chế độ: Vệ Tinh HD';
+        }
+        this.earthMaterial.needsUpdate = true;
+      });
+    }
   }
 
-  // Kết nối các nút Trạm Waypoint bên ngoài giao diện
   bindWaypointButtons() {
     const waypointButtons = document.querySelectorAll('.waypoint-btn');
     waypointButtons.forEach((btn, index) => {
-      btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', () => {
         const targetWp = this.waypoints[index];
         if (targetWp) {
           this.focusCoordinates(targetWp.lat, targetWp.lon);
@@ -516,12 +461,10 @@ class PerseusHologramGlobe {
     });
   }
 
-  // Xoay quả cầu mượt mà đến tọa độ chỉ định
   focusCoordinates(lat, lon) {
     this.autoRotate = false;
     this.lastInteractionTime = performance.now();
 
-    // Tính toán góc Euler để đưa tọa độ (lat, lon) về chính diện camera
     const phi = (lat * Math.PI) / 180;
     const theta = (lon * Math.PI) / 180;
 
@@ -534,7 +477,7 @@ class PerseusHologramGlobe {
 
     const now = performance.now();
 
-    // Tự động xoay chậm sau 3 giây không chạm chuột
+    // Tự động xoay chậm sau 3 giây
     if (!this.isDragging && now - this.lastInteractionTime > 3000) {
       this.targetRotation.y += this.autoRotateSpeed;
     }
@@ -546,28 +489,33 @@ class PerseusHologramGlobe {
     this.globeGroup.rotation.x = this.currentRotation.x;
     this.globeGroup.rotation.y = this.currentRotation.y;
 
-    // Hiệu ứng sóng xung kích Medusa tại Nam Mỹ (Amazon)
+    // Lớp mây trôi nhẹ độc lập tạo chiều sâu 3D
+    if (this.cloudMesh) {
+      this.cloudMesh.rotation.y += 0.0004;
+    }
+
+    // Hiệu ứng sóng xung kích Medusa tại Nam Mỹ
     this.shockwaveTime += 0.025;
     if (this.shockwaveRings) {
       this.shockwaveRings.forEach(ringObj => {
         const progress = (this.shockwaveTime + ringObj.offset) % (Math.PI * 2);
-        const scale = 1.0 + (progress / (Math.PI * 2)) * 3.5;
+        const scale = 1.0 + (progress / (Math.PI * 2)) * 3.8;
         const opacity = Math.max(0, 1.0 - progress / (Math.PI * 2));
         ringObj.mesh.scale.set(scale, scale, 1);
-        ringObj.mesh.material.opacity = opacity * 0.85;
+        ringObj.mesh.material.opacity = opacity * 0.9;
       });
     }
 
     // Chuyển động tàu Perseus lướt trên đường hải trình
-    this.routeProgress = (this.routeProgress + 0.0018) % 1;
+    this.routeProgress = (this.routeProgress + 0.0016) % 1;
     if (this.shipMesh && this.routeCurve) {
       const shipPoint = this.routeCurve.getPointAt(this.routeProgress);
       this.shipMesh.position.copy(shipPoint);
     }
 
-    // Quỹ đạo Mặt Trăng xoay chậm
+    // Quỹ đạo Mặt Trăng xoay chậm quanh Trái Đất
     if (this.moonMesh) {
-      const moonAngle = now * 0.0004;
+      const moonAngle = now * 0.00035;
       this.moonMesh.position.x = Math.cos(moonAngle) * this.moonOrbitRadius;
       this.moonMesh.position.z = Math.sin(moonAngle) * this.moonOrbitRadius;
     }
@@ -576,7 +524,6 @@ class PerseusHologramGlobe {
   }
 }
 
-// Khởi tạo toàn cục an toàn
 function initDrStoneGlobe() {
   const container = document.getElementById('perseus-3d-globe-wrapper');
   if (container && !window.drStoneGlobe) {
