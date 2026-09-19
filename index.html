@@ -249,11 +249,9 @@
 
 
   <!-- ─────────────────────────────────────────
-       SECTION 2: STORY (Scroll Counter)
+       SECTION 2: STORY TIMELINE & ODYSSEY NAVIGATOR
        ───────────────────────────────────────── -->
-  <section id="story"
-           class="relative min-h-screen flex flex-col items-center
-                  justify-center px-6 py-24 text-center">
+  <section id="story" class="relative py-24 px-4 max-w-[1350px] mx-auto">
 
     <!-- Scroll progress bar (right edge) -->
     <div class="fixed right-0 top-0 w-0.5 bg-white/5 h-full z-20 pointer-events-none">
@@ -262,50 +260,466 @@
            style="height: 0%"></div>
     </div>
 
-    <span class="block text-[0.72rem] font-['Rajdhani'] font-bold
-         tracking-[0.35em] uppercase text-[#39ff14] mb-4"
-         data-reveal>● CÂU CHUYỆN</span>
+    <!-- ── Phần 1: Bộ Đếm Hóa Đá 3.700 Năm ── -->
+    <div class="text-center mb-16 flex flex-col items-center">
+      <span class="block text-[0.72rem] font-['Rajdhani'] font-bold
+           tracking-[0.35em] uppercase text-[#39ff14] mb-3"
+           data-reveal>● CÂU CHUYỆN TOÀN CẢNH</span>
 
-    <h2 class="font-['Rajdhani'] font-bold text-[#e8f4f8] mb-6
-         text-[clamp(1.3rem,3vw,2rem)] uppercase tracking-widest"
-         data-reveal data-delay="1">
-      Sau khi toàn bộ nhân loại hóa đá
-    </h2>
+      <h2 class="font-['Rajdhani'] font-bold text-[#e8f4f8] mb-5
+           text-[clamp(1.3rem,3vw,2rem)] uppercase tracking-widest"
+           data-reveal data-delay="1">
+        Sau khi toàn bộ nhân loại hóa đá
+      </h2>
 
-    <!-- Giant counter -->
-    <div class="flex items-baseline gap-3 mb-4" data-reveal data-delay="2">
-      <span id="story-counter"
-            class="font-['Orbitron'] font-black
-                   text-[clamp(5rem,18vw,10rem)] leading-none
-                   bg-gradient-to-br from-[#00d4ff] via-[#00aadd] to-[#39ff14]
-                   bg-clip-text text-transparent">
-        0
-      </span>
-      <span class="font-['Rajdhani'] text-2xl text-[#6b7a99] font-medium">NĂM</span>
+      <!-- Giant counter -->
+      <div class="flex items-baseline gap-3 mb-3" data-reveal data-delay="2">
+        <span id="story-counter"
+              class="font-['Orbitron'] font-black
+                     text-[clamp(4.5rem,14vw,8.5rem)] leading-none
+                     bg-gradient-to-br from-[#00d4ff] via-[#00aadd] to-[#39ff14]
+                     bg-clip-text text-transparent">
+          0
+        </span>
+        <span class="font-['Rajdhani'] text-2xl text-[#6b7a99] font-medium">NĂM</span>
+      </div>
+
+      <!-- Cyan line -->
+      <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#00d4ff] to-transparent
+           mb-8 rounded" data-reveal data-delay="3"></div>
+
+      <!-- Stagger lines -->
+      <div class="flex flex-col gap-3 max-w-2xl text-center">
+        <p class="story-line font-['Rajdhani'] text-[clamp(1rem,2.2vw,1.35rem)] font-semibold
+           text-[#e8f4f8] opacity-0 translate-y-6 transition-all duration-700"
+           data-story-line>
+          Khoa học là sức mạnh <span class="text-[#39ff14]">duy nhất</span> còn lại
+        </p>
+        <p class="story-line font-['Rajdhani'] text-[clamp(0.95rem,2vw,1.2rem)] font-medium
+           text-[#6b7a99] opacity-0 translate-y-6 transition-all duration-700 delay-100"
+           data-story-line>
+          Senku — thiên tài với <span class="text-[#00d4ff]">10 tỉ phần trăm</span> nỗ lực
+        </p>
+        <p class="story-line font-['Rajdhani'] text-[clamp(0.9rem,1.8vw,1.1rem)] font-medium
+           text-[#3d4f6e] opacity-0 translate-y-6 transition-all duration-700 delay-200"
+           data-story-line>
+          Tái sinh văn minh nhân loại từ con số 0
+        </p>
+      </div>
     </div>
 
-    <!-- Cyan line -->
-    <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#00d4ff] to-transparent
-         mb-10 rounded" data-reveal data-delay="3"></div>
+    <!-- ── Phần 2: Bàn Điều Khiển Hải Trình Toàn Cầu Perseus (Odyssey Waypoint Navigator) ── -->
+    <div class="mb-20 p-5 sm:p-7 rounded-3xl bg-[#0a0f1e]/80 border border-[#00d4ff]/25 backdrop-blur-xl shadow-[0_0_35px_rgba(0,212,255,0.1)]" data-reveal>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-[#00d4ff] animate-ping"></span>
+          <h3 class="font-['Orbitron'] font-bold text-lg sm:text-xl text-white tracking-wider uppercase">
+            🗺️ Bản Đồ Hải Trình Toàn Cầu Của Chiến Hạm Perseus
+          </h3>
+        </div>
+        <span class="text-xs font-['Rajdhani'] font-semibold text-[#6b7a99] uppercase tracking-widest">
+          Nhấp tọa độ để chuyển nhanh đến Arc
+        </span>
+      </div>
 
-    <!-- Stagger lines -->
-    <div class="flex flex-col gap-5 max-w-2xl">
-      <p class="story-line font-['Rajdhani'] text-[clamp(1.1rem,2.5vw,1.5rem)] font-semibold
-         text-[#e8f4f8] opacity-0 translate-y-6 transition-all duration-700"
-         data-story-line>
-        Khoa học là sức mạnh <span class="text-[#39ff14]">duy nhất</span> còn lại
-      </p>
-      <p class="story-line font-['Rajdhani'] text-[clamp(1rem,2.2vw,1.3rem)] font-medium
-         text-[#6b7a99] opacity-0 translate-y-6 transition-all duration-700 delay-100"
-         data-story-line>
-        Senku — thiên tài với <span class="text-[#00d4ff]">10 tỉ phần trăm</span> nỗ lực
-      </p>
-      <p class="story-line font-['Rajdhani'] text-[clamp(0.95rem,2vw,1.15rem)] font-medium
-         text-[#3d4f6e] opacity-0 translate-y-6 transition-all duration-700 delay-200"
-         data-story-line>
-        Vương quốc Khoa học sẽ tái sinh loài người
-      </p>
+      <!-- 5 Waypoint Buttons -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        <!-- Waypoint 1 -->
+        <a href="#arc-village"
+           class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#00f5a0]/15 border border-white/10 hover:border-[#00f5a0]/50 transition-all flex flex-col gap-1.5 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">🗾</span>
+            <span class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#00f5a0]/20 text-[#00f5a0]">TRẠM 1</span>
+          </div>
+          <span class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#00f5a0] transition-colors">Làng Ishigami</span>
+          <span class="text-[0.68rem] text-[#6b7a99]">Nhật Bản · Thần Dược Sulfa</span>
+        </a>
+
+        <!-- Waypoint 2 -->
+        <a href="#arc-treasure"
+           class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#00d4ff]/15 border border-white/10 hover:border-[#00d4ff]/50 transition-all flex flex-col gap-1.5 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">🏝️</span>
+            <span class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#00d4ff]/20 text-[#00d4ff]">TRẠM 2</span>
+          </div>
+          <span class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#00d4ff] transition-colors">Đảo Kho Báu</span>
+          <span class="text-[0.68rem] text-[#6b7a99]">Thái Bình Dương · Medusa</span>
+        </a>
+
+        <!-- Waypoint 3 -->
+        <a href="#arc-america"
+           class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#f97316]/15 border border-white/10 hover:border-[#f97316]/50 transition-all flex flex-col gap-1.5 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">🌽</span>
+            <span class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#f97316]/20 text-[#f97316]">TRẠM 3</span>
+          </div>
+          <span class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#f97316] transition-colors">Tân Thành Phố Mỹ</span>
+          <span class="text-[0.68rem] text-[#6b7a99]">Bắc Mỹ · Tiến Sĩ Xeno</span>
+        </a>
+
+        <!-- Waypoint 4 -->
+        <a href="#arc-south-america"
+           class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#ef4444]/15 border border-white/10 hover:border-[#ef4444]/50 transition-all flex flex-col gap-1.5 group cursor-pointer">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">🌴</span>
+            <span class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#ef4444]/20 text-[#ef4444]">TRẠM 4</span>
+          </div>
+          <span class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#ef4444] transition-colors">Rừng Nam Mỹ</span>
+          <span class="text-[0.68rem] text-[#6b7a99]">Amazon · Tâm Chấn Hóa Đá</span>
+        </a>
+
+        <!-- Waypoint 5 -->
+        <a href="#arc-moon"
+           class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#a855f7]/15 border border-white/10 hover:border-[#a855f7]/50 transition-all flex flex-col gap-1.5 group cursor-pointer col-span-2 sm:col-span-1">
+          <div class="flex items-center justify-between">
+            <span class="text-lg">🌕</span>
+            <span class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#a855f7]/20 text-[#a855f7]">ĐÍCH ĐẾN</span>
+          </div>
+          <span class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#a855f7] transition-colors">Mặt Trăng Vũ Trụ</span>
+          <span class="text-[0.68rem] text-[#6b7a99]">Không Gian · Why-man</span>
+        </a>
+      </div>
     </div>
+
+    <!-- ── Phần 3: Trục Dòng Thời Gian Khoa Học Phục Hưng (8 Arcs Ziczac) ── -->
+    <div class="relative">
+      <!-- Cột Laser Sáng Trung Tâm (Desktop) -->
+      <div class="timeline-beam absolute left-4 md:left-1/2 top-4 bottom-8 w-1 -translate-x-1/2 rounded-full hidden sm:block"></div>
+
+      <!-- ── ARC 1: Stone World (Trái) ── -->
+      <div id="arc-prologue" class="relative flex flex-col md:flex-row items-center mb-16 group" data-reveal>
+        <!-- Node giữa -->
+        <div class="timeline-node absolute left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#050810] border-2 border-[#00f5a0] text-[#00f5a0] flex items-center justify-center font-['Orbitron'] text-xs font-black z-10 hidden sm:flex">
+          1
+        </div>
+        <!-- Nội dung card (bên trái) -->
+        <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+          <div class="timeline-card p-6 sm:p-7 rounded-3xl bg-[#0a0f1e]/90 border border-[#00f5a0]/30 hover:border-[#00f5a0] shadow-xl text-left">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#00f5a0]/15 text-[#00f5a0] border border-[#00f5a0]/30">
+                ARC 01 · SEASON 1 (TẬP 1 - 5)
+              </span>
+              <span class="text-xs font-['Rajdhani'] font-bold text-[#6b7a99]">📍 Kanto, Nhật Bản</span>
+            </div>
+            <h4 class="font-['Orbitron'] text-xl font-bold text-white mb-2 group-hover:text-[#00f5a0] transition-colors">
+              Thế Giới Đá & Khởi Nguyên
+            </h4>
+            <p class="text-xs sm:text-sm text-[#8a9bb8] leading-relaxed mb-4">
+              Sau 3.700 năm bị hóa thạch, Senku thức giấc và không ngừng đếm từng giây để duy trì ý thức. Với trí tuệ thiên tài, cậu chế tạo thành công dung dịch phục sinh Nital giải cứu người bạn thân Taiju.
+            </p>
+            
+            <!-- Inventions & Factions -->
+            <div class="space-y-2 pt-3 border-t border-white/5 mb-4 text-xs font-['Rajdhani']">
+              <div class="flex items-center gap-2 text-[#00f5a0]">
+                <span class="font-bold">💡 Phát minh:</span>
+                <span class="text-gray-300">Dung dịch Nital (Axit Nitric + Cồn), Đồ gốm, Lửa, Thuốc súng</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#ffd700]">
+                <span class="font-bold">⚔️ Đối đầu:</span>
+                <span class="text-gray-300">Senku & Taiju vs Tư tưởng diệt chủng người lớn của Tsukasa</span>
+              </div>
+            </div>
+
+            <a href="cactapphim.html?season=1"
+               class="inline-flex items-center gap-2 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#00f5a0] hover:underline">
+              <span>🎬 Xem các tập Arc 1 (Season 1)</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:block w-1/2"></div>
+      </div>
+
+      <!-- ── ARC 2: Làng Ishigami & Thần Dược Sulfa (Phải) ── -->
+      <div id="arc-village" class="relative flex flex-col md:flex-row items-center mb-16 group" data-reveal>
+        <div class="timeline-node absolute left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#050810] border-2 border-[#ffd700] text-[#ffd700] flex items-center justify-center font-['Orbitron'] text-xs font-black z-10 hidden sm:flex">
+          2
+        </div>
+        <div class="hidden md:block w-1/2"></div>
+        <!-- Nội dung card (bên phải) -->
+        <div class="w-full md:w-1/2 md:pl-12">
+          <div class="timeline-card p-6 sm:p-7 rounded-3xl bg-[#0a0f1e]/90 border border-[#ffd700]/30 hover:border-[#ffd700] shadow-xl text-left">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#ffd700]/15 text-[#ffd700] border border-[#ffd700]/30">
+                ARC 02 · SEASON 1 (TẬP 6 - 15)
+              </span>
+              <span class="text-xs font-['Rajdhani'] font-bold text-[#6b7a99]">📍 Làng Ishigami</span>
+            </div>
+            <h4 class="font-['Orbitron'] text-xl font-bold text-white mb-2 group-hover:text-[#ffd700] transition-colors">
+              Làng Ishigami & Thần Dược Kháng Sinh
+            </h4>
+            <p class="text-xs sm:text-sm text-[#8a9bb8] leading-relaxed mb-4">
+              Gặp gỡ nữ chiến binh Kohaku và thần đồng Chrome, Senku bước vào Làng Ishigami. Cậu bắt đầu quy trình hóa học đồ sộ điều chế thuốc kháng sinh Sulfa cứu sống Pháp sư Ruri và đoạt chức Trưởng Làng.
+            </p>
+
+            <div class="space-y-2 pt-3 border-t border-white/5 mb-4 text-xs font-['Rajdhani']">
+              <div class="flex items-center gap-2 text-[#ffd700]">
+                <span class="font-bold">💡 Phát minh:</span>
+                <span class="text-gray-300">Kháng sinh Sulfa, Thủy tinh, Máy phát điện, Bóng đèn Vonfram</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#00d4ff]">
+                <span class="font-bold">⚔️ Đối đầu:</span>
+                <span class="text-gray-300">Vương Quốc Khoa Học vs Nhóm bạo loạn của Magma & Bệnh viêm phổi</span>
+              </div>
+            </div>
+
+            <a href="cactapphim.html?season=1"
+               class="inline-flex items-center gap-2 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#ffd700] hover:underline">
+              <span>🎬 Xem các tập Arc 2 (Season 1)</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ARC 3: Stone Wars (Trái) ── -->
+      <div id="arc-stone-wars" class="relative flex flex-col md:flex-row items-center mb-16 group" data-reveal>
+        <div class="timeline-node absolute left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#050810] border-2 border-[#ef4444] text-[#ef4444] flex items-center justify-center font-['Orbitron'] text-xs font-black z-10 hidden sm:flex">
+          3
+        </div>
+        <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+          <div class="timeline-card p-6 sm:p-7 rounded-3xl bg-[#0a0f1e]/90 border border-[#ef4444]/30 hover:border-[#ef4444] shadow-xl text-left">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#ef4444]/15 text-[#ef4444] border border-[#ef4444]/30">
+                ARC 03 · SEASON 2 (TRỌN BỘ 11 TẬP)
+              </span>
+              <span class="text-xs font-['Rajdhani'] font-bold text-[#6b7a99]">📍 Căn Cứ Tsukasa</span>
+            </div>
+            <h4 class="font-['Orbitron'] text-xl font-bold text-white mb-2 group-hover:text-[#ef4444] transition-colors">
+              Đại Chiến Stone Wars
+            </h4>
+            <p class="text-xs sm:text-sm text-[#8a9bb8] leading-relaxed mb-4">
+              Cuộc chạm trán sống còn giữa Vương Quốc Khoa Học và Đế Quốc Sức Mạnh. Bằng máy liên lạc vô tuyến, đĩa hát của ca sĩ Lillian và xe bọc thép hơi nước Steam Gorilla, Senku kết thúc cuộc chiến không đổ máu.
+            </p>
+
+            <div class="space-y-2 pt-3 border-t border-white/5 mb-4 text-xs font-['Rajdhani']">
+              <div class="flex items-center gap-2 text-[#ef4444]">
+                <span class="font-bold">💡 Phát minh:</span>
+                <span class="text-gray-300">Điện thoại di động, Xe tăng hơi nước, Áo giáp giấy carbon, Nitroglycerin</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#38bdf8]">
+                <span class="font-bold">⚔️ Đối đầu:</span>
+                <span class="text-gray-300">Vương Quốc Khoa Học vs Shishiō Tsukasa, Hyoga & Homura</span>
+              </div>
+            </div>
+
+            <a href="cactapphim.html?season=2"
+               class="inline-flex items-center gap-2 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#ef4444] hover:underline">
+              <span>🎬 Xem các tập Arc 3 (Season 2)</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:block w-1/2"></div>
+      </div>
+
+      <!-- ── ARC 4: Thời Đại Đại Hàng Hải (Phải) ── -->
+      <div id="arc-exploration" class="relative flex flex-col md:flex-row items-center mb-16 group" data-reveal>
+        <div class="timeline-node absolute left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#050810] border-2 border-[#00d4ff] text-[#00d4ff] flex items-center justify-center font-['Orbitron'] text-xs font-black z-10 hidden sm:flex">
+          4
+        </div>
+        <div class="hidden md:block w-1/2"></div>
+        <div class="w-full md:w-1/2 md:pl-12">
+          <div class="timeline-card p-6 sm:p-7 rounded-3xl bg-[#0a0f1e]/90 border border-[#00d4ff]/30 hover:border-[#00d4ff] shadow-xl text-left">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#00d4ff]/15 text-[#00d4ff] border border-[#00d4ff]/30">
+                ARC 04 · SEASON 3 PART 1 (TẬP 1 - 11)
+              </span>
+              <span class="text-xs font-['Rajdhani'] font-bold text-[#6b7a99]">📍 Biển Nhật Bản & Đảo Izu</span>
+            </div>
+            <h4 class="font-['Orbitron'] text-xl font-bold text-white mb-2 group-hover:text-[#00d4ff] transition-colors">
+              Thời Đại Đại Hàng Hải & Chiến Hạm Perseus
+            </h4>
+            <p class="text-xs sm:text-sm text-[#8a9bb8] leading-relaxed mb-4">
+              Nhằm vươn ra đại dương tìm nguồn gốc tia hóa đá, Senku hồi sinh tài phiệt hàng hải Ryusui Nanami. Cả nhóm phát hiện mỏ dầu Sagara, chế tạo khinh khí cầu và hạ thủy chiến hạm khổng lồ Perseus.
+            </p>
+
+            <div class="space-y-2 pt-3 border-t border-white/5 mb-4 text-xs font-['Rajdhani']">
+              <div class="flex items-center gap-2 text-[#00d4ff]">
+                <span class="font-bold">💡 Phát minh:</span>
+                <span class="text-gray-300">Khinh khí cầu, Mỏ dầu Sagara, Bánh mì Stollen, Chiến hạm Perseus, Radar</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#ffd700]">
+                <span class="font-bold">⚔️ Đối đầu:</span>
+                <span class="text-gray-300">Tự nhiên bão tố & Tín hiệu vô tuyến Morse bí ẩn phát chữ "WHY"</span>
+              </div>
+            </div>
+
+            <a href="cactapphim.html?season=3"
+               class="inline-flex items-center gap-2 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#00d4ff] hover:underline">
+              <span>🎬 Xem các tập Arc 4 (Season 3)</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ARC 5: Đảo Kho Báu & Medusa (Trái) ── -->
+      <div id="arc-treasure" class="relative flex flex-col md:flex-row items-center mb-16 group" data-reveal>
+        <div class="timeline-node absolute left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#050810] border-2 border-[#39ff14] text-[#39ff14] flex items-center justify-center font-['Orbitron'] text-xs font-black z-10 hidden sm:flex">
+          5
+        </div>
+        <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+          <div class="timeline-card p-6 sm:p-7 rounded-3xl bg-[#0a0f1e]/90 border border-[#39ff14]/30 hover:border-[#39ff14] shadow-xl text-left">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#39ff14]/15 text-[#39ff14] border border-[#39ff14]/30">
+                ARC 05 · SEASON 3 PART 2 (TẬP 12 - 23)
+              </span>
+              <span class="text-xs font-['Rajdhani'] font-bold text-[#6b7a99]">📍 Đảo Kho Báu (Thái Bình Dương)</span>
+            </div>
+            <h4 class="font-['Orbitron'] text-xl font-bold text-white mb-2 group-hover:text-[#39ff14] transition-colors">
+              Đảo Kho Báu & Vũ Khí Hóa Đá Medusa
+            </h4>
+            <p class="text-xs sm:text-sm text-[#8a9bb8] leading-relaxed mb-4">
+              Thủy thủ đoàn đặt chân lên hòn đảo nơi cha Byakuya từng sinh sống. Đối mặt với thiết bị hóa thạch Medusa và bạo chúa Ibara, Senku lập nhóm ngầm chế tạo Drone trên không để bắt lấy vũ khí hóa đá.
+            </p>
+
+            <div class="space-y-2 pt-3 border-t border-white/5 mb-4 text-xs font-['Rajdhani']">
+              <div class="flex items-center gap-2 text-[#39ff14]">
+                <span class="font-bold">💡 Phát minh:</span>
+                <span class="text-gray-300">Máy bay không người lái Drone, Mỹ phẩm & Máy sấy tóc, Tai nghe siêu nhỏ</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#a855f7]">
+                <span class="font-bold">⚔️ Đối đầu:</span>
+                <span class="text-gray-300">Vương Quốc Khoa Học vs Bộ máy cai trị của Tể tướng Ibara & Đấu sĩ Moz</span>
+              </div>
+            </div>
+
+            <a href="cactapphim.html?season=3"
+               class="inline-flex items-center gap-2 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#39ff14] hover:underline">
+              <span>🎬 Xem các tập Arc 5 (Season 3)</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:block w-1/2"></div>
+      </div>
+
+      <!-- ── ARC 6: Thành Phố Tân Mỹ & Dr. Xeno (Phải) ── -->
+      <div id="arc-america" class="relative flex flex-col md:flex-row items-center mb-16 group" data-reveal>
+        <div class="timeline-node absolute left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#050810] border-2 border-[#f97316] text-[#f97316] flex items-center justify-center font-['Orbitron'] text-xs font-black z-10 hidden sm:flex">
+          6
+        </div>
+        <div class="hidden md:block w-1/2"></div>
+        <div class="w-full md:w-1/2 md:pl-12">
+          <div class="timeline-card p-6 sm:p-7 rounded-3xl bg-[#0a0f1e]/90 border border-[#f97316]/30 hover:border-[#f97316] shadow-xl text-left">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#f97316]/15 text-[#f97316] border border-[#f97316]/30">
+                ARC 06 · SEASON 4 (SCIENCE FUTURE)
+              </span>
+              <span class="text-xs font-['Rajdhani'] font-bold text-[#6b7a99]">📍 Bờ Tây Bắc Mỹ</span>
+            </div>
+            <h4 class="font-['Orbitron'] text-xl font-bold text-white mb-2 group-hover:text-[#f97316] transition-colors">
+              Thành Phố Tân Mỹ & Tiến Sĩ Xeno
+            </h4>
+            <p class="text-xs sm:text-sm text-[#8a9bb8] leading-relaxed mb-4">
+              Vượt đại dương đến châu Mỹ để thu hoạch nông trường ngô khổng lồ điều chế cồn hồi sinh, Senku bất ngờ đối đầu với người thầy NASA cũ của mình - Tiến sĩ Xeno và đội quân vũ trang hiện đại của Stanley Snyder.
+            </p>
+
+            <div class="space-y-2 pt-3 border-t border-white/5 mb-4 text-xs font-['Rajdhani']">
+              <div class="flex items-center gap-2 text-[#f97316]">
+                <span class="font-bold">💡 Phát minh:</span>
+                <span class="text-gray-300">Nông trường ngô công nghiệp, Máy bay chiến đấu cánh quạt, Nhà máy cồn</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#ef4444]">
+                <span class="font-bold">⚔️ Đối đầu:</span>
+                <span class="text-gray-300">Vương Quốc Khoa Học vs Căn cứ quân sự công nghệ cao của Dr. Xeno & Stanley</span>
+              </div>
+            </div>
+
+            <a href="cactapphim.html?season=4"
+               class="inline-flex items-center gap-2 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#f97316] hover:underline">
+              <span>🎬 Xem các tập Arc 6 (Season 4)</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── ARC 7: Rừng Rậm Nam Mỹ (Trái) ── -->
+      <div id="arc-south-america" class="relative flex flex-col md:flex-row items-center mb-16 group" data-reveal>
+        <div class="timeline-node absolute left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#050810] border-2 border-[#ef4444] text-[#ef4444] flex items-center justify-center font-['Orbitron'] text-xs font-black z-10 hidden sm:flex">
+          7
+        </div>
+        <div class="w-full md:w-1/2 md:pr-12 md:text-right">
+          <div class="timeline-card p-6 sm:p-7 rounded-3xl bg-[#0a0f1e]/90 border border-[#ef4444]/30 hover:border-[#ef4444] shadow-xl text-left">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#ef4444]/15 text-[#ef4444] border border-[#ef4444]/30">
+                ARC 07 · SEASON 4 (SCIENCE FUTURE)
+              </span>
+              <span class="text-xs font-['Rajdhani'] font-bold text-[#6b7a99]">📍 Rừng Rậm Amazon, Nam Mỹ</span>
+            </div>
+            <h4 class="font-['Orbitron'] text-xl font-bold text-white mb-2 group-hover:text-[#ef4444] transition-colors">
+              Rừng Rậm Nam Mỹ & Tâm Chấn Hóa Đá
+            </h4>
+            <p class="text-xs sm:text-sm text-[#8a9bb8] leading-relaxed mb-4">
+              Hành trình băng qua rừng mưa nhiệt đới Amazon nguy hiểm nhất hành tinh. Senku lần theo dấu vết để tìm ra chính xác tọa độ phát ra chùm tia sáng hóa đá địa cầu và tìm thấy kim tự tháp Medusa khổng lồ.
+            </p>
+
+            <div class="space-y-2 pt-3 border-t border-white/5 mb-4 text-xs font-['Rajdhani']">
+              <div class="flex items-center gap-2 text-[#ef4444]">
+                <span class="font-bold">💡 Phát minh:</span>
+                <span class="text-gray-300">Ca-nô vượt ghềnh siêu tốc, Cao su nhân tạo, Thiết bị kích hoạt Medusa âm thanh</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#ffd700]">
+                <span class="font-bold">⚔️ Đối đầu:</span>
+                <span class="text-gray-300">Biệt đội lính đặc nhiệm tinh nhuệ truy đuổi ráo riết xuyên lục địa</span>
+              </div>
+            </div>
+
+            <a href="cactapphim.html?season=4"
+               class="inline-flex items-center gap-2 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#ef4444] hover:underline">
+              <span>🎬 Xem các tập Arc 7 (Season 4)</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+        <div class="hidden md:block w-1/2"></div>
+      </div>
+
+      <!-- ── ARC 8: Sứ Mệnh Mặt Trăng (Phải) ── -->
+      <div id="arc-moon" class="relative flex flex-col md:flex-row items-center group" data-reveal>
+        <div class="timeline-node absolute left-4 md:left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-[#050810] border-2 border-[#a855f7] text-[#a855f7] flex items-center justify-center font-['Orbitron'] text-xs font-black z-10 hidden sm:flex">
+          8
+        </div>
+        <div class="hidden md:block w-1/2"></div>
+        <div class="w-full md:w-1/2 md:pl-12">
+          <div class="timeline-card p-6 sm:p-7 rounded-3xl bg-[#0a0f1e]/90 border border-[#a855f7]/40 hover:border-[#a855f7] shadow-[0_0_35px_rgba(168,85,247,0.2)] text-left">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-gradient-to-r from-[#a855f7] to-[#ec4899] text-white shadow-md">
+                ARC 08 · ĐẠI KẾT CỤC (FINAL SEASON)
+              </span>
+              <span class="text-xs font-['Rajdhani'] font-bold text-[#c084fc]">📍 Mặt Trăng (Không Gian Vũ Trụ)</span>
+            </div>
+            <h4 class="font-['Orbitron'] text-xl font-bold text-white mb-2 group-hover:text-[#a855f7] transition-colors">
+              Chinh Phục Vũ Trụ & Sứ Mệnh Mặt Trăng
+            </h4>
+            <p class="text-xs sm:text-sm text-[#8a9bb8] leading-relaxed mb-4">
+              Đỉnh cao vĩ đại nhất của trí tuệ loài người: Toàn thế giới hợp lực chế tạo siêu máy tính và tên lửa vũ trụ đưa Senku, Kohaku cùng Tsukasa bay lên Mặt Trăng để đối mặt với thực thể bí ẩn Why-man.
+            </p>
+
+            <div class="space-y-2 pt-3 border-t border-white/5 mb-4 text-xs font-['Rajdhani']">
+              <div class="flex items-center gap-2 text-[#c084fc]">
+                <span class="font-bold">💡 Phát minh:</span>
+                <span class="text-gray-300">Siêu máy tính điện tử, Vệ tinh quỹ đạo, Bộ đồ phi hành gia, Tên lửa vũ trụ</span>
+              </div>
+              <div class="flex items-center gap-2 text-[#ec4899]">
+                <span class="font-bold">⚔️ Đối đầu:</span>
+                <span class="text-gray-300">Toàn bộ Nhân Loại vs Thực Thể Bí Ẩn Why-man trên bề mặt Mặt Trăng</span>
+              </div>
+            </div>
+
+            <a href="cactapphim.html?season=4"
+               class="inline-flex items-center gap-2 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#a855f7] hover:underline">
+              <span>🎬 Xem các tập Arc 8 (Season 4)</span>
+              <span>➜</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </section>
 
 
