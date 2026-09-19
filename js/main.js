@@ -205,10 +205,23 @@ function initGSAP() {
   // Story counter count-up on scroll
   ScrollTrigger.create({
     trigger: '#story',
-    start: 'top 60%',
+    start: 'top 80%',
     once: true,
     onEnter: () => animateStoryCounter(),
   });
+
+  const storyEl = document.getElementById('story');
+  if (storyEl && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateStoryCounter();
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.1 });
+    obs.observe(storyEl);
+  }
 
   // Characters section: stagger from scroll
   ScrollTrigger.create({
@@ -252,22 +265,29 @@ function initGSAP() {
 }
 
 /* ──────────────────────────────────────────
-   STORY COUNTER ANIMATION
+   STORY COUNTER ANIMATION (TÍNH BẰNG GIÂY)
    ────────────────────────────────────────── */
+let storyCounterAnimated = false;
 function animateStoryCounter() {
+  if (storyCounterAnimated) return;
   const el = document.getElementById('story-counter');
   if (!el) return;
+  storyCounterAnimated = true;
 
-  const target   = 3715;
-  const duration = 1800; // ms
+  // Thời gian Senku đếm: ~3.718 năm hóa đá = 117.354.896.400 giây
+  const target   = 117354896400;
+  const duration = 2400; // ms
   const start    = performance.now();
 
   const step = (now) => {
     const progress = Math.min((now - start) / duration, 1);
     const value    = Math.round(easeOutCubic(progress) * target);
-    // Format: 3.715
     el.textContent = value.toLocaleString('vi-VN');
-    if (progress < 1) requestAnimationFrame(step);
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    } else {
+      el.textContent = target.toLocaleString('vi-VN');
+    }
   };
   requestAnimationFrame(step);
 }
