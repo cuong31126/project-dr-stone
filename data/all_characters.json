@@ -1,0 +1,1092 @@
+[
+  {
+    "id": "senku-ishigami",
+    "name": "Senku Ishigami",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Senku Ishigami",
+    "thumb": "assets/images/characters/portraits/senku-ishigami.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Senku_Ishigami"
+  },
+  {
+    "id": "taiju-oki",
+    "name": "Taiju Oki",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Taiju Oki",
+    "thumb": "assets/images/characters/portraits/taiju-oki.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Taiju_Oki"
+  },
+  {
+    "id": "yuzuriha-ogawa",
+    "name": "Yuzuriha Ogawa",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Yuzuriha Ogawa",
+    "thumb": "assets/images/characters/portraits/yuzuriha-ogawa.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Yuzuriha_Ogawa"
+  },
+  {
+    "id": "kohaku",
+    "name": "Kohaku",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Kohaku",
+    "thumb": "assets/images/characters/portraits/kohaku.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kohaku"
+  },
+  {
+    "id": "chrome",
+    "name": "Chrome",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Chrome",
+    "thumb": "assets/images/characters/portraits/chrome.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Chrome"
+  },
+  {
+    "id": "kinro",
+    "name": "Kinro",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Kinro",
+    "thumb": "assets/images/characters/portraits/kinro.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kinro"
+  },
+  {
+    "id": "ginro",
+    "name": "Ginro",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Ginro",
+    "thumb": "assets/images/characters/portraits/ginro.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ginro"
+  },
+  {
+    "id": "suika",
+    "name": "Suika",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Suika",
+    "thumb": "assets/images/characters/portraits/suika.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Suika"
+  },
+  {
+    "id": "gen-asagiri",
+    "name": "Gen Asagiri",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Gen Asagiri",
+    "thumb": "assets/images/characters/portraits/gen-asagiri.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Gen_Asagiri"
+  },
+  {
+    "id": "kaseki",
+    "name": "Kaseki",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Kaseki",
+    "thumb": "assets/images/characters/portraits/kaseki.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kaseki"
+  },
+  {
+    "id": "magma",
+    "name": "Magma",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Magma",
+    "thumb": "assets/images/characters/portraits/magma.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Magma"
+  },
+  {
+    "id": "nikki-hanada",
+    "name": "Nikki Hanada",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Nikki",
+    "thumb": "assets/images/characters/portraits/nikki-hanada.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Nikki_Hanada"
+  },
+  {
+    "id": "ukyo-saionji",
+    "name": "Ukyo Saionji",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Ukyo",
+    "thumb": "assets/images/characters/portraits/ukyo-saionji.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ukyo_Saionji"
+  },
+  {
+    "id": "minami-hokutozai",
+    "name": "Minami Hokutozai",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Minami",
+    "thumb": "assets/images/characters/portraits/minami-hokutozai.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Minami_Hokutozai"
+  },
+  {
+    "id": "yo-uei",
+    "name": "Yo Uei",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Yo",
+    "thumb": "assets/images/characters/portraits/yo-uei.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Yo_Uei"
+  },
+  {
+    "id": "tetsuya-kinomoto",
+    "name": "Tetsuya Kinomoto",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Mangaka",
+    "thumb": "assets/images/characters/portraits/tetsuya-kinomoto.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Tetsuya_Kinomoto"
+  },
+  {
+    "id": "ryusui-nanami",
+    "name": "Ryusui Nanami",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Ryusui",
+    "thumb": "assets/images/characters/portraits/ryusui-nanami.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ryusui_Nanami"
+  },
+  {
+    "id": "francois",
+    "name": "Francois",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Francois",
+    "thumb": "assets/images/characters/portraits/francois.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Francois"
+  },
+  {
+    "id": "sagara",
+    "name": "Sagara",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Sagara",
+    "thumb": "assets/images/characters/portraits/sagara.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Sagara"
+  },
+  {
+    "id": "mirai-shishio",
+    "name": "Mirai Shishio",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Mirai Shishio",
+    "thumb": "assets/images/characters/portraits/mirai-shishio.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Mirai_Shishio"
+  },
+  {
+    "id": "soyuz",
+    "name": "Soyuz",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Soyuz",
+    "thumb": "assets/images/characters/portraits/soyuz.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Soyuz"
+  },
+  {
+    "id": "tsukasa-shishio",
+    "name": "Tsukasa Shishio",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Tsukasa Shishio",
+    "thumb": "assets/images/characters/portraits/tsukasa-shishio.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Tsukasa_Shishio"
+  },
+  {
+    "id": "kirisame",
+    "name": "Kirisame",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Kirisame",
+    "thumb": "assets/images/characters/portraits/kirisame.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kirisame"
+  },
+  {
+    "id": "moz",
+    "name": "Moz",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Moz",
+    "thumb": "assets/images/characters/portraits/moz.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Moz"
+  },
+  {
+    "id": "matsukaze",
+    "name": "Matsukaze",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Matsukaze",
+    "thumb": "assets/images/characters/portraits/matsukaze.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Matsukaze"
+  },
+  {
+    "id": "hyoga",
+    "name": "Hyoga",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Hyoga",
+    "thumb": "assets/images/characters/portraits/hyoga.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Hyoga"
+  },
+  {
+    "id": "homura-momiji",
+    "name": "Homura Momiji",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Homura",
+    "thumb": "assets/images/characters/portraits/homura-momiji.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Homura_Momiji"
+  },
+  {
+    "id": "luna-wright",
+    "name": "Luna Wright",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Luna",
+    "thumb": "assets/images/characters/portraits/luna-wright.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Luna_Wright"
+  },
+  {
+    "id": "carlos-barrios",
+    "name": "Carlos Barrios",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Carlos",
+    "thumb": "assets/images/characters/portraits/carlos-barrios.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Carlos_Barrios"
+  },
+  {
+    "id": "max-adams",
+    "name": "Max Adams",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Max",
+    "thumb": "assets/images/characters/portraits/max-adams.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Max_Adams"
+  },
+  {
+    "id": "chelsea-childe",
+    "name": "Chelsea Childe",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Chelsea",
+    "thumb": "assets/images/characters/portraits/chelsea-childe.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Chelsea_Childe"
+  },
+  {
+    "id": "joel-gear",
+    "name": "Joel Gear",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Joel",
+    "thumb": "assets/images/characters/portraits/joel-gear.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Joel_Gear"
+  },
+  {
+    "id": "xeno-houston-wingfield",
+    "name": "Xeno Houston Wingfield",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Xeno",
+    "thumb": "assets/images/characters/portraits/xeno-houston-wingfield.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Xeno_Houston_Wingfield"
+  },
+  {
+    "id": "maya-biggs",
+    "name": "Maya Biggs",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Maya",
+    "thumb": "assets/images/characters/portraits/maya-biggs.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Maya_Biggs"
+  },
+  {
+    "id": "charlotte-bony",
+    "name": "Charlotte Bony",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Charlotte",
+    "thumb": "assets/images/characters/portraits/charlotte-bony.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Charlotte_Bony"
+  },
+  {
+    "id": "leonard-maxwell",
+    "name": "Leonard Maxwell",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Leonard",
+    "thumb": "assets/images/characters/portraits/leonard-maxwell.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Leonard_Maxwell"
+  },
+  {
+    "id": "sai-nanami",
+    "name": "Sai Nanami",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Sai",
+    "thumb": "assets/images/characters/portraits/sai-nanami.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Sai_Nanami"
+  },
+  {
+    "id": "brody-dudley",
+    "name": "Brody Dudley",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Brody",
+    "thumb": "assets/images/characters/portraits/brody-dudley.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Brody_Dudley"
+  },
+  {
+    "id": "stanley-snyder",
+    "name": "Stanley Snyder",
+    "faction": "science",
+    "factionName": "Vương Quốc Khoa Học",
+    "factionColor": "#00e5ff",
+    "role": "Stanley",
+    "thumb": "assets/images/characters/portraits/stanley-snyder.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Stanley_Snyder"
+  },
+  {
+    "id": "kohaku",
+    "name": "Kohaku",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Kohaku",
+    "thumb": "assets/images/characters/portraits/kohaku.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kohaku"
+  },
+  {
+    "id": "ruri",
+    "name": "Ruri",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Ruri",
+    "thumb": "assets/images/characters/portraits/ruri.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ruri"
+  },
+  {
+    "id": "kokuyo",
+    "name": "Kokuyo",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Kokuyo",
+    "thumb": "assets/images/characters/portraits/kokuyo.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kokuyo"
+  },
+  {
+    "id": "jasper",
+    "name": "Jasper",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Jasper",
+    "thumb": "assets/images/characters/portraits/jasper.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Jasper"
+  },
+  {
+    "id": "turquoise",
+    "name": "Turquoise",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Turquoise",
+    "thumb": "assets/images/characters/portraits/turquoise.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Turquoise"
+  },
+  {
+    "id": "magma",
+    "name": "Magma",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Magma",
+    "thumb": "assets/images/characters/portraits/magma.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Magma"
+  },
+  {
+    "id": "mantle",
+    "name": "Mantle",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Mantle",
+    "thumb": "assets/images/characters/portraits/mantle.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Mantle"
+  },
+  {
+    "id": "shirogane",
+    "name": "Shirogane",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Shirogane",
+    "thumb": "assets/images/characters/portraits/shirogane.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Shirogane"
+  },
+  {
+    "id": "soyuz",
+    "name": "Soyuz",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Soyuz",
+    "thumb": "assets/images/characters/portraits/soyuz.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Soyuz"
+  },
+  {
+    "id": "kinro",
+    "name": "Kinro",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Kinro",
+    "thumb": "assets/images/characters/portraits/kinro.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kinro"
+  },
+  {
+    "id": "ginro",
+    "name": "Ginro",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Ginro",
+    "thumb": "assets/images/characters/portraits/ginro.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ginro"
+  },
+  {
+    "id": "carbo",
+    "name": "Carbo",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Carbo",
+    "thumb": "assets/images/characters/portraits/carbo.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Carbo"
+  },
+  {
+    "id": "natri",
+    "name": "Natri",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Natri",
+    "thumb": "assets/images/characters/portraits/natri.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Natri"
+  },
+  {
+    "id": "alumi",
+    "name": "Alumi",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Alumi",
+    "thumb": "assets/images/characters/portraits/alumi.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Alumi"
+  },
+  {
+    "id": "kaseki",
+    "name": "Kaseki",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Kaseki",
+    "thumb": "assets/images/characters/portraits/kaseki.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kaseki"
+  },
+  {
+    "id": "titan",
+    "name": "Titan",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Titan",
+    "thumb": "assets/images/characters/portraits/titan.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Titan"
+  },
+  {
+    "id": "en",
+    "name": "En",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "En",
+    "thumb": "assets/images/characters/portraits/en.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/En"
+  },
+  {
+    "id": "ganen",
+    "name": "Ganen",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Ganen",
+    "thumb": "assets/images/characters/portraits/ganen.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ganen"
+  },
+  {
+    "id": "suika",
+    "name": "Suika",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Suika",
+    "thumb": "assets/images/characters/portraits/suika.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Suika"
+  },
+  {
+    "id": "chrome",
+    "name": "Chrome",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Chrome",
+    "thumb": "assets/images/characters/portraits/chrome.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Chrome"
+  },
+  {
+    "id": "shovel",
+    "name": "Shovel",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Shovel",
+    "thumb": "assets/images/characters/portraits/shovel.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Shovel"
+  },
+  {
+    "id": "namari",
+    "name": "Namari",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Namari",
+    "thumb": "assets/images/characters/portraits/namari.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Namari"
+  },
+  {
+    "id": "sho",
+    "name": "Sho",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Sho",
+    "thumb": "assets/images/characters/portraits/sho.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Sho"
+  },
+  {
+    "id": "sango",
+    "name": "Sango",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Sango",
+    "thumb": "assets/images/characters/portraits/sango.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Sango"
+  },
+  {
+    "id": "azura",
+    "name": "Azura",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Azura",
+    "thumb": "assets/images/characters/portraits/azura.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Azura"
+  },
+  {
+    "id": "kujaku",
+    "name": "Kujaku",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Kujaku",
+    "thumb": "assets/images/characters/portraits/kujaku.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kujaku"
+  },
+  {
+    "id": "chalk",
+    "name": "Chalk",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Chalk",
+    "thumb": "assets/images/characters/portraits/chalk.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Chalk"
+  },
+  {
+    "id": "alabaster",
+    "name": "Alabaster",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Alabaster",
+    "thumb": "assets/images/characters/portraits/alabaster.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Alabaster"
+  },
+  {
+    "id": "dia",
+    "name": "Dia",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Dia",
+    "thumb": "assets/images/characters/portraits/dia.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Dia"
+  },
+  {
+    "id": "ruby",
+    "name": "Ruby",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Ruby",
+    "thumb": "assets/images/characters/portraits/ruby.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ruby"
+  },
+  {
+    "id": "sapphire",
+    "name": "Sapphire",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Sapphire",
+    "thumb": "assets/images/characters/portraits/sapphire.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Sapphire"
+  },
+  {
+    "id": "garnet",
+    "name": "Garnet",
+    "faction": "village",
+    "factionName": "Làng Ishigami",
+    "factionColor": "#fbbf24",
+    "role": "Garnet",
+    "thumb": "assets/images/characters/portraits/garnet.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Garnet"
+  },
+  {
+    "id": "tsukasa-shishio",
+    "name": "Tsukasa Shishio",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Tsukasa Shishio",
+    "thumb": "assets/images/characters/portraits/tsukasa-shishio.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Tsukasa_Shishio"
+  },
+  {
+    "id": "gen-asagiri",
+    "name": "Gen Asagiri",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Gen Asagiri",
+    "thumb": "assets/images/characters/portraits/gen-asagiri.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Gen_Asagiri"
+  },
+  {
+    "id": "hyoga",
+    "name": "Hyoga",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Hyoga",
+    "thumb": "assets/images/characters/portraits/hyoga.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Hyoga"
+  },
+  {
+    "id": "homura-momiji",
+    "name": "Homura Momiji",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Homura",
+    "thumb": "assets/images/characters/portraits/homura-momiji.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Homura_Momiji"
+  },
+  {
+    "id": "ukyo-saionji",
+    "name": "Ukyo Saionji",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Ukyo",
+    "thumb": "assets/images/characters/portraits/ukyo-saionji.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ukyo_Saionji"
+  },
+  {
+    "id": "nikki-hanada",
+    "name": "Nikki Hanada",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Nikki",
+    "thumb": "assets/images/characters/portraits/nikki-hanada.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Nikki_Hanada"
+  },
+  {
+    "id": "yo-uei",
+    "name": "Yo Uei",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Yo",
+    "thumb": "assets/images/characters/portraits/yo-uei.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Yo_Uei"
+  },
+  {
+    "id": "minami-hokutozai",
+    "name": "Minami Hokutozai",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Minami",
+    "thumb": "assets/images/characters/portraits/minami-hokutozai.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Minami_Hokutozai"
+  },
+  {
+    "id": "list-of-minor-characters",
+    "name": "List of Minor Characters",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Gozan",
+    "thumb": "assets/images/characters/portraits/list-of-minor-characters.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/List_of_Minor_Characters#Gozan"
+  },
+  {
+    "id": "list-of-minor-characters",
+    "name": "List of Minor Characters",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Yuki",
+    "thumb": "assets/images/characters/portraits/list-of-minor-characters.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/List_of_Minor_Characters#Yuki"
+  },
+  {
+    "id": "list-of-minor-characters",
+    "name": "List of Minor Characters",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Ren",
+    "thumb": "assets/images/characters/portraits/list-of-minor-characters.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/List_of_Minor_Characters#Ren"
+  },
+  {
+    "id": "list-of-minor-characters",
+    "name": "List of Minor Characters",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Akashi",
+    "thumb": "assets/images/characters/portraits/list-of-minor-characters.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/List_of_Minor_Characters#Akashi"
+  },
+  {
+    "id": "list-of-minor-characters",
+    "name": "List of Minor Characters",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Kyoichiro",
+    "thumb": "assets/images/characters/portraits/list-of-minor-characters.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/List_of_Minor_Characters#Kyoichiro"
+  },
+  {
+    "id": "list-of-minor-characters",
+    "name": "List of Minor Characters",
+    "faction": "might",
+    "factionName": "Đế Quốc Sức Mạnh",
+    "factionColor": "#ef4444",
+    "role": "Morito",
+    "thumb": "assets/images/characters/portraits/list-of-minor-characters.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/List_of_Minor_Characters#Morito"
+  },
+  {
+    "id": "amaryllis",
+    "name": "Amaryllis",
+    "faction": "petrification",
+    "factionName": "Vương Quốc Hóa Đá",
+    "factionColor": "#a855f7",
+    "role": "Amaryllis",
+    "thumb": "assets/images/characters/portraits/amaryllis.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Amaryllis"
+  },
+  {
+    "id": "moz",
+    "name": "Moz",
+    "faction": "petrification",
+    "factionName": "Vương Quốc Hóa Đá",
+    "factionColor": "#a855f7",
+    "role": "Moz",
+    "thumb": "assets/images/characters/portraits/moz.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Moz"
+  },
+  {
+    "id": "kirisame",
+    "name": "Kirisame",
+    "faction": "petrification",
+    "factionName": "Vương Quốc Hóa Đá",
+    "factionColor": "#a855f7",
+    "role": "Kirisame",
+    "thumb": "assets/images/characters/portraits/kirisame.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Kirisame"
+  },
+  {
+    "id": "ibara",
+    "name": "Ibara",
+    "faction": "petrification",
+    "factionName": "Vương Quốc Hóa Đá",
+    "factionColor": "#a855f7",
+    "role": "Ibara",
+    "thumb": "assets/images/characters/portraits/ibara.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Ibara"
+  },
+  {
+    "id": "oarashi",
+    "name": "Oarashi",
+    "faction": "petrification",
+    "factionName": "Vương Quốc Hóa Đá",
+    "factionColor": "#a855f7",
+    "role": "Oarashi",
+    "thumb": "assets/images/characters/portraits/oarashi.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Oarashi"
+  },
+  {
+    "id": "head-of-petrification-kingdom",
+    "name": "Head of Petrification Kingdom",
+    "faction": "petrification",
+    "factionName": "Vương Quốc Hóa Đá",
+    "factionColor": "#a855f7",
+    "role": "Head of Petrification Kingdom",
+    "thumb": "assets/images/characters/portraits/head-of-petrification-kingdom.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Head_of_Petrification_Kingdom"
+  },
+  {
+    "id": "matsukaze",
+    "name": "Matsukaze",
+    "faction": "petrification",
+    "factionName": "Vương Quốc Hóa Đá",
+    "factionColor": "#a855f7",
+    "role": "Matsukaze",
+    "thumb": "assets/images/characters/portraits/matsukaze.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Matsukaze"
+  },
+  {
+    "id": "soyuz",
+    "name": "Soyuz",
+    "faction": "petrification",
+    "factionName": "Vương Quốc Hóa Đá",
+    "factionColor": "#a855f7",
+    "role": "Soyuz",
+    "thumb": "assets/images/characters/portraits/soyuz.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Soyuz"
+  },
+  {
+    "id": "xeno-houston-wingfield",
+    "name": "Xeno Houston Wingfield",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Xeno",
+    "thumb": "assets/images/characters/portraits/xeno-houston-wingfield.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Xeno_Houston_Wingfield"
+  },
+  {
+    "id": "stanley-snyder",
+    "name": "Stanley Snyder",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Stanley",
+    "thumb": "assets/images/characters/portraits/stanley-snyder.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Stanley_Snyder"
+  },
+  {
+    "id": "luna-wright",
+    "name": "Luna Wright",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Luna",
+    "thumb": "assets/images/characters/portraits/luna-wright.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Luna_Wright"
+  },
+  {
+    "id": "carlos-barrios",
+    "name": "Carlos Barrios",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Carlos",
+    "thumb": "assets/images/characters/portraits/carlos-barrios.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Carlos_Barrios"
+  },
+  {
+    "id": "max-adams",
+    "name": "Max Adams",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Max",
+    "thumb": "assets/images/characters/portraits/max-adams.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Max_Adams"
+  },
+  {
+    "id": "maya-biggs",
+    "name": "Maya Biggs",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Maya",
+    "thumb": "assets/images/characters/portraits/maya-biggs.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Maya_Biggs"
+  },
+  {
+    "id": "brody-dudley",
+    "name": "Brody Dudley",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Brody",
+    "thumb": "assets/images/characters/portraits/brody-dudley.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Brody_Dudley"
+  },
+  {
+    "id": "charlotte-bony",
+    "name": "Charlotte Bony",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Charlotte",
+    "thumb": "assets/images/characters/portraits/charlotte-bony.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Charlotte_Bony"
+  },
+  {
+    "id": "leonard-maxwell",
+    "name": "Leonard Maxwell",
+    "faction": "american",
+    "factionName": "Thuộc Địa Mỹ",
+    "factionColor": "#f97316",
+    "role": "Leonard",
+    "thumb": "assets/images/characters/portraits/leonard-maxwell.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Leonard_Maxwell"
+  },
+  {
+    "id": "byakuya-ishigami",
+    "name": "Byakuya Ishigami",
+    "faction": "astronaut",
+    "factionName": "Phi Hành Gia ISS",
+    "factionColor": "#38bdf8",
+    "role": "Byakuya Ishigami",
+    "thumb": "assets/images/characters/portraits/byakuya-ishigami.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Byakuya_Ishigami"
+  },
+  {
+    "id": "lillian-weinberg",
+    "name": "Lillian Weinberg",
+    "faction": "astronaut",
+    "factionName": "Phi Hành Gia ISS",
+    "factionColor": "#38bdf8",
+    "role": "Lillian Weinberg",
+    "thumb": "assets/images/characters/portraits/lillian-weinberg.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Lillian_Weinberg"
+  },
+  {
+    "id": "connie-lee",
+    "name": "Connie Lee",
+    "faction": "astronaut",
+    "factionName": "Phi Hành Gia ISS",
+    "factionColor": "#38bdf8",
+    "role": "Connie Lee",
+    "thumb": "assets/images/characters/portraits/connie-lee.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Connie_Lee"
+  },
+  {
+    "id": "shamil-volkov",
+    "name": "Shamil Volkov",
+    "faction": "astronaut",
+    "factionName": "Phi Hành Gia ISS",
+    "factionColor": "#38bdf8",
+    "role": "Shamil Volkov",
+    "thumb": "assets/images/characters/portraits/shamil-volkov.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Shamil_Volkov"
+  },
+  {
+    "id": "darya-nikitina",
+    "name": "Darya Nikitina",
+    "faction": "astronaut",
+    "factionName": "Phi Hành Gia ISS",
+    "factionColor": "#38bdf8",
+    "role": "Darya Nikitina",
+    "thumb": "assets/images/characters/portraits/darya-nikitina.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Darya_Nikitina"
+  },
+  {
+    "id": "yakov-nikitin",
+    "name": "Yakov Nikitin",
+    "faction": "astronaut",
+    "factionName": "Phi Hành Gia ISS",
+    "factionColor": "#38bdf8",
+    "role": "Yakov Nikitin",
+    "thumb": "assets/images/characters/portraits/yakov-nikitin.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Yakov_Nikitin"
+  },
+  {
+    "id": "rei",
+    "name": "Rei",
+    "faction": "astronaut",
+    "factionName": "Phi Hành Gia ISS",
+    "factionColor": "#38bdf8",
+    "role": "Rei (Ver. 37)",
+    "thumb": "assets/images/characters/portraits/rei.png",
+    "wiki": "https://dr-stone.fandom.com/wiki/Rei"
+  }
+]

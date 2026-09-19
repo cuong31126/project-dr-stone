@@ -1,0 +1,64 @@
+/* Các thành phần dùng chung cho toàn bộ website */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Menu điều hướng (Các nút to) */
+.big-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #0cd42a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.big-button:hover {
+    background-color: #e5204b;
+}
+
+.big-button协议 a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* Nút Quay về */
+.quayve {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #e90d0d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+/* Phần Footer cuối trang */
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}

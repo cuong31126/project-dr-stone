@@ -1,0 +1,364 @@
+/* css/custom.css — Chỉ chứa: keyframes, Three.js canvas, animation helpers */
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Canvas Three.js ── */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* ── Scroll reveal (Dr. Stone Depetrification Breakout) ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(36px) scale(0.96);
+  filter: blur(4px) grayscale(70%);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform, filter;
+  position: relative;
+}
+
+[data-reveal].visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0) grayscale(0);
+}
+
+/* Emerald green shockwave flare when depetrified */
+[data-reveal].visible::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.35), rgba(57, 255, 20, 0.35), transparent);
+  opacity: 0;
+  animation: depetrifyFlare 1s ease-out forwards;
+  z-index: 10;
+}
+
+@keyframes depetrifyFlare {
+  0% {
+    opacity: 1;
+    transform: scale(0.98);
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.6), inset 0 0 15px rgba(57, 255, 20, 0.5);
+  }
+  50% {
+    opacity: 0.6;
+    box-shadow: 0 0 35px rgba(57, 255, 20, 0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+}
+
+[data-reveal][data-delay="1"] { transition-delay: 0.08s; }
+[data-reveal][data-delay="2"] { transition-delay: 0.16s; }
+[data-reveal][data-delay="3"] { transition-delay: 0.24s; }
+[data-reveal][data-delay="4"] { transition-delay: 0.32s; }
+[data-reveal][data-delay="5"] { transition-delay: 0.40s; }
+
+/* ── Keyframes ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(57,255,20,0.4); }
+  50%       { box-shadow: 0 0 28px rgba(57,255,20,0.8); }
+}
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+@keyframes counterBar {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+@keyframes glitch1 {
+  0%,94%,100% { transform: none; opacity: 0; }
+  95%  { transform: translateX(-3px); opacity: 0.7; }
+  97%  { transform: translateX(3px);  opacity: 0.3; }
+  99%  { transform: none; opacity: 0; }
+}
+@keyframes glitch2 {
+  0%,94%,100% { transform: none; opacity: 0; }
+  95%  { transform: translateX(3px);  opacity: 0.7; }
+  97%  { transform: translateX(-3px); opacity: 0.3; }
+  99%  { transform: none; opacity: 0; }
+}
+
+/* ── Hero title anim ── */
+.hero-anim { animation: fadeInUp 0.8s cubic-bezier(0.4,0,0.2,1) both; }
+.hero-anim-1 { animation-delay: 0.15s; }
+.hero-anim-2 { animation-delay: 0.30s; }
+.hero-anim-3 { animation-delay: 0.50s; }
+.hero-anim-4 { animation-delay: 0.70s; }
+.hero-anim-5 { animation-delay: 0.90s; }
+
+/* ── Glitch Effect on STONE ── */
+.glitch { position: relative; }
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #39ff14, #00ff88);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.glitch::before {
+  animation: glitch1 5s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 40%, 0 40%);
+}
+.glitch::after {
+  animation: glitch2 5s infinite;
+  clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #050810; }
+::-webkit-scrollbar-thumb { background: #00d4ff; border-radius: 2px; }
+
+/* ── Scroll hint ── */
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem; left: 50%;
+  animation: scrollBounce 2.5s ease infinite;
+}
+
+/* ── Loader bar fill ── */
+.loader-fill {
+  animation: counterBar 1.8s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+
+/* ── Nav link underline ── */
+.nav-link {
+  position: relative;
+  transition: color 0.25s;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 2px;
+  background: #39ff14;
+  border-radius: 1px;
+  transition: width 0.25s;
+}
+.nav-link:hover::after,
+.nav-link.active::after { width: 60%; }
+
+/* ── Flip card ── */
+.flip-card-inner {
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+.flip-front, .flip-back {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back { transform: rotateY(180deg); }
+
+/* ── Season tabs ── */
+.season-tab {
+  transition: all 0.2s;
+  color: #6b7a99;
+}
+.season-tab.active {
+  background: linear-gradient(135deg, #00d4ff, #0099cc);
+  color: #000;
+}
+
+/* ── Episode card play overlay ── */
+.ep-card .play-icon {
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+  opacity: 0; transform: scale(0.75);
+}
+.ep-card:hover .play-icon { opacity: 1; transform: scale(1); }
+
+/* ── Modal ── */
+.modal {
+  transition: opacity 0.3s, visibility 0.3s;
+}
+.modal.active { opacity: 1 !important; visibility: visible !important; pointer-events: all !important; }
+.modal-inner {
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+.modal.active .modal-inner { transform: scale(1) !important; }
+
+/* ── Continue watching chip ── */
+.continue-chip {
+  animation: fadeInRight 0.5s 0.3s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+/* ── CTA primary glow ── */
+.btn-accent { animation: pulseGlow 3s ease infinite; }
+
+/* ── Three.js CSS3D Periodic Table ── */
+#pt-container {
+  width: 100%;
+  max-width: 1050px; /* Thu gon be ngang tao khoang le 2 ben rong rai */
+  height: 500px;     /* Thu gon chieu cao */
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  border-radius: 16px;
+  background: radial-gradient(circle at 50% 50%, rgba(13, 25, 48, 0.9) 0%, rgba(5, 8, 16, 0.98) 100%);
+  transition: box-shadow 0.3s ease;
+}
+#pt-container:hover {
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.25);
+}
+#pt-container:active {
+  cursor: grabbing;
+}
+#pt-container canvas,
+#pt-container > div {
+  outline: none !important;
+}
+
+/* Crisp rendering */
+.pt-element {
+  width: 122px;
+  height: 146px;
+  box-sizing: border-box;
+  background: #0b1326;
+  border: 1.5px solid rgba(0, 212, 255, 0.35);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 4px;
+  position: relative;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.pt-element:hover {
+  background: #111f3d !important;
+  border-color: #00e5ff !important;
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.7), inset 0 0 15px rgba(0, 229, 255, 0.2) !important;
+  transform: scale(1.12) translateZ(10px);
+  z-index: 50;
+}
+
+/* Senku key element */
+.pt-element.is-senku {
+  border-color: #00e5ff !important;
+  background: #091a33;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.35), inset 0 0 10px rgba(0, 229, 255, 0.1);
+}
+
+.pt-element.is-senku:hover {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.8), inset 0 0 15px rgba(56, 189, 248, 0.3) !important;
+}
+
+/* Trang thai loc du an: Cac nguyen to khac van thay ro hinh hai bang tuan hoan, khong bi bien mat */
+.pt-element.is-dimmed {
+  opacity: 0.32 !important;
+  filter: brightness(0.55) saturate(0.5);
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.pt-element.is-highlighted {
+  opacity: 1 !important;
+  transform: scale(1.18) translateZ(30px) !important;
+  border-color: #fbbf24 !important; /* Amber Gold ruc ro */
+  box-shadow: 0 0 35px rgba(251, 191, 36, 0.9), inset 0 0 20px rgba(251, 191, 36, 0.3) !important;
+  z-index: 60;
+  animation: projectPulse 2s infinite ease-in-out;
+}
+
+@keyframes projectPulse {
+  0%, 100% { box-shadow: 0 0 25px rgba(251, 191, 36, 0.6); }
+  50% { box-shadow: 0 0 45px rgba(251, 191, 36, 1); }
+}
+
+.senku-badge {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #00e5ff, #0284c7);
+  color: #050810;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 1px 7px;
+  border-radius: 999px;
+  white-space: nowrap;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+}
+
+.pt-number {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  position: absolute;
+  top: 7px;
+  left: 9px;
+  opacity: 0.9;
+}
+
+.pt-symbol {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 900;
+  line-height: 1;
+  color: #ffffff;
+  margin-top: 5px;
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+}
+
+.pt-name {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #94a3b8;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.pt-mass {
+  font-family: 'Inter', monospace;
+  font-size: 0.62rem;
+  color: #64748b;
+  margin-top: 2px;
+}
+

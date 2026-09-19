@@ -1,0 +1,755 @@
+{
+  "seasons": [
+    {
+      "id": 1,
+      "title": "Season 1",
+      "subtitle": "Stone World",
+      "year": 2019,
+      "totalEpisodes": 24,
+      "color": "#e67e22",
+      "episodes": [
+        {
+          "ep": 1,
+          "title": "Thế Giới Đá",
+          "youtube": "https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=1"
+        },
+        {
+          "ep": 2,
+          "title": "Vua Của Thế Giới Đá",
+          "youtube": "https://www.youtube.com/watch?v=UhCIvfLHCxQ&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=2"
+        },
+        {
+          "ep": 3,
+          "title": "Vũ Khí Khoa Học",
+          "youtube": "https://www.youtube.com/watch?v=RruuCu0fUpo&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=3"
+        },
+        {
+          "ep": 4,
+          "title": "Đốt Tín Hiệu Khói",
+          "youtube": "https://www.youtube.com/watch?v=rPBjSfp8Few&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=4"
+        },
+        {
+          "ep": 5,
+          "title": "Khởi Đầu Của Thế Giới Đá",
+          "youtube": "https://www.youtube.com/watch?v=ik3PIeeXt2U&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=5"
+        },
+        {
+          "ep": 6,
+          "title": "Hai Vương Quốc Của Thế Giới Đá",
+          "youtube": "https://www.youtube.com/watch?v=TKyWU9MaCpU&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=6"
+        },
+        {
+          "ep": 7,
+          "title": "Nơi Cư Trú Sau 200 Vạn Năm",
+          "youtube": "https://www.youtube.com/watch?v=-9uiCQtD8-A&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=7"
+        },
+        {
+          "ep": 8,
+          "title": "Con Đường Đá",
+          "youtube": "https://www.youtube.com/watch?v=yUhyvnWTGb4&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=8"
+        },
+        {
+          "ep": 9,
+          "title": "Hãy Để Ánh Sáng Khoa Học Bừng Lên",
+          "youtube": "https://www.youtube.com/watch?v=QuU_Aafxkps&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=9"
+        },
+        {
+          "ep": 10,
+          "title": "Một Liên Minh Mỏng Manh",
+          "youtube": "https://www.youtube.com/watch?v=OsRrg-E8b4Q&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=10"
+        },
+        {
+          "ep": 11,
+          "title": "Nhìn Rõ Thế Giới",
+          "youtube": "https://www.youtube.com/watch?v=lYsGF5LK6mQ&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=11"
+        },
+        {
+          "ep": 12,
+          "title": "Bạn Thân Vai Kề Vai",
+          "youtube": "https://www.youtube.com/watch?v=5WrVcUSA65g&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=12"
+        },
+        {
+          "ep": 13,
+          "title": "Chiến Binh Đeo Mặt Nạ",
+          "youtube": "https://www.youtube.com/watch?v=kkx3XRP_25M&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=13"
+        },
+        {
+          "ep": 14,
+          "title": "Bậc Thầy Hỏa Thuật",
+          "youtube": "https://www.youtube.com/watch?v=5x8DEnnxuDI&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=14"
+        },
+        {
+          "ep": 15,
+          "title": "Kết Tinh Của Hai Triệu Năm",
+          "youtube": "https://www.youtube.com/watch?v=gRlLEYuQYrs&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=15"
+        },
+        {
+          "ep": 16,
+          "title": "Câu Chuyện Ngàn Năm",
+          "youtube": "https://www.youtube.com/watch?v=srsiv-ggRyc&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=16"
+        },
+        {
+          "ep": 17,
+          "title": "Bách Dạ Và Vạn Thiên",
+          "youtube": "https://www.youtube.com/watch?v=W_Z0HKeycsc&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=17"
+        },
+        {
+          "ep": 18,
+          "title": "Chiến Tranh Thế Giới Đá",
+          "youtube": "https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=18"
+        },
+        {
+          "ep": 19,
+          "title": "Tới Kỷ Nguyên Hiện Đại",
+          "youtube": "https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=19"
+        },
+        {
+          "ep": 20,
+          "title": "Thời Đại Năng Lượng",
+          "youtube": "https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=20"
+        },
+        {
+          "ep": 21,
+          "title": "Câu Lạc Bộ Thợ Rèn Điên Cuồng",
+          "youtube": "https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=21"
+        },
+        {
+          "ep": 22,
+          "title": "Kho Báu",
+          "youtube": "https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=22"
+        },
+        {
+          "ep": 23,
+          "title": "Làn Sóng Khoa Học",
+          "youtube": "https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=23"
+        },
+        {
+          "ep": 24,
+          "title": "Tiếng Nói Vọng Từ Vô Tận",
+          "youtube": "https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=24"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Season 2",
+      "subtitle": "Stone Wars",
+      "year": 2021,
+      "totalEpisodes": 11,
+      "color": "#c0392b",
+      "episodes": [
+        {
+          "ep": 1,
+          "title": "Stone Wars Bắt Đầu",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=1"
+        },
+        {
+          "ep": 2,
+          "title": "Vũ Khí Của Senku",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=2"
+        },
+        {
+          "ep": 3,
+          "title": "Tiếng Gọi Tử Thần",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=3"
+        },
+        {
+          "ep": 4,
+          "title": "Đòn Phản Công Toàn Lực",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=4"
+        },
+        {
+          "ep": 5,
+          "title": "Phát Minh Của Hơi Nước",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=5"
+        },
+        {
+          "ep": 6,
+          "title": "Nhà Máy Hơi Nước",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=6"
+        },
+        {
+          "ep": 7,
+          "title": "Kế Hoạch Bí Mật",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=7"
+        },
+        {
+          "ep": 8,
+          "title": "Trận Chiến Cuối Cùng",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=8"
+        },
+        {
+          "ep": 9,
+          "title": "Vương Quốc Khoa Học Khải Hoàn",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=9"
+        },
+        {
+          "ep": 10,
+          "title": "Nhân Loại Hồi Sinh",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=10"
+        },
+        {
+          "ep": 11,
+          "title": "Lời Mời Vào Tương Lai",
+          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=11"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Season 3",
+      "subtitle": "New World",
+      "year": 2023,
+      "totalEpisodes": 23,
+      "color": "#00d4ff",
+      "episodes": [
+        {
+          "ep": 1,
+          "title": "Ryusui",
+          "youtube": "https://www.youtube.com/watch?v=J0zqUQALoXI&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=25",
+          "thumb": "assets/images/episodes/tap1ss3.jpg"
+        },
+        {
+          "ep": 2,
+          "title": "Bản Đồ Thế Giới Mới",
+          "youtube": "https://www.youtube.com/watch?v=15Ae_gO0PE4&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=24",
+          "thumb": "assets/images/episodes/tap2ss3.jpg"
+        },
+        {
+          "ep": 3,
+          "title": "Tham Lam Bằng Công Lý",
+          "youtube": "https://www.youtube.com/watch?v=cF90Q-jf8Fs&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=22",
+          "thumb": "assets/images/episodes/tap3ss3.jpg"
+        },
+        {
+          "ep": 4,
+          "title": "Lần Đầu Tiếp Xúc",
+          "youtube": "https://www.youtube.com/watch?v=C7ksQrpQm5I&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=21",
+          "thumb": "assets/images/episodes/tap4ss3.jpg"
+        },
+        {
+          "ep": 5,
+          "title": "Con Mắt Khoa Học",
+          "youtube": "https://www.youtube.com/watch?v=FoTq-GezYMk&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=20",
+          "thumb": "assets/images/episodes/tap5ss3.jpg"
+        },
+        {
+          "ep": 6,
+          "title": "Thuyền Khoa Học Perseus",
+          "youtube": "https://www.youtube.com/watch?v=1ZWFyr9uVWo&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=19",
+          "thumb": "assets/images/episodes/tap6ss3.jpg"
+        },
+        {
+          "ep": 7,
+          "title": "Hộp Kho Báu",
+          "youtube": "https://www.youtube.com/watch?v=cK_08cFK0vo&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=18",
+          "thumb": "assets/images/episodes/tap7ss3.jpg"
+        },
+        {
+          "ep": 8,
+          "title": "Ánh Sáng Của Hy Vọng Và Tuyệt Vọng",
+          "youtube": "https://www.youtube.com/watch?v=FVNlGEayNgw&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=17",
+          "thumb": "assets/images/episodes/tap8ss3.jpg"
+        },
+        {
+          "ep": 9,
+          "title": "Át Chủ Bài Của Thuyền Khoa Học",
+          "youtube": "https://www.youtube.com/watch?v=64pTwfUbNAg&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=16",
+          "thumb": "assets/images/episodes/tap9ss3.jpg"
+        },
+        {
+          "ep": 10,
+          "title": "Khoa Học Làm Đẹp",
+          "youtube": "https://www.youtube.com/watch?v=sEDpkRWrPV8&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=15",
+          "thumb": "assets/images/episodes/tap10ss3.jpg"
+        },
+        {
+          "ep": 11,
+          "title": "Chiến Tranh Khoa Học",
+          "youtube": "https://www.youtube.com/watch?v=EwYJ8OxEt-U&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=14",
+          "thumb": "assets/images/episodes/tap11ss3.jpg"
+        },
+        {
+          "ep": 12,
+          "title": "Điều Kì Diệu Nằm Trong Bàn Tay",
+          "youtube": "https://www.youtube.com/watch?v=6WKe3FSQk-0&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=13",
+          "thumb": "assets/images/episodes/tap12ss3.jpg"
+        },
+        {
+          "ep": 13,
+          "title": "Vương Quốc Khoa Học Phản Công",
+          "youtube": "https://www.youtube.com/watch?v=NQQjWMXDCu0&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=12",
+          "thumb": "assets/images/episodes/tap13ss3.jpg"
+        },
+        {
+          "ep": 14,
+          "title": "Chân Tướng Của Medusa",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=14",
+          "thumb": "assets/images/episodes/tap14ss3.jpg"
+        },
+        {
+          "ep": 15,
+          "title": "Mảnh Ghép Đấu Trí",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=15",
+          "thumb": "assets/images/episodes/tap15ss3.jpg"
+        },
+        {
+          "ep": 16,
+          "title": "Trận Chiến Ba Chiều Quyết Định",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=16",
+          "thumb": "assets/images/episodes/tap16ss3.jpg"
+        },
+        {
+          "ep": 17,
+          "title": "Kế Hoạch Tấn Công Cuối Cùng",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=17",
+          "thumb": "assets/images/episodes/tap17ss3.jpg"
+        },
+        {
+          "ep": 18,
+          "title": "Đối Mặt Với Quá Khứ",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=18",
+          "thumb": "assets/images/episodes/tap18ss3.jpg"
+        },
+        {
+          "ep": 19,
+          "title": "Khoa Học Vượt Giới Hạn",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=19",
+          "thumb": "assets/images/episodes/tap19ss3.jpg"
+        },
+        {
+          "ep": 20,
+          "title": "Con Đường Trở Về",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=20",
+          "thumb": "assets/images/episodes/tap20ss3.jpg"
+        },
+        {
+          "ep": 21,
+          "title": "Bí Mật Của Medusa",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=21",
+          "thumb": "assets/images/episodes/tap21ss3.jpg"
+        },
+        {
+          "ep": 22,
+          "title": "Sự Hy Sinh",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=22",
+          "thumb": "assets/images/episodes/tap22ss3.jpg"
+        },
+        {
+          "ep": 23,
+          "title": "Tương Lai Của Khoa Học",
+          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=23",
+          "thumb": "assets/images/episodes/tap23ss3.jpg"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Season 4",
+      "subtitle": "Science Future (Final)",
+      "year": 2025,
+      "totalEpisodes": 12,
+      "color": "#a855f7",
+      "episodes": [
+        {
+          "ep": 1,
+          "title": "Bình Minh Kỷ Nguyên Mới",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+1"
+        },
+        {
+          "ep": 2,
+          "title": "Thành Phố Ngô Toàn Cầu",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+2"
+        },
+        {
+          "ep": 3,
+          "title": "Hành Trình Xuyên Thái Bình Dương",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+3"
+        },
+        {
+          "ep": 4,
+          "title": "Tiếng Gọi Từ Không Gian",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+4"
+        },
+        {
+          "ep": 5,
+          "title": "Bí Ẩn Why-Man",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+5"
+        },
+        {
+          "ep": 6,
+          "title": "Động Cơ Phản Lực Khoa Học",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+6"
+        },
+        {
+          "ep": 7,
+          "title": "Hợp Tác Toàn Cầu",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+7"
+        },
+        {
+          "ep": 8,
+          "title": "Thám Tử Trí Tuệ",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+8"
+        },
+        {
+          "ep": 9,
+          "title": "Hồi Sinh 7 Tỷ Người",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+9"
+        },
+        {
+          "ep": 10,
+          "title": "Con Đường Lên Mặt Trăng",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+10"
+        },
+        {
+          "ep": 11,
+          "title": "Trạm Không Gian Hy Vọng",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+11"
+        },
+        {
+          "ep": 12,
+          "title": "Tương Lai Của Nhân Loại",
+          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+12"
+        }
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "id": "senku",
+      "name": "Ishigami Senkū",
+      "nameJp": "石神 千空",
+      "role": "Thủ Lĩnh & Thiên Tài Khoa Học",
+      "faction": "science",
+      "voice": "Kobayashi Yūsuke",
+      "tags": [
+        "Thiên tài",
+        "Khoa học",
+        "Leader"
+      ],
+      "thumb": "assets/images/characters/hd/senku.png",
+      "stats": {
+        "iq": 100,
+        "strength": 20,
+        "agility": 85
+      },
+      "desc": "Nhân vật chính của anime. Sở hữu trí nhớ phi thường, đếm từng giây trong suốt 3,715 năm hóa đá để giữ ý thức. Mục tiêu: Tái sinh 7 tỷ người bằng khoa học.",
+      "quote": "Mười tỷ phần trăm đây không phải phép màu, mà là khoa học!"
+    },
+    {
+      "id": "taiju",
+      "name": "Ōki Taiju",
+      "nameJp": "大木 大樹",
+      "role": "Lực Sĩ Phòng Thủ",
+      "faction": "science",
+      "voice": "Matsuoka Yoshitsugu",
+      "tags": [
+        "Sức mạnh",
+        "Bảo vệ",
+        "Trung thành"
+      ],
+      "thumb": "assets/images/characters/hd/taiju.png",
+      "stats": {
+        "iq": 25,
+        "strength": 100,
+        "agility": 90
+      },
+      "desc": "Người bạn thân nhất của Senku. Cậu có sức mạnh đáng kinh ngạc và thể lực vô hạn, không bao giờ dùng nắm đấm để tấn công người khác.",
+      "quote": "Senku lo về khoa học, còn tớ sẽ lo về thể lực giúp cậu!"
+    },
+    {
+      "id": "yuzuriha",
+      "name": "Ogawa Yuzuriha",
+      "nameJp": "小川 杠",
+      "role": "Nghệ Nhân May Mặc & Khôi Phục",
+      "faction": "science",
+      "voice": "Hayami Saori",
+      "tags": [
+        "Thời trang",
+        "Khéo léo",
+        "Tốt bụng"
+      ],
+      "thumb": "assets/images/characters/hd/yuzuriha.png",
+      "stats": {
+        "iq": 65,
+        "strength": 30,
+        "agility": 100
+      },
+      "desc": "Cô gái tài năng đặc biệt trong nghệ thuật khâu vá và ghép nối các mảnh tượng đá vỡ để cứu sống đồng loại.",
+      "quote": "Dù chỉ còn lại những mảnh vụn, tớ vẫn sẽ ghép lại tất cả!"
+    },
+    {
+      "id": "chrome",
+      "name": "Chrome",
+      "nameJp": "クロム",
+      "role": "Nhà Khoa Học Thế Giới Đá",
+      "faction": "science",
+      "voice": "Uemura Yūto",
+      "tags": [
+        "Phù thủy",
+        "Tò mò",
+        "Đồng sự"
+      ],
+      "thumb": "assets/images/characters/hd/chrome.png",
+      "stats": {
+        "iq": 85,
+        "strength": 55,
+        "agility": 90
+      },
+      "desc": "Chàng trai trẻ làng Ishigami tự mày mò tìm ra khoáng sản và hóa chất vì tò mò. Trở thành cánh tay phải đắc lực của Senku.",
+      "quote": "Cái này thật là điên rồ (Badaba)! Khoa học quả là phép thuật!"
+    },
+    {
+      "id": "kaseki",
+      "name": "Kaseki",
+      "nameJp": "カセキ",
+      "role": "Nghệ Nhân Thủ Công Bậc Thầy",
+      "faction": "science",
+      "voice": "Mugihito",
+      "tags": [
+        "Thủ công",
+        "Bánh răng",
+        "Cơ khí"
+      ],
+      "thumb": "assets/images/characters/hd/kaseki.png",
+      "stats": {
+        "iq": 75,
+        "strength": 70,
+        "agility": 100
+      },
+      "desc": "Bậc thầy chế tác thủy tinh và cơ khí chính xác. Khi hào hứng với các phát minh khoa học, cơ bắp cuồn cuộn xuất hiện.",
+      "quote": "Ta đã làm đồ thủ công cả đời, nhưng chưa từng thấy điều gì tuyệt như khoa học!"
+    },
+    {
+      "id": "suika",
+      "name": "Suika",
+      "nameJp": "スイカ",
+      "role": "Trinh Sát Thám Tử Mũ Dưa",
+      "faction": "science",
+      "voice": "Takahashi Karin",
+      "tags": [
+        "Thám tử",
+        "Ẩn nấp",
+        "Đáng yêu"
+      ],
+      "thumb": "assets/images/characters/hd/suika.png",
+      "stats": {
+        "iq": 65,
+        "strength": 15,
+        "agility": 95
+      },
+      "desc": "Cô bé dũng cảm luôn đội chiếc mũ dưa hấu để chữa mờ mắt. Kỹ năng lăn tròn ẩn nấp giúp giải cứu vương quốc nhiều lần.",
+      "quote": "Suika muốn trở thành người có ích cho mọi người!"
+    },
+    {
+      "id": "ryusui",
+      "name": "Nanami Ryūsui",
+      "nameJp": "七海 龍水",
+      "role": "Thuyền Trưởng Tàu Perseus",
+      "faction": "science",
+      "voice": "Uchiyama Kōki",
+      "tags": [
+        "Hàng hải",
+        "Lãnh đạo",
+        "Tham vọng"
+      ],
+      "thumb": "assets/images/characters/hd/ryusui.png",
+      "stats": {
+        "iq": 85,
+        "strength": 70,
+        "agility": 95
+      },
+      "desc": "Thiên tài hàng hải có trực giác siêu phàm về gió và đại dương. Triết lý sống: 'Tham lam chính là công lý'.",
+      "quote": "Tôi muốn tất cả! Lòng tham chính là động lực phát triển của thế giới!"
+    },
+    {
+      "id": "francois",
+      "name": "Francois",
+      "nameJp": "フランソワ",
+      "role": "Quản Gia & Bếp Trưởng 5 Sao",
+      "faction": "science",
+      "voice": "Sakamoto Maaya",
+      "tags": [
+        "Quản gia",
+        "Ẩm thực",
+        "Hoàn hảo"
+      ],
+      "thumb": "assets/images/characters/hd/francois.png",
+      "stats": {
+        "iq": 85,
+        "strength": 50,
+        "agility": 100
+      },
+      "desc": "Người quản gia và đầu bếp đa năng của Ryusui, luôn tạo ra những bữa ăn thịnh soạn từ thiên nhiên hoang dã.",
+      "quote": "Phục vụ hoàn hảo mong muốn của quý khách là niềm vinh hạnh của tôi."
+    },
+    {
+      "id": "tsukasa",
+      "name": "Shishiō Tsukasa",
+      "nameJp": "獅子王 司",
+      "role": "Thủ Lĩnh Đế Quốc Sức Mạnh",
+      "faction": "might",
+      "voice": "Nakamura Yuichi",
+      "tags": [
+        "Mạnh nhất",
+        "Võ thuật",
+        "Lý tưởng"
+      ],
+      "thumb": "assets/images/characters/hd/tsukasa.png",
+      "stats": {
+        "iq": 85,
+        "strength": 100,
+        "agility": 95
+      },
+      "desc": "Linh trưởng trung học mạnh nhất thế giới. Ban đầu đối đầu với Senku để tạo nên một thế giới thuần khiết, sau trở thành đồng minh vĩ đại.",
+      "quote": "Thế giới mới này sẽ không bao giờ bị ô nhiễm bởi quyền lực và tiền bạc của kẻ xấu."
+    },
+    {
+      "id": "gen",
+      "name": "Asagiri Gen",
+      "nameJp": "あさぎり ゲン",
+      "role": "Ảo Thuật Gia & Tâm Lý Học",
+      "faction": "might",
+      "voice": "Kamiya Hiroshi",
+      "tags": [
+        "Ảo thuật",
+        "Tâm lý",
+        "Ngoại giao"
+      ],
+      "thumb": "assets/images/characters/hd/gen.png",
+      "stats": {
+        "iq": 90,
+        "strength": 20,
+        "agility": 80
+      },
+      "desc": "Bậc thầy đàm phán và thao túng tâm lý. Ban đầu là gián điệp của Tsukasa, sau đứng về phía Senku vì lời hứa một chai nước ngọt Cola.",
+      "quote": "Tôi chỉ đứng về phe chiến thắng thôi, và khoa học chắc chắn sẽ thắng!"
+    },
+    {
+      "id": "hyoga",
+      "name": "Hyoga",
+      "nameJp": "氷月",
+      "role": "Thương Thủ Vô Song",
+      "faction": "might",
+      "voice": "Ishida Akira",
+      "tags": [
+        "Thương thuật",
+        "Lạnh lùng",
+        "Tinh nhuệ"
+      ],
+      "thumb": "assets/images/characters/hd/hyoga.png",
+      "stats": {
+        "iq": 80,
+        "strength": 85,
+        "agility": 100
+      },
+      "desc": "Cánh tay đắc lực của Tsukasa với ngọn giáo Kan-ryū thần tốc. Tôn sùng tư tưởng kẻ mạnh hoàn hảo.",
+      "quote": "Chỉ những người làm việc đúng đắn mới xứng đáng được tồn tại."
+    },
+    {
+      "id": "ukyo",
+      "name": "Saionji Ukyō",
+      "nameJp": "西園寺 羽京",
+      "role": "Xạ Thủ Cung & Thính Giác Vàng",
+      "faction": "might",
+      "voice": "Ono Kensho",
+      "tags": [
+        "Thính giác",
+        "Cung thủ",
+        "Nhân đạo"
+      ],
+      "thumb": "assets/images/characters/hd/ukyo.png",
+      "stats": {
+        "iq": 85,
+        "strength": 65,
+        "agility": 95
+      },
+      "desc": "Cựu thủy thủ tàu ngầm với thính giác nghe được từng hơi thở cách xa hàng km. Gia nhập Senku để xây dựng chiến thắng không đổ máu.",
+      "quote": "Điều kiện duy nhất của tôi là: Không một ai được phép hy sinh mạng sống."
+    },
+    {
+      "id": "kohaku",
+      "name": "Kohaku",
+      "nameJp": "コハク",
+      "role": "Chiến Binh Sư Tử Làng Ishigami",
+      "faction": "village",
+      "voice": "Kitō Akari",
+      "tags": [
+        "Chiến binh",
+        "Nhanh nhẹn",
+        "Thị lực 11/10"
+      ],
+      "thumb": "assets/images/characters/hd/kohaku.png",
+      "stats": {
+        "iq": 50,
+        "strength": 90,
+        "agility": 100
+      },
+      "desc": "Chiến binh mạnh nhất làng Ishigami với đôi mắt thần thánh và tốc độ chớp nhoáng. Là người đầu tiên tin tưởng và bảo vệ Senku.",
+      "quote": "Tôi thích ánh mắt tràn ngập niềm tin vào tương lai của anh đấy, Senku!"
+    },
+    {
+      "id": "ruri",
+      "name": "Ruri",
+      "nameJp": "ルリ",
+      "role": "Nữ Tư Tế / Người Lưu Giữ Lịch Sử",
+      "faction": "village",
+      "voice": "Ueda Reina",
+      "tags": [
+        "Tư tế",
+        "Truyền thuyết",
+        "Dịu dàng"
+      ],
+      "thumb": "assets/images/characters/hd/ruri.png",
+      "stats": {
+        "iq": 75,
+        "strength": 20,
+        "agility": 60
+      },
+      "desc": "Chị gái của Kohaku, người ghi nhớ 'Trăm Câu Chuyện' để truyền lại tri thức nhân loại sau hàng nghìn năm. Được Senku cứu khỏi bệnh viêm phổi.",
+      "quote": "Tên của bạn... có phải là Ishigami Senku không?"
+    },
+    {
+      "id": "kinro",
+      "name": "Kinro & Ginro",
+      "nameJp": "金狼 & 銀狼",
+      "role": "Cặp Lính Gác Cầu Làng Ishigami",
+      "faction": "village",
+      "voice": "Maeno Tomoaki & Murase Ayumu",
+      "tags": [
+        "Kỷ luật",
+        "Lanh lợi",
+        "Hài hước"
+      ],
+      "thumb": "assets/images/characters/hd/kinro.png",
+      "stats": {
+        "iq": 60,
+        "strength": 80,
+        "agility": 85
+      },
+      "desc": "Kinro nghiêm túc, kỷ luật thép (được Senku tặng kính chữa mờ mắt); Ginro nhát gan nhưng linh hoạt và luôn tạo ra những bất ngờ khó đoán.",
+      "quote": "Quy tắc là quy tắc! Không ai được phép qua cây cầu này!"
+    },
+    {
+      "id": "byakuya",
+      "name": "Ishigami Byakuya",
+      "nameJp": "石神 百夜",
+      "role": "Phi Hành Gia ISS & Cha Của Senku",
+      "faction": "astronaut",
+      "voice": "Fujiwara Keiji / Mikami Satoshi",
+      "tags": [
+        "Phi hành gia",
+        "Người sáng lập",
+        "Tình cha con"
+      ],
+      "thumb": "assets/images/characters/hd/byakuya.png",
+      "stats": {
+        "iq": 85,
+        "strength": 70,
+        "agility": 80
+      },
+      "desc": "Phi hành gia vũ trụ ISS, người duy nhất sống sót ngoài không gian khi Trái Đất hóa đá. Ông đã dành cả đời gom góp Bạch Kim để gửi gắm cho Senku 3,700 năm sau.",
+      "quote": "Senku, ta biết chắc chắn con sẽ thức tỉnh và dùng khoa học cứu vớt nhân loại!"
+    }
+  ]
+}

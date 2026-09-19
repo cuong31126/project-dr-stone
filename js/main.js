@@ -1,0 +1,313 @@
+// js/main.js — App init: loader, navbar, dark mode, GSAP, Lenis, story counter, modals
+// Vanilla JS — GSAP & Lenis loaded as global scripts
+
+'use strict';
+
+document.addEventListener('DOMContentLoaded', () => {
+  initLoader();
+  initNavbar();
+  initDarkMode();
+  initTrailerModal();
+  initStoryCounter();
+
+  // Wait for GSAP/Lenis to be available (they use defer)
+  const waitForLibs = setInterval(() => {
+    if (typeof gsap !== 'undefined' && typeof Lenis !== 'undefined') {
+      clearInterval(waitForLibs);
+      initLenis();
+      initGSAP();
+    }
+  }, 50);
+});
+
+/* ──────────────────────────────────────────
+   LOADER
+   ────────────────────────────────────────── */
+function initLoader() {
+  const loader = document.getElementById('loader');
+  if (!loader) return;
+
+  // Hide loader after animation completes (~2s)
+  setTimeout(() => {
+    loader.style.opacity = '0';
+    loader.style.pointerEvents = 'none';
+    setTimeout(() => loader.remove(), 700);
+  }, 1800);
+}
+
+/* ──────────────────────────────────────────
+   NAVBAR
+   ────────────────────────────────────────── */
+function initNavbar() {
+  const navbar = document.getElementById('navbar');
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (!navbar) return;
+
+  // Scroll class
+  const onScroll = () => {
+    if (window.scrollY > 60) {
+      navbar.classList.add('!bg-[#050810]/95', '!h-[60px]');
+    } else {
+      navbar.classList.remove('!bg-[#050810]/95', '!h-[60px]');
+    }
+    updateScrollProgress();
+    updateActiveNavLink();
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Hamburger toggle
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', () => {
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', isOpen);
+      mobileMenu.classList.toggle('flex', !isOpen);
+      hamburger.setAttribute('aria-expanded', String(!isOpen));
+
+      // Animate hamburger lines
+      const lines = hamburger.querySelectorAll('span');
+      if (!isOpen) {
+        lines[0].style.transform = 'translateY(7px) rotate(45deg)';
+        lines[1].style.opacity   = '0';
+        lines[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+      } else {
+        lines.forEach(l => { l.style.transform = ''; l.style.opacity = ''; });
+      }
+    });
+
+    // Close on mobile link click
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('flex');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.querySelectorAll('span').forEach(l => {
+          l.style.transform = ''; l.style.opacity = '';
+        });
+      });
+    });
+  }
+}
+
+/* ──────────────────────────────────────────
+   SCROLL PROGRESS BAR
+   ────────────────────────────────────────── */
+function updateScrollProgress() {
+  const bar = document.getElementById('scroll-progress');
+  if (!bar) return;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = maxScroll > 0 ? (window.scrollY / maxScroll) * 100 : 0;
+  bar.style.height = `${pct}%`;
+}
+
+/* ──────────────────────────────────────────
+   ACTIVE NAV LINK (Intersection Observer)
+   ────────────────────────────────────────── */
+function updateActiveNavLink() {
+  const sections  = ['hero', 'story', 'characters', 'episodes', 'trailer'];
+  const navLinks  = document.querySelectorAll('.nav-link[data-section]');
+
+  let current = 'hero';
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && window.scrollY >= el.offsetTop - 120) current = id;
+  });
+
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.dataset.section === current);
+    link.classList.toggle('text-[#e8f4f8]', link.dataset.section === current);
+    link.classList.toggle('text-[#6b7a99]', link.dataset.section !== current);
+  });
+}
+
+/* ──────────────────────────────────────────
+   DARK / LIGHT MODE
+   ────────────────────────────────────────── */
+function initDarkMode() {
+  const btn  = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+
+  // Load saved or system preference
+  const saved = localStorage.getItem('drstone_theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved ?? (prefersDark ? 'dark' : 'light');
+  applyTheme(theme);
+
+  btn?.addEventListener('click', () => {
+    const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('drstone_theme', next);
+  });
+}
+
+function applyTheme(theme) {
+  const html = document.documentElement;
+  const btn  = document.getElementById('theme-toggle');
+  html.setAttribute('data-theme', theme);
+  if (btn) btn.textContent = theme === 'dark' ? '🌙' : '☀️';
+}
+
+/* ──────────────────────────────────────────
+   LENIS SMOOTH SCROLL
+   ────────────────────────────────────────── */
+function initLenis() {
+  const lenis = new Lenis({
+    lerp: 0.08,
+    smoothWheel: true,
+    syncTouch: false,
+  });
+
+  // Sync GSAP ticker with Lenis
+  if (typeof gsap !== 'undefined') {
+    gsap.ticker.add(time => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  } else {
+    const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+  }
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        lenis.scrollTo(target, { offset: -70, duration: 1.4 });
+      }
+    });
+  });
+}
+
+/* ──────────────────────────────────────────
+   GSAP SCROLL ANIMATIONS
+   ────────────────────────────────────────── */
+function initGSAP() {
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Story lines reveal on scroll
+  gsap.utils.toArray('[data-story-line]').forEach((line, i) => {
+    gsap.to(line, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      delay: i * 0.18,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '#story',
+        start: 'top 55%',
+        once: true,
+      }
+    });
+  });
+
+  // Story counter count-up on scroll
+  ScrollTrigger.create({
+    trigger: '#story',
+    start: 'top 60%',
+    once: true,
+    onEnter: () => animateStoryCounter(),
+  });
+
+  // Characters section: stagger from scroll
+  ScrollTrigger.create({
+    trigger: '#characters',
+    start: 'top 70%',
+    once: true,
+    onEnter: () => {
+      gsap.from('#char-grid .char-card', {
+        y: 50, opacity: 0, duration: 0.7,
+        stagger: { each: 0.1, from: 'start' },
+        ease: 'power3.out',
+      });
+    }
+  });
+
+  // Trailer cards
+  ScrollTrigger.create({
+    trigger: '#trailer',
+    start: 'top 70%',
+    once: true,
+    onEnter: () => {
+      gsap.from('.trailer-card', {
+        y: 40, opacity: 0, duration: 0.6,
+        stagger: 0.15,
+        ease: 'power3.out',
+      });
+    }
+  });
+
+  // Parallax on hero (subtle)
+  gsap.to('#hero h1', {
+    y: -40,
+    ease: 'none',
+    scrollTrigger: {
+      trigger: '#hero',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+    }
+  });
+}
+
+/* ──────────────────────────────────────────
+   STORY COUNTER ANIMATION
+   ────────────────────────────────────────── */
+function animateStoryCounter() {
+  const el = document.getElementById('story-counter');
+  if (!el) return;
+
+  const target   = 3715;
+  const duration = 1800; // ms
+  const start    = performance.now();
+
+  const step = (now) => {
+    const progress = Math.min((now - start) / duration, 1);
+    const value    = Math.round(easeOutCubic(progress) * target);
+    // Format: 3.715
+    el.textContent = value.toLocaleString('vi-VN');
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+/* ──────────────────────────────────────────
+   TRAILER VIDEO MODAL
+   ────────────────────────────────────────── */
+function initTrailerModal() {
+  const modal  = document.getElementById('trailer-modal');
+  const iframe = document.getElementById('modal-iframe');
+  const close  = document.getElementById('modal-close');
+  if (!modal || !iframe) return;
+
+  // Open on trailer card click
+  document.querySelectorAll('.trailer-card').forEach(card => {
+    card.addEventListener('click', () => {
+      const yt = card.dataset.yt;
+      if (!yt) return;
+      iframe.src = `${yt}?autoplay=1&rel=0`;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  // Close
+  const closeModal = () => {
+    modal.classList.remove('active');
+    iframe.src = '';
+    document.body.style.overflow = '';
+  };
+
+  close?.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+}

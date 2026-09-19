@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e6f7ff; /* Màu nền xanh dương nhạt */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #0056b3; /* Màu xanh dương đậm */
+        }
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 60px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="date"], input[type="tel"], textarea, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        textarea {
+            resize: vertical;
+        }
+        input[type="submit"] {
+            background-color: #0056b3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 400px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        input[type="submit"]:hover {
+            background-color: #004080;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+    <h1> CẢM ƠN BẠN ĐÃ ĐÁNH GIÁ WEBSITE </h1>
+    <form action ="">
+        <label for=""> HỌ VÀ TÊN </label> <br>
+        <input name="username" placeholder="nhập họ và tên">
+        <br> <br>
+        <label> GIỚI TÍNH </label> <br>
+        <input type="radio" id="nam">
+        <label for="nam"> nam</label>
+        <input type="radio" id="nam">
+        <label for="nam"> nữ</label>
+
+        <br> <br>
+        <label> NGÀY THÁNG NĂM SINH </label>
+        <input type="date">
+        <br> <br>
+        <label> số điện thoại </label>
+        <input> 
+        <table border="5">
+            <tr>
+                <td> 1
+                </td>
+                <td> nội dung </td>
+                <td> mức độ hài lòng </td>
+            </tr>
+
+            <tr>
+                <td> 2
+                </td>
+                <td> Giao diện mới lạ </td>
+                <td> <select name="mucdo">
+                    <option>  1</option>
+                    <option>  2</option>
+                    <option>  3</option>
+                    <option>  4</option>
+                    <option>  5</option>
+                </select> </td>
+            </tr>
+
+            <tr>
+                <td> 3
+                </td>
+                <td> Tìm kiếm hợp lý  </td>
+                <td> <select name="mucdo">
+                    <option>  1</option>
+                    <option>  2</option>
+                    <option>  3</option>
+                    <option>  4</option>
+                    <option>  5</option>
+                </select> </td>
+            </tr>
+
+            <tr>
+                <td> 4
+                </td>
+                <td> Bố cục rõ ràng </td>
+                <td> <select name="mucdo">
+                    <option>  1</option>
+                    <option>  2</option>
+                    <option>  3</option>
+                    <option>  4</option>
+                    <option>  5</option>
+                </select> </td>
+            </tr>
+
+            <tr>
+                <td> 5
+                </td>
+                <td> Hiển thị đầy đủ nội dung và liên kết   </td>
+                <td> <select name="mucdo">
+                    <option>  1</option>
+                    <option>  2</option>
+                    <option>  3</option>
+                    <option>  4</option>
+                    <option>  5</option>
+                </select> </td>
+            </tr>
+
+            <br> <br>
+            <label> chọn mức độ </label>
+            <select name="mucdo">
+                <option>  1</option>
+                <option>  2</option>
+                <option>  3</option>
+                <option>  4</option>
+                <option>  5</option>
+            </select>
+        </table>
+
+        <label> đánh giá tổng thể</label>
+        <input type="checkbox">
+        <label> rác </label>
+        <input type="checkbox">
+        <label> tạm ổn  </label>
+        <input type="checkbox">
+        <label> ổn </label>
+        <input type="checkbox">
+        <label> ok </label>
+        <input type="checkbox">
+        <label> quá tốt </label>
+        
+        <br> <br>
+        <textarea name="" cols="50" rows="20"></textarea>
+        <div class="button-container">  
+                <a href="trangchu.html" class="back-button">Quay lại</a> 
+                <input type="submit" value="Gửi Đánh Giá">
+        
+            
+            
+        </div>
+
+
+</form>
+<script src="js/visitor-tracker.js" defer></script>
+</body>
+</html>

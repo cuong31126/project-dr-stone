@@ -1,0 +1,211 @@
+============================================================
+  PROMPT CHAIN MẪU — DEBUG / SỬA LỖI
+  Dự án: Dr. Stone Fan Website (duan-drstone)
+  File: doc/debug.txt
+  Tác giả: Lê Quốc Cường | unitop.vn
+============================================================
+
+LỖI ĐÃ PHÁT HIỆN TRONG CODE HIỆN TẠI
+──────────────────────────────────────
+[BUG-01] index.html — <body> mở 2 lần, </html> đóng 2 lần (line 40 & 286)
+[BUG-02] index.html — <link stylesheet> đặt ngoài <head> (line 46)
+[BUG-03] index.html — <style> block nằm trong <body> (sai cú pháp)
+[BUG-04] cactapphim.html — <!DOCTYPE html> xuất hiện 2 lần (line 1 & 97)
+[BUG-05] cactapphim.html — Tập 14, 15, 16 link đến example.com (chưa có link thật)
+[BUG-06] tongquannhanvat.html — <!DOCTYPE html> xuất hiện 2 lần
+[BUG-07] tongquannhanvat.html — link "Lời Tri Ân" thiếu .html extension
+[BUG-08] dangnhap.html — form chưa có chức năng xử lý thực
+[BUG-09] Toàn bộ — CSS viết inline, lặp lại ở mỗi file (không DRY)
+[BUG-10] Toàn bộ — Thiếu meta description, title mô tả (SEO kém)
+
+════════════════════════════════════════════════════════════
+PROMPT 1 — DEBUG CẤU TRÚC HTML SAI
+════════════════════════════════════════════════════════════
+Bạn là một frontend developer chuyên debug HTML.
+
+Tôi paste cho bạn file HTML sau (index.html của website fan Dr. Stone).
+Hãy:
+1. Tìm TẤT CẢ lỗi cú pháp HTML (tag mở không đóng, đóng không mở,
+   thẻ đặt sai vị trí, DOCTYPE trùng lặp, v.v.)
+2. Liệt kê mỗi lỗi theo format:
+   [DÒNG X] Lỗi: ... → Sửa thành: ...
+3. Xuất code HTML đã sửa hoàn chỉnh
+
+[PASTE NỘI DUNG FILE HTML VÀO ĐÂY]
+
+Lưu ý quan trọng:
+- <head> chỉ chứa: meta, title, link, style, script
+- <body> chứa nội dung hiển thị
+- <!DOCTYPE html> chỉ xuất hiện 1 lần ở đầu file
+- Mỗi thẻ mở phải có thẻ đóng tương ứng
+
+────────────────────────────────────────────────────────────
+PROMPT 2 — DEBUG LINK BỊ HỎNG (Broken Links)
+────────────────────────────────────────────────────────────
+Tôi có website gồm các file: index.html, cactapphim.html,
+tongquannhanvat.html, danhgia.html, loitrian.html, dangnhap.html.
+
+Dưới đây là tất cả các thẻ <a href="..."> trong website:
+[PASTE DANH SÁCH href VÀO ĐÂY]
+
+Hãy:
+1. Kiểm tra link nào đang hỏng (file không tồn tại, href sai)
+2. Phân loại:
+   - Internal links (link giữa các trang trong website)
+   - External links (YouTube, example.com, v.v.)
+3. Đặc biệt chú ý:
+   - href="trangchu.html" → file đúng là index.html (CẦN SỬA)
+   - href="gioithieu.html" → file chưa tồn tại
+   - href="loitrian" → thiếu .html extension
+   - href="https://example.com/tap2" → placeholder chưa thay link thật
+4. Đề xuất sửa từng link
+
+────────────────────────────────────────────────────────────
+PROMPT 3 — DEBUG CSS CONFLICT & OVERRIDE
+────────────────────────────────────────────────────────────
+Website của tôi dùng Bootstrap 5.3 + CSS inline trong mỗi file.
+Tôi đang gặp các vấn đề CSS sau:
+
+Vấn đề 1: CSS trong <style> block override nhau vì viết ở nhiều nơi
+Vấn đề 2: Bootstrap class bị ghi đè bởi CSS inline
+Vấn đề 3: Màu sắc link <a> bị ghi đè thành trắng toàn bộ (kể cả footer)
+
+[PASTE CODE CSS ĐANG GẶP LỖI VÀO ĐÂY]
+
+Hãy:
+1. Giải thích tại sao xảy ra conflict
+2. Xác định rule nào đang "win" trong cascade
+3. Gợi ý cách tổ chức CSS đúng:
+   - Tạo 1 file style.css chung
+   - Thứ tự import đúng: reset → base → components → pages
+4. Viết lại CSS đã tổ chức lại cho tôi
+
+────────────────────────────────────────────────────────────
+PROMPT 4 — DEBUG RESPONSIVE LAYOUT
+────────────────────────────────────────────────────────────
+Website Dr. Stone của tôi bị vỡ layout trên mobile.
+
+Triệu chứng:
+- Menu ngang bị tràn ra ngoài màn hình điện thoại
+- Ảnh banner vượt quá width màn hình
+- Các nút navigation không vừa 1 hàng trên mobile
+- Card tập phim bị đè lên nhau
+
+Code HTML hiện tại:
+[PASTE PHẦN BỊ LỖI VÀO ĐÂY]
+
+Hãy:
+1. Chỉ ra nguyên nhân cụ thể gây vỡ layout
+2. Fix từng vấn đề:
+   - Menu → dùng flex-wrap hoặc ẩn dạng hamburger
+   - Ảnh → thêm max-width: 100%; height: auto;
+   - Card → responsive grid với media queries
+3. Viết media queries chuẩn:
+   @media (max-width: 768px) { ... }   /* tablet */
+   @media (max-width: 480px) { ... }   /* mobile */
+4. Test: liệt kê các điểm cần check thủ công
+
+────────────────────────────────────────────────────────────
+PROMPT 5 — DEBUG JAVASCRIPT KHÔNG CHẠY
+────────────────────────────────────────────────────────────
+Tôi thêm JavaScript vào website nhưng không hoạt động.
+
+Mô tả vấn đề: [MÔ TẢ VẤN ĐỀ CỤ THỂ]
+Console error (F12 → Console): [PASTE LỖI TỪ CONSOLE]
+
+Code JavaScript bị lỗi:
+[PASTE CODE VÀO ĐÂY]
+
+Hãy:
+1. Đọc error message và giải thích bằng tiếng Việt đơn giản
+2. Chỉ ra dòng nào bị lỗi và tại sao
+3. Common mistakes checklist:
+   □ querySelector trả về null (element chưa load khi JS chạy)
+   □ addEventListener typo
+   □ Variable scope sai (var vs let vs const)
+   □ Async/await thiếu xử lý
+   □ Script load trước DOM (thiếu defer hoặc DOMContentLoaded)
+4. Cung cấp code đã sửa
+
+Cách đúng để đặt script:
+<script defer src="script.js"></script>
+// hoặc
+document.addEventListener('DOMContentLoaded', function() { ... });
+
+────────────────────────────────────────────────────────────
+PROMPT 6 — DEBUG PERFORMANCE (Trang load chậm)
+────────────────────────────────────────────────────────────
+Website Dr. Stone của tôi load chậm, đặc biệt trang cactapphim.html
+(có 23 ảnh thumbnail tải cùng lúc).
+
+Hãy phân tích và đề xuất giải pháp:
+
+1. Vấn đề ảnh:
+   - Hiện tại: tất cả 23 ảnh load ngay khi mở trang
+   - Giải pháp: Lazy loading với Intersection Observer API
+   - Code: [Viết code lazy load cho mình]
+
+2. Vấn đề CSS:
+   - Hiện tại: CSS inline trong từng file → browser parse nhiều lần
+   - Giải pháp: tách ra 1 file CSS, minify
+   - Công cụ minify miễn phí: [gợi ý]
+
+3. Vấn đề Bootstrap:
+   - Hiện tại: load toàn bộ Bootstrap (>200KB) dù chỉ dùng vài component
+   - Giải pháp: dùng Bootstrap CDN với integrity check (đã tốt)
+   - Hoặc: chỉ import component cần thiết
+
+4. Checklist tối ưu nhanh:
+   □ Thêm loading="lazy" vào tất cả <img>
+   □ Thêm width và height attribute vào <img> (tránh layout shift)
+   □ Nén ảnh: dùng tinypng.com
+   □ Thêm <meta name="viewport"> đúng cách
+   □ Enable browser cache (cần server config)
+
+Viết code Lazy Loading Intersection Observer cho trang có nhiều ảnh.
+
+════════════════════════════════════════════════════════════
+CHECKLIST DEBUG NHANH — CHẠY TRƯỚC KHI HỎI AI
+════════════════════════════════════════════════════════════
+
+Bước 1: Mở F12 (DevTools) → Tab Console
+   □ Có lỗi đỏ nào không? → Copy text lỗi
+   □ Có warning nào không?
+
+Bước 2: Tab Elements
+   □ HTML structure có đúng không?
+   □ CSS đang apply vào element nào?
+
+Bước 3: Tab Network
+   □ File nào load bị 404 (Not Found)?
+   □ Ảnh nào không tải được?
+
+Bước 4: Tab Lighthouse (audit)
+   □ Performance score là bao nhiêu?
+   □ Accessibility score?
+   □ SEO score?
+
+Bước 5: Resize browser window
+   □ Layout có vỡ ở 320px (mobile nhỏ)?
+   □ Layout có vỡ ở 768px (tablet)?
+
+────────────────────────────────────────────────────────────
+CÁCH PASTE LỖI VÀO AI ĐÚNG CÁCH
+────────────────────────────────────────────────────────────
+Template chuẩn khi hỏi AI về lỗi:
+
+"Tôi đang làm website fan Dr. Stone bằng HTML/CSS/JS thuần.
+
+🐛 Vấn đề: [MÔ TẢ TRIỆU CHỨNG - nhìn thấy gì không đúng]
+
+📍 Nơi xảy ra: [TÊN FILE + DÒNG SỐ nếu biết]
+
+💻 Code bị lỗi:
+[PASTE CODE VÀO ĐÂY]
+
+🔴 Error message (nếu có):
+[PASTE LỖI TỪ CONSOLE]
+
+🎯 Mong muốn: [KẾT QUẢ MONG MUỐN LÀ GÌ]"
+
+============================================================

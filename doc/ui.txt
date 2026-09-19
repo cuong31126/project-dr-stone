@@ -1,0 +1,161 @@
+============================================================
+  PROMPT CHAIN MẪU — UI / GIAO DIỆN
+  Dự án: Dr. Stone Fan Website (duan-drstone)
+  File: doc/ui.txt
+  Tác giả: Lê Quốc Cường | unitop.vn
+============================================================
+
+MÔ TẢ DỰ ÁN HIỆN TẠI
+─────────────────────
+- Website fan về anime Dr. Stone (Season 3).
+- Các trang hiện có: index.html, cactapphim.html, tongquannhanvat.html,
+  danhgia.html, loitrian.html, dangnhap.html.
+- Stack: HTML thuần + Bootstrap 5.3 + CSS inline.
+- Vấn đề: CSS viết inline rải rác, không có design system thống nhất,
+  thiếu dark mode, thiếu responsive mobile, không có animation.
+
+════════════════════════════════════════════════════════════
+PROMPT 1 — THIẾT KẾ HỆ THỐNG DESIGN (Design System)
+════════════════════════════════════════════════════════════
+Bạn là một UI/UX designer chuyên làm trang fan anime.
+
+Tôi có một website fan về anime Dr. Stone (phim khoa học viễn tưởng
+Nhật Bản — nhân vật chính là thiên tài khoa học Senku Ishigami trong
+thế giới hậu tận thế bằng đá).
+
+Hãy đề xuất cho tôi một hệ thống màu sắc (color palette) và typography
+hoàn chỉnh phù hợp với chủ đề Dr. Stone, bao gồm:
+
+1. PRIMARY COLOR: màu đặc trưng của Dr. Stone (gợi ý: xanh lục khoa học,
+   cam năng lượng, hoặc xanh cyan công nghệ)
+2. SECONDARY COLOR: màu phụ
+3. ACCENT COLOR: màu nhấn cho CTA button
+4. BACKGROUND: dark mode hoặc light mode (chọn 1)
+5. TEXT COLOR: màu chữ chính và phụ
+6. Font chữ: gợi ý 2 font từ Google Fonts (tiêu đề + nội dung)
+7. Border radius: bo tròn mức nào (sharp / medium / full-round)
+8. Shadow style: đổ bóng kiểu gì
+
+Xuất kết quả dạng CSS variables:
+:root {
+  --color-primary: ...;
+  --color-secondary: ...;
+  ...
+}
+
+────────────────────────────────────────────────────────────
+PROMPT 2 — TẠO NAVBAR COMPONENT
+────────────────────────────────────────────────────────────
+Dựa trên design system ở trên, hãy tạo một component Navbar cho website
+fan Dr. Stone bằng HTML + CSS thuần (không dùng Bootstrap).
+
+Yêu cầu Navbar:
+- Logo text "DR. STONE" bên trái (dùng font đặc biệt)
+- Menu items: Trang Chủ | Nhân Vật | Danh Sách Phim | Giới Thiệu | Đánh Giá | Lời Tri Ân
+- 2 nút bên phải: [Đăng Ký] [Đăng Nhập]
+- Sticky khi scroll
+- Hamburger menu cho mobile (responsive)
+- Hover effect mượt (transition 0.3s)
+- Active state cho trang hiện tại
+- Glassmorphism effect: backdrop-filter: blur
+
+Code HTML + CSS đầy đủ, có thể copy-paste vào file HTML.
+
+────────────────────────────────────────────────────────────
+PROMPT 3 — TẠO HERO SECTION (Trang Chủ)
+────────────────────────────────────────────────────────────
+Tạo Hero Section cho trang chủ website Dr. Stone.
+
+Thông tin:
+- Banner image: cactapss3/anh-ngang.jpg (ảnh ngang của anime)
+- Tiêu đề lớn: "DR. STONE" 
+- Phụ đề: "Vương quốc khoa học phản công — Season 3"
+- 2 CTA button: [Xem Phim Ngay] [Tìm Hiểu Nhân Vật]
+- Overlay gradient tối lên ảnh để đọc chữ rõ hơn
+- Có text-shadow và drop-shadow cho tiêu đề
+- Animation: fade-in + slide-up khi load trang
+- Responsive: thu nhỏ trên mobile
+
+Output: HTML + CSS inline hoặc <style> block.
+
+────────────────────────────────────────────────────────────
+PROMPT 4 — GRID DANH SÁCH TẬP PHIM (Card Layout)
+────────────────────────────────────────────────────────────
+Tôi có 23 tập phim Dr. Stone Season 3, mỗi tập có:
+- Ảnh thumbnail (từ thư mục cactapss3/)
+- Tên tập (VD: "Tập 1: RYUSUI")
+- Link YouTube
+
+Hãy tạo layout Card Grid đẹp cho trang cactapphim.html:
+
+Yêu cầu:
+- Grid 4 cột trên desktop, 2 cột tablet, 1 cột mobile
+- Mỗi card: ảnh thumbnail, badge số tập, tên tập, nút "Xem Ngay"
+- Hover effect: scale(1.05) + box-shadow + overlay play button
+- Lazy loading ảnh (loading="lazy")
+- Màu badge theo season (Season 3 = màu xanh lục)
+- Có filter/sort: lọc theo tập (All | 1-10 | 11-23)
+- Animation: stagger-in từng card khi scroll vào viewport (Intersection Observer)
+
+Code HTML + CSS + JavaScript đầy đủ.
+
+────────────────────────────────────────────────────────────
+PROMPT 5 — TRANG NHÂN VẬT (Character Cards)
+────────────────────────────────────────────────────────────
+Tạo layout trang Nhân Vật cho website Dr. Stone.
+
+Danh sách nhân vật cần hiển thị:
+1. Ishigami Senkū — nhân vật chính, thiên tài khoa học
+2. Ōki Taiju — người bạn thân, sức mạnh vô hạn
+3. Ogawa Yuzuriha — thiết kế thời trang
+4. Shishiō Tsukasa — "Linh trưởng mạnh nhất"
+5. Asagiri Gen — ảo thuật gia, nhà tâm lý học
+6. Nanami Ryūsui — thuyền trưởng tàu Perseus
+7. Chrome — thầy phù thủy làng Ishigami
+8. Kohaku — chiến binh mạnh nhất làng
+
+Mỗi nhân vật cần:
+- Avatar ảnh (dùng ảnh sẵn trong cactapss3/)
+- Tên đầy đủ (tiếng Nhật + Việt)
+- Vai trò / chức danh (badge màu)
+- Mô tả ngắn (2-3 dòng)
+- Hover: flip card 3D hiện thêm thông tin chi tiết
+
+Layout: Masonry grid hoặc flexbox wrap.
+Thêm filter: [Tất cả] [Nhân vật chính] [Cư dân làng Ishigami]
+
+Code HTML + CSS đầy đủ.
+
+────────────────────────────────────────────────────────────
+PROMPT 6 — FORM ĐÁNH GIÁ (Rating Form)
+────────────────────────────────────────────────────────────
+Redesign lại trang đánh giá website (danhgia.html).
+
+Yêu cầu:
+- Giao diện hiện đại, không dùng table cổ lỗ
+- Star rating (⭐⭐⭐⭐⭐) thay cho select dropdown
+- Rating items: Giao diện mới lạ | Tìm kiếm hợp lý | Bố cục rõ ràng |
+  Hiển thị đầy đủ nội dung | Tốc độ tải trang
+- Input họ tên, email (thêm), giới tính (radio button đẹp hơn)
+- Textarea góc ý kiến thêm
+- Progress bar cho form (bước 1/3 → 2/3 → 3/3)
+- Submit button với loading state (spinner)
+- Validation JavaScript: highlight lỗi real-time
+- Sau submit: hiện toast notification "Cảm ơn bạn đã đánh giá!"
+
+Code HTML + CSS + JS đầy đủ.
+
+════════════════════════════════════════════════════════════
+CHUỖI SỬ DỤNG ĐỀ XUẤT (Prompt Chain Flow)
+════════════════════════════════════════════════════════════
+Bước 1  →  Chạy PROMPT 1 (Design System)  →  Lưu CSS variables
+Bước 2  →  Chạy PROMPT 2 (Navbar)         →  Copy vào tất cả trang
+Bước 3  →  Chạy PROMPT 3 (Hero)           →  Áp vào index.html
+Bước 4  →  Chạy PROMPT 4 (Episode Grid)   →  Áp vào cactapphim.html
+Bước 5  →  Chạy PROMPT 5 (Characters)     →  Áp vào tongquannhanvat.html
+Bước 6  →  Chạy PROMPT 6 (Rating Form)    →  Áp vào danhgia.html
+
+TIP: Dán kết quả của Prompt 1 vào đầu mỗi prompt tiếp theo
+     để AI nhất quán màu sắc/font cho toàn bộ site.
+
+============================================================

@@ -1,0 +1,127 @@
+================================================================================
+  HỆ THỐNG PROMPT CHAIN & BẢN THIẾT KẾ TÍNH NĂNG (SYSTEM PROMPT BLUEPRINT)
+  Dự án: Dr. Stone Fan Website — Vương Quốc Khoa Học (duan-drstone)
+  Công nghệ lõi: HTML5, Vanilla JavaScript (ES Module), Tailwind CSS v4, Three.js (WebGL + CSS3D)
+  File: doc/feature.txt
+  Tác giả: Lê Quốc Cường | unitop.vn
+================================================================================
+
+────────────────────────────────────────────────────────────────────────────────
+PHẦN 1: NGỮ CẢNH DỰ ÁN & HIỆN TRẠNG KIẾN TRÚC (SYSTEM CONTEXT)
+────────────────────────────────────────────────────────────────────────────────
+
+1. Mục Tiêu Dự Án:
+   - Xây dựng một website phong cách Anime Cyberpunk / Stone World đỉnh cao dành cho cộng đồng fan Dr. Stone.
+   - Giao diện thẩm mỹ vượt trội, kết hợp giữa yếu tố nguyên thủy (Thế giới đá hóa thạch) và yếu tố khoa học tương lai (Neon Cyan, Emerald Green, Glassmorphism, 3D tương tác).
+   - Tối ưu hiệu năng, hoạt động độc lập và tải trang mượt mà không giật lag.
+
+2. Cấu Trúc Thư Mục & Tài Nguyên Hiện Có:
+   - `index.html`: Trang đích chính (Hero 3D Senku, Câu chuyện hóa đá, Phòng thí nghiệm nguyên tố 3D, Lưới nhân vật Flip-Card 3D, Danh sách 58 tập phim Season 1-3, Trailer video).
+   - `characters.html`: Trang Bách Khoa Toàn Thư Cư Dân Thế Giới Đá tra cứu 109 nhân vật với 7 tab lọc phe phái, tìm kiếm real-time và phân trang.
+   - `js/particles.js`: Hệ thống hạt Three.js WebGL đa chiều và mô hình 3D Senku Ishigami (GLTF/DRACO).
+   - `js/periodic-table.js`: Phòng Thí Nghiệm Bảng Tuần Hoàn 118 Nguyên Tố Hóa Học 3D tương tác 4 hình thái (Bảng phẳng, Quả cầu Sphere, Xoắn ốc Helix, Lưới không gian Grid) bằng CSS3DRenderer.
+   - `js/episodes.js`: Bộ điều khiển danh sách tập phim Season 1-3, Flip Card nhân vật và bộ lọc phe phái.
+   - `public/data/all_characters.json`: Cơ sở dữ liệu 109 nhân vật đầy đủ ảnh chân dung offline.
+   - `data/episodes.json`: Dữ liệu 58 tập phim Season 1 (24 tập), Season 2 (11 tập), Season 3 (23 tập).
+   - `data/elements.js`: Dữ liệu 118 nguyên tố hóa học kèm vai trò ứng dụng trong các phát minh của Senku.
+
+────────────────────────────────────────────────────────────────────────────────
+PHẦN 2: CHUỖI PROMPT PHÁT TRIỂN (STEP-BY-STEP PROMPT CHAINS)
+────────────────────────────────────────────────────────────────────────────────
+
+================================================================================
+PROMPT CHAIN 1 — HIỆU ỨNG TƯƠNG TÁC HẠT (CONSTELLATION MESH) & NỨT ĐÁ HỒI SINH
+================================================================================
+Bối cảnh: Người dùng lướt web cảm thấy hiệu ứng cuộn trang thông thường bị nhàm chán và muốn các hạt background có sự liên kết khi chuột di chuyển qua.
+
+Mục tiêu kỹ thuật:
+1. Mạng Lưới Hạt Tương Tác Chuột (Interactive Molecular Mesh):
+   - Nâng cấp `js/particles.js`: Thêm BufferGeometry động cho `THREE.LineSegments`.
+   - Chuyển đổi tọa độ 2D của chuột thành Vector3D trong không gian Three.js.
+   - Khi chuột rê qua, các hạt trong bán kính $R$ quanh con trỏ chuột sẽ nối các tia liên kết xanh Cyber/Neon Green về phía chuột và giữa các hạt với nhau (hiệu ứng cấu trúc phân tử).
+   - Tạo lực hút từ tính nhẹ (Magnetic Pull) khiến các hạt bị kéo nhẹ về phía con trỏ chuột và tản ra tự nhiên.
+
+2. Hiệu Ứng Nứt Đá Hồi Sinh Khi Cuộn (Depetrification Scroll Reveal):
+   - Thay thế hiệu ứng fade-in cơ bản bằng hiệu ứng "Giải hóa đá" (Depetrification Breakout).
+   - Khi một thẻ (card) hoặc section xuất hiện trong viewport, tạo một hiệu ứng vết nứt rạn phát sáng (Glowing Cracks) và luồng quét ánh sáng xanh ngọc lục bảo (Emerald Green Wave) bung nở lớp vỏ đá, để lộ nội dung công nghệ sắc nét.
+
+================================================================================
+PROMPT CHAIN 2 — THANH TIẾN TRÌNH KHOA HỌC HUD "10 TỶ PHẦN TRĂM"
+================================================================================
+Bối cảnh: Cần một điểm nhấn thị giác xuyên suốt chiều dài trang web mang đậm dấu ấn khoa học của Senku.
+
+Mục tiêu kỹ thuật:
+1. Thiết kế thanh HUD cố định (Science Scroll HUD):
+   - Đặt ở mép phải màn hình hoặc thanh tiến trình trên đỉnh.
+   - Mô phỏng một ống nghiệm phát sáng chứa Dung dịch Nital (Axit Nitric + Cồn).
+   - Khi cuộn trang từ 0% đến 100%, dung dịch lỏng màu xanh ngọc bích dâng đầy dần trong ống nghiệm kèm hiệu ứng bọt khí lăn tăn.
+2. Đồng Hồ Đo Năng Lượng Khoa Học (Science Multiplier):
+   - Đếm số từ `0%` tăng dần theo tốc độ cuộn chuột và cán mốc: `10.000.000.000%` (Mười tỷ phần trăm) khi cuộn đến cuối trang.
+
+================================================================================
+PROMPT CHAIN 3 — THẺ CĂN CƯỚC VƯƠNG QUỐC KHOA HỌC (KINGDOM OF SCIENCE ID PASS)
+================================================================================
+Bối cảnh: Thay vì một form đăng nhập đơn điệu, biến trải nghiệm đăng nhập thành tính năng "Gia nhập Vương Quốc Khoa Học".
+
+Mục tiêu kỹ thuật:
+1. Modal Đăng Ký Gia Nhập (Glassmorphism Modal):
+   - Cho phép người dùng nhập Biệt danh / Nhà khoa học.
+   - Chọn Phe phái: 🟢 Vương Quốc Khoa Học (Senku) | 🔴 Đế Quốc Sức Mạnh (Tsukasa) | 🟡 Làng Ishigami.
+   - Chọn Vai trò chuyên môn: Nhà Giả Kim, Thợ Thủ Công, Trinh Sát, Chiến Binh, hoặc Hàng Hải.
+2. Thẻ 3D Hologram Sinh Ra (Interactive ID Card):
+   - Xuất ra một chiếc thẻ Hologram 3D có thể tương tác xoay đa chiều theo góc chuột (Vanilla Tilt 3D).
+   - Lưu trữ trạng thái vào `localStorage`.
+   - Hiển thị Avatar và huy hiệu đã đăng ký trên góc phải Navbar.
+
+================================================================================
+PROMPT CHAIN 4 — CINEMA MODAL TRAILER & LƯU TIẾN ĐỘ TẬP PHIM (WATCH BOOKMARK)
+================================================================================
+Bối cảnh: Tối ưu trải nghiệm xem phim và theo dõi tiến trình thưởng thức các mùa anime.
+
+Mục tiêu kỹ thuật:
+1. Rạp Chiếu Trailer Cinema Modal:
+   - Thêm modal xem video YouTube Trailer Season 1, 2, 3 với hiệu ứng làm tối nền (Cinema Backdrop Dimmer).
+   - Lazy load iframe YouTube, tự động dừng video khi đóng popup (X hoặc click outside).
+2. Lưu Tiến Độ Xem (Watch Tracker / Bookmark):
+   - Mỗi card tập phim có nút icon đánh dấu: `[🔖 Đánh Dấu]` / `[✅ Đã Xem]`.
+   - Lưu trữ danh sách tập đã xem vào `localStorage`.
+   - Hiển thị thanh tiến độ: "Bạn đã xem 18/58 tập phim (31%)".
+   - Highlight viền neon cho các tập phim đã hoàn thành.
+
+================================================================================
+PROMPT CHAIN 5 — ĐẤU TRƯỜNG TRI THỨC KHOA HỌC (DR. STONE QUIZ CHALLENGE)
+================================================================================
+Bối cảnh: Tính năng minigame kiểm tra hiểu biết của người hâm mộ về các phát minh và câu chuyện trong anime Dr. Stone.
+
+Mục tiêu kỹ thuật:
+1. Xây dựng giao diện Quiz tương tác:
+   - Bộ 10 câu hỏi trắc nghiệm liên quan đến các phản ứng hóa học, thời gian hóa đá (3.715 năm), thuyền Perseus, thuốc Sulfa...
+   - Đồng hồ đếm ngược 15 giây cho mỗi câu hỏi.
+   - Âm thanh và hiệu ứng animation đúng (Emerald Flash) / sai (Red Glitch).
+2. Phân Cấp Danh Hiệu Sau Khi Hoàn Thành:
+   - 10/10 điểm: Danh hiệu "Thiên Tài Khoa Học Ishigami Senku"
+   - 7-9 điểm: Danh hiệu "Phù Thủy Hóa Chất Chrome"
+   - 4-6 điểm: Danh hiệu "Chiến Binh Thể Lực Taiju"
+   - Dưới 4 điểm: Danh hiệu "Hóa Thạch Chờ Tái Sinh"
+   - Nút chia sẻ kết quả hoặc tải thẻ chứng nhận tốt nghiệp viện khoa học.
+
+────────────────────────────────────────────────────────────────────────────────
+PHẦN 3: LỘ TRÌNH TRIỂN KHAI ƯU TIÊN (EXECUTION ROADMAP)
+────────────────────────────────────────────────────────────────────────────────
+Phase 1: Đột phá thị giác & Tương tác tức thì (ĐÃ HOÀN THÀNH 100% ✅)
+  [x] Bước 1: Cập nhật tài liệu kỹ thuật doc/feature.txt.
+  [x] Bước 2: Nâng cấp js/particles.js với Mạng Lưới Hạt Chuột (Constellation Mesh) & Magnetic Pull (4-5 tia siêu mảnh tinh tế).
+  [x] Bước 3: Tích hợp hiệu ứng Nứt Đá Phục Sinh (Depetrification Wave) & 3D Tilt Glare cho Card.
+  [x] Bước 4: Tích hợp Thước đo cuộn trang "10 Tỷ % Science HUD" dâng dung dịch Nital.
+  [x] Bổ sung: Nâng cấp 16 ảnh nhân vật chính lên chuẩn HD 500px nét căng & dọn dẹp Header Navbar.
+  [x] Bổ sung: Tách trang riêng Bách Khoa Toàn Thư characters.html (109 nhân vật offline).
+Phase 2: Trải nghiệm người dùng & Xác thực (UX & Feature Roadmap)
+  [ ] Bước 5: Thẻ Căn Cước Vương Quốc Khoa Học 3D (Kingdom of Science ID Pass).
+  [ ] Bước 6: Cinema Video Modal & Bookmark tiến độ tập phim.
+  [ ] Bước 7: Minigame Đấu Trường Tri Thức Dr. Stone Quiz.
+  [ ] Bước 8: Xác thực & Đăng nhập tài khoản Google (Google Identity Services / Firebase Auth):
+      - Nút "Đăng nhập bằng Google" (One-Tap / Google Sign-In button).
+      - Tự động lấy tên & avatar từ tài khoản Google để in lên Thẻ Căn Cước Khoa Học 3D.
+      - Lưu phiên đăng nhập an toàn, bắn webhook Discord thông báo "Cư dân [Tên Google] vừa thức tỉnh!".
+================================================================================
+

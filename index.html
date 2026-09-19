@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dr. Stone Fan Website — Vương quốc Khoa học phản công. Khám phá 3 season, 58 tập phim và 8 nhân vật chính của anime Dr. Stone.">
+  <title>DR. STONE — Vương Quốc Khoa Học</title>
+
+  <!-- Tailwind CSS v4 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <!-- Custom theme tokens -->
+  <style type="text/tailwindcss">
+    @theme {
+      --color-drprimary:  #00d4ff;
+      --color-dracent:    #39ff14;
+      --color-drgold:     #ffd700;
+      --color-drstone:    #8b7355;
+      --color-drbg:       #050810;
+      --color-drcard:     #0a0f1e;
+      --color-drtext:     #e8f4f8;
+      --color-drmuted:    #6b7a99;
+      --color-drdim:      #3d4f6e;
+      --font-orbitron:    'Orbitron', sans-serif;
+      --font-rajdhani:    'Rajdhani', sans-serif;
+      --font-inter:       'Inter', sans-serif;
+    }
+  </style>
+
+  <!-- Custom keyframes & canvas CSS -->
+  <link rel="stylesheet" href="css/custom.css">
+
+  <!-- Three.js import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.158.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.158.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <!-- GSAP + ScrollTrigger (global) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+  <!-- Lenis smooth scroll (global) -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+</head>
+
+<body class="bg-[#050810] text-[#e8f4f8] font-['Inter'] overflow-x-hidden">
+
+<!-- ═══════════════════════════════════════════
+     LOADER
+     ═══════════════════════════════════════════ -->
+<div id="loader"
+     class="fixed inset-0 z-[9999] flex flex-col items-center justify-center gap-6
+            bg-[#050810] transition-opacity duration-700">
+  <div class="font-['Orbitron'] text-2xl font-black tracking-[0.15em]
+       bg-gradient-to-r from-[#00d4ff] to-[#39ff14] bg-clip-text text-transparent">
+    DR. STONE
+  </div>
+  <div class="w-48 h-[2px] bg-white/10 rounded overflow-hidden">
+    <div class="loader-fill h-full bg-gradient-to-r from-[#00d4ff] to-[#39ff14] rounded"></div>
+  </div>
+  <span class="text-[0.65rem] tracking-[0.3em] uppercase text-[#6b7a99]">
+    Khởi động vương quốc khoa học...
+  </span>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     THREE.JS CANVAS BACKGROUND
+     ═══════════════════════════════════════════ -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- ═══════════════════════════════════════════
+     APP WRAPPER
+     ═══════════════════════════════════════════ -->
+<div id="app" class="relative z-10">
+
+  <!-- ─────────────────────────────────────────
+       NAVBAR
+       ───────────────────────────────────────── -->
+  <nav id="navbar"
+       class="fixed top-0 inset-x-0 z-50 flex items-center justify-between
+              px-6 md:px-10 h-[70px]
+              bg-[#050810]/60 backdrop-blur-xl
+              border-b border-[#00d4ff]/15
+              transition-all duration-300">
+
+    <!-- Logo -->
+    <a href="#hero"
+       class="font-['Orbitron'] text-lg font-black tracking-wider
+              bg-gradient-to-r from-[#00d4ff] to-[#39ff14]
+              bg-clip-text text-transparent flex-shrink-0">
+      DR.STONE
+    </a>
+
+    <!-- Nav links (desktop) -->
+    <ul id="nav-links"
+        class="hidden md:flex items-center gap-1">
+      <li><a href="#hero"        class="nav-link px-4 py-2 text-sm font-['Rajdhani'] font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#e8f4f8] rounded-lg hover:bg-white/5 active" data-section="hero">Trang Chủ</a></li>
+      <li><a href="#story"       class="nav-link px-4 py-2 text-sm font-['Rajdhani'] font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#e8f4f8] rounded-lg hover:bg-white/5" data-section="story">Câu Chuyện</a></li>
+      <li><a href="#science-lab" class="nav-link px-4 py-2 text-sm font-['Rajdhani'] font-semibold uppercase tracking-wider text-[#00e5ff] hover:text-[#e8f4f8] rounded-lg hover:bg-[#00e5ff]/10 border border-[#00e5ff]/30" data-section="science-lab">🧪 Khoa Học 3D</a></li>
+      <li><a href="#characters"  class="nav-link px-4 py-2 text-sm font-['Rajdhani'] font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#e8f4f8] rounded-lg hover:bg-white/5" data-section="characters">Nhân Vật</a></li>
+      <li><a href="#episodes"    class="nav-link px-4 py-2 text-sm font-['Rajdhani'] font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#e8f4f8] rounded-lg hover:bg-white/5" data-section="episodes">Tập Phim</a></li>
+      <li><a href="#trailer"     class="nav-link px-4 py-2 text-sm font-['Rajdhani'] font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#e8f4f8] rounded-lg hover:bg-white/5" data-section="trailer">Trailer</a></li>
+    </ul>
+
+    <!-- Actions -->
+    <div class="flex items-center gap-2 md:gap-3">
+      <!-- Theme toggle -->
+      <button id="theme-toggle"
+              class="w-9 h-9 rounded-full border border-white/10 flex items-center
+                     justify-center text-base text-[#6b7a99]
+                     hover:border-[#ffd700] hover:text-[#ffd700]
+                     hover:bg-[#ffd700]/10 transition-all duration-200"
+              aria-label="Toggle theme">🌙</button>
+
+      <!-- Auth (hidden on small mobile) -->
+      <a href="dangnhap.html"
+         class="hidden sm:inline-flex font-['Rajdhani'] text-sm font-semibold
+                uppercase tracking-wide px-4 py-1.5 rounded
+                border border-white/10 text-[#6b7a99]
+                hover:border-[#00d4ff] hover:text-[#00d4ff]
+                hover:bg-[#00d4ff]/10 transition-all duration-200">
+        Đăng Nhập
+      </a>
+      <a href="dangnhap.html"
+         class="font-['Rajdhani'] text-sm font-bold uppercase tracking-wide
+                px-4 py-1.5 rounded
+                bg-gradient-to-r from-[#00d4ff] to-[#0099cc] text-black
+                hover:shadow-[0_4px_20px_rgba(0,212,255,0.4)] hover:-translate-y-0.5
+                transition-all duration-200">
+        Đăng Ký
+      </a>
+
+      <!-- Hamburger -->
+      <button id="hamburger"
+              class="md:hidden flex flex-col gap-1.5 w-8 p-1"
+              aria-label="Menu" aria-expanded="false">
+        <span class="block h-0.5 bg-[#e8f4f8] rounded transition-all duration-300"></span>
+        <span class="block h-0.5 bg-[#e8f4f8] rounded transition-all duration-300"></span>
+        <span class="block h-0.5 bg-[#e8f4f8] rounded transition-all duration-300"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu"
+       class="fixed inset-0 top-[70px] z-40 bg-[#050810]/98 backdrop-blur-xl
+              flex-col items-start p-8 gap-2 hidden md:hidden">
+    <a href="#hero"        class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#e8f4f8] border-b border-white/10">Trang Chủ</a>
+    <a href="#story"       class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#6b7a99] border-b border-white/10">Câu Chuyện</a>
+    <a href="#science-lab" class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#00e5ff] border-b border-white/10">🧪 Khoa Học 3D</a>
+    <a href="#characters"  class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#6b7a99] border-b border-white/10">Nhân Vật</a>
+    <a href="#episodes"    class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#6b7a99] border-b border-white/10">Tập Phim</a>
+    <a href="#trailer"     class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#6b7a99] border-b border-white/10">Trailer</a>
+  </div>
+
+
+  <!-- ─────────────────────────────────────────
+       SECTION 1: HERO
+       ───────────────────────────────────────── -->
+  <section id="hero"
+           class="relative min-h-screen flex flex-col items-center
+                  justify-center text-center px-6 pt-[70px]">
+
+    <!-- Badge -->
+    <span class="hero-anim hero-anim-1 inline-flex items-center gap-2
+         px-4 py-1.5 rounded-full mb-6
+         border border-[#00d4ff]/30 bg-white/5 backdrop-blur-sm
+         text-[0.7rem] font-['Rajdhani'] font-bold tracking-[0.2em] uppercase
+         text-[#00d4ff]">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#39ff14] animate-pulse"></span>
+      Season 3 — New World
+    </span>
+
+    <!-- Title -->
+    <h1 class="hero-anim hero-anim-2 font-['Orbitron'] font-black leading-[0.88] mb-5">
+      <span class="block text-[clamp(3.5rem,10vw,9rem)]
+           bg-gradient-to-br from-white via-[#c0e8ff] to-[#00d4ff]
+           bg-clip-text text-transparent">
+        DR.
+      </span>
+      <span class="glitch block text-[clamp(3.5rem,10vw,9rem)]
+           bg-gradient-to-br from-[#39ff14] via-[#00ff88] to-[#39ff14]
+           bg-clip-text text-transparent"
+           data-text="STONE">
+        STONE
+      </span>
+    </h1>
+
+    <!-- Subtitle -->
+    <p class="hero-anim hero-anim-3 font-['Rajdhani'] font-medium uppercase
+       tracking-[0.12em] text-[#6b7a99] mb-10
+       text-[clamp(0.85rem,2vw,1.15rem)]">
+      3,715 năm để tái sinh nền văn minh nhân loại
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-anim hero-anim-4 flex gap-3 flex-wrap justify-center">
+      <a href="#episodes"
+         class="btn-accent font-['Rajdhani'] text-base font-black uppercase
+                tracking-widest px-9 py-3.5 rounded-lg
+                bg-[#39ff14] text-black
+                hover:scale-[1.03] hover:shadow-[0_0_40px_rgba(57,255,20,0.6)]
+                transition-all duration-200">
+        ▶ Xem Phim Ngay
+      </a>
+      <a href="#characters"
+         class="font-['Rajdhani'] text-base font-bold uppercase tracking-widest
+                px-9 py-3.5 rounded-lg
+                border border-[#00d4ff]/40 bg-white/5 backdrop-blur-sm
+                text-[#e8f4f8]
+                hover:border-[#00d4ff] hover:bg-[#00d4ff]/10
+                hover:-translate-y-0.5 transition-all duration-200">
+        ⚡ Nhân Vật
+      </a>
+    </div>
+
+    <!-- Stats -->
+    <div class="hero-anim hero-anim-5 flex items-center gap-8 mt-12">
+      <div class="text-center">
+        <span id="stat-seasons"
+              class="block font-['Orbitron'] text-3xl font-black text-[#00d4ff]">0</span>
+        <span class="text-[0.62rem] tracking-[0.2em] uppercase text-[#6b7a99]">Seasons</span>
+      </div>
+      <div class="w-px h-8 bg-white/15"></div>
+      <div class="text-center">
+        <span id="stat-eps"
+              class="block font-['Orbitron'] text-3xl font-black text-[#00d4ff]">0</span>
+        <span class="text-[0.62rem] tracking-[0.2em] uppercase text-[#6b7a99]">Tập Phim</span>
+      </div>
+      <div class="w-px h-8 bg-white/15"></div>
+      <div class="text-center">
+        <span id="stat-chars"
+              class="block font-['Orbitron'] text-3xl font-black text-[#00d4ff]">0</span>
+        <span class="text-[0.62rem] tracking-[0.2em] uppercase text-[#6b7a99]">Nhân Vật</span>
+      </div>
+    </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint flex flex-col items-center gap-2">
+      <div class="w-px h-10 bg-gradient-to-b from-transparent to-[#00d4ff]"></div>
+      <span class="text-[0.6rem] tracking-[0.3em] uppercase text-[#3d4f6e]">cuộn xuống</span>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────
+       SECTION 2: STORY (Scroll Counter)
+       ───────────────────────────────────────── -->
+  <section id="story"
+           class="relative min-h-screen flex flex-col items-center
+                  justify-center px-6 py-24 text-center">
+
+    <!-- Scroll progress bar (right edge) -->
+    <div class="fixed right-0 top-0 w-0.5 bg-white/5 h-full z-20 pointer-events-none">
+      <div id="scroll-progress"
+           class="bg-gradient-to-b from-[#00d4ff] to-[#39ff14] w-full transition-all duration-100"
+           style="height: 0%"></div>
+    </div>
+
+    <span class="block text-[0.72rem] font-['Rajdhani'] font-bold
+         tracking-[0.35em] uppercase text-[#39ff14] mb-4"
+         data-reveal>● CÂU CHUYỆN</span>
+
+    <h2 class="font-['Rajdhani'] font-bold text-[#e8f4f8] mb-6
+         text-[clamp(1.3rem,3vw,2rem)] uppercase tracking-widest"
+         data-reveal data-delay="1">
+      Sau khi toàn bộ nhân loại hóa đá
+    </h2>
+
+    <!-- Giant counter -->
+    <div class="flex items-baseline gap-3 mb-4" data-reveal data-delay="2">
+      <span id="story-counter"
+            class="font-['Orbitron'] font-black
+                   text-[clamp(5rem,18vw,10rem)] leading-none
+                   bg-gradient-to-br from-[#00d4ff] via-[#00aadd] to-[#39ff14]
+                   bg-clip-text text-transparent">
+        0
+      </span>
+      <span class="font-['Rajdhani'] text-2xl text-[#6b7a99] font-medium">NĂM</span>
+    </div>
+
+    <!-- Cyan line -->
+    <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#00d4ff] to-transparent
+         mb-10 rounded" data-reveal data-delay="3"></div>
+
+    <!-- Stagger lines -->
+    <div class="flex flex-col gap-5 max-w-2xl">
+      <p class="story-line font-['Rajdhani'] text-[clamp(1.1rem,2.5vw,1.5rem)] font-semibold
+         text-[#e8f4f8] opacity-0 translate-y-6 transition-all duration-700"
+         data-story-line>
+        Khoa học là sức mạnh <span class="text-[#39ff14]">duy nhất</span> còn lại
+      </p>
+      <p class="story-line font-['Rajdhani'] text-[clamp(1rem,2.2vw,1.3rem)] font-medium
+         text-[#6b7a99] opacity-0 translate-y-6 transition-all duration-700 delay-100"
+         data-story-line>
+        Senku — thiên tài với <span class="text-[#00d4ff]">10 tỉ phần trăm</span> nỗ lực
+      </p>
+      <p class="story-line font-['Rajdhani'] text-[clamp(0.95rem,2vw,1.15rem)] font-medium
+         text-[#3d4f6e] opacity-0 translate-y-6 transition-all duration-700 delay-200"
+         data-story-line>
+        Vương quốc Khoa học sẽ tái sinh loài người
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────
+       SECTION: SCIENCE LAB (3D Periodic Table)
+       ───────────────────────────────────────── -->
+  <section id="science-lab" class="relative py-16 px-4 max-w-[1500px] mx-auto overflow-hidden">
+    <!-- Section Header -->
+    <div class="text-center mb-6" data-reveal>
+      <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 text-[0.72rem] font-['Rajdhani'] font-bold tracking-[0.25em] uppercase text-[#00e5ff] mb-3">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#00e5ff] animate-ping"></span>
+        Kho Vũ Khí Nguyên Tố 3D
+      </span>
+      <h2 class="font-['Orbitron'] font-black text-[clamp(1.8rem,3.5vw,2.8rem)] mb-2 text-[#e8f4f8]">
+        Phòng Thí Nghiệm Của Senku
+      </h2>
+      <p class="font-['Rajdhani'] text-sm md:text-base text-[#94a3b8] max-w-2xl mx-auto mb-5">
+        Kéo chuột xoay 360°, chọn dự án phát minh bên dưới để làm nổi bật các nguyên tố cấu thành!
+      </p>
+
+      <!-- 1. Morph & Camera Controls Bar -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
+        <div class="flex items-center gap-1.5 bg-white/5 p-1 rounded-xl border border-white/10">
+          <button id="btn-pt-table" class="px-4 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-[#00e5ff] text-black shadow-[0_0_15px_rgba(0,229,255,0.5)] transition-all hover:scale-105 cursor-pointer">
+            📄 Bảng Phẳng
+          </button>
+          <button id="btn-pt-sphere" class="px-4 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
+            🌐 Quả Cầu
+          </button>
+          <button id="btn-pt-helix" class="px-4 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
+            🧬 Xoắn Ốc
+          </button>
+          <button id="btn-pt-grid" class="px-4 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
+            🧊 Ma Trận
+          </button>
+        </div>
+
+        <!-- Zoom & Reset -->
+        <div class="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10">
+          <button id="btn-pt-zoom-in" class="px-3 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs bg-white/5 hover:bg-white/15 text-white transition-all cursor-pointer" title="Phóng to">
+            🔍 +
+          </button>
+          <button id="btn-pt-zoom-out" class="px-3 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs bg-white/5 hover:bg-white/15 text-white transition-all cursor-pointer" title="Thu nhỏ">
+            🔍 −
+          </button>
+          <button id="btn-pt-reset" class="px-3 py-1.5 rounded-lg font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider text-[#94a3b8] hover:text-[#00e5ff] transition-all cursor-pointer" title="Góc nhìn chuẩn">
+            ↺ Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Senku Project Roadmap Filters -->
+      <div class="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
+        <span class="text-xs font-['Rajdhani'] uppercase tracking-widest text-[#64748b] mr-1 hidden sm:inline">Dự án Senku:</span>
+        <button data-project-filter="all" class="active px-3 py-1 rounded-lg border border-[#fbbf24] text-[#fbbf24] bg-[#fbbf24]/15 font-['Rajdhani'] font-bold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
+          Tất cả 118
+        </button>
+        <button data-project-filter="revival" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
+          🧪 Nước Hồi Sinh
+        </button>
+        <button data-project-filter="sulfa" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
+          💊 Kháng Sinh Sulfa
+        </button>
+        <button data-project-filter="dynamo" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
+          ⚡ Máy Phát Điện
+        </button>
+        <button data-project-filter="bulb" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
+          💡 Bóng Đèn Vonfram
+        </button>
+        <button data-project-filter="phone" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
+          📡 Máy Truyền Tin
+        </button>
+        <button data-project-filter="platinum" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
+          ⚗️ Cỗ Máy Bạch Kim
+        </button>
+      </div>
+
+      <!-- Project detail notification bar -->
+      <div id="project-filter-info" class="mt-2 min-h-[32px] flex items-center justify-center"></div>
+
+      <!-- Interaction Tip -->
+      <p class="text-center text-[0.72rem] font-['Rajdhani'] text-[#64748b] mt-1 mb-2">
+        💡 <span class="text-[#00e5ff] font-semibold">Rê chuột vào trong khung:</span> Lăn chuột để Zoom In / Zoom Out 3D &bull; <span class="text-[#cbd5e1] font-semibold">Rê chuột ra ngoài lề:</span> Cuộn trang web tự nhiên
+      </p>
+    </div>
+
+    <!-- 3D Periodic Table Viewport (500px cao tinh gon, max-w-5xl co khoang le rong rai) -->
+    <div id="pt-container" class="rounded-2xl border border-[#00e5ff]/25 shadow-[0_0_50px_rgba(0,0,0,0.9)]">
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────
+       SECTION 3: CHARACTERS
+       ───────────────────────────────────────── -->
+  <section id="characters" class="py-24 px-4 max-w-[1400px] mx-auto">
+
+    <!-- Section header -->
+    <div class="text-center mb-12" data-reveal>
+      <span class="block text-[0.72rem] font-['Rajdhani'] font-bold
+           tracking-[0.35em] uppercase text-[#00d4ff] mb-3">● NHÂN VẬT</span>
+      <h2 class="font-['Orbitron'] font-bold text-[clamp(2rem,4vw,3.2rem)] mb-4">
+        Hồ Sơ Nhân Vật
+      </h2>
+      <div class="w-16 h-0.5 bg-gradient-to-r from-[#00d4ff] to-[#39ff14] mx-auto rounded"></div>
+    </div>
+
+    <!-- Filter -->
+    <div class="flex justify-center gap-2 mb-10 flex-wrap" data-reveal data-delay="1">
+      <button class="char-filter-btn active font-['Rajdhani'] text-xs md:text-sm font-bold uppercase
+              tracking-wider px-4 md:px-5 py-2 rounded-full border
+              border-[#00e5ff] bg-[#00e5ff]/15 text-[#00e5ff]
+              transition-all duration-200"
+              data-filter="all">Tất Cả (16)</button>
+      <button class="char-filter-btn font-['Rajdhani'] text-xs md:text-sm font-bold uppercase
+              tracking-wider px-4 md:px-5 py-2 rounded-full border
+              border-white/15 bg-white/5 text-[#6b7a99]
+              hover:border-[#00e5ff] hover:text-[#00e5ff]
+              transition-all duration-200"
+              data-filter="science">🟢 Vương Quốc Khoa Học</button>
+      <button class="char-filter-btn font-['Rajdhani'] text-xs md:text-sm font-bold uppercase
+              tracking-wider px-4 md:px-5 py-2 rounded-full border
+              border-white/15 bg-white/5 text-[#6b7a99]
+              hover:border-[#ef4444] hover:text-[#ef4444]
+              transition-all duration-200"
+              data-filter="might">🔴 Đế Quốc Sức Mạnh</button>
+      <button class="char-filter-btn font-['Rajdhani'] text-xs md:text-sm font-bold uppercase
+              tracking-wider px-4 md:px-5 py-2 rounded-full border
+              border-white/15 bg-white/5 text-[#6b7a99]
+              hover:border-[#fbbf24] hover:text-[#fbbf24]
+              transition-all duration-200"
+              data-filter="village">🟡 Làng Ishigami</button>
+      <button class="char-filter-btn font-['Rajdhani'] text-xs md:text-sm font-bold uppercase
+              tracking-wider px-4 md:px-5 py-2 rounded-full border
+              border-white/15 bg-white/5 text-[#6b7a99]
+              hover:border-[#38bdf8] hover:text-[#38bdf8]
+              transition-all duration-200"
+              data-filter="astronaut">🚀 Phi Hành Gia ISS</button>
+    </div>
+
+    <!-- Character grid (rendered by JS) -->
+    <div id="char-grid"
+         class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
+      <!-- Cards injected by episodes.js -->
+    </div>
+
+    <!-- CTA Button to 109 Full Characters Directory Page -->
+    <div class="text-center mt-12" data-reveal>
+      <a href="characters.html"
+         class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full font-['Rajdhani'] font-bold text-base tracking-wider uppercase bg-gradient-to-r from-[#00d4ff]/20 to-[#39ff14]/20 border border-[#00d4ff]/50 hover:border-[#00d4ff] hover:bg-[#00d4ff]/30 text-white shadow-[0_0_25px_rgba(0,212,255,0.25)] hover:shadow-[0_0_35px_rgba(0,212,255,0.5)] transition-all duration-300 group">
+        <span>Khám Phá Toàn Bộ 109 Cư Dân Thế Giới Đá</span>
+        <span class="text-[#00d4ff] group-hover:translate-x-1 transition-transform">➜</span>
+      </a>
+      <p class="text-xs text-[#6b7a99] mt-3">
+        Bao gồm 6 phe phái: Vương Quốc Khoa Học, Làng Ishigami, Đế Quốc Tsukasa, Đảo Kho Báu, Thuộc Địa Mỹ & Phi Hành Gia ISS.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────
+       SECTION 4: EPISODES
+       ───────────────────────────────────────── -->
+  <section id="episodes" class="py-24 px-4 max-w-[1400px] mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-10" data-reveal>
+      <span class="block text-[0.72rem] font-['Rajdhani'] font-bold
+           tracking-[0.35em] uppercase text-[#00d4ff] mb-3">● TẬP PHIM</span>
+      <h2 class="font-['Orbitron'] font-bold text-[clamp(2rem,4vw,3.2rem)] mb-4">
+        Danh Sách Phim
+      </h2>
+      <div class="w-16 h-0.5 bg-gradient-to-r from-[#00d4ff] to-[#39ff14] mx-auto rounded"></div>
+    </div>
+
+    <!-- Season tabs + Search row -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8"
+         data-reveal data-delay="1">
+
+      <!-- Season tabs -->
+      <div class="flex gap-1 p-1 rounded-xl border border-[#00d4ff]/20 bg-white/[0.04]">
+        <button class="season-tab active font-['Rajdhani'] text-sm font-bold uppercase
+                tracking-wider px-5 py-2 rounded-lg"
+                data-season="3">Season 3 ●</button>
+        <button class="season-tab font-['Rajdhani'] text-sm font-bold uppercase
+                tracking-wider px-5 py-2 rounded-lg"
+                data-season="2">Season 2</button>
+        <button class="season-tab font-['Rajdhani'] text-sm font-bold uppercase
+                tracking-wider px-5 py-2 rounded-lg"
+                data-season="1">Season 1</button>
+      </div>
+
+      <!-- Search -->
+      <div class="relative w-full sm:w-72">
+        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6b7a99] text-sm">🔍</span>
+        <input id="ep-search" type="text" placeholder="Tìm tên tập phim..."
+               class="w-full pl-9 pr-8 py-2.5 rounded-full
+                      bg-white/[0.04] border border-[#00d4ff]/20
+                      text-[#e8f4f8] text-sm placeholder-[#6b7a99]/60
+                      focus:outline-none focus:border-[#00d4ff]
+                      focus:ring-2 focus:ring-[#00d4ff]/15
+                      transition-all duration-200 font-['Inter']">
+        <button id="search-clear"
+                class="absolute right-3 top-1/2 -translate-y-1/2
+                       text-[#6b7a99] hover:text-[#e8f4f8] hidden text-xs"
+                aria-label="Xóa">✕</button>
+      </div>
+    </div>
+
+    <!-- Episode grid (rendered by JS) -->
+    <div id="ep-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
+    </div>
+
+    <!-- Empty state -->
+    <div id="ep-empty"
+         class="hidden col-span-full text-center py-20 text-[#6b7a99]">
+      <div class="text-4xl mb-3">🔬</div>
+      <p class="font-['Rajdhani'] text-lg font-semibold">Không tìm thấy tập phim</p>
+    </div>
+
+    <!-- CTA to Full 70 Episodes / 4 Seasons Portal -->
+    <div class="mt-12 text-center" data-reveal>
+      <a href="cactapphim.html"
+         class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full
+                bg-gradient-to-r from-[#00d4ff]/15 via-[#39ff14]/15 to-[#a855f7]/15
+                hover:from-[#00d4ff]/25 hover:via-[#39ff14]/25 hover:to-[#a855f7]/25
+                border border-[#00d4ff]/40 hover:border-[#39ff14]/60
+                text-white font-['Rajdhani'] text-base font-bold uppercase tracking-widest
+                shadow-[0_0_25px_rgba(0,212,255,0.15)] hover:shadow-[0_0_35px_rgba(57,255,20,0.3)]
+                transition-all duration-300 hover:scale-105 group">
+        <span>🎬 Khám Phá Toàn Bộ 4 Mùa Phim (70 Tập Full HD)</span>
+        <span class="text-[#39ff14] group-hover:translate-x-1 transition-transform">➜</span>
+      </a>
+      <p class="text-xs text-[#6b7a99] mt-3">
+        Đầy đủ Season 1, 2, 3 và Season 4 (Science Future) mới nhất · Nguồn xem Ani-One Vietnam & AnimeVietsub · Watch Tracker.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────
+       SECTION 5: TRAILER
+       ───────────────────────────────────────── -->
+  <section id="trailer" class="py-24 px-4 max-w-[1100px] mx-auto">
+
+    <!-- Header -->
+    <div class="text-center mb-12" data-reveal>
+      <span class="block text-[0.72rem] font-['Rajdhani'] font-bold
+           tracking-[0.35em] uppercase text-[#00d4ff] mb-3">● TRAILER</span>
+      <h2 class="font-['Orbitron'] font-bold text-[clamp(2rem,4vw,3.2rem)] mb-4">
+        Xem Trước
+      </h2>
+      <div class="w-16 h-0.5 bg-gradient-to-r from-[#00d4ff] to-[#39ff14] mx-auto rounded"></div>
+    </div>
+
+    <!-- Trailer cards -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+      <!-- Season 1 -->
+      <div class="trailer-card bg-white/[0.04] backdrop-blur-xl
+           border border-[#00d4ff]/20 rounded-2xl overflow-hidden
+           hover:border-[#00d4ff]/50 hover:-translate-y-1.5
+           transition-all duration-300 cursor-pointer group"
+           data-reveal data-delay="1"
+           data-yt="https://www.youtube.com/embed/p9avHO5M-d4">
+        <div class="aspect-video bg-[#0a0f1e] relative overflow-hidden">
+          <img src="https://img.youtube.com/vi/p9avHO5M-d4/hqdefault.jpg"
+               alt="Trailer Season 1" loading="lazy"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="play-icon w-14 h-14 rounded-full bg-white/90 flex items-center justify-center
+                 text-[#050810] text-xl shadow-xl">▶</div>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-['Rajdhani'] font-bold text-base mb-1">Trailer Season 1</h3>
+          <p class="text-xs text-[#6b7a99]">Stone World — 2019</p>
+        </div>
+      </div>
+
+      <!-- Season 2 -->
+      <div class="trailer-card bg-white/[0.04] backdrop-blur-xl
+           border border-[#00d4ff]/20 rounded-2xl overflow-hidden
+           hover:border-[#00d4ff]/50 hover:-translate-y-1.5
+           transition-all duration-300 cursor-pointer group"
+           data-reveal data-delay="2"
+           data-yt="https://www.youtube.com/embed/9QNgbMk2wm0">
+        <div class="aspect-video bg-[#0a0f1e] relative overflow-hidden">
+          <img src="https://img.youtube.com/vi/9QNgbMk2wm0/hqdefault.jpg"
+               alt="Trailer Season 2" loading="lazy"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="play-icon w-14 h-14 rounded-full bg-white/90 flex items-center justify-center
+                 text-[#050810] text-xl shadow-xl">▶</div>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="font-['Rajdhani'] font-bold text-base mb-1">Trailer Season 2</h3>
+          <p class="text-xs text-[#6b7a99]">Stone Wars — 2021</p>
+        </div>
+      </div>
+
+      <!-- Season 3 -->
+      <div class="trailer-card bg-white/[0.04] backdrop-blur-xl
+           border border-[#39ff14]/30 rounded-2xl overflow-hidden
+           hover:border-[#39ff14]/60 hover:-translate-y-1.5
+           transition-all duration-300 cursor-pointer group"
+           data-reveal data-delay="3"
+           data-yt="https://www.youtube.com/embed/J0zqUQALoXI">
+        <div class="aspect-video bg-[#0a0f1e] relative overflow-hidden">
+          <img src="https://img.youtube.com/vi/J0zqUQALoXI/hqdefault.jpg"
+               alt="Trailer Season 3" loading="lazy"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div class="play-icon w-14 h-14 rounded-full bg-[#39ff14] flex items-center justify-center
+                 text-[#050810] text-xl shadow-xl">▶</div>
+          </div>
+          <!-- NEW badge -->
+          <span class="absolute top-3 left-3 bg-[#39ff14] text-black
+               text-[0.6rem] font-black px-2 py-0.5 rounded tracking-wider">MỚI</span>
+        </div>
+        <div class="p-4">
+          <h3 class="font-['Rajdhani'] font-bold text-base mb-1">Trailer Season 3</h3>
+          <p class="text-xs text-[#6b7a99]">New World — 2023</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ─────────────────────────────────────────
+       FOOTER
+       ───────────────────────────────────────── -->
+  <footer class="border-t border-[#00d4ff]/15 bg-[#050810]/90 backdrop-blur-xl
+         px-6 pt-12 pb-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-10">
+        <!-- Brand -->
+        <div>
+          <div class="font-['Orbitron'] text-2xl font-black tracking-wider
+               bg-gradient-to-r from-[#00d4ff] to-[#39ff14]
+               bg-clip-text text-transparent mb-3">
+            DR. STONE
+          </div>
+          <p class="text-sm text-[#6b7a99] leading-relaxed max-w-xs">
+            Fan website không chính thức về anime Dr. Stone.
+            Khoa học là sức mạnh — Senku Ishigami.
+          </p>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-col items-start md:items-end gap-2">
+          <a href="#hero"       class="font-['Rajdhani'] text-sm font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#00d4ff] transition-colors duration-200">Trang Chủ</a>
+          <a href="#characters" class="font-['Rajdhani'] text-sm font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#00d4ff] transition-colors duration-200">Nhân Vật</a>
+          <a href="cactapphim.html" class="font-['Rajdhani'] text-sm font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#39ff14] transition-colors duration-200">Tập Phim (4 Mùa)</a>
+          <a href="danhgia.html" class="font-['Rajdhani'] text-sm font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#00d4ff] transition-colors duration-200">Đánh Giá</a>
+          <a href="loitrian.html" class="font-['Rajdhani'] text-sm font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#00d4ff] transition-colors duration-200">Lời Tri Ân</a>
+        </div>
+      </div>
+
+      <div class="pt-5 border-t border-white/5 flex flex-col sm:flex-row
+           justify-between items-center gap-3">
+        <p class="text-[0.72rem] text-[#3d4f6e]">
+          © 2025 <span class="text-[#39ff14] font-semibold">Lê Quốc Cường</span> — unitop.vn.
+          Website fan, không phải chính thức.
+        </p>
+        <p class="text-[0.72rem] text-[#3d4f6e]">MB Bank: 0969839241</p>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /#app -->
+
+
+<!-- ═══════════════════════════════════════════
+     VIDEO MODAL
+     ═══════════════════════════════════════════ -->
+<div id="trailer-modal"
+     class="modal fixed inset-0 z-[9998] flex items-center justify-center p-4 md:p-8
+            bg-black/85 backdrop-blur-md
+            opacity-0 invisible pointer-events-none">
+  <div class="modal-inner relative w-full max-w-4xl aspect-video rounded-2xl overflow-hidden
+       shadow-[0_32px_80px_rgba(0,0,0,0.85)] scale-90">
+    <iframe id="modal-iframe" src="" allow="autoplay; encrypted-media; fullscreen"
+            class="w-full h-full border-0" title="Dr. Stone Trailer"></iframe>
+    <button id="modal-close"
+            class="absolute -top-12 right-0 w-10 h-10 rounded-full
+                   bg-white/15 hover:bg-white/30 flex items-center justify-center
+                   text-white text-lg transition-colors duration-200"
+            aria-label="Đóng">✕</button>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     CONTINUE WATCHING CHIP
+     ═══════════════════════════════════════════ -->
+<div id="continue-chip"
+     class="continue-chip fixed bottom-5 right-5 z-[500] hidden
+            max-w-[260px] p-4 rounded-xl
+            bg-white/[0.06] backdrop-blur-xl
+            border border-[#00d4ff]/25
+            shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+  <p class="text-[0.6rem] tracking-[0.2em] uppercase text-[#39ff14] font-bold mb-1">
+    Tiếp tục xem
+  </p>
+  <p id="continue-title"
+     class="font-['Rajdhani'] text-sm font-bold text-[#e8f4f8] mb-3 leading-snug"></p>
+  <a id="continue-link" href="#episodes"
+     class="block w-full text-center py-2 rounded-lg text-xs font-bold uppercase tracking-wider
+            font-['Rajdhani'] bg-[#00d4ff] text-black
+            hover:bg-[#39ff14] transition-colors duration-200">
+    Xem Ngay
+  </a>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SCIENCE SCROLL HUD ("10 TỶ % KHOA HỌC")
+     ═══════════════════════════════════════════ -->
+<div id="science-hud" class="fixed right-4 bottom-8 z-40 hidden md:flex flex-col items-center gap-2 pointer-events-none transition-all duration-300">
+  <!-- Test Tube Indicator -->
+  <div class="relative w-6 h-24 rounded-full border-2 border-[#00d4ff]/40 bg-black/70 backdrop-blur-md p-1 overflow-hidden shadow-[0_0_15px_rgba(0,212,255,0.25)]">
+    <!-- Liquid fill -->
+    <div id="hud-liquid" class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-[#00d4ff] via-[#39ff14] to-[#00ffff] rounded-b-full transition-all duration-150" style="height: 0%;">
+      <!-- Bubble animation -->
+      <div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_50%_20%,#fff_15%,transparent_30%)] animate-pulse"></div>
+    </div>
+    <!-- Measurement lines -->
+    <div class="absolute inset-y-2 right-1 w-1 flex flex-col justify-between opacity-60 text-[5px] font-mono text-[#00d4ff]">
+      <span>-</span><span>-</span><span>-</span><span>-</span><span>-</span>
+    </div>
+  </div>
+
+  <!-- Percent badge -->
+  <div class="bg-[#050810]/95 border border-[#00d4ff]/30 px-2.5 py-1 rounded-full text-center shadow-[0_0_12px_rgba(0,212,255,0.25)]">
+    <span class="block text-[0.52rem] font-['Rajdhani'] font-bold tracking-widest text-[#39ff14] uppercase">NITAL</span>
+    <span id="hud-percent" class="font-['Orbitron'] font-black text-xs text-[#00d4ff] tracking-tight">0%</span>
+  </div>
+</div>
+
+<!-- Element Modal Popup -->
+<div id="element-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-opacity">
+  <div id="element-modal-content"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCRIPTS
+     ═══════════════════════════════════════════ -->
+
+<!-- Three.js particle + model (ES module) -->
+<script type="module" src="js/particles.js"></script>
+
+<!-- Three.js CSS3D Periodic Table (ES module) -->
+<script type="module" src="js/periodic-table.js"></script>
+
+<!-- App logic (defer, uses GSAP/Lenis globals) -->
+<script src="js/episodes.js" defer></script>
+<script src="js/main.js" defer></script>
+
+<!-- Visitor Tracker (Telegram / Discord Webhook) -->
+<script src="js/visitor-tracker.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng Nhập & Gia Nhập Vương Quốc Khoa Học — Dr. Stone</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cinzel:wght@600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/custom.css">
+  <style>
+    :root {
+      --bg-dark: #050810;
+      --card-bg: rgba(10, 16, 30, 0.75);
+      --neon-cyan: #00d2ff;
+      --neon-emerald: #00f5a0;
+      --neon-amber: #f6ad55;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(0, 210, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 80%, rgba(0, 245, 160, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 50% 50%, rgba(5, 8, 16, 0.95) 0%, #03050a 100%);
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient glow elements */
+    .ambient-glow {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ambient-1 {
+      top: -100px;
+      left: -100px;
+      background: rgba(0, 210, 255, 0.15);
+    }
+    .ambient-2 {
+      bottom: -100px;
+      right: -100px;
+      background: rgba(0, 245, 160, 0.12);
+    }
+
+    /* Portal Card */
+    .portal-container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 460px;
+      background: var(--card-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(0, 210, 255, 0.25);
+      border-radius: 20px;
+      padding: 36px 32px;
+      box-shadow: 
+        0 20px 50px rgba(0, 0, 0, 0.6),
+        0 0 30px rgba(0, 210, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      animation: cardAppear 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* Top Logo & Tag */
+    .portal-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .badge-science {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      background: rgba(0, 210, 255, 0.1);
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      color: var(--neon-cyan);
+      margin-bottom: 12px;
+    }
+
+    .portal-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .portal-subtitle {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    /* Google Button */
+    .btn-google {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: #ffffff;
+      color: #1f2937;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid #e5e7eb;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+    }
+
+    .btn-google:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 210, 255, 0.25);
+    }
+
+    .btn-google svg {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Divider */
+    .divider {
+      display: flex;
+      align-items: center;
+      margin: 24px 0;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .divider::before, .divider::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .divider span {
+      padding: 0 12px;
+    }
+
+    /* Input Groups */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .form-input {
+      width: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 14px;
+      color: #fff;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .form-input:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.18);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    .form-input::placeholder {
+      color: #64748b;
+    }
+
+    /* Action Buttons */
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, #00d2ff 0%, #00f5a0 100%);
+      color: #030712;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 20px;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 18px rgba(0, 210, 255, 0.35);
+      letter-spacing: 0.02em;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(0, 245, 160, 0.5);
+    }
+
+    /* Links Footer */
+    .portal-footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+
+    .portal-footer a {
+      color: var(--neon-cyan);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .portal-footer a:hover {
+      color: var(--neon-emerald);
+      text-decoration: underline;
+    }
+
+    .back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #64748b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-home:hover {
+      color: #cbd5e1;
+    }
+
+    /* Notification Alert */
+    #statusAlert {
+      display: none;
+      margin-top: 16px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      line-height: 1.4;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow ambient-1"></div>
+  <div class="ambient-glow ambient-2"></div>
+
+  <!-- Main Login Card -->
+  <div class="portal-container">
+    <div class="portal-header">
+      <div class="badge-science">
+        <span>⚡</span> CỔNG XÁC THỰC CƯ DÂN
+      </div>
+      <h1 class="portal-title">Vương Quốc Khoa Học</h1>
+      <p class="portal-subtitle">Thức tỉnh sau 3.700 năm hóa đá — Nhận thẻ căn cước cư dân kỹ thuật số</p>
+    </div>
+
+    <!-- 1. Google Account Sign-In -->
+    <button type="button" class="btn-google" id="btnGoogleSignIn" onclick="handleGoogleSignIn()">
+      <!-- Official Google "G" Multi-Color SVG -->
+      <svg viewBox="0 0 24 24">
+        <path fill="#4285F4" d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"/>
+        <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.29 21.36 7.37 24 12 24z"/>
+        <path fill="#FBBC05" d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.94 0 12s.46 3.84 1.26 5.42l4.02-3.15z"/>
+        <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.37 0 3.29 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"/>
+      </svg>
+      Tiếp tục với Google
+    </button>
+
+    <div class="divider">
+      <span>Hoặc đăng nhập mật mã</span>
+    </div>
+
+    <!-- 2. Traditional Form -->
+    <form id="authForm" onsubmit="handleFormSubmit(event)">
+      <div class="form-group">
+        <label class="form-label" for="username">Mã Định Danh / Tên Cư Dân</label>
+        <div class="input-wrapper">
+          <input type="text" id="username" class="form-input" placeholder="Ví dụ: Senku, Chrome, Kohaku..." required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">Mật Mã Phục Sinh</label>
+        <div class="input-wrapper">
+          <input type="password" id="password" class="form-input" placeholder="••••••••••••" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-submit" id="btnSubmit">
+        ĐĂNG NHẬP VƯƠNG QUỐC ➜
+      </button>
+    </form>
+
+    <div id="statusAlert"></div>
+
+    <div class="portal-footer">
+      <p id="toggleText">Chưa có Thẻ Căn Cước? <a href="javascript:void(0)" onclick="toggleMode()">Đăng ký gia nhập</a></p>
+      <a href="index.html" class="back-home">
+        ← Quay lại Trang Chủ Vương Quốc Khoa Học
+      </a>
+    </div>
+  </div>
+
+  <!-- Logic & Google Integration Placeholder -->
+  <script>
+    let isRegisterMode = false;
+
+    function toggleMode() {
+      isRegisterMode = !isRegisterMode;
+      const title = document.querySelector('.portal-title');
+      const submitBtn = document.getElementById('btnSubmit');
+      const toggleText = document.getElementById('toggleText');
+
+      if (isRegisterMode) {
+        title.textContent = "Gia Nhập Vương Quốc";
+        submitBtn.textContent = "TẠO THẺ CĂN CƯỚC MỚI ➜";
+        toggleText.innerHTML = `Đã có Thẻ Căn Cước? <a href="javascript:void(0)" onclick="toggleMode()">Đăng nhập ngay</a>`;
+      } else {
+        title.textContent = "Vương Quốc Khoa Học";
+        submitBtn.textContent = "ĐĂNG NHẬP VƯƠNG QUỐC ➜";
+        toggleText.innerHTML = `Chưa có Thẻ Căn Cước? <a href="javascript:void(0)" onclick="toggleMode()">Đăng ký gia nhập</a>`;
+      }
+    }
+
+    function showAlert(message, isSuccess = true) {
+      const alert = document.getElementById('statusAlert');
+      alert.style.display = 'block';
+      alert.style.backgroundColor = isSuccess ? 'rgba(0, 245, 160, 0.15)' : 'rgba(239, 68, 68, 0.15)';
+      alert.style.border = isSuccess ? '1px solid #00f5a0' : '1px solid #ef4444';
+      alert.style.color = isSuccess ? '#00f5a0' : '#ef4444';
+      alert.innerHTML = message;
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const user = document.getElementById('username').value.trim();
+      if (!user) return;
+
+      showAlert(`🧪 <b>Chào mừng cư dân ${user}!</b> Đang kết nối mạng lưới khoa học...`, true);
+      localStorage.setItem('drstone_current_user', JSON.stringify({ name: user, faction: 'Vương Quốc Khoa Học' }));
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 1200);
+    }
+
+    function handleGoogleSignIn() {
+      showAlert(`🧪 <b>Đăng nhập bằng Google Account:</b><br>Hệ thống đã sẵn sàng kết nối Google OAuth 2.0 Client! Bạn có thể thêm Client ID khi triển khai chính thức.`, true);
+    }
+  </script>
+
+  <!-- Visitor Tracker -->
+  <script src="js/visitor-tracker.js" defer></script>
+</body>
+</html>
