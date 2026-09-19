@@ -27,6 +27,7 @@ export default defineConfig({
         dangnhap:        'dangnhap.html',
         tongquannhanvat: 'tongquannhanvat.html',
         loitrian:        'loitrian.html',
+        khoahoc3d:       'khoahoc3d.html',
       }
     }
   },

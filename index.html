@@ -841,90 +841,48 @@
 
 
   <!-- ─────────────────────────────────────────
-       SECTION: SCIENCE LAB (3D Periodic Table)
+       SECTION: SCIENCE LAB (3D Periodic Table - Tinh Gọn)
        ───────────────────────────────────────── -->
-  <section id="science-lab" class="relative py-16 px-4 max-w-[1500px] mx-auto overflow-hidden">
+  <section id="science-lab" class="relative py-20 px-4 max-w-[1500px] mx-auto overflow-hidden">
     <!-- Section Header -->
-    <div class="text-center mb-6" data-reveal>
+    <div class="text-center mb-8" data-reveal>
       <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 text-[0.72rem] font-['Rajdhani'] font-bold tracking-[0.25em] uppercase text-[#00e5ff] mb-3">
         <span class="w-1.5 h-1.5 rounded-full bg-[#00e5ff] animate-ping"></span>
         Kho Vũ Khí Nguyên Tố 3D
       </span>
       <h2 class="font-['Orbitron'] font-black text-[clamp(1.8rem,3.5vw,2.8rem)] mb-2 text-[#e8f4f8]">
-        Phòng Thí Nghiệm Của Senku
+        Bảng Nguyên Tố Hóa Học 3D
       </h2>
-      <p class="font-['Rajdhani'] text-sm md:text-base text-[#94a3b8] max-w-2xl mx-auto mb-5">
-        Kéo chuột xoay 360°, chọn dự án phát minh bên dưới để làm nổi bật các nguyên tố cấu thành!
-      </p>
-
-      <!-- 1. Morph & Camera Controls Bar -->
-      <div class="flex flex-wrap items-center justify-center gap-2 mb-4">
-        <div class="flex items-center gap-1.5 bg-white/5 p-1 rounded-xl border border-white/10">
-          <button id="btn-pt-table" class="px-4 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-[#00e5ff] text-black shadow-[0_0_15px_rgba(0,229,255,0.5)] transition-all hover:scale-105 cursor-pointer">
-            📄 Bảng Phẳng
-          </button>
-          <button id="btn-pt-sphere" class="px-4 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
-            🌐 Quả Cầu
-          </button>
-          <button id="btn-pt-helix" class="px-4 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
-            🧬 Xoắn Ốc
-          </button>
-          <button id="btn-pt-grid" class="px-4 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
-            🧊 Ma Trận
-          </button>
-        </div>
-
-        <!-- Zoom & Reset -->
-        <div class="flex items-center gap-1 bg-white/5 p-1 rounded-xl border border-white/10">
-          <button id="btn-pt-zoom-in" class="px-3 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs bg-white/5 hover:bg-white/15 text-white transition-all cursor-pointer" title="Phóng to">
-            🔍 +
-          </button>
-          <button id="btn-pt-zoom-out" class="px-3 py-1.5 rounded-lg font-['Rajdhani'] font-bold text-xs bg-white/5 hover:bg-white/15 text-white transition-all cursor-pointer" title="Thu nhỏ">
-            🔍 −
-          </button>
-          <button id="btn-pt-reset" class="px-3 py-1.5 rounded-lg font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider text-[#94a3b8] hover:text-[#00e5ff] transition-all cursor-pointer" title="Góc nhìn chuẩn">
-            ↺ Reset
-          </button>
-        </div>
-      </div>
-
-      <!-- 2. Senku Project Roadmap Filters -->
-      <div class="flex flex-wrap items-center justify-center gap-2 max-w-4xl mx-auto">
-        <span class="text-xs font-['Rajdhani'] uppercase tracking-widest text-[#64748b] mr-1 hidden sm:inline">Dự án Senku:</span>
-        <button data-project-filter="all" class="active px-3 py-1 rounded-lg border border-[#fbbf24] text-[#fbbf24] bg-[#fbbf24]/15 font-['Rajdhani'] font-bold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
-          Tất cả 118
-        </button>
-        <button data-project-filter="revival" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
-          🧪 Nước Hồi Sinh
-        </button>
-        <button data-project-filter="sulfa" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
-          💊 Kháng Sinh Sulfa
-        </button>
-        <button data-project-filter="dynamo" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
-          ⚡ Máy Phát Điện
-        </button>
-        <button data-project-filter="bulb" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
-          💡 Bóng Đèn Vonfram
-        </button>
-        <button data-project-filter="phone" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
-          📡 Máy Truyền Tin
-        </button>
-        <button data-project-filter="platinum" class="px-3 py-1 rounded-lg border border-white/10 text-[#94a3b8] hover:border-[#fbbf24] hover:text-[#fbbf24] font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider transition-all hover:scale-105 cursor-pointer">
-          ⚗️ Cỗ Máy Bạch Kim
-        </button>
-      </div>
-
-      <!-- Project detail notification bar -->
-      <div id="project-filter-info" class="mt-2 min-h-[32px] flex items-center justify-center"></div>
-
-      <!-- Interaction Tip -->
-      <p class="text-center text-[0.72rem] font-['Rajdhani'] text-[#64748b] mt-1 mb-2">
-        💡 <span class="text-[#00e5ff] font-semibold">Rê chuột vào trong khung:</span> Lăn chuột để Zoom In / Zoom Out 3D &bull; <span class="text-[#cbd5e1] font-semibold">Rê chuột ra ngoài lề:</span> Cuộn trang web tự nhiên
+      <p class="font-['Rajdhani'] text-sm md:text-base text-[#94a3b8] max-w-2xl mx-auto">
+        Trực quan hóa 118 nguyên tố trong không gian 3D. Nhấp chuột vào bảng để chuyển đổi hình thái!
       </p>
     </div>
 
-    <!-- 3D Periodic Table Viewport (500px cao tinh gon, max-w-5xl co khoang le rong rai) -->
-    <div id="pt-container" class="rounded-2xl border border-[#00e5ff]/25 shadow-[0_0_50px_rgba(0,0,0,0.9)]">
+    <!-- 3D Periodic Table Viewport (Không nút bấm rườm rà, nhấp chuột để đổi chế độ) -->
+    <div class="relative rounded-3xl overflow-hidden border border-[#00e5ff]/25 bg-[#0a0f1e]/80 backdrop-blur-xl shadow-[0_0_50px_rgba(0,0,0,0.9)] max-w-6xl mx-auto">
+      <!-- Mode Badge Indicator -->
+      <div id="pt-mode-badge" class="absolute top-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#050810]/85 border border-[#00e5ff]/40 text-xs font-['Rajdhani'] font-bold text-[#00e5ff] backdrop-blur-md cursor-pointer hover:border-[#00e5ff] hover:bg-[#00e5ff]/15 transition-all shadow-[0_0_20px_rgba(0,229,255,0.25)] select-none">
+        <span class="w-2 h-2 rounded-full bg-[#00e5ff] animate-ping"></span>
+        <span id="pt-mode-text">🔮 Quả Cầu Nguyên Tố 3D</span>
+        <span class="text-[#94a3b8] font-normal hidden sm:inline">• Nhấp chuột để đổi hình thái</span>
+      </div>
+
+      <!-- Canvas container -->
+      <div id="pt-container" class="relative w-full h-[540px] sm:h-[620px] cursor-pointer active:cursor-grabbing bg-radial from-[#071326] via-[#050814] to-[#02040a] select-none">
+        <!-- Instruction bottom badge -->
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-10 px-4 py-1.5 rounded-full bg-[#050810]/80 border border-white/10 text-[0.7rem] font-['Rajdhani'] text-[#94a3b8] backdrop-blur-md text-center whitespace-nowrap">
+          🖱️ Nhấp chuột để đổi: Quả Cầu ➜ Xoắn Ốc ➜ Ma Trận ➜ Bảng Phẳng • Kéo xoay 360° • Lăn chuột phóng to
+        </div>
+      </div>
+    </div>
+
+    <!-- Nút Chi Tiết & Bách Khoa Phát Minh Dẫn Sang Trang Riêng -->
+    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 text-center" data-reveal>
+      <a href="khoahoc3d.html"
+         class="group inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-['Orbitron'] font-bold text-xs sm:text-sm tracking-wider text-black bg-gradient-to-r from-[#00e5ff] via-[#38bdf8] to-[#39ff14] hover:shadow-[0_0_35px_rgba(0,229,255,0.6)] hover:scale-105 transition-all duration-300 cursor-pointer">
+        <span>🧪 KHÁM PHÁ CHI TIẾT 118 NGUYÊN TỐ & BÁCH KHOA PHÁT MINH</span>
+        <span class="group-hover:translate-x-1 transition-transform text-lg">➜</span>
+      </a>
     </div>
   </section>
 

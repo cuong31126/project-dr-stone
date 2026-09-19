@@ -17,13 +17,38 @@ let currentLayout = 'table';
 // Dự án của Senku và các nguyên tố cấu thành
 const SENKU_PROJECTS = {
   'all': null,
-  'revival': { name: 'Nước Hồi Sinh', elements: ['H', 'C', 'N', 'O'], formula: 'HNO₃ + C₂H₅OH' },
-  'sulfa': { name: 'Thuốc Sulfa Cứu Ruri', elements: ['S', 'Cl', 'Na', 'C', 'H', 'N', 'O'], formula: 'H₂SO₄ + NaCl + NaOH + Aniline' },
-  'dynamo': { name: 'Máy Phát Điện & Sắt', elements: ['Fe', 'Cu', 'Zn'], formula: 'Đồng Cu + Sắt Fe + Kẽm Zn' },
-  'bulb': { name: 'Bóng Đèn Khai Phá Màn Đêm', elements: ['W', 'P', 'Si', 'C'], formula: 'Sợi Vonfram W + Thủy Tinh SiO₂ + Photpho P' },
-  'phone': { name: 'Máy Truyền Tin Vô Tuyến', elements: ['Ag', 'Cu', 'W', 'K', 'Na'], formula: 'Màng Rung Bạc Ag + Muối Rochelle' },
-  'platinum': { name: 'Cỗ Máy Hồi Sinh Vô Hạn', elements: ['Pt', 'N', 'H', 'O'], formula: 'Xúc Tác Bạch Kim Pt (NH₃ → HNO₃)' }
+  'revival': { name: 'Nước Hồi Sinh', elements: ['H', 'C', 'N', 'O'], formula: 'HNO₃ + C₂H₅OH', desc: 'Dung dịch Axit Nitric kết hợp cồn chưng cất, phá vỡ liên kết hóa thạch bề mặt giải phóng con người.' },
+  'sulfa': { name: 'Thuốc Sulfa Cứu Ruri', elements: ['S', 'Cl', 'Na', 'C', 'H', 'N', 'O'], formula: 'H₂SO₄ + NaCl + NaOH + Aniline', desc: 'Liều kháng sinh vĩ đại cứu sống nữ pháp sư Ruri khỏi căn bệnh viêm phổi mãn tính.' },
+  'dynamo': { name: 'Máy Phát Điện & Sắt', elements: ['Fe', 'Cu', 'Zn'], formula: 'Đồng Cu + Sắt Fe + Kẽm Zn', desc: 'Trái tim thắp sáng màn đêm tiền sử và sản xuất dòng điện vô tận.' },
+  'bulb': { name: 'Bóng Đèn Vonfram', elements: ['W', 'P', 'Si', 'C'], formula: 'Sợi Vonfram W + Thủy Tinh SiO₂ + Photpho P', desc: 'Thắp sáng bóng tối 3.700 năm, mở ra kỷ nguyên văn minh ánh sáng hiện đại.' },
+  'lightbulb': { name: 'Bóng Đèn Vonfram', elements: ['W', 'P', 'Si', 'C'], formula: 'Sợi Vonfram W + Thủy Tinh SiO₂ + Photpho P', desc: 'Thắp sáng bóng tối 3.700 năm, mở ra kỷ nguyên văn minh ánh sáng hiện đại.' },
+  'phone': { name: 'Máy Truyền Tin Vô Tuyến', elements: ['Ag', 'Cu', 'W', 'K', 'Na'], formula: 'Màng Rung Bạc Ag + Muối Rochelle', desc: 'Điện thoại vô tuyến cự ly xa kết nối chiến lược đè bẹp Đế Chế Tsukasa không đổ máu.' },
+  'perseus': { name: 'Chiến Hạm Perseus & Động Cơ', elements: ['Fe', 'C', 'Cu', 'Zn', 'Ni'], formula: 'Thép Hợp Kim + Động Cơ Hơi Nước & Xăng', desc: 'Chiến hạm khoa học viễn chinh vượt Thái Bình Dương tìm nguồn gốc hóa đá.' },
+  'platinum': { name: 'Cỗ Máy Hồi Sinh Vô Hạn', elements: ['Pt', 'N', 'H', 'O'], formula: 'Xúc Tác Bạch Kim Pt (NH₃ → HNO₃)', desc: 'Xúc tác điều chế vô tận Axit Nitric từ phân chim và amoniac.' }
 };
+
+const LAYOUT_CYCLE = ['sphere', 'helix', 'grid', 'table'];
+
+export function cycleNextLayout() {
+  const currentIdx = LAYOUT_CYCLE.indexOf(currentLayout);
+  const nextIdx = (currentIdx + 1) % LAYOUT_CYCLE.length;
+  const nextMode = LAYOUT_CYCLE[nextIdx];
+  currentLayout = nextMode;
+  transform(targets[nextMode], 1.4);
+  updateModeBadge(nextMode);
+}
+
+function updateModeBadge(mode) {
+  const modeText = document.getElementById('pt-mode-text');
+  if (!modeText) return;
+  const titles = {
+    sphere: '🔮 Quả Cầu Nguyên Tố 3D',
+    helix: '🧬 Chuỗi Xoắn Ốc DNA',
+    grid: '🧊 Ma Trận Khối 3D',
+    table: '📄 Bảng Tuần Hoàn Tiêu Chuẩn'
+  };
+  modeText.textContent = titles[mode] || mode;
+}
 
 /* ──────────────────────────────────────────
    INIT FUNCTION
@@ -60,7 +85,7 @@ export function initPeriodicTable() {
   calcHelixPositions();
   calcGridPositions();
 
-  // 5. CSS3D Renderer
+  // 5. CSS3DRenderer
   renderer = new CSS3DRenderer();
   renderer.setSize(width, height);
   container.appendChild(renderer.domElement);
@@ -77,9 +102,7 @@ export function initPeriodicTable() {
   controls.minPolarAngle = Math.PI * 0.15; // Giới hạn góc nghiêng trên, không lật đỉnh
   controls.maxPolarAngle = Math.PI * 0.82; // Giới hạn góc nghiêng dưới, không lật đáy
 
-  // 7. Xử lý Zoom chuột & Cuộn trang:
-  // - Rê chuột VÀO khung: Cho phép lăn chuột Zoom in/out, ngăn trang web bị trượt
-  // - Rê chuột RA NGOÀI: Tắt zoom, trả lại con lăn chuột để cuộn trang đi xuống
+  // 7. Xử lý Zoom chuột & Cuộn trang
   controls.enableZoom = false;
   container.addEventListener('mouseenter', () => {
     controls.enableZoom = true;
@@ -88,18 +111,53 @@ export function initPeriodicTable() {
     controls.enableZoom = false;
   });
   container.addEventListener('wheel', (e) => {
-    // Ngăn chặn cuộn trang khi con trỏ đang nằm bên trong khung 3D
     e.preventDefault();
   }, { passive: false });
 
-  // 8. Event Listeners
+  // 8. Hỗ trợ Click-to-Cycle trên trang chủ (khi không có hàng nút điều khiển)
+  const isHomepageMode = !document.getElementById('btn-pt-table');
+  if (isHomepageMode) {
+    let pointerDownPos = { x: 0, y: 0, time: 0 };
+    container.addEventListener('pointerdown', (e) => {
+      pointerDownPos = { x: e.clientX, y: e.clientY, time: Date.now() };
+    });
+    container.addEventListener('pointerup', (e) => {
+      const dx = e.clientX - pointerDownPos.x;
+      const dy = e.clientY - pointerDownPos.y;
+      const dt = Date.now() - pointerDownPos.time;
+      // Nhấp chuột nhẹ (không phải kéo xoay 3D)
+      if (Math.hypot(dx, dy) < 8 && dt < 400) {
+        cycleNextLayout();
+      }
+    });
+
+    const badge = document.getElementById('pt-mode-badge');
+    if (badge) {
+      badge.addEventListener('click', (e) => {
+        e.stopPropagation();
+        cycleNextLayout();
+      });
+    }
+  }
+
+  // 9. Event Listeners
   setupLayoutButtons();
   setupZoomButtons();
   setupProjectFilterButtons();
   setupResize(container);
 
-  // Initial animation to table layout
-  transform(targets.table, 1.8);
+  // Initial layout:
+  // - Nếu là trang chủ: Bắt đầu từ 'sphere' (Quả cầu 3D) như yêu cầu của người dùng
+  // - Nếu là trang chi tiết: Bắt đầu từ 'table' (Bảng tuần hoàn phẳng chuẩn)
+  if (isHomepageMode) {
+    currentLayout = 'sphere';
+    transform(targets.sphere, 1.8);
+    updateModeBadge('sphere');
+  } else {
+    currentLayout = 'table';
+    transform(targets.table, 1.8);
+    updateModeBadge('table');
+  }
 
   // Render loop
   function animate() {
@@ -135,10 +193,16 @@ function createElementDOM(item, index) {
     <div class="pt-mass">${item.mass}</div>
   `;
 
-  // Click event: mở modal chi tiết
+  // Click event:
+  // - Trên trang chủ (không có nút bấm): Nhấp chuột chuyển tuần hoàn chế độ
+  // - Trên trang chi tiết (khoahoc3d.html): Mở modal tra cứu chi tiết nguyên tố
   el.addEventListener('click', (e) => {
     e.stopPropagation();
-    openElementModal(item);
+    if (!document.getElementById('btn-pt-table')) {
+      cycleNextLayout();
+    } else {
+      openElementModal(item);
+    }
   });
 
   return el;
@@ -360,6 +424,7 @@ function applyProjectFilter(projKey) {
 
   // Display project info bar
   if (infoBar) {
+    infoBar.classList.remove('hidden');
     infoBar.innerHTML = `
       <div class="inline-flex flex-wrap items-center justify-center gap-2 md:gap-3 px-4 py-2 rounded-xl bg-[#fbbf24]/10 border border-[#fbbf24]/40 text-[#fbbf24] font-['Rajdhani'] text-xs md:text-sm font-bold shadow-[0_0_20px_rgba(251,191,36,0.2)]">
         <span>⚡ Dự án: <strong>${project.name}</strong></span>
