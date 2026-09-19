@@ -29,13 +29,76 @@ const SENKU_PROJECTS = {
 
 const LAYOUT_CYCLE = ['sphere', 'helix', 'grid', 'table'];
 
+export function switchLayout(mode) {
+  currentLayout = mode;
+
+  // 1. Transform positions & rotations with GSAP
+  transform(targets[mode], 1.4);
+
+  // 2. Camera perspective transition
+  // Khi sang 'table': Bắt buộc chuyển camera về chính diện (0, 0, 2700) và target (0, 0, 0)
+  // Ngăn chặn tình trạng bảng tuần hoàn 2D bị nhìn ngang cạnh biến thành 1 đường chỉ mỏng!
+  const configs = {
+    table:  { x: 0, y: 0, z: 2700, targetX: 0, targetY: 0, targetZ: 0, minAz: -Math.PI * 0.28, maxAz: Math.PI * 0.28 },
+    sphere: { x: 0, y: 0, z: 2150, targetX: 0, targetY: 0, targetZ: 0, minAz: -Infinity, maxAz: Infinity },
+    helix:  { x: 0, y: 50, z: 2350, targetX: 0, targetY: 0, targetZ: 0, minAz: -Infinity, maxAz: Infinity },
+    grid:   { x: 0, y: 0, z: 2550, targetX: 0, targetY: 0, targetZ: 0, minAz: -Infinity, maxAz: Infinity }
+  };
+
+  const cfg = configs[mode] || configs.table;
+
+  if (controls) {
+    controls.minAzimuthAngle = cfg.minAz;
+    controls.maxAzimuthAngle = cfg.maxAz;
+  }
+
+  if (window.gsap && camera && controls) {
+    window.gsap.to(camera.position, {
+      x: cfg.x,
+      y: cfg.y,
+      z: cfg.z,
+      duration: 1.2,
+      ease: 'power2.inOut',
+      onUpdate: () => controls.update()
+    });
+    window.gsap.to(controls.target, {
+      x: cfg.targetX,
+      y: cfg.targetY,
+      z: cfg.targetZ,
+      duration: 1.2,
+      ease: 'power2.inOut',
+      onUpdate: () => controls.update()
+    });
+  } else if (camera && controls) {
+    camera.position.set(cfg.x, cfg.y, cfg.z);
+    controls.target.set(cfg.targetX, cfg.targetY, cfg.targetZ);
+    controls.update();
+  }
+
+  // 3. Cập nhật trạng thái nút bấm nếu có
+  const modes = ['table', 'sphere', 'helix', 'grid'];
+  modes.forEach(m => {
+    const btn = document.getElementById(`btn-pt-${m}`);
+    if (btn) {
+      if (m === mode) {
+        btn.classList.remove('bg-white/5', 'text-[#94a3b8]');
+        btn.classList.add('bg-[#00e5ff]', 'text-black', 'shadow-[0_0_20px_rgba(0,229,255,0.5)]');
+      } else {
+        btn.classList.remove('bg-[#00e5ff]', 'text-black', 'shadow-[0_0_20px_rgba(0,229,255,0.5)]');
+        btn.classList.add('bg-white/5', 'text-[#94a3b8]');
+      }
+    }
+  });
+
+  // 4. Cập nhật badge hiển thị
+  updateModeBadge(mode);
+}
+
 export function cycleNextLayout() {
   const currentIdx = LAYOUT_CYCLE.indexOf(currentLayout);
   const nextIdx = (currentIdx + 1) % LAYOUT_CYCLE.length;
   const nextMode = LAYOUT_CYCLE[nextIdx];
-  currentLayout = nextMode;
-  transform(targets[nextMode], 1.4);
-  updateModeBadge(nextMode);
+  switchLayout(nextMode);
 }
 
 function updateModeBadge(mode) {
@@ -147,22 +210,78 @@ export function initPeriodicTable() {
   setupResize(container);
 
   // Initial layout:
-  // - Nếu là trang chủ: Bắt đầu từ 'sphere' (Quả cầu 3D) như yêu cầu của người dùng
+  // - Nếu là trang chủ: Bắt đầu từ 'sphere' (Quả cầu 3D)
   // - Nếu là trang chi tiết: Bắt đầu từ 'table' (Bảng tuần hoàn phẳng chuẩn)
   if (isHomepageMode) {
-    currentLayout = 'sphere';
-    transform(targets.sphere, 1.8);
-    updateModeBadge('sphere');
+    switchLayout('sphere');
   } else {
-    currentLayout = 'table';
-    transform(targets.table, 1.8);
-    updateModeBadge('table');
+    switchLayout('table');
+  }
+
+  // 10. Dynamic Depth Visibility & Anti-Aliasing:
+  // Ngăn chặn các chất ở mặt sau hình cầu/xoắn ốc chồng chéo ngược làm vỡ nét
+  function updateElementVisibility() {
+    if (currentLayout !== 'sphere' && currentLayout !== 'helix') {
+      for (let i = 0; i < objects.length; i++) {
+        const el = elementDomList[i]?.el;
+        if (el && !el.classList.contains('is-dimmed')) {
+          el.style.opacity = '1';
+          el.style.filter = 'none';
+          el.style.pointerEvents = 'auto';
+        }
+      }
+      return;
+    }
+
+    const camPos = camera.position;
+    for (let i = 0; i < objects.length; i++) {
+      const obj = objects[i];
+      const el = elementDomList[i]?.el;
+      if (!el || el.classList.contains('is-dimmed')) continue;
+
+      const toCamX = camPos.x - obj.position.x;
+      const toCamY = camPos.y - obj.position.y;
+      const toCamZ = camPos.z - obj.position.z;
+
+      if (currentLayout === 'sphere') {
+        // Tích vô hướng giữa vector pháp tuyến bề mặt (obj.position) và hướng về camera
+        const dot = obj.position.x * toCamX + obj.position.y * toCamY + obj.position.z * toCamZ;
+        if (dot < -120) {
+          // Nằm ở mặt sau quả cầu: Giảm mờ nhẹ để không đè chữ ngược làm rối mắt
+          el.style.opacity = '0.12';
+          el.style.filter = 'blur(0.8px)';
+          el.style.pointerEvents = 'none';
+        } else if (dot < 350) {
+          // Nằm ở rìa đường chân trời quả cầu
+          el.style.opacity = '0.65';
+          el.style.filter = 'none';
+          el.style.pointerEvents = 'auto';
+        } else {
+          // Nằm ở mặt trước hướng thẳng về camera: Cực kỳ sắc nét và sáng rõ
+          el.style.opacity = '1';
+          el.style.filter = 'none';
+          el.style.pointerEvents = 'auto';
+        }
+      } else if (currentLayout === 'helix') {
+        const distSq = toCamX * toCamX + toCamY * toCamY + toCamZ * toCamZ;
+        if (distSq > 9000000) { // Khoảng cách > 3000
+          el.style.opacity = '0.25';
+          el.style.filter = 'blur(0.6px)';
+          el.style.pointerEvents = 'none';
+        } else {
+          el.style.opacity = '1';
+          el.style.filter = 'none';
+          el.style.pointerEvents = 'auto';
+        }
+      }
+    }
   }
 
   // Render loop
   function animate() {
     requestAnimationFrame(animate);
     controls.update();
+    updateElementVisibility();
     renderer.render(scene, camera);
   }
   animate();
@@ -309,20 +428,7 @@ function setupLayoutButtons() {
     const btn = document.getElementById(`btn-pt-${mode}`);
     if (!btn) return;
     btn.addEventListener('click', () => {
-      if (currentLayout === mode) return;
-      currentLayout = mode;
-
-      modes.forEach(m => {
-        const b = document.getElementById(`btn-pt-${m}`);
-        if (b) {
-          b.classList.remove('bg-[#00e5ff]', 'text-black', 'shadow-[0_0_20px_rgba(0,229,255,0.5)]');
-          b.classList.add('bg-white/5', 'text-[#94a3b8]');
-        }
-      });
-      btn.classList.remove('bg-white/5', 'text-[#94a3b8]');
-      btn.classList.add('bg-[#00e5ff]', 'text-black', 'shadow-[0_0_20px_rgba(0,229,255,0.5)]');
-
-      transform(targets[mode], 1.4);
+      switchLayout(mode);
     });
   });
 }

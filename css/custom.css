@@ -300,14 +300,14 @@
   outline: none !important;
 }
 
-/* Crisp rendering */
+/* Crisp 3D Element Rendering */
 .pt-element {
   width: 122px;
   height: 146px;
   box-sizing: border-box;
-  background: #0b1326;
-  border: 1.5px solid rgba(0, 212, 255, 0.35);
-  border-radius: 8px;
+  background: #081124;
+  border: 1.5px solid rgba(0, 212, 255, 0.4);
+  border-radius: 9px;
   text-align: center;
   cursor: pointer;
   display: flex;
@@ -316,46 +316,45 @@
   justify-content: center;
   padding: 6px 4px;
   position: relative;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, opacity 0.3s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
+  user-select: none;
 }
 
 .pt-element:hover {
-  background: #111f3d !important;
+  background: #0e1e3d !important;
   border-color: #00e5ff !important;
-  box-shadow: 0 0 25px rgba(0, 229, 255, 0.7), inset 0 0 15px rgba(0, 229, 255, 0.2) !important;
-  transform: scale(1.12) translateZ(10px);
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.7), inset 0 0 15px rgba(0, 229, 255, 0.25) !important;
   z-index: 50;
 }
 
 /* Senku key element */
 .pt-element.is-senku {
   border-color: #00e5ff !important;
-  background: #091a33;
-  box-shadow: 0 0 16px rgba(0, 229, 255, 0.35), inset 0 0 10px rgba(0, 229, 255, 0.1);
+  background: #0a1b36;
+  box-shadow: 0 0 16px rgba(0, 229, 255, 0.4), inset 0 0 10px rgba(0, 229, 255, 0.15);
 }
 
 .pt-element.is-senku:hover {
   border-color: #38bdf8 !important;
-  box-shadow: 0 0 35px rgba(56, 189, 248, 0.8), inset 0 0 15px rgba(56, 189, 248, 0.3) !important;
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.85), inset 0 0 15px rgba(56, 189, 248, 0.3) !important;
 }
 
 /* Trang thai loc du an: Cac nguyen to khac van thay ro hinh hai bang tuan hoan, khong bi bien mat */
 .pt-element.is-dimmed {
-  opacity: 0.32 !important;
-  filter: brightness(0.55) saturate(0.5);
-  border-color: rgba(255, 255, 255, 0.12) !important;
+  opacity: 0.22 !important;
+  filter: brightness(0.5) saturate(0.4);
+  border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 .pt-element.is-highlighted {
   opacity: 1 !important;
-  transform: scale(1.18) translateZ(30px) !important;
   border-color: #fbbf24 !important; /* Amber Gold ruc ro */
-  box-shadow: 0 0 35px rgba(251, 191, 36, 0.9), inset 0 0 20px rgba(251, 191, 36, 0.3) !important;
+  box-shadow: 0 0 35px rgba(251, 191, 36, 0.95), inset 0 0 18px rgba(251, 191, 36, 0.35) !important;
   z-index: 60;
   animation: projectPulse 2s infinite ease-in-out;
 }
@@ -373,7 +372,7 @@
   background: linear-gradient(135deg, #00e5ff, #0284c7);
   color: #050810;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.58rem;
+  font-size: 0.6rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   padding: 1px 7px;
@@ -384,32 +383,33 @@
 
 .pt-number {
   font-family: 'Orbitron', monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.8rem;
+  font-weight: 800;
   position: absolute;
   top: 7px;
   left: 9px;
-  opacity: 0.9;
+  opacity: 0.95;
+  letter-spacing: 0.02em;
 }
 
 .pt-symbol {
   font-family: 'Orbitron', sans-serif;
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   font-weight: 900;
   line-height: 1;
   color: #ffffff;
-  margin-top: 5px;
-  text-shadow: 0 0 12px rgba(0, 212, 255, 0.4);
+  margin-top: 4px;
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.45);
 }
 
 .pt-name {
   font-family: 'Rajdhani', sans-serif;
-  font-size: 0.76rem;
-  font-weight: 700;
-  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #f1f5f9;
   margin-top: 5px;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -418,8 +418,9 @@
 
 .pt-mass {
   font-family: 'Inter', monospace;
-  font-size: 0.62rem;
-  color: #64748b;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #94a3b8;
   margin-top: 2px;
 }
 
