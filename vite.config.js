@@ -20,11 +20,13 @@ export default defineConfig({
     rollupOptions: {
       // Nếu sau này thêm nhiều trang
       input: {
-        main:      'index.html',
-        nhanvat:   'nhanvat.html',
-        tapphim:   'tapphim.html',
-        danhgia:   'danhgia.html',
-        dangnhap:  'dangnhap.html',
+        main:            'index.html',
+        characters:      'characters.html',
+        cactapphim:      'cactapphim.html',
+        danhgia:         'danhgia.html',
+        dangnhap:        'dangnhap.html',
+        tongquannhanvat: 'tongquannhanvat.html',
+        loitrian:        'loitrian.html',
       }
     }
   },

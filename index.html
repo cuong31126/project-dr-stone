@@ -366,26 +366,59 @@
         </span>
       </div>
 
-      <!-- ── Khung Bản Đồ Hải Trình Perseus (Chuẩn Nguyên Tác Tâm Chấn Nam Mỹ) ── -->
-      <div class="mb-7 rounded-2xl overflow-hidden border border-[#00d4ff]/30 bg-[#050814]/90 shadow-[0_0_35px_rgba(0,212,255,0.15)] group" data-reveal="zoom">
-        <!-- Top bar with telemetry -->
-        <div class="flex flex-wrap items-center justify-between gap-2 px-4 py-2.5 bg-[#0a1226]/90 border-b border-white/10 backdrop-blur-md">
+      <!-- ── Khung Hải Trình Perseus: Quả Địa Cầu 3D Tương Tác (Three.js WebGL) & Bản Đồ ── -->
+      <div class="mb-7 rounded-2xl overflow-hidden border border-[#00d4ff]/35 bg-[#050814]/95 shadow-[0_0_40px_rgba(0,212,255,0.18)] group" data-reveal="zoom">
+        <!-- Top bar with telemetry & Mode Switcher -->
+        <div class="flex flex-wrap items-center justify-between gap-3 px-4 py-3 bg-[#0a1226]/95 border-b border-white/10 backdrop-blur-md">
           <div class="flex items-center gap-2.5 text-[0.72rem] font-['Orbitron'] text-[#00d4ff] font-bold tracking-widest uppercase">
             <span class="w-2.5 h-2.5 rounded-full bg-[#39ff14] animate-pulse shadow-[0_0_8px_#39ff14]"></span>
-            <span>HẢI TRÌNH THỦY THỦ ĐOÀN RYUSUI & SENKU · ĐỊA CẦU KỶ NGUYÊN 5738</span>
+            <span>HẢI TRÌNH PERSEUS · ĐỊA CẦU KỶ NGUYÊN 5738</span>
           </div>
-          <span class="px-2.5 py-0.5 rounded-full bg-[#ef4444]/15 border border-[#ef4444]/40 text-[0.68rem] font-['Orbitron'] text-[#ff6b6b] font-semibold">
-            🎯 TÂM CHẤN: RỪNG RẬM AMAZON (MANAUS, BRAZIL)
-          </span>
+
+          <!-- Mode Switcher Tabs -->
+          <div class="flex items-center gap-1.5 p-1 rounded-xl bg-white/[0.04] border border-white/10">
+            <button id="btn-toggle-globe-3d"
+                    type="button"
+                    class="px-3 py-1 rounded-lg bg-[#00d4ff]/20 text-[#00d4ff] border border-[#00d4ff]/40 text-xs font-['Orbitron'] font-bold flex items-center gap-1.5 transition-all shadow-[0_0_10px_rgba(0,212,255,0.2)] cursor-pointer">
+              <span>🌐</span> <span>Địa Cầu 3D</span>
+            </button>
+            <button id="btn-toggle-map-2d"
+                    type="button"
+                    class="px-3 py-1 rounded-lg text-[#8fa0ba] hover:text-white text-xs font-['Orbitron'] font-bold flex items-center gap-1.5 transition-all cursor-pointer">
+              <span>🗺️</span> <span>Bản Đồ 2D</span>
+            </button>
+          </div>
         </div>
 
-        <!-- Image with cyber effect -->
-        <div class="relative overflow-hidden aspect-[16/9] w-full">
+        <!-- 1. VÙNG HIỂN THỊ ĐỊA CẦU 3D THREE.JS TƯƠNG TÁC -->
+        <div id="perseus-3d-globe-wrapper" class="relative w-full h-[460px] sm:h-[540px] cursor-grab active:cursor-grabbing bg-radial from-[#071326] via-[#050814] to-[#02040a] select-none">
+          <!-- Floating HUD Controls Over 3D Globe -->
+          <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-1.5 z-10">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#00d4ff]/10 border border-[#00d4ff]/25 text-[0.68rem] font-['Orbitron'] text-[#00d4ff] backdrop-blur-md">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#39ff14] animate-ping"></span>
+              <span>🎮 KÉO CHUỘT XOAY 360° · LĂN CHUỘT PHÓNG TO</span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#ef4444]/10 border border-[#ef4444]/30 text-[0.66rem] font-['Orbitron'] text-[#ff6b6b] backdrop-blur-md">
+              <span>💥 TÂM CHẤN HÓA ĐÁ: AMAZON (3°S, 60°W)</span>
+            </span>
+          </div>
+
+          <div class="absolute top-3 right-3 z-10">
+            <button id="btn-reset-globe"
+                    type="button"
+                    title="Đặt lại góc nhìn Nam Mỹ"
+                    class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-[#00d4ff]/20 border border-white/10 hover:border-[#00d4ff]/40 text-[0.68rem] font-['Orbitron'] text-[#c5d4ea] hover:text-[#00d4ff] backdrop-blur-md transition-all cursor-pointer flex items-center gap-1">
+              <span>🎯 Góc Nam Mỹ</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. VÙNG HIỂN THỊ BẢN ĐỒ 2D (ẨN MẶC ĐỊNH) -->
+        <div id="perseus-2d-map-wrapper" class="hidden relative overflow-hidden aspect-[16/9] w-full">
           <img src="./assets/images/drstone-stone-world-map.jpg"
                alt="Giao diện bản đồ chiến thuật toàn cầu của chiến hạm Perseus - Dr. Stone"
                class="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-[#050814]/70 via-transparent to-transparent pointer-events-none"></div>
-          <!-- Laser scan sweep effect -->
           <div class="hologram-sheen"></div>
         </div>
 
@@ -393,10 +426,10 @@
         <div class="px-4 py-3 bg-[#0a1226]/90 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-['Rajdhani']">
           <div class="flex items-center gap-2 text-[#c5d4ea]">
             <span class="text-[#00d4ff] font-bold">🗺️ Lộ trình:</span>
-            <span>Nhật Bản ➜ Đảo Kho Báu ➜ Tân Mỹ (California) ➜ Kênh Panama ➜ Rừng Rậm Amazon (Nam Mỹ) ➜ Mặt Trăng.</span>
+            <span>Nhật Bản (Khởi hành) ➜ Đảo Kho Báu ➜ Bắc Mỹ (California) ➜ Kênh Panama ➜ Nam Mỹ (Amazon) ➜ Mặt Trăng.</span>
           </div>
           <span class="text-[#39ff14] font-['Orbitron'] text-[0.7rem] font-semibold">
-            TỔNG HẢI TRÌNH: VÒNG QUANH THẾ GIỚI
+            QUẢ CẦU THREE.JS WEBGL · 360° INTERACTIVE
           </span>
         </div>
       </div>
@@ -1518,6 +1551,9 @@
 
 <!-- Three.js CSS3D Periodic Table (ES module) -->
 <script type="module" src="js/periodic-table.js"></script>
+
+<!-- Three.js Interactive 3D Perseus Globe (ES module) -->
+<script type="module" src="js/globe-3d.js"></script>
 
 <!-- App logic (defer, uses GSAP/Lenis globals) -->
 <script src="js/episodes.js" defer></script>

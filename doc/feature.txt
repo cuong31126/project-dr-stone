@@ -105,6 +105,30 @@ Mục tiêu kỹ thuật:
    - Dưới 4 điểm: Danh hiệu "Hóa Thạch Chờ Tái Sinh"
    - Nút chia sẻ kết quả hoặc tải thẻ chứng nhận tốt nghiệp viện khoa học.
 
+================================================================================
+PROMPT CHAIN 6 — QUẢ ĐỊA CẦU HẢI TRÌNH 3D PERSEUS TƯƠNG TÁC (THREE.JS HOLOGRAPHIC GLOBE)
+================================================================================
+Bối cảnh: Thay thế bản đồ tĩnh 2D dễ bị sai lệch tọa độ bằng Quả Địa Cầu Hologram 3D tương tác WebGL chân thực chuẩn nguyên tác Dr. Stone.
+
+Mục tiêu kỹ thuật:
+1. Kiến Trúc Địa Cầu 3D Hologram WebGL (`js/globe-3d.js`):
+   - Xây dựng quả cầu Trái Đất 3D với lưới kinh vĩ tuyến Cyber Neon phát sáng xanh ngọc (#00f5a0 / #00d4ff).
+   - Tái hiện lục địa địa cầu phủ màu xanh lá cây rêu phong sau 3.700 năm phục hồi (Năm 5738).
+   - Khí quyển phát quang Fresnel Glow bao quanh địa cầu và quỹ đạo Mặt Trăng (Whyman).
+2. Tương Tác Chuột & Cảm Ứng 360 Độ:
+   - Kéo chuột (Drag to rotate) xoay tự do theo mọi trục với giảm chấn quán tính mượt mà (Lerp damping).
+   - Lăn chuột (Scroll wheel) phóng to / thu nhỏ góc nhìn.
+   - Tự động xoay chậm (Idle Auto-rotation) sau 3 giây không tương tác.
+3. Tọa Độ Khoa Học Chuẩn Xác 100% (Mathematical Lat/Lon Vector3):
+   - Tâm chấn Medusa: Tọa độ 3°06' S, 60°01' W tại lòng chảo Amazon (Manaus, Brazil) phát sóng xung kích mở rộng tuần hoàn.
+   - Trạm 1 Làng Ishigami (Nhật Bản): 35.6° N, 139.7° E.
+   - Trạm 2 Đảo Kho Báu (Thái Bình Dương): 20.0° N, 165.0° E.
+   - Trạm 3 Tân Thành Phố Mỹ (California): 37.7° N, -122.4° W.
+   - Đường cong hải trình 3D (3D Catmull-Rom Spline) nối liền các trạm cùng hạt photon Perseus di chuyển liên tục.
+4. Liên Kết Waypoint Thông Minh:
+   - Nhấp vào 5 nút trạm phía dưới sẽ tự động xoay camera quả cầu mượt mà về đúng lục địa và tọa độ tương ứng.
+   - Bộ chuyển đổi 2 chế độ: [🌐 Địa Cầu 3D Tương Tác] ⮀ [🗺️ Bản Đồ Phẳng 2D].
+
 ────────────────────────────────────────────────────────────────────────────────
 PHẦN 3: LỘ TRÌNH TRIỂN KHAI ƯU TIÊN (EXECUTION ROADMAP)
 ────────────────────────────────────────────────────────────────────────────────
@@ -115,6 +139,7 @@ Phase 1: Đột phá thị giác & Tương tác tức thì (ĐÃ HOÀN THÀNH 10
   [x] Bước 4: Tích hợp Thước đo cuộn trang "10 Tỷ % Science HUD" dâng dung dịch Nital.
   [x] Bổ sung: Nâng cấp 16 ảnh nhân vật chính lên chuẩn HD 500px nét căng & dọn dẹp Header Navbar.
   [x] Bổ sung: Tách trang riêng Bách Khoa Toàn Thư characters.html (109 nhân vật offline).
+  [x] ĐỘT PHÁ 3D: Quả Địa Cầu Hologram 3D Tương Tác Chuột (Three.js WebGL) cho Hải Trình Perseus (`js/globe-3d.js`).
 Phase 2: Trải nghiệm người dùng & Xác thực (UX & Feature Roadmap)
   [ ] Bước 5: Thẻ Căn Cước Vương Quốc Khoa Học 3D (Kingdom of Science ID Pass).
   [ ] Bước 6: Cinema Video Modal & Bookmark tiến độ tập phim.
