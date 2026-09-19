@@ -275,10 +275,14 @@ function createEpisodeCardHTML(ep) {
     }
   }
   if (!thumb) {
-    if (ep.seasonId === 3) {
+    if (ep.seasonId === 2) {
+      thumb = 'assets/images/episodes/drstone-season-2-stonewars.jpg';
+    } else if (ep.seasonId === 4) {
+      thumb = 'assets/images/episodes/drstone-season-4-sciencefuture.jpg';
+    } else if (ep.seasonId === 3) {
       thumb = `assets/images/episodes/tap${ep.ep}ss3.jpg`;
     } else {
-      thumb = 'assets/images/anh-ngang.jpg';
+      thumb = 'assets/images/episodes/drstone-season-2-stonewars.jpg';
     }
   }
 
@@ -299,6 +303,10 @@ function createEpisodeCardHTML(ep) {
     ? 'border-[#00f5a0]/40 shadow-[0_4px_25px_rgba(0,245,160,0.15)]'
     : 'border-white/10 hover:border-[#00d4ff]/40';
 
+  const fallbackCover = ep.seasonId === 4
+    ? 'assets/images/episodes/drstone-season-4-sciencefuture.jpg'
+    : 'assets/images/episodes/drstone-season-2-stonewars.jpg';
+
   return `
     <div class="group relative rounded-2xl overflow-hidden bg-[#0a0f1e]/90 border ${cardBorderClass} transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
          data-season="${ep.seasonId}" data-ep="${ep.ep}">
@@ -306,7 +314,7 @@ function createEpisodeCardHTML(ep) {
       <!-- Thumbnail & Header Badges -->
       <div class="relative aspect-video overflow-hidden bg-black/60">
         <img src="${thumb}" alt="${ep.title}" loading="lazy"
-             onerror="this.onerror=null; this.src='assets/images/anh-ngang.jpg';"
+             onerror="this.onerror=null; this.src='${fallbackCover}';"
              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
 
         <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-black/40"></div>
