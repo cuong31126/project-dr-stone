@@ -467,80 +467,345 @@
 
 
   <!-- ─────────────────────────────────────────
-       SECTION 4: EPISODES
+       SECTION 4: HALL OF FAME (6 TẬP PHIM KINH ĐIỂN NHẤT)
        ───────────────────────────────────────── -->
-  <section id="episodes" class="py-24 px-4 max-w-[1400px] mx-auto">
+  <section id="episodes" class="py-24 px-4 max-w-[1300px] mx-auto">
 
     <!-- Header -->
-    <div class="text-center mb-10" data-reveal>
-      <span class="block text-[0.72rem] font-['Rajdhani'] font-bold
-           tracking-[0.35em] uppercase text-[#00d4ff] mb-3">● TẬP PHIM</span>
-      <h2 class="font-['Orbitron'] font-bold text-[clamp(2rem,4vw,3.2rem)] mb-4">
-        Danh Sách Phim
+    <div class="text-center mb-14" data-reveal>
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#00d4ff]/10 border border-[#00d4ff]/30 text-[#00d4ff] text-[0.72rem] font-['Orbitron'] font-bold tracking-[0.25em] uppercase mb-4 shadow-[0_0_15px_rgba(0,212,255,0.15)]">
+        <span>🏆 ĐẠI SẢNH DANH VỌNG · HALL OF FAME</span>
+      </div>
+      <h2 class="font-['Orbitron'] font-black text-[clamp(2.2rem,4.5vw,3.6rem)] mb-4 text-white leading-tight">
+        6 Khoảnh Khắc <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00d4ff] via-[#39ff14] to-[#ffd700]">Đột Phá Khoa Học</span>
       </h2>
-      <div class="w-16 h-0.5 bg-gradient-to-r from-[#00d4ff] to-[#39ff14] mx-auto rounded"></div>
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-[#8a9bb8] font-['Rajdhani'] font-medium">
+        Tuyển tập 6 tập phim đỉnh cao & bước ngoặt vĩ đại nhất của Dr. STONE qua 4 mùa — từ giọt dung dịch phục sinh đầu tiên đến khát vọng chạm tay vào Mặt Trăng.
+      </p>
+      <div class="w-20 h-0.5 bg-gradient-to-r from-[#00d4ff] via-[#39ff14] to-[#ffd700] mx-auto rounded-full mt-5"></div>
     </div>
 
-    <!-- Season tabs + Search row -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8"
-         data-reveal data-delay="1">
+    <!-- 6 Iconic Episodes Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
 
-      <!-- Season tabs -->
-      <div class="flex gap-1 p-1 rounded-xl border border-[#00d4ff]/20 bg-white/[0.04]">
-        <button class="season-tab active font-['Rajdhani'] text-sm font-bold uppercase
-                tracking-wider px-5 py-2 rounded-lg"
-                data-season="3">Season 3 ●</button>
-        <button class="season-tab font-['Rajdhani'] text-sm font-bold uppercase
-                tracking-wider px-5 py-2 rounded-lg"
-                data-season="2">Season 2</button>
-        <button class="season-tab font-['Rajdhani'] text-sm font-bold uppercase
-                tracking-wider px-5 py-2 rounded-lg"
-                data-season="1">Season 1</button>
+      <!-- Tập 1: Thế Giới Đá -->
+      <div class="hall-card group relative rounded-2xl overflow-hidden bg-[#0a0f1e]/90 border border-[#00f5a0]/30 hover:border-[#00f5a0] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(0,245,160,0.2)] flex flex-col justify-between"
+           data-reveal data-delay="1">
+        <div class="relative aspect-video overflow-hidden bg-black/60">
+          <img src="https://img.youtube.com/vi/Bh81BzN7k90/hqdefault.jpg" alt="Thế Giới Đá"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-black/40"></div>
+          
+          <div class="absolute top-3 left-3 flex items-center gap-1.5">
+            <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#00f5a0] text-black shadow-md">
+              SS1 · TẬP 01
+            </span>
+            <span class="text-[0.62rem] font-['Rajdhani'] font-bold px-2 py-0.5 rounded bg-black/80 text-amber-300 border border-amber-400/30">
+              ⭐ 9.8/10
+            </span>
+          </div>
+
+          <span class="absolute bottom-2.5 left-3 text-[0.62rem] font-['Orbitron'] font-bold text-[#00f5a0] tracking-wider uppercase bg-black/70 px-2.5 py-0.5 rounded-full border border-[#00f5a0]/30">
+            🧪 KHỞI ĐẦU VĂN MINH
+          </span>
+        </div>
+
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-[0.68rem] font-['Rajdhani'] font-bold uppercase tracking-widest text-[#00f5a0] block mb-1">
+              Phát Minh: Dung Dịch Nital (Axit Nitric + Cồn)
+            </span>
+            <h3 class="font-['Rajdhani'] text-xl font-bold text-white group-hover:text-[#00f5a0] transition-colors leading-snug mb-2">
+              Tập 1: Thế Giới Đá
+            </h3>
+            <p class="text-xs text-[#8a9bb8] leading-relaxed line-clamp-3">
+              3.700 năm sau thảm họa hóa thạch toàn nhân loại, thiên tài Senku thức giấc giữa rừng hoang dã. Bằng ý chí và công thức hồi sinh, cậu bắt đầu tái sinh nền văn minh từ con số 0.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 mt-5 pt-4 border-t border-white/5">
+            <a href="https://www.youtube.com/watch?v=Bh81BzN7k90&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=1"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🔴 Ani-One (YT)</span>
+            </a>
+            <a href="https://animevietsub.tv/phim/dr-stone-a3374/tap-1.html"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-purple-600/15 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🟣 Vietsub HD</span>
+            </a>
+          </div>
+        </div>
       </div>
 
-      <!-- Search -->
-      <div class="relative w-full sm:w-72">
-        <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6b7a99] text-sm">🔍</span>
-        <input id="ep-search" type="text" placeholder="Tìm tên tập phim..."
-               class="w-full pl-9 pr-8 py-2.5 rounded-full
-                      bg-white/[0.04] border border-[#00d4ff]/20
-                      text-[#e8f4f8] text-sm placeholder-[#6b7a99]/60
-                      focus:outline-none focus:border-[#00d4ff]
-                      focus:ring-2 focus:ring-[#00d4ff]/15
-                      transition-all duration-200 font-['Inter']">
-        <button id="search-clear"
-                class="absolute right-3 top-1/2 -translate-y-1/2
-                       text-[#6b7a99] hover:text-[#e8f4f8] hidden text-xs"
-                aria-label="Xóa">✕</button>
+      <!-- Tập 9: Hãy Để Ánh Sáng Khoa Học Bừng Lên -->
+      <div class="hall-card group relative rounded-2xl overflow-hidden bg-[#0a0f1e]/90 border border-[#ffd700]/30 hover:border-[#ffd700] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(255,215,0,0.2)] flex flex-col justify-between"
+           data-reveal data-delay="2">
+        <div class="relative aspect-video overflow-hidden bg-black/60">
+          <img src="https://img.youtube.com/vi/QuU_Aafxkps/hqdefault.jpg" alt="Hãy Để Ánh Sáng Khoa Học Bừng Lên"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-black/40"></div>
+          
+          <div class="absolute top-3 left-3 flex items-center gap-1.5">
+            <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#ffd700] text-black shadow-md">
+              SS1 · TẬP 09
+            </span>
+            <span class="text-[0.62rem] font-['Rajdhani'] font-bold px-2 py-0.5 rounded bg-black/80 text-amber-300 border border-amber-400/30">
+              ⭐ 9.9/10
+            </span>
+          </div>
+
+          <span class="absolute bottom-2.5 left-3 text-[0.62rem] font-['Orbitron'] font-bold text-[#ffd700] tracking-wider uppercase bg-black/70 px-2.5 py-0.5 rounded-full border border-[#ffd700]/30">
+            💡 ÁNH SÁNG VĂN MINH
+          </span>
+        </div>
+
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-[0.68rem] font-['Rajdhani'] font-bold uppercase tracking-widest text-[#ffd700] block mb-1">
+              Phát Minh: Bóng Đèn Sợi Đốt Vonfram & Máy Phát Điện
+            </span>
+            <h3 class="font-['Rajdhani'] text-xl font-bold text-white group-hover:text-[#ffd700] transition-colors leading-snug mb-2">
+              Tập 9: Hãy Để Ánh Sáng Khoa Học Bừng Lên
+            </h3>
+            <p class="text-xs text-[#8a9bb8] leading-relaxed line-clamp-3">
+              Khoảnh khắc biểu tượng nhất series: Từ quặng đá và than tre, bóng đèn điện đầu tiên được thắp sáng trên cây đại thụ, xua tan màn đêm tăm tối sau hàng ngàn năm.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 mt-5 pt-4 border-t border-white/5">
+            <a href="https://www.youtube.com/watch?v=QuU_Aafxkps&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=9"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🔴 Ani-One (YT)</span>
+            </a>
+            <a href="https://animevietsub.tv/phim/dr-stone-a3374/tap-9.html"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-purple-600/15 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🟣 Vietsub HD</span>
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Episode grid (rendered by JS) -->
-    <div id="ep-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 gap-4">
-    </div>
+      <!-- Tập 16: Câu Chuyện Ngàn Năm -->
+      <div class="hall-card group relative rounded-2xl overflow-hidden bg-[#0a0f1e]/90 border border-[#38bdf8]/30 hover:border-[#38bdf8] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(56,189,248,0.2)] flex flex-col justify-between"
+           data-reveal data-delay="3">
+        <div class="relative aspect-video overflow-hidden bg-black/60">
+          <img src="https://img.youtube.com/vi/srsiv-ggRyc/hqdefault.jpg" alt="Câu Chuyện Ngàn Năm"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-black/40"></div>
+          
+          <div class="absolute top-3 left-3 flex items-center gap-1.5">
+            <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#38bdf8] text-black shadow-md">
+              SS1 · TẬP 16
+            </span>
+            <span class="text-[0.62rem] font-['Rajdhani'] font-bold px-2 py-0.5 rounded bg-black/80 text-amber-300 border border-amber-400/30">
+              ⭐ 10.0/10
+            </span>
+          </div>
 
-    <!-- Empty state -->
-    <div id="ep-empty"
-         class="hidden col-span-full text-center py-20 text-[#6b7a99]">
-      <div class="text-4xl mb-3">🔬</div>
-      <p class="font-['Rajdhani'] text-lg font-semibold">Không tìm thấy tập phim</p>
+          <span class="absolute bottom-2.5 left-3 text-[0.62rem] font-['Orbitron'] font-bold text-[#38bdf8] tracking-wider uppercase bg-black/70 px-2.5 py-0.5 rounded-full border border-[#38bdf8]/30">
+            😢 DI NGUYỆN 3.700 NĂM
+          </span>
+        </div>
+
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-[0.68rem] font-['Rajdhani'] font-bold uppercase tracking-widest text-[#38bdf8] block mb-1">
+              Thông Điệp: Đĩa Thu Âm Của Phi Hành Đoàn ISS
+            </span>
+            <h3 class="font-['Rajdhani'] text-xl font-bold text-white group-hover:text-[#38bdf8] transition-colors leading-snug mb-2">
+              Tập 16: Câu Chuyện Ngàn Năm
+            </h3>
+            <p class="text-xs text-[#8a9bb8] leading-relaxed line-clamp-3">
+              Tập phim xúc động nhất: Cuộc hành trình của cha Byakuya cùng các phi hành gia lập nên Làng Ishigami và để lại chiếc đĩa hát thủy tinh gửi gắm hy vọng ngàn năm cho Senku.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 mt-5 pt-4 border-t border-white/5">
+            <a href="https://www.youtube.com/watch?v=srsiv-ggRyc&list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx&index=16"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🔴 Ani-One (YT)</span>
+            </a>
+            <a href="https://animevietsub.tv/phim/dr-stone-a3374/tap-16.html"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-purple-600/15 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🟣 Vietsub HD</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tập 4: Stone Wars Bắt Đầu (SS2 Ep 1) -->
+      <div class="hall-card group relative rounded-2xl overflow-hidden bg-[#0a0f1e]/90 border border-[#ef4444]/30 hover:border-[#ef4444] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(239,68,68,0.2)] flex flex-col justify-between"
+           data-reveal data-delay="1">
+        <div class="relative aspect-video overflow-hidden bg-black/60">
+          <img src="assets/images/episodes/anhcado.jpg" alt="Stone Wars Bắt Đầu"
+               onerror="this.onerror=null; this.src='assets/images/anh-ngang.jpg';"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-black/40"></div>
+          
+          <div class="absolute top-3 left-3 flex items-center gap-1.5">
+            <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#ef4444] text-white shadow-md">
+              SS2 · TẬP 01
+            </span>
+            <span class="text-[0.62rem] font-['Rajdhani'] font-bold px-2 py-0.5 rounded bg-black/80 text-amber-300 border border-amber-400/30">
+              ⭐ 9.7/10
+            </span>
+          </div>
+
+          <span class="absolute bottom-2.5 left-3 text-[0.62rem] font-['Orbitron'] font-bold text-[#ef4444] tracking-wider uppercase bg-black/70 px-2.5 py-0.5 rounded-full border border-[#ef4444]/30">
+            ⚔️ ĐẠI CHIẾN TỔNG LỰC
+          </span>
+        </div>
+
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-[0.68rem] font-['Rajdhani'] font-bold uppercase tracking-widest text-[#ef4444] block mb-1">
+              Phát Minh: Lương Khô Quân Nhu & Mì Ramen Đóng Hộp
+            </span>
+            <h3 class="font-['Rajdhani'] text-xl font-bold text-white group-hover:text-[#ef4444] transition-colors leading-snug mb-2">
+              Tập 1: Stone Wars Bắt Đầu
+            </h3>
+            <p class="text-xs text-[#8a9bb8] leading-relaxed line-clamp-3">
+              Mở màn cuộc đại chiến định đoạt tương lai loài người giữa Vương Quốc Khoa Học của Senku và Đế Quốc Sức Mạnh của võ thần Tsukasa.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 mt-5 pt-4 border-t border-white/5">
+            <a href="https://www.youtube.com/playlist?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🔴 Ani-One (YT)</span>
+            </a>
+            <a href="https://animevietsub.tv/phim/dr-stone-stone-wars-a3861/tap-1.html"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-purple-600/15 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🟣 Vietsub HD</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tập 5: Thời Đại New World (SS3 Ep 1) -->
+      <div class="hall-card group relative rounded-2xl overflow-hidden bg-[#0a0f1e]/90 border border-[#00d4ff]/30 hover:border-[#00d4ff] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(0,212,255,0.2)] flex flex-col justify-between"
+           data-reveal data-delay="2">
+        <div class="relative aspect-video overflow-hidden bg-black/60">
+          <img src="assets/images/episodes/tap1ss3.jpg" alt="Thời Đại New World"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-black/40"></div>
+          
+          <div class="absolute top-3 left-3 flex items-center gap-1.5">
+            <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#00d4ff] text-black shadow-md">
+              SS3 · TẬP 01
+            </span>
+            <span class="text-[0.62rem] font-['Rajdhani'] font-bold px-2 py-0.5 rounded bg-black/80 text-amber-300 border border-amber-400/30">
+              ⭐ 9.8/10
+            </span>
+          </div>
+
+          <span class="absolute bottom-2.5 left-3 text-[0.62rem] font-['Orbitron'] font-bold text-[#00d4ff] tracking-wider uppercase bg-black/70 px-2.5 py-0.5 rounded-full border border-[#00d4ff]/30">
+            🚢 VƯƠN RA ĐẠI DƯƠNG
+          </span>
+        </div>
+
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-[0.68rem] font-['Rajdhani'] font-bold uppercase tracking-widest text-[#00d4ff] block mb-1">
+              Phát Minh: Khí Cầu Không Gian & Đóng Thuyền Perseus
+            </span>
+            <h3 class="font-['Rajdhani'] text-xl font-bold text-white group-hover:text-[#00d4ff] transition-colors leading-snug mb-2">
+              Tập 1: Thời Đại New World
+            </h3>
+            <p class="text-xs text-[#8a9bb8] leading-relaxed line-clamp-3">
+              Khai mở kỷ nguyên đại hàng hải: Đánh thức hoa tiêu thiên tài Ryusui Nanami, tìm ra mỏ dầu Sagara và giương buồm dong thuyền ra biển lớn.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 mt-5 pt-4 border-t border-white/5">
+            <a href="https://www.youtube.com/playlist?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🔴 Ani-One (YT)</span>
+            </a>
+            <a href="https://animevietsub.tv/phim/dr-stone-new-world-a4674/tap-1.html"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-purple-600/15 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🟣 Vietsub HD</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tập 6: Science Future (SS4 Ep 1) -->
+      <div class="hall-card group relative rounded-2xl overflow-hidden bg-[#0a0f1e]/90 border border-[#a855f7]/30 hover:border-[#a855f7] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.8),0_0_30px_rgba(168,85,247,0.2)] flex flex-col justify-between"
+           data-reveal data-delay="3">
+        <div class="relative aspect-video overflow-hidden bg-black/60">
+          <img src="assets/images/anh-ngang.jpg" alt="Science Future"
+               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-black/40"></div>
+          
+          <div class="absolute top-3 left-3 flex items-center gap-1.5">
+            <span class="text-[0.65rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-gradient-to-r from-[#a855f7] to-[#ec4899] text-white shadow-md">
+              SS4 · TẬP 01
+            </span>
+            <span class="text-[0.62rem] font-black px-1.5 py-0.5 rounded bg-red-500 text-white uppercase tracking-wider">
+              MỚI
+            </span>
+          </div>
+
+          <span class="absolute bottom-2.5 left-3 text-[0.62rem] font-['Orbitron'] font-bold text-[#a855f7] tracking-wider uppercase bg-black/70 px-2.5 py-0.5 rounded-full border border-[#a855f7]/30">
+            🚀 CHINH PHỤC MẶT TRĂNG
+          </span>
+        </div>
+
+        <div class="p-5 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="text-[0.68rem] font-['Rajdhani'] font-bold uppercase tracking-widest text-[#a855f7] block mb-1">
+              Mục Tiêu: Vươn Tới Không Gian Vũ Trụ & Why-man
+            </span>
+            <h3 class="font-['Rajdhani'] text-xl font-bold text-white group-hover:text-[#a855f7] transition-colors leading-snug mb-2">
+              Tập 1: Science Future (Mùa Cuối)
+            </h3>
+            <p class="text-xs text-[#8a9bb8] leading-relaxed line-clamp-3">
+              Chương kết hoành tráng nhất lịch sử anime khoa học: Chế tạo tên lửa đưa con người lên Mặt Trăng để đối mặt với thực thể bí ẩn Why-man.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2.5 mt-5 pt-4 border-t border-white/5">
+            <a href="https://www.youtube.com/results?search_query=Ani-One+Vietnam+Dr+Stone+Science+Future"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-red-600/15 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🔴 Ani-One ULTRA</span>
+            </a>
+            <a href="https://animevietsub.tv/phim/dr-stone-science-future-a5214/tap-1.html"
+               target="_blank" rel="noopener noreferrer"
+               class="py-2.5 px-3 rounded-xl text-center text-xs font-['Rajdhani'] font-bold uppercase tracking-wider bg-purple-600/15 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/30 transition-all flex items-center justify-center gap-1.5 shadow-sm">
+              <span>🟣 Vietsub HD</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- CTA to Full 70 Episodes / 4 Seasons Portal -->
-    <div class="mt-12 text-center" data-reveal>
+    <div class="mt-16 text-center" data-reveal>
       <a href="cactapphim.html"
-         class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full
-                bg-gradient-to-r from-[#00d4ff]/15 via-[#39ff14]/15 to-[#a855f7]/15
-                hover:from-[#00d4ff]/25 hover:via-[#39ff14]/25 hover:to-[#a855f7]/25
-                border border-[#00d4ff]/40 hover:border-[#39ff14]/60
-                text-white font-['Rajdhani'] text-base font-bold uppercase tracking-widest
-                shadow-[0_0_25px_rgba(0,212,255,0.15)] hover:shadow-[0_0_35px_rgba(57,255,20,0.3)]
+         class="inline-flex items-center gap-3 px-9 py-4 rounded-full
+                bg-gradient-to-r from-[#00d4ff]/20 via-[#39ff14]/20 to-[#ffd700]/20
+                hover:from-[#00d4ff]/30 hover:via-[#39ff14]/30 hover:to-[#ffd700]/30
+                border border-[#00d4ff]/50 hover:border-[#39ff14]
+                text-white font-['Orbitron'] text-sm sm:text-base font-bold uppercase tracking-widest
+                shadow-[0_0_30px_rgba(0,212,255,0.25)] hover:shadow-[0_0_40px_rgba(57,255,20,0.4)]
                 transition-all duration-300 hover:scale-105 group">
-        <span>🎬 Khám Phá Toàn Bộ 4 Mùa Phim (70 Tập Full HD)</span>
-        <span class="text-[#39ff14] group-hover:translate-x-1 transition-transform">➜</span>
+        <span>🎬 Khám Phá Toàn Bộ 70 Tập Phim (Trọn Bộ 4 Mùa)</span>
+        <span class="text-[#39ff14] group-hover:translate-x-1.5 transition-transform text-lg">➜</span>
       </a>
-      <p class="text-xs text-[#6b7a99] mt-3">
-        Đầy đủ Season 1, 2, 3 và Season 4 (Science Future) mới nhất · Nguồn xem Ani-One Vietnam & AnimeVietsub · Watch Tracker.
+      <p class="text-xs text-[#8a9bb8] mt-3 font-['Rajdhani'] font-medium">
+        Đầy đủ Season 1 (24 tập), Season 2 (11 tập), Season 3 (23 tập) và Season 4 mới nhất · Phân trang 12 tập/trang · Watch Tracker HUD.
       </p>
     </div>
   </section>
