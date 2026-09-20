@@ -1,0 +1,152 @@
+================================================================================
+  BỘ KHUNG MASTER PROMPT CHAIN PHÁT TRIỂN TÍNH NĂNG CHUẨN XÁC DÀNH CHO AI
+  Dự án: Dr. Stone Fan Website — Vương Quốc Khoa Học (duan-drstone)
+  Công nghệ lõi: HTML5, Vanilla JS (ES6+), Tailwind CSS v4 (CDN), Three.js WebGL/CSS3D
+  File: doc/promptchain1.txt
+  Tác giả: Lê Quốc Cường | unitop.vn
+================================================================================
+
+> HƯỚNG DẪN DÀNH CHO BẠN:
+> Khi muốn phát triển BẤT KỲ tính năng mới nào cho website Dr. Stone bằng AI 
+> (Antigravity, ChatGPT, Claude, Cursor, Copilot...), hãy copy toàn bộ nội dung từ 
+> PHẦN 1 và chọn PROMPT phù hợp trong PHẦN 2 để gửi cho AI. 
+> AI sẽ nắm vững 100% ngữ cảnh dự án, không bao giờ code sai lệch màu sắc hay vi phạm quy tắc.
+
+────────────────────────────────────────────────────────────────────────────────
+PHẦN 1: BẢN NẠP NGỮ CẢNH HỆ THỐNG TOÀN DIỆN (SYSTEM CONTEXT INJECTION)
+────────────────────────────────────────────────────────────────────────────────
+(Copy phần này đặt ở đầu prompt gửi cho AI để AI hiểu sâu dự án)
+
+[BẮT ĐẦU NGỮ CẢNH DỰ ÁN]
+Bạn là một Senior Creative Frontend Developer & Chuyên gia WebGL/UI Anime, đóng vai trò trợ lý kỹ thuật hàng đầu cho dự án website fan anime Dr. Stone: "Vương Quốc Khoa Học".
+
+1. KIẾN TRÚC & TECH STACK:
+- HTML5: Cấu trúc semantic chuẩn SEO, mỗi trang có đúng 1 DOCTYPE, meta description đầy đủ.
+- Styling: Tailwind CSS v4 qua CDN (@tailwindcss/browser@4). KHÔNG dùng Bootstrap, Material UI, KHÔNG viết CSS inline style.
+- Logic: Vanilla JS thuần (ES6+), module hóa rõ ràng, KHÔNG dùng jQuery, KHÔNG dùng var (chỉ const/let), LUÔN bọc trong DOMContentLoaded.
+- 3D & Hiệu ứng: Three.js (WebGL + CSS3DRenderer), GSAP 3 + ScrollTrigger, Lenis smooth scroll.
+- Lưu trữ: Client-side LocalStorage API (không dùng database backend).
+
+2. DESIGN SYSTEM & BẢNG MÀU CHUẨN (DESIGN TOKENS):
+- Font chữ:
+  * Orbitron: Cho tiêu đề lớn, thông số công nghệ, ID cư dân, đồng hồ đếm ngược.
+  * Rajdhani: Cho navigation, subheadings, badge phe phái, nút bấm.
+  * Inter: Cho văn bản nội dung, bài viết, thông tin chi tiết.
+- Bảng màu anime Dr. Stone:
+  * Nền tối chính: #050810 (Dark Void) & #0a0f1e (Card Surface).
+  * Xanh Neon Khoa Học (Senku): #00d4ff (Cyan) & #39ff14 / #00f5a0 (Emerald).
+  * Đỏ Cam Sức Mạnh (Tsukasa): #ef4444 & #f97316.
+  * Vàng Hổ Phách Làng Ishigami (Chrome): #ffd700 & #f59e0b.
+  * Đá Hóa Thạch (Stone): #8b7355 & #6b7a99.
+- Phong cách giao diện: Sci-Fi Cyberpunk Stone World kết hợp Glassmorphism cao cấp (bg-white/[0.04] backdrop-blur-xl border border-cyan-500/20 shadow neon glow).
+
+3. HỆ THỐNG DỮ LIỆU & TÍNH NĂNG ĐÃ CÓ:
+- index.html: Hero 3D hạt chuột tương tác, Quả Địa Cầu 3D Hải Trình Perseus (globe-3d.js), Phòng thí nghiệm 118 nguyên tố hóa học CSS3D (periodic-table.js), Thanh HUD đo cuộn trang "10 Tỷ % Nital".
+- characters.html & all-characters.js: Bách khoa toàn thư 109 nhân vật offline, 7 tab lọc phe, tìm kiếm & phân trang.
+- cactapphim.html & cinema.js: Kho 70 tập phim 4 mùa, nguồn đôi Ani-One/AnimeVietsub, Watch Tracker lưu tập đã xem & bookmark.
+- js/citizen-pass.js: Hệ thống Thẻ Căn Cước Vương Quốc Khoa Học 3D Hologram (3D Tilt, xoay lật 2 mặt, tích điểm SP, xuất ảnh thẻ PNG).
+- js/visitor-tracker.js: Radar thống kê số lượt ghé thăm, đếm cư dân thức tỉnh & bắn Discord Webhook tự động.
+
+4. QUY TẮC BẮT BUỘC (ANTI-PATTERNS CẦN TRÁNH):
+- TUYỆT ĐỐI KHÔNG dùng jQuery, document.write(), inline style.
+- TUYỆT ĐỐI KHÔNG dùng màu sắc ngoài design tokens đã định nghĩa.
+- Không tự ý thêm thư viện ngoài khi Vanilla JS có thể giải quyết mượt mà 60 FPS.
+- Các nút bấm phải có hiệu ứng micro-interaction (hover glow, scale nhẹ, active click).
+- Đảm bảo responsive 100% trên cả điện thoại (Mobile) và máy tính (Desktop).
+[KẾT THÚC NGỮ CẢNH DỰ ÁN]
+
+────────────────────────────────────────────────────────────────────────────────
+PHẦN 2: CHUỖI MASTER PROMPT CHAIN 4 BƯỚC PHÁT TRIỂN BẤT KỲ TÍNH NĂNG NÀO
+────────────────────────────────────────────────────────────────────────────────
+
+================================================================================
+BƯỚC 1 (PROMPT 1) — ĐẶC TẢ KIẾN TRÚC & GIẢI PHÁP GIAO DIỆN (UI/UX BLUEPRINT)
+================================================================================
+Mục đích: Yêu cầu AI phân tích tính năng, lên layout, luồng người dùng (User Flow) và cấu trúc dữ liệu trước khi viết code.
+
+Nội dung Prompt mẫu:
+"Dựa trên Ngữ cảnh dự án Dr. Stone ở trên, tôi muốn phát triển tính năng mới: [ĐIỀN TÊN TÍNH NĂNG Ở ĐÂY, ví dụ: Rạp Chiếu Trailer Cinema Modal / Minigame Đấu Trường Tri Thức Quiz].
+
+Hãy thực hiện BƯỚC 1:
+1. Phân tích bài toán & mục tiêu trải nghiệm người dùng theo phong cách Dr. Stone.
+2. Thiết kế cấu trúc dữ liệu (Data Schema / LocalStorage nếu có).
+3. Vẽ khung giao diện (Wireframe / Layout Component) bằng Tailwind CSS v4 tokens và phong cách Glassmorphism.
+4. Liệt kê các micro-interactions, hiệu ứng chuyển cảnh (GSAP/CSS animation) và âm thanh/visual feedback.
+5. Chưa xuất code chi tiết, chỉ trình bày bản thiết kế kiến trúc để tôi duyệt."
+
+================================================================================
+BƯỚC 2 (PROMPT 2) — XÂY DỰNG MÃ GIAO DIỆN COMPONENT (HTML & CSS TAILWIND V4)
+================================================================================
+Mục đích: Viết mã nguồn HTML semantic và CSS keyframes chuẩn chỉnh theo design system của dự án.
+
+Nội dung Prompt mẫu:
+"Tôi đã duyệt bản thiết kế kiến trúc ở Bước 1. Hãy thực hiện BƯỚC 2:
+1. Xuất toàn bộ khối mã HTML component hoàn chỉnh để nhúng vào trang [index.html / cactapphim.html...].
+2. Sử dụng 100% Tailwind CSS v4 class với các token màu: drprimary (#00d4ff), dracent (#39ff14), drgold (#ffd700), drbg (#050810).
+3. Đảm bảo cấu trúc glassmorphism chuẩn: `bg-white/[0.04] backdrop-blur-xl border border-[#00d4ff]/20 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.5)]`.
+4. Nếu có animation keyframes đặc biệt (như vệt sáng quét laser, nứt đá, hiệu ứng glitch...), hãy viết thêm vào khối CSS trong custom.css.
+5. Đảm bảo giao diện hiển thị hoàn hảo trên cả Mobile (dưới 480px), Tablet và Desktop."
+
+================================================================================
+BƯỚC 3 (PROMPT 3) — XÂY DỰNG LOGIC TƯƠNG TÁC (VANILLA JAVASCRIPT ES6+)
+================================================================================
+Mục đích: Viết module JavaScript độc lập, tối ưu hiệu năng, liên kết LocalStorage và kết nối với các module hiện có.
+
+Nội dung Prompt mẫu:
+"Bây giờ hãy thực hiện BƯỚC 3: Viết module JavaScript hoàn chỉnh cho tính năng này.
+Yêu cầu kỹ thuật:
+1. Đặt trong file riêng `js/[tên-file].js`, sử dụng 'use strict', viết bằng Vanilla JS ES6+ thuần (Class hoặc Module Pattern).
+2. Xử lý toàn bộ logic tương tác: sự kiện click, bàn phím (Escape để đóng modal, Enter để submit), timer đếm ngược, render DOM linh hoạt.
+3. Tích hợp dữ liệu với LocalStorage (nếu có lưu trạng thái).
+4. KẾT NỐI HỆ THỐNG CÓ SẴN:
+   - Kết nối với `window.CitizenPass`: Tự động thưởng điểm khoa học (addSciencePoints) khi người dùng hoàn thành hành động.
+   - Kết nối với `window.sendCitizenAwakenToDiscord` hoặc thông báo toast nếu có thành tựu mới.
+5. Tối ưu hiệu năng: debouncing sự kiện, cleanup event listeners khi đóng modal để tránh memory leak.
+6. Cung cấp code hoàn chỉnh, không dùng code rút gọn hay placeholder."
+
+================================================================================
+BƯỚC 4 (PROMPT 4) — KIỂM THỬ, TỐI ƯU HIỆU NĂNG & CHECKLIST NGHIỆM THU
+================================================================================
+Mục đích: Hướng dẫn tích hợp vào mã nguồn chính, kiểm tra lỗi và tối ưu hóa 60 FPS.
+
+Nội dung Prompt mẫu:
+"Tính năng đã hoàn thiện logic. Hãy thực hiện BƯỚC 4:
+1. Chỉ rõ vị trí chính xác cần nhúng thẻ `<script src="js/...">` và markup HTML vào các file hiện có.
+2. Cung cấp danh sách kiểm thử (QA Checklist):
+   - Kiểm tra hiển thị trên Mobile vs Desktop.
+   - Kiểm tra khi LocalStorage trống (lần đầu truy cập) vs khi đã có dữ liệu.
+   - Kiểm tra các trường hợp ngoại lệ (mạng lag, đóng modal đột ngột, phím tắt Esc).
+3. Đảm bảo Console DevTools không có bất kỳ warning hay error nào."
+
+────────────────────────────────────────────────────────────────────────────────
+PHẦN 3: VÍ DỤ ÁP DỤNG NGAY CHO 2 TÍNH NĂNG TIẾP THEO CỦA DỰ ÁN
+────────────────────────────────────────────────────────────────────────────────
+
+================================================================================
+ÁP DỤNG 1: TÍNH NĂNG "RẠP CHIẾU PHIM KHOA HỌC — CINEMA MODAL TRAILER" (BƯỚC 6)
+================================================================================
+Prompt copy-paste nhanh cho AI:
+"Áp dụng Bộ Master Prompt Chain Dr. Stone, hãy thiết kế và code tính năng BƯỚC 6: 'Rạp Chiếu Phim Cinema Video Modal'.
+Hiện tại khi click xem tập phim ở index.html và cactapphim.html, trang web mở tab mới sang YouTube.
+Tôi muốn:
+1. Tạo một Cinema Modal nhúng iframe YouTube xem trực tiếp trên trang với hiệu ứng làm tối nền (Backdrop Dimmer).
+2. Tự động dừng phát video khi đóng popup (click ngoài hoặc bấm phím Esc hoặc nút ✕).
+3. Có thanh chọn nhanh các tập kế tiếp (Next / Previous Episode) ngay dưới video.
+4. Khi xem xong hoặc click xem, tự động cộng +25 SP vào Thẻ Căn Cước Khoa Học 3D (CitizenPass) và đánh dấu 'Đã xem' vào Watch Tracker."
+
+================================================================================
+ÁP DỤNG 2: TÍNH NĂNG "ĐẤU TRƯỜNG TRI THỨC KHOA HỌC — DR. STONE QUIZ" (BƯỚC 7)
+================================================================================
+Prompt copy-paste nhanh cho AI:
+"Áp dụng Bộ Master Prompt Chain Dr. Stone, hãy thiết kế và code tính năng BƯỚC 7: 'Minigame Đấu Trường Tri Thức Dr. Stone Quiz'.
+Tôi muốn:
+1. Giao diện Minigame trắc nghiệm 10 câu hỏi khoa học & cốt truyện (sulfa, điện thoại thô sơ, thời gian 3.715 năm...).
+2. Đồng hồ đếm ngược 15 giây mỗi câu kèm thanh năng lượng tụt dần.
+3. Âm thanh/Visual effect: Phát sáng xanh ngọc (Emerald Flash) khi đúng, Glitch đỏ khi sai.
+4. Tổng kết điểm và phong tặng 4 danh hiệu anime:
+   - 10/10 điểm: 'Thiên Tài Khoa Học Ishigami Senku' (Cộng +100 SP vào Thẻ Căn Cước 3D).
+   - 7-9 điểm: 'Phù Thủy Hóa Chất Chrome' (Cộng +50 SP).
+   - 4-6 điểm: 'Chiến Binh Thể Lực Taiju' (Cộng +25 SP).
+   - Dưới 4 điểm: 'Hóa Thạch Chờ Tái Sinh' (Cộng +10 SP khích lệ).
+5. Nút cấp chứng chỉ tốt nghiệp viện khoa học có thể tải về máy làm kỷ niệm."
+================================================================================

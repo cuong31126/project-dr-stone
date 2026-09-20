@@ -72,6 +72,9 @@
            class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#00e5ff]/30 bg-[#00e5ff]/10 hover:border-[#00e5ff] hover:text-[#00e5ff] text-sm font-['Rajdhani'] font-bold uppercase tracking-wider transition-all duration-200">
           <span>🧪 Khoa Học 3D</span>
         </a>
+        <!-- Citizen Pass / Auth Container -->
+        <div id="navbar-auth-container" class="flex items-center gap-2"></div>
+
         <a href="index.html#characters"
            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:border-[#00d4ff] hover:text-[#00d4ff] text-sm font-['Rajdhani'] font-bold uppercase tracking-wider transition-all duration-200">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -202,6 +205,19 @@
 
   <!-- Footer -->
   <footer class="border-t border-white/10 bg-[#03050a] py-8 relative z-10 text-center text-xs text-[#6b7a99]">
+    <!-- Live Radar Visitor & Citizen Stats (Tự hiển thị khi deploy: IS_DEPLOYED_LIVE = true) -->
+    <div id="live-radar-stats" class="hidden mb-6 max-w-xl mx-auto p-3 rounded-2xl bg-black/60 border border-[#00d4ff]/30 shadow-[0_0_20px_rgba(0,212,255,0.15)] flex flex-wrap items-center justify-between gap-3 text-xs font-['Rajdhani']">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-[#39ff14] animate-ping"></span>
+        <span class="font-['Orbitron'] font-bold text-[#00d4ff] uppercase">Radar Thế Giới Đá</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <span>Ghé thăm: <b id="stat-live-visits" class="text-white font-['Orbitron']">0</b></span>
+        <span class="text-white/20">|</span>
+        <span class="text-[#39ff14]">Cư dân: <b id="stat-live-citizens" class="text-[#39ff14] font-['Orbitron']">0</b></span>
+      </div>
+    </div>
+
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
         <p>DR. STONE © Riichiro Inagaki, Boichi / Shueisha, Dr. STONE Production Committee</p>
@@ -214,7 +230,11 @@
     </div>
   </footer>
 
+  <!-- Firebase Google Authentication & Realtime Cloud Database -->
+  <script type="module" src="js/firebase-auth.js"></script>
+
   <!-- Script logic -->
+  <script src="js/citizen-pass.js"></script>
   <script type="module" src="js/all-characters.js"></script>
   <!-- Visitor Tracker -->
   <script src="js/visitor-tracker.js" defer></script>

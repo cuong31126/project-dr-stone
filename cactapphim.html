@@ -78,6 +78,9 @@
           <span>👥 109 Cư Dân</span>
         </a>
 
+        <!-- Citizen Pass / Auth Container -->
+        <div id="navbar-auth-container" class="flex items-center gap-2"></div>
+
         <a href="index.html"
            class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 hover:border-[#39ff14] hover:text-[#39ff14] text-xs sm:text-sm font-['Rajdhani'] font-bold uppercase tracking-wider transition-all">
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -270,6 +273,19 @@
   <!-- Footer -->
   <footer class="border-t border-white/10 bg-[#050810]/90 mt-20 py-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-xs text-[#6b7a99] space-y-2">
+      <!-- Live Radar Visitor & Citizen Stats (Tự hiển thị khi deploy: IS_DEPLOYED_LIVE = true) -->
+      <div id="live-radar-stats" class="hidden my-4 max-w-xl mx-auto p-3 rounded-2xl bg-black/60 border border-[#00d4ff]/30 shadow-[0_0_20px_rgba(0,212,255,0.15)] flex flex-wrap items-center justify-between gap-3 text-xs font-['Rajdhani']">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#39ff14] animate-ping"></span>
+          <span class="font-['Orbitron'] font-bold text-[#00d4ff] uppercase">Radar Thế Giới Đá</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span>Ghé thăm: <b id="stat-live-visits" class="text-white font-['Orbitron']">0</b></span>
+          <span class="text-white/20">|</span>
+          <span class="text-[#39ff14]">Cư dân: <b id="stat-live-citizens" class="text-[#39ff14] font-['Orbitron']">0</b></span>
+        </div>
+      </div>
+
       <p class="font-['Rajdhani'] font-bold uppercase tracking-wider text-white">
         Vương Quốc Khoa Học · Hệ Thống Lưu Trữ Phim Dr. Stone
       </p>
@@ -277,7 +293,89 @@
     </div>
   </footer>
 
+  <!-- ═══════════════════════════════════════════
+       CINEMA MODAL (RẠP CHIẾU PHIM SIÊU NHẸ)
+       ═══════════════════════════════════════════ -->
+  <div id="cinema-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/90 backdrop-blur-md transition-all duration-300">
+    <div id="cinema-modal-container" class="relative w-full max-w-5xl bg-[#0a0f1e] border border-[#00d4ff]/30 rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_0_60px_rgba(0,212,255,0.25)] flex flex-col max-h-[95vh]">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-white/10 bg-[#050810]/95">
+        <div class="flex items-center gap-2 sm:gap-3 overflow-hidden">
+          <span id="cinema-season-badge" class="text-[0.62rem] sm:text-xs font-['Orbitron'] font-black px-2.5 py-0.5 rounded bg-[#00d4ff] text-black shrink-0 shadow-sm">
+            S1 · TẬP 01
+          </span>
+          <h3 id="cinema-episode-title" class="font-['Rajdhani'] font-bold text-sm sm:text-lg text-white truncate">
+            Đang tải tập phim...
+          </h3>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+          <span id="cinema-sp-badge" class="inline-flex items-center gap-1 text-[0.68rem] font-['Rajdhani'] font-bold text-[#39ff14] bg-[#39ff14]/10 border border-[#39ff14]/30 px-2.5 py-0.5 rounded-full">
+            ⚡ +25 SP
+          </span>
+          <button type="button" id="cinema-close-btn" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-red-500/20 hover:text-red-400 text-gray-300 flex items-center justify-center transition-colors text-lg" title="Đóng rạp chiếu (Phím Esc)">
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Player Frame (16:9 Aspect Ratio) -->
+      <div class="relative w-full aspect-video bg-black flex items-center justify-center overflow-hidden">
+        <!-- Single Dynamic Lazy Iframe -->
+        <iframe id="cinema-iframe" class="w-full h-full border-0 hidden"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+
+        <!-- Fallback view if video is an external link / playlist or not embeddable -->
+        <div id="cinema-fallback" class="hidden absolute inset-0 flex flex-col items-center justify-center p-6 text-center bg-[#050810]/95 z-10">
+          <div class="text-4xl sm:text-5xl mb-3 animate-bounce">📡</div>
+          <h4 id="cinema-fallback-title" class="font-['Orbitron'] text-base sm:text-xl font-bold text-white mb-2">Tập Phim Đang Cập Nhật Player Nhúng</h4>
+          <p id="cinema-fallback-desc" class="text-xs sm:text-sm text-[#6b7a99] max-w-md mb-5 leading-relaxed">Tập này chưa có Video ID phát trực tiếp hoặc thuộc bản quyền độc quyền. Vui lòng mở xem qua nguồn chính thức bên dưới.</p>
+          <div class="flex flex-wrap items-center justify-center gap-3">
+            <a id="cinema-fallback-anione" href="#" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-red-600 hover:bg-red-500 text-white flex items-center gap-2 shadow-lg hover:scale-105 transition-all">
+              <span>🔴 Xem Ani-One Vietnam</span>
+            </a>
+            <a id="cinema-fallback-vietsub" href="#" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-purple-600 hover:bg-purple-500 text-white flex items-center gap-2 shadow-lg hover:scale-105 transition-all">
+              <span>🟣 Xem AnimeVietsub HD</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer Controls -->
+      <div class="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-6 py-3 border-t border-white/10 bg-[#050810]/95">
+        <!-- Prev / Next Episode Navigation -->
+        <div class="flex items-center gap-2">
+          <button type="button" id="cinema-prev-btn" class="px-3 sm:px-4 py-1.5 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-gray-300 disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5">
+            <span>⏮ Tập trước</span>
+          </button>
+          <button type="button" id="cinema-next-btn" class="px-3 sm:px-4 py-1.5 rounded-xl border border-[#00d4ff]/40 bg-[#00d4ff]/15 hover:bg-[#00d4ff]/25 text-xs font-['Rajdhani'] font-bold uppercase tracking-wider text-[#00d4ff] disabled:opacity-30 disabled:cursor-not-allowed transition-all flex items-center gap-1.5">
+            <span>Tập sau ⏭</span>
+          </button>
+        </div>
+
+        <!-- External Quick Links & Watched toggle -->
+        <div class="flex items-center gap-2 text-xs font-['Rajdhani'] font-bold">
+          <button type="button" id="cinema-toggle-watched-btn" class="px-3 py-1.5 rounded-xl border border-white/10 bg-white/5 hover:border-[#00f5a0] hover:text-[#00f5a0] text-gray-300 transition-all flex items-center gap-1.5">
+            <span>✓ Đã cày xong</span>
+          </button>
+          <a id="cinema-ext-anione" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl border border-red-500/30 bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-all">
+            Ani-One ↗
+          </a>
+          <a id="cinema-ext-vietsub" href="#" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl border border-purple-500/30 bg-purple-500/10 text-purple-300 hover:bg-purple-500 hover:text-white transition-all">
+            Vietsub ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Firebase Google Authentication & Realtime Cloud Database -->
+  <script type="module" src="js/firebase-auth.js"></script>
+
   <!-- Scripts -->
+  <script src="js/citizen-pass.js"></script>
   <script src="js/cinema.js" defer></script>
   <script src="js/visitor-tracker.js" defer></script>
 </body>

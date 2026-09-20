@@ -1,0 +1,715 @@
+Image	Name	Notes	Appearance	
+Grass Skirt
+Grass Skirt
+Ivy wrapped around the waist for modesty.
+13
+Stone tools
+Stone Tools
+Basic tools made using the process of knapping.
+13
+Rope
+Rope
+The simplest form of rope using long twisted plant fibers.
+13
+Bow drill
+Bow Drill
+Used for starting fires.
+13
+Fire
+Fire
+A very important scientific tool.
+13
+Trap
+Traps
+Used for snaring animals.
+13
+Pottery
+Pottery
+Used for storage.
+2
+Hide
+Leather Hide
+Used for clothing.
+Made from deer skin.
+13
+Clothing
+Clothing
+Used for keeping warm.
+13
+Wicker Basket
+Wicker Basket
+Used for storage.
+2
+Salt
+Salt
+(NaCl)
+Used for flavoring and preserving food.
+Made by evaporating sea water.
+2
+Nitric Acid
+Nitric Acid
+(HNO3)
+A highly corrosive mineral acid.[1]
+Found in the Cave of Miracles as a byproduct of bat guano.
+One of the main components used to make revival fluid.
+2
+Wine
+Wine
+Wine made from crushing and fermenting red grapes for three weeks, stirring daily.
+Used as the alcohol source for making revival fluid after distillation.
+2
+Distillation Earthenware
+Distillation Earthenware
+Used for purifying and concentrating alcohol.
+2
+Alcohol
+Ethanol
+(C2H6O)
+A simple alcohol that is flammable and can be used as a disinfectant.
+Distilled using the distillation earthenware to be used for making revival fluid.
+2
+Stone Formula
+Revival Fluid
+(HNO3+C2H6O)
+Also known as miracle fluid and the stone formula.
+Literally nital, an industrial-strength corrosive agent.
+2
+Fur Clothing
+Fur Clothing
+Used for keeping slightly more warm.
+2
+Calcium Carbonate
+Calcium Carbonate
+(CaCO3)
+Made from crushed up seashells.
+Used in agriculture for getting rid of hydrogen ions in the soil, making it less acidic.[2]
+Used in making soap and mortar.
+4
+Mortar
+Mortar
+Used in construction as a predecessor to cement by heating it and mixing it with sand.
+4
+Soap
+Soap
+Also known as dr. stone.
+Used for cleaning and getting rid of bacteria.
+4
+Seaweed
+Sodium Carbonate
+(Na2CO3)
+Used in construction as a predecessor to cement by heating it and mixing it with sand.
+4
+Crossbow
+Crossbow
+A ranged weapon similar to a bow that shoots arrows.
+Used ineffectively by Senku against Tsukasa, who caught the arrow in mid air.
+6
+Sextant
+Sextant
+A device used for determining global position based on the time.
+7
+Great Buddha of Kamakura (Anime)
+Bronze
+(Cu+Sn)
+Found in the Buddha of Kamakura.
+Used by Senku to improve his sextant's accuracy by making a mirror.
+7
+Raft
+Raft
+A simple flotation device for traversing rivers.
+7
+Sulfur
+Sulfur
+(S)
+Chemical element with atomic number 16.
+Can be found naturally in hot springs and volcanic areas.
+Ingredient of black powder.
+It becomes strongly electrostatically charged when rubbed with leather, allowing it to be used in a sulfur ball electrostatic generator.
+7
+Potassium Nitrate
+Potassium Nitrate
+(KNO3)
+Made using the nitric acid from the Cave of Miracles.
+Used in gunpowder.
+8
+Glucose Sugar
+Glucose
+(C6H12O6)
+A common sugar created by heating up alcohol, found in most plants.
+Used to enhance the gunpowder.
+8
+Gunpowder
+Gunpowder
+(S+C+KNO3)
+A chemical explosive.
+Used to deter Tsukasa, signal Kohaku, later to make the pulleys used to rescue Kohaku, and in a fake gun to scare Hyoga and his troops away.
+8
+
+Image	Name	Notes	Appearance	
+Pulley
+Pulley
+A device used to lessen the effective weight of an object through rope tension.
+Used by Senku to lift a tree off of Kohaku, saving her.
+16
+Senku and Kohaku rolling down the mountain
+Makeshift Chassis
+A motorless go-kart made by Senku out of the pulley parts.
+17
+Soap Bubbles
+Soap Bubbles
+Bubbles made by lathering soap and blowing through a closed hoop.
+Used to bewilder the village guards.
+17
+Static Electricity
+Electrostatic Generator
+A friction-based generator of static electricity using a sulfur sphere and rubbing.
+Rubbing with leather generates more electricity than with human skin.
+18
+Malachite and Chalcanthite
+Malachite (Cu2CO3(OH)2)
+&
+Chalcanthite (CuSO4·5H2O)
+Malachite is a green, copper carbonate hydroxide mineral that was used as a green pigment for much of history.
+Chalcanthite is a blue copper sulfate and can be used as a copper ore.
+Both are found near copper deposits.
+19
+Corundum
+Corundum
+(Al2O3)
+A crystalline form of aluminum oxide, very hard (a 9.0 on the Mohs scale if pure).
+Tends to be used as an abrasive due to its hardness.
+19
+Galena
+Galena
+(PbS)
+The natural mineral form of lead(II) sulfide.
+An important source of silver ore.
+Much later used as semiconductor material in a crystal radio.
+19
+Cinnabar
+Cinnabar
+(HgS)
+The natural mineral form of mercury(II) sulfide.
+The historic source of vermilion pigment, and a source of mercury.
+Due to the presence of mercury, cinnabar is toxic to humans.
+19
+Gold
+Gold
+(Au)
+Chemical element with atomic number 79.
+Used in making Kinro's golden spear.
+19
+Golden Spear
+Golden Spear
+A really cool looking gold-tipped spear used to bribe Kinro.
+19
+
+ảnh mo tả điều chế thuốc cho chị 
+https://static.wikia.nocookie.net/dr-stone/images/a/aa/Antibiotic_roadmap_%28with_subs%29.png/revision/latest?cb=20190828175644
+
+Image	Name	Notes	Appearance	
+Natural Magnet
+Natural Magnet
+Also called a lodestone, a naturally magnetized piece of magnetite (Fe3O4).
+Used to easily filter iron sand from the river.
+Used by Chrome as a primitive compass.
+20
+Iron Sand
+Iron Sand
+Iron mineral particles found in the river.
+Typically particles of magnetite.
+20
+Scale
+Scale
+Used to weigh out ratios of carbon and iron sand to make metallic iron.
+21
+Iron Mill Furnace
+Blast Furnace (Level 1)
+A furnace for making iron.
+Air is pumped in via four bag bellows.
+21
+Bag Billows
+Bag Bellows
+Used for pumping air into the furnace.
+21
+Millet Flour
+Millet Flour
+Flour made from foxtail millet.
+22
+Sodium Hydroxide
+Sodium Hydroxide
+(NaOH)
+A highly caustic base and alkali that has several applications.
+Used in the ramen to add alkalinity and in the sulfa drug.
+Derived from wood ash, or alternatively from salt water electrolysis.
+22
+Potassium Carbonate
+Potassium Carbonate
+(K2CO3)
+Used in the ramen to add elasticity.
+22
+Millet Dough Noodles
+Millet Noodles
+Made from foxtail millet flour.
+Used in the ramen.
+22
+Ramen
+Ramen
+Made with various meats, wild bird egg, millet noodles and topped with spring onions.
+22
+Ramen Cart
+Ramen Cart
+(ラーメン)
+A basic food cart for transporting and serving ramen from.
+Contains two stone furnaces for keeping the pots warms, a roof and a sign indicating the food type.
+Transported manually via two protruding handles and rolled on wheels (the repurposed pulleys made previously) like a traditional food cart.
+22
+Iron Forge
+Blast Furnace (Level 2)
+An improved furnace for making iron.
+Air is pumped in via four vertical shifting-type pumps.
+23
+Iron
+Iron
+(Fe)
+The most common element on Earth by mass.
+Used in countless Kingdom of Science creations.
+23
+Copper
+Copper
+(Cu)
+Used to make copper wire for the powerful magnet.
+24
+Copper wire
+Copper Wire
+Made using molten copper, poured into a long groove in a plank stolen from the bridge into Ishigami Village.
+Used to make a magnet.
+24
+Lacquer
+Lacquer
+An insulating coating made from the lacquer tree.
+Used on shields and on the magnet.
+24
+Lightning Rod
+Lightning Rod
+Made from Kinro's golden spear, set atop Bald Mountain.
+Used to draw lightning to a specific spot to create the powerful magnet.
+24
+Strong Magnet
+Strong Magnet
+A strong magnet, used in the generator.
+25
+Manpowered Generator
+Dual Hand-cranked Dynamo
+A man-powered electrical generator.
+Requires two people to turn the cranks in sync to generate power.
+Marks the beginning of electrical power use in the Kingdom of Science.
+Formally called Faraday's disk generator.
+25
+Steam Roasted Bamboo String
+Bamboo Filament
+A baked piece of bamboo fiber used as a light bulb filament.
+Based off of Thomas Edison's bamboo filament lightbulbs.[3]
+25
+Candle
+Candle
+A basic candle of liquid fat in a bowl with a simple wick.
+26
+Herbal Paste
+Herbal Paste
+A paste of various medicinal plants, applied topically to Gen's injuries.
+25
+Toothbrush
+Teeth-Cleaning Twig
+A primitive toothbrush in the form of a twig that is chewed until one end is frayed and used to brush teeth.
+Some trees are better suited to clean and protect the teeth, due to the chemical composition of the plant parts.[4]
+27
+Quartz sand
+Quartz Sand
+(SiO2)
+Used to make glass.
+28
+Senku makes Suika glasses
+Crystal Glass
+Glass made of powdered silica sand heated with burnt seaweed (20%) and calcium carbonate (10%), then some lead.
+Used in Suika's and Kinro's glasses.
+28
+Lens Polisher
+Lens Polisher
+A man-powered whetstone bore for polishing and shaping the lenses for glasses.
+28
+Eye Chart
+Eye Chart
+A chart with simple shapes to test vision.
+28
+Suika Helmet Glasses
+Melon Glasses
+Concave lens glasses using Suika's melon as frames.
+28
+Obsidian Foam Insulation
+Obsidian Foam Insulation
+A thermal insulator used to insulate the glassblowing furnace.
+29
+Leather Forging Coverall
+Leather Coveralls
+A thick leather garment made to protect the wearer from the heat of the furnace.
+29
+Iron Straw
+Glassblowing Tools
+A long iron straw for blowing into the glass to inflate it (formally called a blowpipe).
+Tongs for shaping bottlenecks.
+An annealing oven to slowly cool down finished pieces.
+29
+Glass Furnace
+Glass Furnace
+A furnace for heating glass to working temperatures.
+29
+Chemistry Glassware
+Laboratory Glassware
+A large selection of glass beakers and flasks for chemistry use in the lab, all made by Kaseki.
+29
+Native Silver
+Native Silver
+(Ag)
+Naturally occurring silver.
+Used in Ginro's silver spear to protect the group from sulfuric acid by reacting to the hydrogen sulfide.
+30
+Silver Spear
+Silver Spear
+A spear with a head coated in silver used for detecting hydrogen sulfide since it tarnishes black instantly (2Ag + H2S → Ag2S + H2).
+30
+Activated Charcoal
+Activated Charcoal
+(C)
+A form of carbon with an extremely high surface area due to a large amount of small, low-volume pores.
+Used in gas absorption for the gas masks.
+30
+Fire Lens
+Fire Lens
+A convex lens used to start fires by focusing sunlight into a point.
+Used by Chrome to start a fire in the grand bout.[5]
+31
+Gas Masks
+Gas Masks
+Masks used to defend against hydrogen sulfide by trapping and neutralizing it.
+31
+Sulfuric Acid acquired
+Sulfuric Acid
+(H2SO4)
+A colourless acid used in many of Senku's inventions such as the sulfa drug and nitroglycerine.
+32
+Water driper
+Water Condenser
+A drip machine for capturing gases and condensing them into a liquid.
+33
+Hydrochloric Acid
+Hydrochloric Acid
+(HCl)
+A colorless acid used in the sulfa drug.
+33
+Geyserite
+Flowers of Sulfur
+(S)
+A yellow sulfur powder produced by sublimation and deposition.
+Could also be geyserite as it is described as a white powder found near hot springs.
+33
+Condensing Column
+Condensing Column
+A cooled tube used for condensing gases into liquid.
+33
+Chlorosulfuric Acid
+Chlorosulfuric Acid
+(HSO3Cl)
+A corrosive and harmful colorless liquid used in making the sulfa drug.
+33
+Ammonia
+Ammonia
+(NH3)
+A pungent colorless gas used in making the sulfa drug.
+Derived from urine.
+33
+Power up Science Drink
+Power-up Science Drink
+A concoction designed to enhance physical performance. Includes honey to increase blood sugar, camellia for caffeine and sweet flag to cool you down (possibly as a sedative).
+34
+Vinegar and Alcohol
+Acetic Acid
+(CH3COOH)
+Also known as vinegar, derived from alcohol (ethanol) reacting with oxygen in the air.
+Turned into ketene in an iron pipe before becoming acetic anhydride.
+The glacial form (without water) was used in the sulfa drug
+40
+Water Carbonator
+Water Carbonator
+A rotating drum with the excess carbon dioxide from fermentation being bubbled through.
+Probably based on the original design by Joseph Priestly.[6]
+40
+Tar
+Tar
+(C + Other Hydrocarbons)
+A dark brown or black viscous liquid that can be made from coal, wood, petroleum, or peat.
+40
+Ethyl Acetate
+Ethyl Acetate
+(C4H8O2)
+A colourless liquid with a slightly sweet smell.
+40
+Aniline
+Aniline
+(C6H5NH2)
+A dangerous organic compound.
+40
+Carbonated Water
+Carbonated Water
+(H2CO3)
+Water with small amounts of carbon dioxide dissolved inside, creating carboxylic acid.
+40
+Acetic anhydride
+Acetic Anhydride
+((CH3CO)2O)
+The simplest isolable anhydride of a carboxylic acid, widely used as a reagent in organic synthesis.
+40
+Acetanilide
+Acetanilide
+(C8H9NO)
+A member of the class of acetamides.
+40
+Para-acetamidobenzenesulfonic acid
+Para-Acetamidobenzenesulfonic Acid
+(C8H9NO4S) & Para-Acetamidobenzenesulfonyl Chloride
+(C8H8ClNO3S)
+Part of the process of making the sulfa drug.
+40
+Sodium Bicarbonate
+Sodium Bicarbonate
+(NaHCO3)
+Also known as baking soda, it is a white salt usually used in baking as a leavening agent.
+40
+Sulfanilamide
+Sulfanilamide
+(C6H8N2O2S)
+The completed sulfa drug.
+40
+Cola
+Cola
+A bottle of cola left by Senku for Gen as thanks.
+40
+Wire Glasses
+Wire-Framed Glasses
+Pre-petrification style glasses with thin frames made for Kinro.
+47
+Katanas
+Katana
+Japanese-style swords made of sharpened steel with flexible spines.
+Made from iron that's been folded and forge welded into itself several times to draw out impurities. Pine ash gives off purple flames when temperature reaches 1200 degrees, making it a good temperature indicator. Painting the spine of the blade with dilute clay allows tempering of the cutting edge while keeping the spine soft, producing a blade that is flexible and durable while also being very sharp.
+47
+Small Knife
+Small Knife
+A small, very sharp knife delivered to Gen, able to be easily palmed for sneaky cutting.
+48
+
+Stone Wars
+Inventions built during the Communications Arc.
+https://static.wikia.nocookie.net/dr-stone/images/1/16/Cell_Phone_Roadmap.png/revision/latest?cb=20201030200633
+ảnh chế tạo từng bước mô hình senku hha vevex bằng sơ đồ 
+
+Image	Name	Notes	Appearance	
+Sugar
+Crystalized Sugar
+(C6H12O6)
+Raw sugar crystals made by reducing yam liquor and mirin.
+Used in the cotton candy.
+51
+Wire Centrifuge
+Wire Centrifuge
+A metal drum with small holes that spins, using the centrifugal force to push a molten substance inside through small holes, creating thin strands.
+Used to make cotton candy and gold wire.
+51
+Cotton Candy machine
+Cotton Candy Machine
+Used to make cotton candy and gold wire.
+51
+Cotton Candy
+Cotton Candy
+A sweet, fluffy treat.
+51
+Gear
+Gear
+A gear made from Kohaku's shield to consistently spin things such as the record player and cotton candy machine.
+It allows to increase the speed of rotation.
+52
+Saw
+Saw
+An improved version of the stone saws Kaseki was using, forged of iron.
+52
+Waterwheel
+Water Wheel
+A device for converting the energy of flowing or falling water into useful forms of power.
+52
+Hydroelectric power plant
+Hydroelectric Power Plant
+The water wheel coupled with the electric generator, allowing to charge batteries and power electrical loads without resorting to muscle power. Besides the generator, other machines such as bellows have been attached to the waterwheel for a power source.
+52
+Battery
+Lead-acid Battery
+A lead-sulfuric acid battery, used for storing the power from the water wheel and act as a portable source of electricity, such as for mining lamps and vacuum tube filaments in wireless telephones.
+The oldest rechargeable battery, invented in 1859.
+53
+Half Gear
+Reciprocating Rack and Pinion
+A type of gear mechanism that converts circular movement to back-and-forth movement.
+53
+Automatic Iron Forge
+Blast Furnace (Level 3)
+An even more improved furnace for making iron.
+Air is pumped in via a multiple cylinder horizontal reciprocating pump, powered by the water wheel.
+53
+Pickling
+Pickling
+A method of preserving food in an edible, antimicrobial liquid using airtight containers. The precursor to canning.
+53
+Vacuum Pump
+Vacuum Pump
+A device that uses mercury to remove the air from the inside of a light bulb.
+Historically known as a Sprengel pump.
+53
+Light Bulb
+Electric Light
+An incandescent light bulb that uses a carbonized bamboo or tungsten filament.
+53
+Light Switch
+Light Switch
+A simple switch that connects or breaks an electrical circuit, allowing electrity to flow ("on" state) or not ("off" state).
+53
+Head Lamp
+Head Lamp
+A battery-powered light worn on the head to keep the hands free.
+54
+Copper Tube
+Copper Tube
+A tube that will expand inwards rather than outwards when heated, preventing the bulbs shattering.
+54
+Tungsten
+Scheelite
+(CaWO4)
+An ore of tungsten that glows blue under ultraviolet light.
+54
+Mica
+Mica
+A group of minerals which can easily be split into extremely thin elastic plates.
+55
+Siphon
+Siphon
+A device which causes a liquid to flow upward, above the surface of a reservoir, with no pump, but powered by the fall of the liquid as it flows down the tube under the pull of gravity.
+55
+Pickaxe
+Pickaxe
+A metal tool used for prying, especially useful for mining.
+56
+Manganese
+Manganese Dioxide
+(MnO2)
+Used for making carbon-zinc batteries.
+Found in the skarn deposit.
+56
+Chalcopyrite and Sphalerite
+Chalcopyrite (CuFeS2)
+&
+Sphalerite ((Zn,Fe)S)
+Chalcopyrite is the most important ore of copper, a good conductor.
+Sphalerite is the most important ore of zinc, useful in galvanization (preventing rust).
+Sphalerite's phosphorescence also makes it suitable for the screens in cathode ray tubes, producing a green glow.
+56
+Yume no Yō na by Yusuke Saeki
+Telescope
+An optical instrument that uses lenses to observe distant objects.
+56
+Tungsten Paste
+Tungsten Paste
+The uncooked version of the tungsten filament used in vacuum tubes and light bulbs.(WO3).
+The process involves smashing the scheelite to dust, simmering in sodium hydroxide, adding seashells, hydrochloric acid and ammonia to make it crystalize then baking it and mixing it with honey.
+57
+Direct heat
+All-in-one Heating Set
+A heating setup to bake the tungsten paste thus sintering it into a solid metal wire, using every bit of heat energy Chrome could possibly harness.
+57
+Hydrogen Generator
+Electrolyzer
+A device used to pass electricity through water, extracting the hydrogen.
+57
+Tungsten filament
+Tungsten Filament
+A filament with a very high melting point for use in vacuum tubes and long-lasting light bulbs.
+Because of the challenge of melting tungsten, the filament is instead made by microscopically welding powdered tungsten particles, a process known as sintering, and which requires a much lower temperature.
+57
+Methanol
+Methanol
+(CH3OH)
+Also known as wood alcohol, can be made through the destructive distillation of wood.
+Used to make formalin.
+58
+Formalin
+Formalin
+(CH2O)
+Also known as aqueous formaldehyde, used to make bakelite plastic or to preserve bodies.
+58
+Gold Wire
+Gold Wire
+Conductive wire used for electronic devices.
+58
+Stove Obtained!!
+Stove
+A device in which fuel is burned to heat either the space in which the stove is situated, or items placed on the heated stove or inside it in an oven.
+58
+Manganese Battery
+Zinc-Manganese Battery
+Some of the batteries used to power the cell phone, specifically the anode supply for the vacuum tube.
+For their construction method, see Kung Dang Manganese.
+58
+Hickman Pump
+Hickman Pump
+An upgraded vacuum pump used to achieve a very high vacuum required by vacuum tubes.
+A type of oil diffusion pump.
+58
+Plastic
+Phenolic Resin Plastic
+One of a variety of phenol formaldehyde resin plastics that are lightweight and can be moulded into shapes, besides being electrical insulators. The resin may be mixed with additives such as wood fibers to make the phenolic paper historically used as the substrate in circuit boards, or with wood flour to make Bakelite, used to make casings and other parts in electronics such as telephones and radios from the 1930's through the 1950's. It is the oldest fully synthetic plastic, and it's thermosetting, meaning once it hardens after being made, it cannot be remelted.
+58
+Vacuum Tube
+Vacuum Tube
+A device that controls electric current flow in a high vacuum between electrodes to which an electric potential difference has been applied. It can be used to amplify sound signals, as well as build oscillators to broadcast radio waves and many other uses. The early tubes made by the kingdom of science are called triodes, having three elements, a tungsten cathode that heats up with electricity and boils off electrons, a metal plate or anode placed nearby to catch those electrons, and a metal grid placed between them which can control the flow of electrons when it's electrically charged.
+58
+Rochelle Salts
+Rochelle Salts
+(KNaC4H4O6·4H2O )
+A salt that exhibits piezoelectricity that can be used in gramophone pick-ups, microphones, earpieces and speakers.
+Can be grown using wine crystals and seaweed.
+59
+Microphone
+Microphone
+A device that converts sound to an electrical signal.
+Also works the other way, as an earpiece or speaker
+59
+Cell phone obtained!!
+Cell Phone
+(SENKU'S PHONE)
+A portable telephone that can make and receive calls over a particular radio frequency within a certain range.
+59
+Land Line
+Land Line
+A communication device connection between two or more points using a dedicated physical cable.
+59
+Speaker
+Speaker
+A device that converts an electrical audio signal into a corresponding sound.
+Can also be used as a microphone.
+59
+Bone Needle
+Bone Needle
+A needle made of bone, used for sewing or as a record player's needle.
+60
+Record Player
+Record Player
+A device for the mechanical recording and reproduction of sound.
+Used in Gen and Senku's scheme to play Lillian's last song to the members of the Tsukasa empire.
+60

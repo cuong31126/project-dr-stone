@@ -141,10 +141,29 @@ Phase 1: Đột phá thị giác & Tương tác tức thì (ĐÃ HOÀN THÀNH 10
   [x] Bổ sung: Tách trang riêng Bách Khoa Toàn Thư characters.html (109 nhân vật offline).
   [x] ĐỘT PHÁ 3D: Quả Địa Cầu Hologram 3D Tương Tác Chuột (Three.js WebGL) cho Hải Trình Perseus (`js/globe-3d.js`).
 Phase 2: Trải nghiệm người dùng & Xác thực (UX & Feature Roadmap)
-  [ ] Bước 5: Thẻ Căn Cước Vương Quốc Khoa Học 3D (Kingdom of Science ID Pass).
-  [ ] Bước 6: Cinema Video Modal & Bookmark tiến độ tập phim.
-  [ ] Bước 7: Minigame Đấu Trường Tri Thức Dr. Stone Quiz.
-  [ ] Bước 8: Xác thực & Đăng nhập tài khoản Google (Google Identity Services / Firebase Auth):
+  [x] Bước 5: Thẻ Căn Cước Vương Quốc Khoa Học 3D (Kingdom of Science ID Pass) ✅ HOÀN THÀNH 100%:
+      - Tạo thẻ 3D Hologram Tilt & xoay lật 2 mặt (js/citizen-pass.js).
+      - Tích lũy điểm khoa học SP kết nối bookmark/xem phim và bảng tuần hoàn 3D.
+      - Xuất ảnh thẻ PNG chất lượng cao (html2canvas).
+      - Tích hợp Discord Webhook tự động bắn tin nhắn báo về điện thoại khi có người tạo thẻ.
+      - Tích hợp radar đếm số lượt ghé thăm & số cư dân (sẵn sàng bật khi deploy).
+  [x] Bước 6: Cinema Video Modal & Bookmark tiến độ tập phim ✅ HOÀN THÀNH 100%:
+      - Nhúng trực tiếp Player Cinema Modal làm tối nền rạp chiếu chuẩn 16:9 siêu nhẹ (Zero-Bloat Single Dynamic Lazy Iframe).
+      - Tự động dừng video và giải phóng 100% RAM khi nhấn phím Esc hoặc click ngoài backdrop.
+      - Thanh chọn nhanh tập kế tiếp/trước đó (Next/Prev Ep + phím mũi tên ← →).
+      - Tự động đánh dấu "Đã xem" và cộng +25 SP vào Thẻ Căn Cước Khoa Học 3D.
+      - Nguồn kép linh hoạt: Ani-One YouTube & AnimeVietsub HD 1080p.
+  [x] Bước 7: Sơ Đồ Cây Lộ Trình Chế Tạo Khoa Học Tương Tác (Interactive Science Crafting Tree) ✅ HOÀN THÀNH 100%:
+      - Tái hiện 4 Đại Dự Án Huyền Thoại: Thuốc Sulfa 25 bước, Điện thoại vô tuyến, Nước hồi sinh Nital, Chiến hạm Perseus.
+      - Canvas tương tác kéo chuột (Drag to Pan), lăn chuột phóng to/thu nhỏ (Zoom in/out) và đường truyền xung điện SVG neon.
+      - Bảng chi tiết mắt xích (Node Inspector): Tên khoa học, công thức hóa học, ứng dụng cốt truyện.
+      - Liên kết 2 chiều với Bảng Tuần Hoàn 118 Nguyên Tố 3D: Nhấp mắt xích tự động xoay camera và chiếu sáng rực rỡ các nguyên tố cấu thành.
+      - Tích hợp cộng +10 SP vào Thẻ Căn Cước Khoa Học 3D.
+  [ ] Bước 8: Bách Khoa Toàn Thư 226 Phát Minh & Khám Phá Khoa Học (The Complete 226 Science Codex):
+      - Chuẩn hóa 226 vật phẩm khoa học từ doc/tiendo/phatminh.txt thành cơ sở dữ liệu data/inventions.json.
+      - Lưới Card Glassmorphism lọc đa chiều theo 7 Ngành Khoa Học và 4 Mùa anime.
+      - Thanh tìm kiếm thời gian thực theo Tên hoặc Công thức hóa học.
+  [ ] Bước 9: Xác thực & Đăng nhập tài khoản Google (Google Identity Services / Firebase Auth):
       - Nút "Đăng nhập bằng Google" (One-Tap / Google Sign-In button).
       - Tự động lấy tên & avatar từ tài khoản Google để in lên Thẻ Căn Cước Khoa Học 3D.
       - Lưu phiên đăng nhập an toàn, bắn webhook Discord thông báo "Cư dân [Tên Google] vừa thức tỉnh!".

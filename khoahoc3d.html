@@ -98,12 +98,20 @@
         </a>
       </nav>
 
-      <!-- Quick Action -->
-      <div class="flex items-center gap-3">
+      <!-- Quick Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="#crafting-tree-section"
+           class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#00d4ff]/10 hover:bg-[#00d4ff]/25 border border-[#00d4ff]/40 text-xs font-['Orbitron'] font-bold text-[#00d4ff] tracking-wider transition-all shadow-[0_0_12px_rgba(0,212,255,0.2)]">
+          <span>🌿 Cây Chế Tạo</span>
+        </a>
+
+        <!-- Citizen Pass / Auth Container -->
+        <div id="navbar-auth-container" class="flex items-center gap-2"></div>
+
         <a href="#inventions-section"
-           class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#00d4ff]/20 to-[#39ff14]/20 hover:from-[#00d4ff]/30 hover:to-[#39ff14]/30 border border-[#00d4ff]/40 text-xs sm:text-sm font-['Orbitron'] font-bold text-white tracking-wider transition-all duration-200 shadow-[0_0_15px_rgba(0,212,255,0.2)]">
-          <span>📜 Bách Khoa Phát Minh</span>
-          <span class="text-[#39ff14]">↓</span>
+           class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-['Rajdhani'] font-bold text-gray-300 tracking-wider transition-all">
+          <span>📜 Bách Khoa</span>
+          <span>↓</span>
         </a>
       </div>
 
@@ -130,35 +138,14 @@
         </p>
       </div>
 
-      <!-- 1. Thanh Chuyển Đổi Hình Thái 3D & Zoom Camera -->
-      <div class="flex flex-wrap items-center justify-center gap-3 mb-5">
-        <!-- 4 Hình Thái -->
-        <div class="flex items-center gap-1.5 bg-[#0a0f1e]/90 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md shadow-[0_4px_20px_rgba(0,0,0,0.4)]">
-          <button id="btn-pt-table" class="px-4 py-2 rounded-xl font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-[#00e5ff] text-black shadow-[0_0_15px_rgba(0,229,255,0.5)] transition-all hover:scale-105 cursor-pointer">
-            📄 Bảng Phẳng
-          </button>
-          <button id="btn-pt-sphere" class="px-4 py-2 rounded-xl font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
-            🌐 Quả Cầu
-          </button>
-          <button id="btn-pt-helix" class="px-4 py-2 rounded-xl font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
-            🧬 Xoắn Ốc
-          </button>
-          <button id="btn-pt-grid" class="px-4 py-2 rounded-xl font-['Rajdhani'] font-bold text-xs uppercase tracking-wider bg-white/5 text-[#94a3b8] hover:text-[#00e5ff] transition-all hover:scale-105 cursor-pointer">
-            🧊 Ma Trận
-          </button>
-        </div>
-
-        <!-- Zoom & Reset -->
-        <div class="flex items-center gap-1.5 bg-[#0a0f1e]/90 p-1.5 rounded-2xl border border-white/10 backdrop-blur-md">
-          <button id="btn-pt-zoom-in" class="px-3.5 py-2 rounded-xl font-['Rajdhani'] font-bold text-xs bg-white/5 hover:bg-white/15 text-white transition-all cursor-pointer" title="Phóng to">
-            🔍 +
-          </button>
-          <button id="btn-pt-zoom-out" class="px-3.5 py-2 rounded-xl font-['Rajdhani'] font-bold text-xs bg-white/5 hover:bg-white/15 text-white transition-all cursor-pointer" title="Thu nhỏ">
-            🔍 −
-          </button>
-          <button id="btn-pt-reset" class="px-3.5 py-2 rounded-xl font-['Rajdhani'] font-semibold text-xs uppercase tracking-wider text-[#94a3b8] hover:text-[#00e5ff] transition-all cursor-pointer" title="Góc nhìn chuẩn">
-            ↺ Reset
-          </button>
+      <!-- 1. Thanh Chỉ Báo Trạng Thái Hình Thái 3D (Click để chuyển đổi tuần hoàn) -->
+      <div class="flex items-center justify-center mb-5">
+        <div id="pt-mode-badge"
+             class="flex items-center gap-2 px-5 py-2 rounded-full bg-[#0a0f1e]/90 border border-[#00e5ff]/40 text-xs font-['Rajdhani'] font-bold text-[#00e5ff] backdrop-blur-md cursor-pointer hover:border-[#00e5ff] hover:bg-[#00e5ff]/15 transition-all shadow-[0_0_20px_rgba(0,229,255,0.25)] select-none hover:scale-105"
+             title="Nhấp chuột vào nền hoặc huy hiệu để chuyển đổi: Bảng Phẳng ➔ Quả Cầu ➔ Xoắn Ốc ➔ Ma Trận">
+          <span class="w-2 h-2 rounded-full bg-[#00e5ff] animate-ping"></span>
+          <span id="pt-mode-text">📄 Bảng Tuần Hoàn Tiêu Chuẩn</span>
+          <span class="text-[#94a3b8] font-normal hidden sm:inline">• Nhấp để chuyển hình thái 3D</span>
         </div>
       </div>
 
@@ -200,8 +187,8 @@
       <div class="relative rounded-3xl overflow-hidden border border-[#00d4ff]/25 bg-[#0a0f1e]/80 backdrop-blur-xl shadow-[0_0_40px_rgba(0,212,255,0.12)]">
         <div id="pt-container" class="relative w-full h-[600px] sm:h-[700px] cursor-grab active:cursor-grabbing bg-radial from-[#071326] via-[#050814] to-[#02040a] select-none">
           <!-- Instruction badge -->
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-10 px-4 py-1.5 rounded-full bg-[#050810]/80 border border-white/10 text-[0.7rem] font-['Rajdhani'] text-[#94a3b8] backdrop-blur-md">
-            🖱️ Kéo để xoay 360° • Lăn chuột để phóng to/thu nhỏ • Nhấp nguyên tố để xem chi tiết
+          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-10 px-4 py-1.5 rounded-full bg-[#050810]/85 border border-[#00d4ff]/30 text-[0.7rem] font-['Rajdhani'] text-[#cbd5e1] backdrop-blur-md shadow-lg text-center whitespace-nowrap">
+            🖱️ Nhấp nền để đổi hình thái 3D • Kéo chuột xoay 360° • Lăn chuột phóng to/thu nhỏ • Nhấp nguyên tố xem chi tiết
           </div>
         </div>
       </div>
@@ -209,328 +196,281 @@
 
 
     <!-- ─────────────────────────────────────────
-         SECTION 2: BÁCH KHOA TOÀN THƯ PHÁT MINH KHOA HỌC
+         SECTION 2: SƠ ĐỒ CÂY LỘ TRÌNH CHẾ TẠO KHOA HỌC (SENKU'S CRAFTING TREE)
+         ───────────────────────────────────────── -->
+    <section id="crafting-tree-section" class="mb-20 pt-8 border-t border-white/10">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-8">
+        <div>
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00d4ff]/30 bg-[#00d4ff]/10 text-xs font-['Rajdhani'] font-bold tracking-widest uppercase text-[#00d4ff] mb-2">
+            <span class="w-2 h-2 rounded-full bg-[#00d4ff] animate-ping"></span>
+            SENKU'S SCIENCE CRAFTING TREE
+          </span>
+          <h2 class="font-['Orbitron'] font-black text-2xl sm:text-4xl text-white">
+            Sơ Đồ Cây Lộ Trình Chế Tạo Khoa Học
+          </h2>
+          <p class="font-['Rajdhani'] text-sm sm:text-base text-[#94a3b8] mt-1 max-w-2xl">
+            Tái hiện các sơ đồ mạng nhện nổi tiếng của Senku: Tương tác rê kéo, zoom và nhấp vào từng mắt xích phản ứng để tự động soi nguyên tố trên Bảng Tuần Hoàn 3D!
+          </p>
+        </div>
+
+        <!-- 4 Dự Án Tabs -->
+        <div class="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#0a0f1e]/90 border border-white/10 backdrop-blur-md">
+          <button data-roadmap="sulfa" class="roadmap-tab-btn active px-3.5 py-2 rounded-xl text-xs font-['Rajdhani'] font-bold uppercase tracking-wider border border-[#00d4ff] bg-[#00d4ff]/20 text-[#00d4ff] shadow-[0_0_20px_rgba(0,212,255,0.4)] transition-all cursor-pointer flex items-center gap-1.5">
+            <span>💊 Thuốc Sulfa</span>
+          </button>
+          <button data-roadmap="phone" class="roadmap-tab-btn px-3.5 py-2 rounded-xl text-xs font-['Rajdhani'] font-bold uppercase tracking-wider border border-white/10 bg-white/5 text-[#94a3b8] hover:text-white hover:border-white/20 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>📱 Điện Thoại</span>
+          </button>
+          <button data-roadmap="nital" class="roadmap-tab-btn px-3.5 py-2 rounded-xl text-xs font-['Rajdhani'] font-bold uppercase tracking-wider border border-white/10 bg-white/5 text-[#94a3b8] hover:text-white hover:border-white/20 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🧪 Nước Hồi Sinh</span>
+          </button>
+          <button data-roadmap="perseus" class="roadmap-tab-btn px-3.5 py-2 rounded-xl text-xs font-['Rajdhani'] font-bold uppercase tracking-wider border border-white/10 bg-white/5 text-[#94a3b8] hover:text-white hover:border-white/20 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🚢 Tàu Perseus</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active Project Overview Info Card -->
+      <div class="mb-5 p-4 rounded-2xl bg-[#0a0f1e]/80 border border-white/10 backdrop-blur-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span id="roadmap-project-badge" class="text-[0.62rem] font-['Orbitron'] font-black px-2.5 py-0.5 rounded-full border">
+              Y HỌC 25 BƯỚC
+            </span>
+            <h3 id="roadmap-project-title" class="font-['Orbitron'] font-bold text-lg text-white">
+              💊 Thuốc Kháng Sinh Sulfa
+            </h3>
+          </div>
+          <p id="roadmap-project-subtitle" class="font-['Rajdhani'] text-xs sm:text-sm text-[#94a3b8]">
+            Sulfanilamide 25 Bước Cứu Sống Vu Nữ Ruri
+          </p>
+        </div>
+
+        <!-- Canvas Zoom Controls -->
+        <div class="flex items-center gap-2">
+          <div class="flex items-center gap-1 bg-black/50 p-1 rounded-xl border border-white/10">
+            <button type="button" id="btn-tree-zoom-in" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/15 text-white flex items-center justify-center font-bold text-sm transition-all cursor-pointer" title="Phóng to">
+              +
+            </button>
+            <span id="tree-zoom-text" class="px-2 text-xs font-mono text-[#00d4ff] font-bold">100%</span>
+            <button type="button" id="btn-tree-zoom-out" class="w-8 h-8 rounded-lg bg-white/5 hover:bg-white/15 text-white flex items-center justify-center font-bold text-sm transition-all cursor-pointer" title="Thu nhỏ">
+              −
+            </button>
+            <button type="button" id="btn-tree-reset" class="px-2.5 h-8 rounded-lg bg-white/5 hover:bg-white/15 text-xs text-[#94a3b8] hover:text-white transition-all cursor-pointer" title="Căn giữa">
+              ↺ Reset
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Layout: Canvas on Left/Center + Node Inspector Drawer on Right -->
+      <div id="crafting-tree-container" class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+        
+        <!-- Interactive Node-Canvas Viewport -->
+        <div class="lg:col-span-8 xl:col-span-9 relative h-[650px] sm:h-[720px] rounded-3xl overflow-hidden border border-[#00d4ff]/25 shadow-[0_0_50px_rgba(0,0,0,0.8)] crafting-blueprint-grid">
+          
+          <!-- Viewport with Drag & Zoom -->
+          <div id="crafting-viewport" class="w-full h-full cursor-grab active:cursor-grabbing overflow-hidden relative">
+            
+            <!-- Transformable Surface Layer -->
+            <div id="crafting-surface" class="absolute inset-0 origin-top-left transition-transform duration-75" style="width: 1300px; height: 950px;">
+              
+              <!-- SVG Connector Lines Layer -->
+              <svg id="crafting-svg-lines" class="absolute inset-0 w-full h-full pointer-events-none z-0"></svg>
+
+              <!-- HTML Nodes Layer -->
+              <div id="crafting-nodes-layer" class="absolute inset-0 w-full h-full z-10"></div>
+
+            </div>
+
+          </div>
+
+          <!-- Bottom Navigation Hint -->
+          <div class="absolute bottom-3 left-4 pointer-events-none z-20 flex items-center gap-2 text-[0.68rem] font-['Rajdhani'] text-[#94a3b8] bg-black/75 px-3 py-1.5 rounded-full border border-white/10 backdrop-blur-md">
+            <span>🖱️ Kéo để di chuyển • Lăn chuột để phóng to/thu nhỏ • Nhấp mắt xích để soi chi tiết</span>
+          </div>
+
+        </div>
+
+        <!-- Node Inspector Panel -->
+        <div class="lg:col-span-4 xl:col-span-3 bg-[#0a0f1e]/90 border border-[#00d4ff]/30 rounded-3xl p-5 sm:p-6 backdrop-blur-xl shadow-[0_10px_40px_rgba(0,0,0,0.6)] flex flex-col justify-between min-h-[500px]" id="node-inspector-panel">
+          <div>
+            <div class="flex items-center justify-between gap-3 mb-4 pb-4 border-b border-white/10">
+              <div class="flex items-center gap-3">
+                <span id="inspect-icon" class="w-12 h-12 rounded-2xl bg-[#00d4ff]/15 border border-[#00d4ff]/40 flex items-center justify-center text-2xl shadow-[0_0_15px_rgba(0,212,255,0.3)]">
+                  💊
+                </span>
+                <div>
+                  <span class="text-[0.62rem] font-['Orbitron'] font-bold text-[#00d4ff] uppercase tracking-wider block">
+                    CHI TIẾT MẮT XÍCH
+                  </span>
+                  <h4 id="inspect-title" class="font-['Orbitron'] font-black text-base sm:text-lg text-white leading-tight">
+                    Thuốc Kháng Sinh Sulfa
+                  </h4>
+                </div>
+              </div>
+            </div>
+
+            <!-- English Name & Chemical Formula -->
+            <div class="space-y-2 mb-4">
+              <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                <span class="text-[0.62rem] font-['Rajdhani'] uppercase tracking-widest text-[#64748b] block">Tên khoa học:</span>
+                <span id="inspect-en" class="font-['Rajdhani'] font-bold text-xs sm:text-sm text-gray-200">
+                  Sulfanilamide
+                </span>
+              </div>
+              <div class="p-2.5 rounded-xl bg-white/[0.03] border border-white/5">
+                <span class="text-[0.62rem] font-['Rajdhani'] uppercase tracking-widest text-[#64748b] block">Công thức / Cấu tạo:</span>
+                <span id="inspect-formula" class="font-mono font-bold text-xs sm:text-sm text-[#ffd700]">
+                  C₆H₈N₂O₂S
+                </span>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-5">
+              <span class="text-[0.62rem] font-['Rajdhani'] uppercase tracking-widest text-[#64748b] block mb-1">Ứng dụng trong Dr. Stone:</span>
+              <p id="inspect-desc" class="font-['Rajdhani'] text-xs sm:text-sm text-[#cbd5e1] leading-relaxed">
+                Đang tải thông tin chi tiết mắt xích...
+              </p>
+            </div>
+
+            <!-- Constituent Chemical Elements -->
+            <div class="mb-5">
+              <span class="text-[0.62rem] font-['Rajdhani'] uppercase tracking-widest text-[#00d4ff] block mb-2">Nguyên tố hóa học cấu thành:</span>
+              <div id="inspect-elements-container" class="flex flex-wrap gap-1.5">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Jump Button to 3D Table -->
+          <div class="pt-4 border-t border-white/10 space-y-2">
+            <button type="button" id="inspect-btn-3d-jump" class="w-full py-3 px-4 rounded-2xl bg-gradient-to-r from-[#00d4ff] to-[#39ff14] text-black font-['Rajdhani'] font-black text-xs sm:text-sm uppercase tracking-wider hover:shadow-[0_0_30px_rgba(0,212,255,0.6)] hover:scale-[1.02] transition-all flex items-center justify-center gap-2 shadow-lg cursor-pointer">
+              <span>🔍 Soi Trên Bảng Tuần Hoàn 3D</span>
+              <span class="text-xs font-normal opacity-85">(+10 SP)</span>
+            </button>
+            <p class="text-[0.6rem] text-center text-[#64748b] font-['Rajdhani']">
+              Bấm để tự động xoay camera 3D và chiếu sáng các nguyên tố tương ứng!
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ─────────────────────────────────────────
+         SECTION 3: BÁCH KHOA TOÀN THƯ PHÁT MINH KHOA HỌC (SENKU'S INVENTIONS ENCYCLOPEDIA)
          ───────────────────────────────────────── -->
     <section id="inventions-section" class="pt-8 border-t border-white/10">
       
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <!-- Section Header -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-8">
         <div>
           <span class="inline-flex items-center gap-2 text-xs font-['Orbitron'] font-bold text-[#39ff14] tracking-widest uppercase mb-2">
             <span class="w-2 h-2 rounded-full bg-[#39ff14] animate-pulse"></span>
-            LỘ TRÌNH TÁI SINH VĂN MINH
+            BÁCH KHOA PHÁT MINH TOÀN THƯ (450+ PHÁT MINH)
           </span>
-          <h2 class="font-['Orbitron'] font-black text-2xl sm:text-3xl text-white">
-            Bách Khoa Phát Minh Khoa Học Của Senku
+          <h2 class="font-['Orbitron'] font-black text-2xl sm:text-4xl text-white">
+            Kho Tàng Sáng Chế & Phát Minh Của Senku
           </h2>
-          <p class="font-['Rajdhani'] text-sm sm:text-base text-[#94a3b8] mt-1">
-            Tổng hợp 10 phát minh bước ngoặt đưa thế giới từ thời kỳ đồ đá tiền sử vươn ra Mặt Trăng.
+          <p class="font-['Rajdhani'] text-sm sm:text-base text-[#94a3b8] mt-1 max-w-2xl">
+            Toàn bộ các phát minh, công thức hóa học, vật liệu và máy móc từ Kỷ nguyên Đồ đá đến Cuộc đổ bộ Mặt Trăng. Mỗi phát minh có thể soi chiếu trực tiếp lên Bảng Tuần Hoàn 3D!
           </p>
         </div>
 
-        <!-- Bộ lọc mùa phát minh -->
-        <div class="flex flex-wrap gap-1.5 p-1 rounded-2xl bg-white/[0.04] border border-white/10">
-          <button data-inv-filter="all" class="inv-filter-btn active px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs bg-[#00d4ff] text-black transition-all cursor-pointer">
-            Tất Cả (10)
-          </button>
-          <button data-inv-filter="ss1" class="inv-filter-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] hover:text-white transition-all cursor-pointer">
-            Mùa 1 (Khởi Nguyên)
-          </button>
-          <button data-inv-filter="ss2" class="inv-filter-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] hover:text-white transition-all cursor-pointer">
-            Mùa 2 (Stone Wars)
-          </button>
-          <button data-inv-filter="ss3" class="inv-filter-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] hover:text-white transition-all cursor-pointer">
-            Mùa 3 (New World)
-          </button>
-          <button data-inv-filter="ss4" class="inv-filter-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] hover:text-white transition-all cursor-pointer">
-            Mùa 4 (Vũ Trụ)
-          </button>
+        <!-- Live Search Bar -->
+        <div class="relative min-w-[280px] sm:min-w-[340px]">
+          <input 
+            type="text" 
+            id="inv-search-input" 
+            placeholder="🔍 Tìm theo tên, công thức (HNO3, Fe, H2SO4...)..." 
+            class="w-full py-2.5 pl-10 pr-4 rounded-2xl bg-[#0a0f1e]/90 border border-white/15 focus:border-[#00d4ff] focus:outline-none focus:ring-2 focus:ring-[#00d4ff]/30 text-white font-['Rajdhani'] text-sm placeholder-[#64748b] transition-all"
+          />
+          <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-sm text-[#64748b]">🔬</span>
         </div>
       </div>
 
-      <!-- Lưới Danh Sách 10 Phát Minh Kinh Điển -->
-      <div id="inventions-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Category Filter Pills & Counter -->
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8 pb-4 border-b border-white/5">
+        
+        <!-- Category Buttons -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button data-category="all" class="inv-cat-btn active px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs bg-[#00d4ff] text-black border border-[#00d4ff] shadow-[0_0_15px_rgba(0,212,255,0.4)] transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🌌</span>
+            <span>Tất Cả</span>
+          </button>
+          <button data-category="chemistry" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-[#00d4ff]/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🧪</span>
+            <span>Hóa Học & Dược</span>
+          </button>
+          <button data-category="electricity" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-[#ffd700]/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>⚡</span>
+            <span>Điện & Năng Lượng</span>
+          </button>
+          <button data-category="communications" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-[#39ff14]/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>📡</span>
+            <span>Truyền Thông</span>
+          </button>
+          <button data-category="vehicles" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-[#f97316]/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🚢</span>
+            <span>Phương Tiện</span>
+          </button>
+          <button data-category="aerospace" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-[#a855f7]/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🚀</span>
+            <span>Vũ Trụ</span>
+          </button>
+          <button data-category="metallurgy" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-white/30 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>⚙️</span>
+            <span>Luyện Kim</span>
+          </button>
+          <button data-category="weapons" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-red-400/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🏹</span>
+            <span>Vũ Khí</span>
+          </button>
+          <button data-category="food" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-amber-400/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🍲</span>
+            <span>Ẩm Thực</span>
+          </button>
+          <button data-category="tools" class="inv-cat-btn px-3.5 py-1.5 rounded-xl font-['Rajdhani'] font-bold text-xs text-[#8fa0ba] border border-white/10 bg-white/[0.04] hover:text-white hover:border-emerald-400/40 transition-all cursor-pointer flex items-center gap-1.5">
+            <span>🪓</span>
+            <span>Công Cụ</span>
+          </button>
+        </div>
 
-        <!-- Phát minh 1: Nước Hồi Sinh Nital -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#00d4ff]/30 hover:border-[#00d4ff]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss1">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#00d4ff]/15 border border-[#00d4ff]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                🧪
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#00d4ff] uppercase tracking-wider">PHÁT MINH SỐ 01 · MÙA 1</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#00d4ff] transition-colors">Dung Dịch Hồi Sinh Nital</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#39ff14]/15 border border-[#39ff14]/40 text-[0.68rem] font-['Orbitron'] text-[#39ff14] font-bold">
-              BƯỚC NGOẶT
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Công thức: HNO₃ (Axit Nitric) + C₂H₅OH (Cồn 96%)
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Phát minh đầu tiên và quan trọng nhất của Senku sau 3.700 năm. Dung dịch Nital hòa tan và ăn mòn lớp vỏ đá bao bọc bên ngoài con người, kích hoạt phản ứng giải phóng tế bào sống và phục sinh nhân loại.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Taiju</strong></span>
-            <span class="text-[#00d4ff]">Nguyên tố: <strong>N, H, O, C</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 2: Thần Dược Sulfa -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#39ff14]/30 hover:border-[#39ff14]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss1">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#39ff14]/15 border border-[#39ff14]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                💊
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#39ff14] uppercase tracking-wider">PHÁT MINH SỐ 02 · MÙA 1</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#39ff14] transition-colors">Thuốc Kháng Sinh Sulfa</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#00d4ff]/15 border border-[#00d4ff]/40 text-[0.68rem] font-['Orbitron'] text-[#00d4ff] font-bold">
-              Y HỌC 25 BƯỚC
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Công thức: Sulfanilamide (C₆H₈N₂O₂S)
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Tuyệt phẩm hóa học với 25 bước phản ứng tổng hợp từ Axit Sunfuric, than đá, rượu, tro bếp và muối ăn. Thuốc Sulfa đã tiêu diệt vi khuẩn phế cầu khuẩn và cứu sống Vu nữ Ruri, giúp Senku thu phục toàn bộ Làng Ishigami.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Chrome, Kaseki</strong></span>
-            <span class="text-[#39ff14]">Nguyên tố: <strong>S, C, N, H, O</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 3: Bóng Đèn Sợi Đốt -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#ffd700]/30 hover:border-[#ffd700]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss1">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#ffd700]/15 border border-[#ffd700]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                💡
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#ffd700] uppercase tracking-wider">PHÁT MINH SỐ 03 · MÙA 1</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#ffd700] transition-colors">Bóng Đèn Sợi Đốt Edison</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#ffd700]/15 border border-[#ffd700]/40 text-[0.68rem] font-['Orbitron'] text-[#ffd700] font-bold">
-              ÁNH SÁNG VĂN MINH
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Vật liệu: Sợi tre than hóa (Carbon) + Thủy tinh thổi chân không
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Khoảnh khắc bóng đèn sợi đốt bừng sáng trong đêm tối mùa đông là minh chứng hùng hồn nhất cho sức mạnh của khoa học. Bằng tay nghề thổi thủy tinh thần thánh của ông lão Kaseki, Senku đã thắp sáng màn đêm tiền sử sau 3.700 năm tăm tối.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Kaseki, Chrome</strong></span>
-            <span class="text-[#ffd700]">Nguyên tố: <strong>C, Si, W, Cu</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 4: Máy Phát Điện & Nam Châm -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#a855f7]/30 hover:border-[#a855f7]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss1">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#a855f7]/15 border border-[#a855f7]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                ⚡
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#a855f7] uppercase tracking-wider">PHÁT MINH SỐ 04 · MÙA 1</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#a855f7] transition-colors">Máy Phát Điện Nam Châm Tự Nhiên</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#a855f7]/15 border border-[#a855f7]/40 text-[0.68rem] font-['Orbitron'] text-[#a855f7] font-bold">
-              ĐIỆN NĂNG TÁI SINH
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Cấu tạo: Đĩa đồng quay + Nam châm sét đánh + Cuộn dây đồng
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Bằng cách tận dụng quặng sắt từ tính bị sét đánh trên đỉnh đồi cùng đĩa đồng mài nhẵn do Kinro và Ginro quay liên tục, Senku đã tạo ra dòng điện đầu tiên ở kỷ nguyên đá, làm nền móng cho toàn bộ mạng lưới công nghệ tương lai.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Kinro, Ginro</strong></span>
-            <span class="text-[#a855f7]">Nguyên tố: <strong>Cu, Fe, Zn</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 5: Điện Thoại Vô Tuyến -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#00d4ff]/30 hover:border-[#00d4ff]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss2">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#00d4ff]/15 border border-[#00d4ff]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                📱
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#00d4ff] uppercase tracking-wider">PHÁT MINH SỐ 05 · MÙA 2</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#00d4ff] transition-colors">Điện Thoại Vô Tuyến Không Dây</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#f97316]/15 border border-[#f97316]/40 text-[0.68rem] font-['Orbitron'] text-[#f97316] font-bold">
-              VŨ KHÍ THÔNG TIN
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Cấu tạo: Đèn chân không Vonfram + Micro bột than nén + Dao động thạch anh
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Vũ khí tối thượng giúp Vương Quốc Khoa Học chiến thắng Đế Quốc Tsukasa trong Stone Wars mà không cần đổ máu. Điện thoại vô tuyến kết hợp với mưu kế ngoại giao của ảo thuật gia Gen Asagiri đã làm lung lay và thu phục hàng loạt chiến binh tinh nhuệ.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Gen, Chrome, Kaseki</strong></span>
-            <span class="text-[#00d4ff]">Nguyên tố: <strong>W, Au, Cu, Si, C</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 6: Xe Tăng Hơi Nước Gorilla -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#f97316]/30 hover:border-[#f97316]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss2">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#f97316]/15 border border-[#f97316]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                🚗
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#f97316] uppercase tracking-wider">PHÁT MINH SỐ 06 · MÙA 2</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#f97316] transition-colors">Xe Hơi Hơi Nước & Xe Tăng Gorilla</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#f97316]/15 border border-[#f97316]/40 text-[0.68rem] font-['Orbitron'] text-[#f97316] font-bold">
-              CƠ GIỚI HÓA
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Cấu tạo: Động cơ hơi nước áp suất + Bọc nhựa Phenol hóa dẻo
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Cỗ xe cơ giới đầu tiên xuất hiện ở thời tiền sử. Được trang bị động cơ hơi nước và lớp giáp chống đạn chế tạo từ nhựa Phenol (loại nhựa đầu tiên của nhân loại), chiếc xe tăng đã húc vỡ cổng phòng ngự hang động phép màu.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Kaseki, Chrome</strong></span>
-            <span class="text-[#f97316]">Nguyên tố: <strong>Fe, C, H, O</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 7: Chiến Hạm Perseus -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#00d4ff]/30 hover:border-[#00d4ff]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss3">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#00d4ff]/15 border border-[#00d4ff]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                🚢
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#00d4ff] uppercase tracking-wider">PHÁT MINH SỐ 07 · MÙA 3</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#00d4ff] transition-colors">Chiến Hạm Khoa Học Perseus</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#39ff14]/15 border border-[#39ff14]/40 text-[0.68rem] font-['Orbitron'] text-[#39ff14] font-bold">
-              ĐẠI DƯƠNG HẠC
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Cấu tạo: Khung thép tôi luyện + Động cơ đốt trong Diesel + Sonar định vị
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Con tàu khoa học vĩ đại nhất kỷ nguyên đá dưới sự chỉ huy của thuyền trưởng thiên tài Ryusui Nanami. Tàu Perseus chở theo cả một phòng thí nghiệm hóa học hoàn chỉnh, vượt Thái Bình Dương đưa đoàn thám hiểm đi tìm nguồn gốc hóa đá.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Ryusui, Senku, Kaseki, Minami</strong></span>
-            <span class="text-[#00d4ff]">Nguyên tố: <strong>Fe, Ni, Cr, Cu, C</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 8: Thiết Bị Bay Không Người Lái (Drone) -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#39ff14]/30 hover:border-[#39ff14]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss3">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#39ff14]/15 border border-[#39ff14]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                🛸
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#39ff14] uppercase tracking-wider">PHÁT MINH SỐ 08 · MÙA 3</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#39ff14] transition-colors">Thiết Bị Bay Drone Điều Khiển Vô Tuyến</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#00d4ff]/15 border border-[#00d4ff]/40 text-[0.68rem] font-['Orbitron'] text-[#00d4ff] font-bold">
-              ĐẢO KHO BÁU
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Cấu tạo: 4 motor điện mini + Cánh quạt tre cân bằng + Băng tần radio
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Được chế tạo thần tốc ngay trên Đảo Kho Báu để không chiến với tể tướng Ibara. Chiếc drone 4 cánh quạt được điều khiển chính xác bằng sóng vô tuyến đã chộp lấy vũ khí hóa đá Medusa ngay giữa không trung.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Ryusui, Kaseki, Soyuz</strong></span>
-            <span class="text-[#39ff14]">Nguyên tố: <strong>Cu, Al, Fe, C</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 9: Kính Thiên Văn & Thấu Kính -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#a855f7]/30 hover:border-[#a855f7]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss1">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#a855f7]/15 border border-[#a855f7]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                🔭
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#a855f7] uppercase tracking-wider">PHÁT MINH SỐ 09 · MÙA 1</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#a855f7] transition-colors">Kính Thiên Văn & Thấu Kính Thạch Anh</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#a855f7]/15 border border-[#a855f7]/40 text-[0.68rem] font-['Orbitron'] text-[#a855f7] font-bold">
-              QUANG HỌC
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Cấu tạo: Tinh thể thạch anh tự nhiên (SiO₂) mài thủ công
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Từ việc mài kính chữa tật cận thị cho cô bé Suika để bé lần đầu tiên nhìn thấy thế giới rõ nét, cho đến việc chế tạo kính viễn vọng quan sát thiên văn và dò tìm vị trí đối phương từ khoảng cách hàng cây số.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Kaseki, Suika</strong></span>
-            <span class="text-[#a855f7]">Nguyên tố: <strong>Si, O</strong></span>
-          </div>
-        </article>
-
-        <!-- Phát minh 10: Tên Lửa Vươn Tới Mặt Trăng -->
-        <article class="inv-card p-6 rounded-3xl bg-[#0a0f1e]/80 border border-[#ffd700]/30 hover:border-[#ffd700]/70 transition-all duration-300 shadow-[0_4px_25px_rgba(0,0,0,0.3)] group" data-season="ss4">
-          <div class="flex items-start justify-between gap-4 mb-4">
-            <div class="flex items-center gap-3">
-              <span class="w-12 h-12 rounded-2xl bg-[#ffd700]/15 border border-[#ffd700]/40 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                🚀
-              </span>
-              <div>
-                <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#ffd700] uppercase tracking-wider">PHÁT MINH SỐ 10 · MÙA 4</span>
-                <h3 class="font-['Orbitron'] font-bold text-lg text-white group-hover:text-[#ffd700] transition-colors">Tên Lửa Đẩy Chinh Phục Mặt Trăng</h3>
-              </div>
-            </div>
-            <span class="px-2.5 py-1 rounded-full bg-[#ffd700]/15 border border-[#ffd700]/40 text-[0.68rem] font-['Orbitron'] text-[#ffd700] font-bold">
-              ĐỈNH CAO VĂN MINH
-            </span>
-          </div>
-          <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 mb-3 font-mono text-xs text-[#ffd700]">
-            Cấu tạo: Hợp kim Titan + Động cơ phản lực nhiên liệu lỏng + Máy tính dẫn đường
-          </div>
-          <p class="font-['Rajdhani'] text-sm text-[#cbd5e1] leading-relaxed mb-4">
-            Đỉnh cao tuyệt đối của toàn bộ câu chuyện Dr. Stone. Sau khi chu du khắp thế giới thu thập nguyên liệu và xây dựng các siêu đô thị toàn cầu, Senku đã phóng thành công tên lửa đưa phi hành đoàn lên Mặt Trăng đối đầu kẻ chủ mưu Whyman.
-          </p>
-          <div class="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-white/10 text-xs font-['Rajdhani']">
-            <span class="text-[#8fa0ba]">Nhân vật: <strong>Senku, Xeno, Kaseki, Toàn thể nhân loại</strong></span>
-            <span class="text-[#ffd700]">Nguyên tố: <strong>Ti, Al, H, O, C, Si</strong></span>
-          </div>
-        </article>
-
+        <!-- Count Indicator -->
+        <div class="text-xs font-['Rajdhani'] text-[#94a3b8] whitespace-nowrap">
+          Hiển thị: <strong id="inv-total-count" class="font-['Orbitron'] text-[#00d4ff]">453 / 453</strong> phát minh
+        </div>
       </div>
+
+      <!-- Lưới Danh Sách Phát Minh Khoa Học (Render bằng JavaScript) -->
+      <div id="inventions-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 min-h-[400px]">
+        <!-- Loading skeleton placeholder -->
+        <div class="col-span-full py-16 text-center">
+          <div class="inline-block w-8 h-8 border-3 border-[#00d4ff] border-t-transparent rounded-full animate-spin mb-3"></div>
+          <p class="font-['Rajdhani'] text-sm text-[#94a3b8]">Đang tải kho bách khoa phát minh Senku từ dữ liệu Fandom CDN...</p>
+        </div>
+      </div>
+
+      <!-- Phân Trang (Pagination) -->
+      <div id="inv-pagination" class="mt-10 flex items-center justify-center gap-4">
+        <button id="inv-prev-page" class="px-4 py-2 rounded-xl bg-white/[0.05] border border-white/15 hover:border-[#00d4ff] hover:text-[#00d4ff] disabled:opacity-30 disabled:pointer-events-none text-xs font-['Rajdhani'] font-bold uppercase transition-all cursor-pointer">
+          ← Trang Trước
+        </button>
+        <span id="inv-page-indicator" class="font-['Orbitron'] text-xs font-bold text-[#00d4ff]">
+          Trang 1 / 19
+        </span>
+        <button id="inv-next-page" class="px-4 py-2 rounded-xl bg-white/[0.05] border border-white/15 hover:border-[#00d4ff] hover:text-[#00d4ff] disabled:opacity-30 disabled:pointer-events-none text-xs font-['Rajdhani'] font-bold uppercase transition-all cursor-pointer">
+          Trang Sau →
+        </button>
+      </div>
+
     </section>
 
   </main>
@@ -548,6 +488,19 @@
       <div class="flex items-center gap-2 font-['Orbitron'] font-bold text-lg text-white">
         <span class="text-[#00d4ff]">DR. STONE</span> <span>•</span> <span class="text-[#39ff14]">VƯƠNG QUỐC KHOA HỌC</span>
       </div>
+      <!-- Live Radar Visitor & Citizen Stats (Tự hiển thị khi deploy: IS_DEPLOYED_LIVE = true) -->
+      <div id="live-radar-stats" class="hidden my-2 max-w-xl mx-auto p-3 rounded-2xl bg-black/60 border border-[#00d4ff]/30 shadow-[0_0_20px_rgba(0,212,255,0.15)] flex flex-wrap items-center justify-between gap-3 text-xs font-['Rajdhani']">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#39ff14] animate-ping"></span>
+          <span class="font-['Orbitron'] font-bold text-[#00d4ff] uppercase">Radar Thế Giới Đá</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <span>Ghé thăm: <b id="stat-live-visits" class="text-white font-['Orbitron']">0</b></span>
+          <span class="text-white/20">|</span>
+          <span class="text-[#39ff14]">Cư dân: <b id="stat-live-citizens" class="text-[#39ff14] font-['Orbitron']">0</b></span>
+        </div>
+      </div>
+
       <p>Dự án môn học Front-End — Học viện unitop.vn | Tác giả: Lê Quốc Cường</p>
       <div class="flex items-center gap-4 text-xs uppercase tracking-widest text-[#8fa0ba]">
         <a href="index.html" class="hover:text-[#00d4ff]">Trang Chủ</a>
@@ -563,40 +516,23 @@
   <!-- ═══════════════════════════════════════════
        SCRIPTS
        ═══════════════════════════════════════════ -->
+  <!-- Firebase Google Authentication & Realtime Cloud Database -->
+  <script type="module" src="js/firebase-auth.js"></script>
+
+  <!-- Citizen Pass & Auth System -->
+  <script src="js/citizen-pass.js"></script>
+
   <!-- Periodic Table Three.js Script (ES module) -->
   <script type="module" src="js/periodic-table.js"></script>
 
-  <!-- Inventions Filter Logic -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterBtns = document.querySelectorAll('.inv-filter-btn');
-      const cards = document.querySelectorAll('.inv-card');
+  <!-- Interactive Science Crafting Tree Script -->
+  <script src="js/crafting-tree.js" defer></script>
 
-      filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-          const filter = btn.getAttribute('data-inv-filter');
+  <!-- Visitor & Citizen Stats Tracker -->
+  <script src="js/visitor-tracker.js" defer></script>
 
-          // Active tab state
-          filterBtns.forEach(b => {
-            b.classList.remove('active', 'bg-[#00d4ff]', 'text-black');
-            b.classList.add('text-[#8fa0ba]');
-          });
-          btn.classList.add('active', 'bg-[#00d4ff]', 'text-black');
-          btn.classList.remove('text-[#8fa0ba]');
-
-          // Filter cards
-          cards.forEach(card => {
-            const season = card.getAttribute('data-season');
-            if (filter === 'all' || season === filter) {
-              card.style.display = 'block';
-            } else {
-              card.style.display = 'none';
-            }
-          });
-        });
-      });
-    });
-  </script>
+  <!-- Inventions Dynamic Encyclopedia Script (Phương Án 1: CDN Trực Tiếp) -->
+  <script src="js/inventions.js" defer></script>
 
 </body>
 </html>
