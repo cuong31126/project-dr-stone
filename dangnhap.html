@@ -392,17 +392,40 @@
       const user = document.getElementById('username').value.trim();
       if (!user) return;
 
-      if (!localStorage.getItem('drstone_citizen_profile') && window.CitizenPass) {
-        window.CitizenPass.createProfile({
-          nickname: user,
-          factionKey: 'science',
-          roleKey: 'alchemist',
-          avatarUrl: 'assets/images/characters/hd/senku.png',
-          customQuote: '10 tỷ phần trăm tôi sẽ phục hưng nền văn minh!'
-        });
+      const randomHex = Math.floor(1000 + Math.random() * 9000);
+      const citizenId = `KOS-5738-${randomHex}`;
+      const today = new Date().toLocaleDateString('vi-VN');
+
+      const profile = {
+        uid: 'user_' + Date.now(),
+        id: citizenId,
+        nickname: user,
+        faction: 'science',
+        factionName: 'Vương Quốc Khoa Học',
+        role: 'alchemist',
+        roleTitle: 'Nhà Giả Kim Tinh Hoa',
+        avatarUrl: 'assets/images/characters/hd/senku.png',
+        joinedDate: today,
+        petrificationYears: 3719,
+        sciencePoints: 100,
+        customQuote: '10 tỷ phần trăm tôi sẽ phục hưng nền văn minh!'
+      };
+
+      if (window.CitizenPass) {
+        window.CitizenPass.saveProfile(profile);
+      } else {
+        localStorage.setItem('drstone_citizen_profile', JSON.stringify(profile));
       }
 
-      showAlert(`🧪 <b>Chào mừng cư dân ${user}!</b> Đang kết nối mạng lưới khoa học và khởi tạo Thẻ Căn Cước 3D...`, true);
+      if (typeof window.incrementCitizenCount === 'function') {
+        window.incrementCitizenCount();
+      }
+
+      if (typeof window.sendCitizenAwakenToDiscord === 'function') {
+        window.sendCitizenAwakenToDiscord(profile);
+      }
+
+      showAlert(`🧪 <b>Chào mừng cư dân ${user}!</b> Đang kết nối mạng lưới khoa học và khởi tạo Thẻ Căn Cước 3D... (+100 SP)`, true);
       localStorage.setItem('drstone_current_user', JSON.stringify({ name: user, faction: 'Vương Quốc Khoa Học' }));
 
       setTimeout(() => {
@@ -410,27 +433,33 @@
       }, 1200);
     }
 
-    function handleGoogleSignIn() {
-      showAlert(`🧪 <b>Đăng nhập bằng Google Account:</b><br>Hệ thống đã sẵn sàng kết nối Google OAuth 2.0 Client! Đang kích hoạt chế độ thức tỉnh...`, true);
-      if (!localStorage.getItem('drstone_citizen_profile') && window.CitizenPass) {
-        window.CitizenPass.createProfile({
-          nickname: 'Google Explorer',
-          factionKey: 'science',
-          roleKey: 'alchemist',
-          avatarUrl: 'assets/images/characters/hd/senku.png',
-          customQuote: 'Khám phá thế giới bằng sức mạnh tri thức vô tận!'
-        });
+    async function handleGoogleSignIn() {
+      showAlert(`🧪 <b>Đang mở cổng Google Auth...</b> Vui lòng chọn tài khoản Google để thức tỉnh!`, true);
+      if (typeof window.loginWithGoogle === 'function') {
+        try {
+          const profile = await window.loginWithGoogle();
+          if (profile) {
+            showAlert(`✅ <b>Thức tỉnh thành công!</b> Chào mừng cư dân <b>${profile.nickname}</b> (+100 SP). Đang chuyển hướng...`, true);
+            setTimeout(() => {
+              window.location.href = 'index.html';
+            }, 1000);
+          }
+        } catch (err) {
+          showAlert(`⚠️ Lỗi đăng nhập Google: ${err.message || 'Thử lại sau!'}`, false);
+        }
+      } else {
+        showAlert(`⚠️ Đang khởi động kết nối Firebase SDK... Vui lòng thử lại sau 2 giây.`, false);
       }
-      setTimeout(() => {
-        window.location.href = 'index.html';
-      }, 1200);
     }
   </script>
 
   <!-- Citizen Pass 3D System -->
   <script src="js/citizen-pass.js"></script>
 
-  <!-- Visitor Tracker -->
+  <!-- Firebase Authentication & Realtime Database -->
+  <script type="module" src="js/firebase-auth.js"></script>
+
+  <!-- Visitor Tracker & Telemetry -->
   <script src="js/visitor-tracker.js" defer></script>
 </body>
 </html>

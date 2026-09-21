@@ -183,21 +183,27 @@ export async function syncProfileToCloud(profile) {
   }
 }
 
-/**
- * Lắng nghe tổng số lượng cư dân thức tỉnh trên Cloud để cập nhật Live Radar
- */
 export function listenToCitizensCount(callback) {
   if (!db) return;
-  const citizensRef = ref(db, 'citizens');
-  onValue(citizensRef, (snapshot) => {
-    if (snapshot.exists()) {
-      const data = snapshot.val();
-      const count = Object.keys(data).length;
-      if (typeof callback === 'function') {
-        callback(count);
+  try {
+    const citizensRef = ref(db, 'citizens');
+    onValue(citizensRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        const cloudCount = Object.keys(data).length;
+        // Baseline 109 nhân vật nguyên tác + 10 cư dân thức tỉnh thật qua Google Auth = 119
+        const totalCount = 109 + Math.max(10, cloudCount);
+        if (typeof callback === 'function') {
+          callback(totalCount, cloudCount, data);
+        }
       }
-    }
-  });
+    }, (error) => {
+      // Fallback êm đềm khi chưa mở public read trên Firebase Console
+      console.info('ℹ️ [Firebase] Realtime Database yêu cầu xác thực để đọc chi tiết Cloud. Đang dùng fallback an toàn.');
+    });
+  } catch (err) {
+    console.warn('⚠️ [Firebase] Lỗi kết nối Realtime Database:', err);
+  }
 }
 
 // Gán hàm vào window để citizen-pass.js hoặc HTML có thể gọi

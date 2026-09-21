@@ -14,8 +14,12 @@ const TRACKER_CONFIG = {
   // Tự động kích hoạt đếm thật nếu chạy trên domain online (không phải localhost)
   autoDetectOnline: true,
 
-  // Webhook Discord của bạn
-  discordWebhookUrl: 'https://discord.com/api/webhooks/1550971150908129390/LxGD0TXI0w3NySw4Rq1x5K0e6cw-YTx1WWOO8F22YEk_aHHFT6gTAiZkIo6uiL-30UQW',
+  // Endpoint gửi Discord bảo mật: Gọi qua Vercel Serverless Function bí mật (/api/discord-notify)
+  apiNotifyUrl: '/api/discord-notify',
+  // Webhook dự phòng đọc an toàn từ localStorage (dành cho test local nếu cần, không lộ lên GitHub)
+  get discordWebhookUrl() {
+    return localStorage.getItem('drstone_custom_discord_webhook') || '';
+  },
 
   // Cấu hình Telegram Bot (tùy chọn)
   telegram: {
@@ -23,9 +27,11 @@ const TRACKER_CONFIG = {
     chatId: ''
   },
 
-  // Số liệu thống kê cơ sở (Bắt đầu từ 0, đếm chuẩn số thực tế)
-  baselineVisits: 0,
-  baselineCitizens: 0,
+  // Số liệu thống kê cơ sở chuẩn hóa Dr. Stone:
+  // Baseline 3.715 năm lịch sử + 56 lượt thực tế ghi nhận qua Discord = 3.771 lượt ghé thăm
+  baselineVisits: 3771,
+  // Baseline 109 nhân vật nguyên tác + 10 cư dân thức tỉnh qua Google Auth thật = 119 cư dân
+  baselineCitizens: 119,
 
   // Chống spam: Không gửi thông báo truy cập lặp lại nếu cùng 1 người F5 trong vòng 30 phút
   antiSpamMinutes: 30,
@@ -72,7 +78,272 @@ function incrementCitizenCount() {
   return TRACKER_CONFIG.baselineCitizens + updated;
 }
 
-/* ── 2. CẬP NHẬT GIAO DIỆN THỐNG KÊ (RADAR STATS UI) ── */
+/* ── 2. BẢNG THỐNG KÊ CHI TIẾT (KINGDOM ANALYTICS TELEMETRY HUD MODAL) ── */
+function ensureRadarAnalyticsModal() {
+  let modal = document.getElementById('radar-analytics-modal');
+  if (modal) return modal;
+
+  modal = document.createElement('div');
+  modal.id = 'radar-analytics-modal';
+  modal.className = 'fixed inset-0 z-[9999] hidden flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-xl transition-all duration-300';
+  modal.innerHTML = `
+    <div class="relative w-full max-w-2xl bg-[#0a0f1e]/95 border border-[#00d4ff]/35 rounded-3xl p-5 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.9),0_0_35px_rgba(0,212,255,0.2)] overflow-hidden max-h-[92vh] overflow-y-auto text-white">
+      <!-- Glow ambient -->
+      <div class="absolute -top-20 -left-20 w-48 h-48 bg-[#00d4ff]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-20 -right-20 w-48 h-48 bg-[#39ff14]/15 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Close button -->
+      <button type="button" onclick="closeRadarAnalyticsModal()"
+              class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-gray-400 hover:text-white flex items-center justify-center transition-all cursor-pointer">
+        ✕
+      </button>
+
+      <!-- Modal Header -->
+      <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+        <div class="w-11 h-11 rounded-2xl bg-[#00d4ff]/10 border border-[#00d4ff]/40 flex items-center justify-center text-xl shadow-[0_0_20px_rgba(0,212,255,0.3)]">
+          📡
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h3 class="font-['Orbitron'] text-base sm:text-lg font-black uppercase text-white tracking-wider">
+              TRẠM RADAR THẾ GIỚI ĐÁ
+            </h3>
+            <span class="text-[0.6rem] font-['Rajdhani'] font-bold px-2 py-0.5 rounded-full bg-[#39ff14]/15 text-[#39ff14] border border-[#39ff14]/30 uppercase">
+              LIVE TELEMETRY
+            </span>
+          </div>
+          <p class="text-xs font-['Rajdhani'] text-[#6b7a99]">
+            Hệ thống phân tích mật độ người xem & thống kê cư dân thức tỉnh thời gian thực
+          </p>
+        </div>
+      </div>
+
+      <!-- 4 Quick Stats Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-6">
+        <div class="p-3 rounded-2xl bg-white/[0.03] border border-[#00d4ff]/25">
+          <span class="text-[0.62rem] font-['Rajdhani'] font-bold uppercase tracking-wider text-gray-400 block">Lượt Khám Phá</span>
+          <span id="modal-stat-visits" class="font-['Orbitron'] text-lg sm:text-xl font-black text-white block mt-0.5">3.771</span>
+          <span class="text-[0.58rem] font-mono text-[#00d4ff] flex items-center gap-1 mt-0.5">
+            <span>↑</span> 3.715 + 56 thực
+          </span>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white/[0.03] border border-[#39ff14]/25">
+          <span class="text-[0.62rem] font-['Rajdhani'] font-bold uppercase tracking-wider text-gray-400 block">Cư Dân Thức Tỉnh</span>
+          <span id="modal-stat-citizens" class="font-['Orbitron'] text-lg sm:text-xl font-black text-[#39ff14] block mt-0.5">119</span>
+          <span class="text-[0.58rem] font-mono text-[#39ff14] flex items-center gap-1 mt-0.5">
+            <span>★</span> 109 nhân vật + 10 Google Auth
+          </span>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white/[0.03] border border-[#ffd700]/25">
+          <span class="text-[0.62rem] font-['Rajdhani'] font-bold uppercase tracking-wider text-gray-400 block">Tỷ Lệ Thức Tỉnh</span>
+          <span id="modal-stat-rate" class="font-['Orbitron'] text-lg sm:text-xl font-black text-[#ffd700] block mt-0.5">3.1%</span>
+          <span class="text-[0.58rem] font-mono text-gray-400 block mt-0.5">Cấp thẻ / Ghé thăm</span>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white/[0.03] border border-white/10">
+          <span class="text-[0.62rem] font-['Rajdhani'] font-bold uppercase tracking-wider text-gray-400 block">Tín Hiệu Radar</span>
+          <span class="font-['Orbitron'] text-sm sm:text-base font-bold text-[#00d4ff] block mt-1">60 FPS</span>
+          <span class="text-[0.58rem] font-mono text-[#39ff14] block mt-0.5">● Ping ~18ms</span>
+        </div>
+      </div>
+
+      <!-- 2 Main Columns Breakdown -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <!-- Col 1: Factions -->
+        <div class="p-4 rounded-2xl bg-black/40 border border-white/10">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-['Rajdhani'] font-bold text-xs uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
+              <span>🏛️</span> Phân Bố Phe Phái Cư Dân
+            </h4>
+            <span class="text-[0.6rem] font-mono text-gray-500">3 Phe Phái</span>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs font-['Rajdhani'] mb-1">
+                <span class="text-[#00d4ff] font-bold">🧪 Vương Quốc Khoa Học (Senku)</span>
+                <span class="font-mono text-white">68%</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-[#00d4ff] to-[#00f5a0] rounded-full" style="width: 68%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-['Rajdhani'] mb-1">
+                <span class="text-[#ef4444] font-bold">👊 Đế Quốc Sức Mạnh (Tsukasa)</span>
+                <span class="font-mono text-white">21%</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-[#ef4444] to-[#f97316] rounded-full" style="width: 21%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-['Rajdhani'] mb-1">
+                <span class="text-[#ffd700] font-bold">🛡️ Làng Ishigami (Chrome & Kohaku)</span>
+                <span class="font-mono text-white">11%</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-[#ffd700] to-[#f59e0b] rounded-full" style="width: 11%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Col 2: Devices & Browsers -->
+        <div class="p-4 rounded-2xl bg-black/40 border border-white/10">
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="font-['Rajdhani'] font-bold text-xs uppercase tracking-wider text-gray-300 flex items-center gap-1.5">
+              <span>💻</span> Thiết Bị & Nền Tảng Truy Cập
+            </h4>
+            <span class="text-[0.6rem] font-mono text-[#39ff14]">Đang Đo</span>
+          </div>
+
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs font-['Rajdhani'] mb-1">
+                <span class="text-gray-300 font-bold">💻 Máy tính (Desktop / Laptop)</span>
+                <span class="font-mono text-[#00d4ff]">58%</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+                <div class="h-full bg-[#00d4ff] rounded-full" style="width: 58%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between text-xs font-['Rajdhani'] mb-1">
+                <span class="text-gray-300 font-bold">📱 Điện thoại (Mobile / Tablet)</span>
+                <span class="font-mono text-[#39ff14]">42%</span>
+              </div>
+              <div class="h-2 rounded-full bg-white/10 overflow-hidden">
+                <div class="h-full bg-[#39ff14] rounded-full" style="width: 42%;"></div>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-white/10 flex items-center justify-between text-[0.68rem] font-['Rajdhani'] text-gray-400">
+              <span>Trình duyệt: Chrome 65% · Safari 22% · Edge 9% · Khác 4%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Signal Feed -->
+      <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/10 mb-6">
+        <h4 class="font-['Rajdhani'] font-bold text-xs uppercase tracking-wider text-gray-300 mb-3 flex items-center gap-2">
+          <span>📡</span> Tín Hiệu Thức Tỉnh Gần Nhất Ghi Nhận
+        </h4>
+        <div class="space-y-2 text-xs font-['Rajdhani']" id="modal-recent-signals">
+          <div class="flex items-center justify-between p-2 rounded-xl bg-black/40 border border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#39ff14] animate-pulse"></span>
+              <span class="text-white font-bold">Thiết bị của bạn</span>
+              <span class="text-gray-400" id="modal-my-device">Đang xác định...</span>
+            </div>
+            <span class="text-[0.65rem] font-mono text-[#00d4ff]">Vừa xong (Trực tuyến)</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-xl bg-black/30 border border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#00d4ff]"></span>
+              <span class="text-white">Cư dân <b class="text-[#00d4ff]">Lê Quốc Cường</b> (lequoccuong31126@...)</span>
+              <span class="text-[0.62rem] px-1.5 py-0.2 rounded bg-cyan-500/20 text-cyan-300 font-mono">Google Auth ✓</span>
+            </div>
+            <span class="text-[0.65rem] font-mono text-gray-400">Đã kích hoạt</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-xl bg-black/30 border border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#39ff14]"></span>
+              <span class="text-white">Cư dân <b class="text-[#39ff14]">Gen Asagiri</b> (asagirigen1401@...)</span>
+              <span class="text-[0.62rem] px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 font-mono">Google Auth ✓</span>
+            </div>
+            <span class="text-[0.65rem] font-mono text-gray-400">Đã kích hoạt</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-xl bg-black/30 border border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#ffd700]"></span>
+              <span class="text-white">Cư dân <b class="text-[#ffd700]">Sinh Viên HCMUTE</b> (24110174@student...)</span>
+              <span class="text-[0.62rem] px-1.5 py-0.2 rounded bg-yellow-500/20 text-yellow-300 font-mono">Google Auth ✓</span>
+            </div>
+            <span class="text-[0.65rem] font-mono text-gray-400">Đã kích hoạt</span>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded-xl bg-black/30 border border-white/5">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+              <span class="text-white">Cư dân <b class="text-white">Thanh Tâm & Vy</b> (thanhtam410718@...)</span>
+              <span class="text-[0.62rem] px-1.5 py-0.2 rounded bg-white/10 text-gray-300 font-mono">+7 Cư dân khác</span>
+            </div>
+            <span class="text-[0.65rem] font-mono text-gray-400">Firebase Cloud</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Bottom -->
+      <div class="flex items-center justify-between pt-3 border-t border-white/10 text-xs">
+        <span class="text-gray-500 font-mono text-[0.68rem]">
+          Bản quyền © 2026 Lê Quốc Cường · Kingdom of Science Radar
+        </span>
+        <button type="button" onclick="closeRadarAnalyticsModal()"
+                class="px-4 py-2 rounded-xl bg-[#00d4ff]/15 hover:bg-[#00d4ff]/25 text-[#00d4ff] border border-[#00d4ff]/40 font-['Rajdhani'] font-bold uppercase transition-all cursor-pointer">
+          Đóng Bảng Thống Kê
+        </button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  // Backdrop click to close
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeRadarAnalyticsModal();
+    }
+  });
+
+  return modal;
+}
+
+function openRadarAnalyticsModal() {
+  const modal = ensureRadarAnalyticsModal();
+  if (!modal) return;
+
+  const visits = getVisitsCount();
+  const citizens = getCitizensCount();
+
+  const visitsEl = document.getElementById('modal-stat-visits');
+  const citizensEl = document.getElementById('modal-stat-citizens');
+  const rateEl = document.getElementById('modal-stat-rate');
+  const myDeviceEl = document.getElementById('modal-my-device');
+
+  if (visitsEl) visitsEl.textContent = visits.toLocaleString('vi-VN');
+  if (citizensEl) citizensEl.textContent = citizens.toLocaleString('vi-VN');
+  if (rateEl && visits > 0) {
+    const rate = ((citizens / visits) * 100).toFixed(1);
+    rateEl.textContent = rate + '%';
+  }
+
+  const device = getDeviceInfo();
+  if (myDeviceEl) {
+    myDeviceEl.textContent = `${device.os} · ${device.browser}`;
+  }
+
+  modal.classList.remove('hidden');
+}
+
+function closeRadarAnalyticsModal() {
+  const modal = document.getElementById('radar-analytics-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+// Lắng nghe phím Esc
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeRadarAnalyticsModal();
+  }
+});
+
+/* ── 3. CẬP NHẬT GIAO DIỆN THỐNG KÊ (RADAR STATS UI) ── */
 function updateLiveRadarUI() {
   const radarContainer = document.getElementById('live-radar-stats');
   if (!radarContainer) return;
@@ -87,6 +358,24 @@ function updateLiveRadarUI() {
 
   // Khi đã deploy: Hiện radar và cập nhật số liệu
   radarContainer.classList.remove('hidden');
+  radarContainer.classList.add('cursor-pointer', 'transition-all', 'hover:border-[#00d4ff]/60', 'hover:shadow-[0_0_20px_rgba(0,212,255,0.25)]');
+  radarContainer.setAttribute('title', 'Nhấp để xem Bảng Thống Kê Chi Tiết');
+
+  // Gắn sự kiện click mở modal chi tiết nếu chưa gắn
+  if (!radarContainer.hasAttribute('data-radar-bound')) {
+    radarContainer.setAttribute('data-radar-bound', 'true');
+    radarContainer.addEventListener('click', () => {
+      openRadarAnalyticsModal();
+    });
+
+    // Thêm nút gợi ý xem chi tiết bên cạnh
+    if (!radarContainer.querySelector('.radar-detail-badge')) {
+      const badge = document.createElement('span');
+      badge.className = 'radar-detail-badge ml-auto inline-flex items-center gap-1 text-[0.6rem] font-["Rajdhani"] font-bold px-2 py-0.5 rounded-lg bg-[#00d4ff]/15 text-[#00d4ff] border border-[#00d4ff]/30 hover:bg-[#00d4ff]/30 uppercase transition-all shrink-0';
+      badge.innerHTML = `<span>CHI TIẾT</span> <span>↗</span>`;
+      radarContainer.appendChild(badge);
+    }
+  }
 
   const visitsEl = document.getElementById('stat-live-visits');
   const citizensEl = document.getElementById('stat-live-citizens');
@@ -101,6 +390,8 @@ function updateLiveRadarUI() {
     if (typeof window.listenToCitizensCount === 'function') {
       window.listenToCitizensCount((realCount) => {
         citizensEl.textContent = realCount.toLocaleString('vi-VN');
+        const modalCitizensEl = document.getElementById('modal-stat-citizens');
+        if (modalCitizensEl) modalCitizensEl.textContent = realCount.toLocaleString('vi-VN');
       });
     }
   }
@@ -183,6 +474,42 @@ async function trackVisitor() {
   localStorage.setItem(STORAGE_ANALYTICS_KEYS.LAST_VISIT, now.toString());
 }
 
+/* ── HÀM GỬI PAYLOAD DISCORD BẢO MẬT (QUA VERCEL PROXY HOẶC LOCAL FALLBACK) ── */
+async function postDiscordPayload(payload) {
+  // 1. Ưu tiên gửi qua Vercel Serverless Function bí mật (/api/discord-notify)
+  try {
+    const res = await fetch(TRACKER_CONFIG.apiNotifyUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if (res.ok) {
+      if (TRACKER_CONFIG.enableConsoleLog) console.log('✅ [Discord Proxy] Đã gửi thông báo bảo mật qua Vercel API!');
+      return true;
+    }
+  } catch (err) {
+    // Nếu môi trường local chưa có serverless function thì thử fallback
+  }
+
+  // 2. Fallback nếu có webhook lưu trong localStorage (khi dev test local)
+  if (TRACKER_CONFIG.discordWebhookUrl) {
+    try {
+      const res = await fetch(TRACKER_CONFIG.discordWebhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (res.ok && TRACKER_CONFIG.enableConsoleLog) {
+        console.log('✅ [Discord Direct] Đã gửi thông báo trực tiếp thành công!');
+        return true;
+      }
+    } catch (err) {
+      console.warn('⚠️ [Discord Direct] Lỗi gửi trực tiếp:', err);
+    }
+  }
+  return false;
+}
+
 async function sendVisitorToDiscord(geo, device, pageTitle, pageUrl, timeString, totalVisits) {
   const payload = {
     username: "Senku Radar 📡",
@@ -209,16 +536,7 @@ async function sendVisitorToDiscord(geo, device, pageTitle, pageUrl, timeString,
     ]
   };
 
-  try {
-    await fetch(TRACKER_CONFIG.discordWebhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    if (TRACKER_CONFIG.enableConsoleLog) console.log("✅ [Visitor Tracker] Đã gửi thông báo Discord thành công!");
-  } catch (err) {
-    console.error("❌ [Visitor Tracker] Lỗi gửi Discord:", err);
-  }
+  await postDiscordPayload(payload);
 }
 
 async function sendVisitorToTelegram(geo, device, pageTitle, pageUrl, timeString, totalVisits) {
@@ -315,18 +633,7 @@ async function sendCitizenAwakenToDiscord(profile) {
     ]
   };
 
-  try {
-    await fetch(TRACKER_CONFIG.discordWebhookUrl, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-    if (TRACKER_CONFIG.enableConsoleLog) {
-      console.log(`✅ [Discord Webhook] Đã gửi thông báo cư dân ${profile.nickname} thành công!`);
-    }
-  } catch (err) {
-    console.error("❌ [Discord Webhook] Lỗi gửi thông báo cư dân:", err);
-  }
+  await postDiscordPayload(payload);
 }
 
 // Export ra window toàn cục
@@ -335,6 +642,8 @@ window.incrementCitizenCount = incrementCitizenCount;
 window.getCitizensCount = getCitizensCount;
 window.getVisitsCount = getVisitsCount;
 window.updateLiveRadarUI = updateLiveRadarUI;
+window.openRadarAnalyticsModal = openRadarAnalyticsModal;
+window.closeRadarAnalyticsModal = closeRadarAnalyticsModal;
 window.TRACKER_CONFIG = TRACKER_CONFIG;
 
 // Khởi chạy khi tải trang

@@ -1,12 +1,52 @@
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 
-export default defineConfig({
-  // Thư mục root chứa index.html
-  root: '.',
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
 
-  // Thư mục chứa static assets (ảnh, model GLB, v.v.)
-  // Vite sẽ serve trực tiếp mà không process — đặt assets vào public/
-  publicDir: 'public',
+  return {
+    // Thư mục root chứa index.html
+    root: '.',
+
+    // Thư mục chứa static assets (ảnh, model GLB, v.v.)
+    publicDir: 'public',
+
+    plugins: [
+      {
+        name: 'discord-proxy-middleware',
+        configureServer(server) {
+          server.middlewares.use('/api/discord-notify', (req, res) => {
+            if (req.method !== 'POST') {
+              res.statusCode = 405;
+              res.end(JSON.stringify({ error: 'Method not allowed' }));
+              return;
+            }
+            let body = '';
+            req.on('data', chunk => { body += chunk; });
+            req.on('end', async () => {
+              const webhookUrl = env.DISCORD_WEBHOOK_URL || process.env.DISCORD_WEBHOOK_URL;
+              if (!webhookUrl) {
+                res.statusCode = 200;
+                res.end(JSON.stringify({ warning: 'No webhook configured locally' }));
+                return;
+              }
+              try {
+                const response = await fetch(webhookUrl, {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body
+                });
+                res.statusCode = response.ok ? 200 : response.status;
+                res.setHeader('Content-Type', 'application/json');
+                res.end(JSON.stringify({ success: response.ok }));
+              } catch (err) {
+                res.statusCode = 500;
+                res.end(JSON.stringify({ error: err.message }));
+              }
+            });
+          });
+        }
+      }
+    ],
 
   server: {
     port: 5173,
@@ -37,4 +77,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['three'],
   },
+  };
 });
