@@ -61,25 +61,33 @@ export async function loginWithGoogle() {
     const user = result.user;
     console.log('✅ Google User Thức Tỉnh:', user.displayName, user.email, user.uid);
 
-    // Kiểm tra xem user đã có hồ sơ trên Realtime Database chưa
-    const userRef = ref(db, `citizens/${user.uid}`);
-    const snapshot = await get(userRef);
-
-    let profile;
+    // Kiểm tra hồ sơ trên Realtime Database (có try-catch an toàn)
+    let snapshot = null;
+    let profile = null;
     const today = new Date().toLocaleDateString('vi-VN');
 
-    if (snapshot.exists()) {
+    try {
+      const userRef = ref(db, `citizens/${user.uid}`);
+      snapshot = await get(userRef);
+    } catch (dbErr) {
+      console.warn('⚠️ [Firebase] Realtime Database chưa mở quyền (Permission denied). Sẽ tự động lưu hồ sơ trên trình duyệt an toàn.');
+    }
+
+    if (snapshot && snapshot.exists()) {
       // User cũ: Đồng bộ hồ sơ từ Cloud về
       profile = snapshot.val();
       profile.lastLogin = new Date().toISOString();
       if (!profile.googlePhotoURL && user.photoURL) {
         profile.googlePhotoURL = user.photoURL;
       }
-      await update(userRef, { 
-        lastLogin: profile.lastLogin,
-        googlePhotoURL: profile.googlePhotoURL || '' 
-      });
-      console.log('🔄 Đã đồng bộ hồ sơ Cloud của cư dân:', profile.nickname);
+      try {
+        const userRef = ref(db, `citizens/${user.uid}`);
+        await update(userRef, { 
+          lastLogin: profile.lastLogin,
+          googlePhotoURL: profile.googlePhotoURL || '' 
+        });
+        console.log('🔄 Đã đồng bộ hồ sơ Cloud của cư dân:', profile.nickname);
+      } catch (e) {}
 
       if (window.CitizenPass) {
         window.CitizenPass.saveProfile(profile);
@@ -112,9 +120,14 @@ export async function loginWithGoogle() {
         customQuote: '10 tỷ phần trăm tôi sẽ phục hưng nền văn minh!'
       };
 
-      // Lưu hồ sơ mới vào Cloud Realtime Database
-      await set(userRef, profile);
-      console.log('✨ Đã tạo hồ sơ cư dân mới trên Cloud Firebase:', profile.id);
+      // Cố gắng lưu lên Cloud nếu rules cho phép
+      try {
+        const userRef = ref(db, `citizens/${user.uid}`);
+        await set(userRef, profile);
+        console.log('✨ Đã tạo hồ sơ cư dân mới trên Cloud Firebase:', profile.id);
+      } catch (e) {
+        console.warn('ℹ️ Chưa ghi lên Cloud do Realtime Database rules. Đã lưu an toàn trên trình duyệt.');
+      }
 
       if (window.CitizenPass) {
         window.CitizenPass.saveProfile(profile);
@@ -126,7 +139,7 @@ export async function loginWithGoogle() {
         }, 500);
       }
 
-      // Bắn thông báo lên Discord nếu có tích hợp
+      // Bắn thông báo lên Discord
       if (typeof window.sendCitizenAwakenToDiscord === 'function') {
         window.sendCitizenAwakenToDiscord(profile);
       }
