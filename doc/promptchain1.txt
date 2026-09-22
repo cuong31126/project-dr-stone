@@ -32,27 +32,31 @@ Bạn là một Senior Creative Frontend Developer & Chuyên gia WebGL/UI Anime,
   * Orbitron: Cho tiêu đề lớn, thông số công nghệ, ID cư dân, đồng hồ đếm ngược.
   * Rajdhani: Cho navigation, subheadings, badge phe phái, nút bấm.
   * Inter: Cho văn bản nội dung, bài viết, thông tin chi tiết.
-- Bảng màu anime Dr. Stone:
+- Bảng màu anime Dr. Stone (QUY TẮC TỐI GIẢN & ĐỒNG BỘ):
   * Nền tối chính: #050810 (Dark Void) & #0a0f1e (Card Surface).
   * Xanh Neon Khoa Học (Senku): #00d4ff (Cyan) & #39ff14 / #00f5a0 (Emerald).
   * Đỏ Cam Sức Mạnh (Tsukasa): #ef4444 & #f97316.
   * Vàng Hổ Phách Làng Ishigami (Chrome): #ffd700 & #f59e0b.
   * Đá Hóa Thạch (Stone): #8b7355 & #6b7a99.
-- Phong cách giao diện: Sci-Fi Cyberpunk Stone World kết hợp Glassmorphism cao cấp (bg-white/[0.04] backdrop-blur-xl border border-cyan-500/20 shadow neon glow).
+  * ⚠️ NGUYÊN TẮC PHỐI MÀU: Mỗi component chỉ dùng duy nhất 1 màu nhấn chủ đạo (Primary Accent). Tuyệt đối KHÔNG phối cầu vồng lòe loẹt, KHÔNG tô chữ quá nhiều màu sắc sặc sỡ trong cùng một đoạn gây nhức mắt người đọc.
+- Phong cách giao diện: Sci-Fi Cao Cấp & Tinh Giản (Clean & Premium Glassmorphism: `bg-white/[0.04] backdrop-blur-xl border border-cyan-500/20`).
 
 3. HỆ THỐNG DỮ LIỆU & TÍNH NĂNG ĐÃ CÓ:
 - index.html: Hero 3D hạt chuột tương tác, Quả Địa Cầu 3D Hải Trình Perseus (globe-3d.js), Phòng thí nghiệm 118 nguyên tố hóa học CSS3D (periodic-table.js), Thanh HUD đo cuộn trang "10 Tỷ % Nital".
 - characters.html & all-characters.js: Bách khoa toàn thư 109 nhân vật offline, 7 tab lọc phe, tìm kiếm & phân trang.
-- cactapphim.html & cinema.js: Kho 70 tập phim 4 mùa, nguồn đôi Ani-One/AnimeVietsub, Watch Tracker lưu tập đã xem & bookmark.
+- cactapphim.html & cinema.js: Kho 95 tập phim trọn bộ 5 phần, nguồn Ani-One / AnimeVietsub Full HD, Watch Tracker lưu tập đã xem & bookmark.
 - js/citizen-pass.js: Hệ thống Thẻ Căn Cước Vương Quốc Khoa Học 3D Hologram (3D Tilt, xoay lật 2 mặt, tích điểm SP, xuất ảnh thẻ PNG).
 - js/visitor-tracker.js: Radar thống kê số lượt ghé thăm, đếm cư dân thức tỉnh & bắn Discord Webhook tự động.
 
-4. QUY TẮC BẮT BUỘC (ANTI-PATTERNS CẦN TRÁNH):
-- TUYỆT ĐỐI KHÔNG dùng jQuery, document.write(), inline style.
-- TUYỆT ĐỐI KHÔNG dùng màu sắc ngoài design tokens đã định nghĩa.
+4. QUY TẮC BẮT BUỘC (ANTI-PATTERNS CẦN TRÁNH TUYỆT ĐỐI):
+- 🚫 KHÔNG SPAM ICON / EMOJI QUÁ MỨC: Chỉ dùng icon khi thực sự cần thiết để định danh chức năng. Tuyệt đối KHÔNG gắn icon/emoji ở khắp mọi câu chữ, mọi đầu dòng làm giao diện bị rối rắm và kém chuyên nghiệp.
+- 🚫 KHÔNG SINH CÁC VẬT THỂ / CHI TIẾT RƯỜM RÀ: Không tự ý nhồi nhét quá nhiều vật thể 3D phụ, viền lưới wireframe hay hộp telemetry dày đặc che lấp nội dung chính. Luôn ưu tiên không gian thở (whitespace), đường nét sạch sẽ, tối giản.
+- 🚫 KHÔNG VIẾT DÀI DÒNG, GÂY RỐI NGƯỜI ĐỌC: Tránh nhồi nhét quá nhiều thông tin vụn vặt vào cùng một khối. Phân cấp thông tin rõ ràng (Hierarchy), nội dung ngắn gọn, súc tích, dễ lướt đọc trên cả Mobile.
+- 🚫 TUYỆT ĐỐI KHÔNG dùng jQuery, document.write(), inline style.
+- 🚫 TUYỆT ĐỐI KHÔNG dùng màu sắc ngoài design tokens đã định nghĩa.
 - Không tự ý thêm thư viện ngoài khi Vanilla JS có thể giải quyết mượt mà 60 FPS.
-- Các nút bấm phải có hiệu ứng micro-interaction (hover glow, scale nhẹ, active click).
-- Đảm bảo responsive 100% trên cả điện thoại (Mobile) và máy tính (Desktop).
+- Các nút bấm phải có hiệu ứng micro-interaction tinh tế (hover glow nhẹ, active click, không rung lắc quá đà).
+- Đảm bảo responsive 100% trên cả điện thoại (Mobile) và máy tính (Desktop), không bao giờ để tràn ngang (horizontal overflow).
 [KẾT THÚC NGỮ CẢNH DỰ ÁN]
 
 ────────────────────────────────────────────────────────────────────────────────
@@ -68,10 +72,11 @@ Nội dung Prompt mẫu:
 "Dựa trên Ngữ cảnh dự án Dr. Stone ở trên, tôi muốn phát triển tính năng mới: [ĐIỀN TÊN TÍNH NĂNG Ở ĐÂY, ví dụ: Rạp Chiếu Trailer Cinema Modal / Minigame Đấu Trường Tri Thức Quiz].
 
 Hãy thực hiện BƯỚC 1:
-1. Phân tích bài toán & mục tiêu trải nghiệm người dùng theo phong cách Dr. Stone.
+1. Phân tích bài toán & mục tiêu trải nghiệm người dùng theo phong cách Dr. Stone (Ưu tiên tinh giản, sạch sẽ, không nhồi nhét chi tiết rườm rà).
 2. Thiết kế cấu trúc dữ liệu (Data Schema / LocalStorage nếu có).
 3. Vẽ khung giao diện (Wireframe / Layout Component) bằng Tailwind CSS v4 tokens và phong cách Glassmorphism.
-4. Liệt kê các micro-interactions, hiệu ứng chuyển cảnh (GSAP/CSS animation) và âm thanh/visual feedback.
+   * YÊU CẦU ĐẶC BIỆT: Hạn chế tối đa icon/emoji thừa, không tô chữ quá nhiều màu sắc sặc sỡ, bố cục phân cấp rõ ràng, dễ đọc.
+4. Liệt kê các micro-interactions, hiệu ứng chuyển cảnh (GSAP/CSS animation) và visual feedback tinh tế, mượt mà.
 5. Chưa xuất code chi tiết, chỉ trình bày bản thiết kế kiến trúc để tôi duyệt."
 
 ================================================================================
@@ -84,8 +89,9 @@ Nội dung Prompt mẫu:
 1. Xuất toàn bộ khối mã HTML component hoàn chỉnh để nhúng vào trang [index.html / cactapphim.html...].
 2. Sử dụng 100% Tailwind CSS v4 class với các token màu: drprimary (#00d4ff), dracent (#39ff14), drgold (#ffd700), drbg (#050810).
 3. Đảm bảo cấu trúc glassmorphism chuẩn: `bg-white/[0.04] backdrop-blur-xl border border-[#00d4ff]/20 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.5)]`.
+   * LƯU Ý GIAO DIỆN: Bố cục tinh gọn, không gian thoáng đãng, dùng icon có chọn lọc (chỉ đặt icon ở nút quan trọng, không spam emoji khắp nơi), màu sắc chữ đồng nhất và dễ đọc.
 4. Nếu có animation keyframes đặc biệt (như vệt sáng quét laser, nứt đá, hiệu ứng glitch...), hãy viết thêm vào khối CSS trong custom.css.
-5. Đảm bảo giao diện hiển thị hoàn hảo trên cả Mobile (dưới 480px), Tablet và Desktop."
+5. Đảm bảo giao diện hiển thị hoàn hảo trên cả Mobile (dưới 480px), Tablet và Desktop, không bị tràn ngang."
 
 ================================================================================
 BƯỚC 3 (PROMPT 3) — XÂY DỰNG LOGIC TƯƠNG TÁC (VANILLA JAVASCRIPT ES6+)

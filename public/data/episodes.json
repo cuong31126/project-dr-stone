@@ -141,57 +141,85 @@
         {
           "ep": 1,
           "title": "Stone Wars Bắt Đầu",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=1"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-1.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 2,
           "title": "Vũ Khí Của Senku",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=2"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-2.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 3,
           "title": "Tiếng Gọi Tử Thần",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=3"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-3.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 4,
           "title": "Đòn Phản Công Toàn Lực",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=4"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-4.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 5,
           "title": "Phát Minh Của Hơi Nước",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=5"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-5.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 6,
           "title": "Nhà Máy Hơi Nước",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=6"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-6.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 7,
           "title": "Kế Hoạch Bí Mật",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=7"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-7.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 8,
           "title": "Trận Chiến Cuối Cùng",
-          "youtube": "https://www.youtube.com/watch?v=mbLK30x6jE8&list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=8"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-8.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 9,
           "title": "Vương Quốc Khoa Học Khải Hoàn",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=9"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-9.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 10,
           "title": "Nhân Loại Hồi Sinh",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=10"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-10.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
         },
         {
           "ep": 11,
           "title": "Lời Mời Vào Tương Lai",
-          "youtube": "https://www.youtube.com/watch?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c&index=11"
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-11.html",
+          "thumb": "assets/images/episodes/drstone-season-2-stonewars.jpg"
+        }
+      ]
+    },
+    {
+      "id": "special",
+      "title": "Anime Special",
+      "subtitle": "Dr. STONE: Ryusui (Chính Truyện)",
+      "year": 2022,
+      "totalEpisodes": 1,
+      "color": "#ffd700",
+      "episodes": [
+        {
+          "ep": 1,
+          "title": "Dr. STONE: Ryusui",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-ryusui-i1-a4285/tap-01-85140.html",
+          "thumb": "assets/images/episodes/tap1ss3.jpg",
+          "desc": "Tập Anime Special chính truyện kết nối giữa Season 2 và Season 3. Vương Quốc Khoa Học hồi sinh thuyền trưởng tài ba Ryusui Nanami để chế tạo khinh khí cầu và vẽ bản đồ thế giới mới."
         }
       ]
     },
@@ -200,145 +228,139 @@
       "title": "Season 3",
       "subtitle": "New World",
       "year": 2023,
-      "totalEpisodes": 23,
+      "totalEpisodes": 22,
       "color": "#00d4ff",
       "episodes": [
         {
           "ep": 1,
-          "title": "Ryusui",
-          "youtube": "https://www.youtube.com/watch?v=J0zqUQALoXI&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=25",
-          "thumb": "assets/images/episodes/tap1ss3.jpg"
-        },
-        {
-          "ep": 2,
           "title": "Bản Đồ Thế Giới Mới",
-          "youtube": "https://www.youtube.com/watch?v=15Ae_gO0PE4&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=24",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-1.html",
           "thumb": "assets/images/episodes/tap2ss3.jpg"
         },
         {
-          "ep": 3,
+          "ep": 2,
           "title": "Tham Lam Bằng Công Lý",
-          "youtube": "https://www.youtube.com/watch?v=cF90Q-jf8Fs&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=22",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-2.html",
           "thumb": "assets/images/episodes/tap3ss3.jpg"
         },
         {
-          "ep": 4,
+          "ep": 3,
           "title": "Lần Đầu Tiếp Xúc",
-          "youtube": "https://www.youtube.com/watch?v=C7ksQrpQm5I&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=21",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-3.html",
           "thumb": "assets/images/episodes/tap4ss3.jpg"
         },
         {
-          "ep": 5,
+          "ep": 4,
           "title": "Con Mắt Khoa Học",
-          "youtube": "https://www.youtube.com/watch?v=FoTq-GezYMk&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=20",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-4.html",
           "thumb": "assets/images/episodes/tap5ss3.jpg"
         },
         {
-          "ep": 6,
+          "ep": 5,
           "title": "Thuyền Khoa Học Perseus",
-          "youtube": "https://www.youtube.com/watch?v=1ZWFyr9uVWo&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=19",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-5.html",
           "thumb": "assets/images/episodes/tap6ss3.jpg"
         },
         {
-          "ep": 7,
+          "ep": 6,
           "title": "Hộp Kho Báu",
-          "youtube": "https://www.youtube.com/watch?v=cK_08cFK0vo&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=18",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-6.html",
           "thumb": "assets/images/episodes/tap7ss3.jpg"
         },
         {
-          "ep": 8,
+          "ep": 7,
           "title": "Ánh Sáng Của Hy Vọng Và Tuyệt Vọng",
-          "youtube": "https://www.youtube.com/watch?v=FVNlGEayNgw&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=17",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-7.html",
           "thumb": "assets/images/episodes/tap8ss3.jpg"
         },
         {
-          "ep": 9,
+          "ep": 8,
           "title": "Át Chủ Bài Của Thuyền Khoa Học",
-          "youtube": "https://www.youtube.com/watch?v=64pTwfUbNAg&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=16",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-8.html",
           "thumb": "assets/images/episodes/tap9ss3.jpg"
         },
         {
-          "ep": 10,
+          "ep": 9,
           "title": "Khoa Học Làm Đẹp",
-          "youtube": "https://www.youtube.com/watch?v=sEDpkRWrPV8&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=15",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-9.html",
           "thumb": "assets/images/episodes/tap10ss3.jpg"
         },
         {
-          "ep": 11,
+          "ep": 10,
           "title": "Chiến Tranh Khoa Học",
-          "youtube": "https://www.youtube.com/watch?v=EwYJ8OxEt-U&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=14",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-10.html",
           "thumb": "assets/images/episodes/tap11ss3.jpg"
         },
         {
-          "ep": 12,
+          "ep": 11,
           "title": "Điều Kì Diệu Nằm Trong Bàn Tay",
-          "youtube": "https://www.youtube.com/watch?v=6WKe3FSQk-0&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=13",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-11.html",
           "thumb": "assets/images/episodes/tap12ss3.jpg"
         },
         {
-          "ep": 13,
+          "ep": 12,
           "title": "Vương Quốc Khoa Học Phản Công",
-          "youtube": "https://www.youtube.com/watch?v=NQQjWMXDCu0&list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=12",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-12.html",
           "thumb": "assets/images/episodes/tap13ss3.jpg"
         },
         {
-          "ep": 14,
+          "ep": 13,
           "title": "Chân Tướng Của Medusa",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=14",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-13.html",
           "thumb": "assets/images/episodes/tap14ss3.jpg"
         },
         {
-          "ep": 15,
+          "ep": 14,
           "title": "Mảnh Ghép Đấu Trí",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=15",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-14.html",
           "thumb": "assets/images/episodes/tap15ss3.jpg"
         },
         {
-          "ep": 16,
+          "ep": 15,
           "title": "Trận Chiến Ba Chiều Quyết Định",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=16",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-15.html",
           "thumb": "assets/images/episodes/tap16ss3.jpg"
         },
         {
-          "ep": 17,
+          "ep": 16,
           "title": "Kế Hoạch Tấn Công Cuối Cùng",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=17",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-16.html",
           "thumb": "assets/images/episodes/tap17ss3.jpg"
         },
         {
-          "ep": 18,
+          "ep": 17,
           "title": "Đối Mặt Với Quá Khứ",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=18",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-17.html",
           "thumb": "assets/images/episodes/tap18ss3.jpg"
         },
         {
-          "ep": 19,
+          "ep": 18,
           "title": "Khoa Học Vượt Giới Hạn",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=19",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-18.html",
           "thumb": "assets/images/episodes/tap19ss3.jpg"
         },
         {
-          "ep": 20,
+          "ep": 19,
           "title": "Con Đường Trở Về",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=20",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-19.html",
           "thumb": "assets/images/episodes/tap20ss3.jpg"
         },
         {
-          "ep": 21,
+          "ep": 20,
           "title": "Bí Mật Của Medusa",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=21",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-20.html",
           "thumb": "assets/images/episodes/tap21ss3.jpg"
         },
         {
-          "ep": 22,
+          "ep": 21,
           "title": "Sự Hy Sinh",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=22",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-21.html",
           "thumb": "assets/images/episodes/tap22ss3.jpg"
         },
         {
-          "ep": 23,
+          "ep": 22,
           "title": "Tương Lai Của Khoa Học",
-          "youtube": "https://www.youtube.com/watch?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47&index=23",
+          "vietSubUrl": "https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-22.html",
           "thumb": "assets/images/episodes/tap23ss3.jpg"
         }
       ]
@@ -346,70 +368,269 @@
     {
       "id": 4,
       "title": "Season 4",
-      "subtitle": "Science Future (Final)",
+      "subtitle": "Science Future (Final Season)",
       "year": 2025,
-      "totalEpisodes": 12,
+      "totalEpisodes": 37,
       "color": "#a855f7",
       "episodes": [
         {
           "ep": 1,
-          "title": "Bình Minh Kỷ Nguyên Mới",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+1"
+          "title": "Ryusui đối đầu Senku",
+          "desc": "Senku và Ryusui dùng bài poker để phân định thắng thua, hướng đi của thuyền sẽ được quyết định bởi người thắng.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_001_1761045290747.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 2,
-          "title": "Thành Phố Ngô Toàn Cầu",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+2"
+          "title": "Chuyến đi khoa học",
+          "desc": "Vượt qua khó khăn về địa lý và thời tiết, nhóm Senku xuôi thuyền thành công đến được Châu Mỹ.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_002_1761045292714.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 3,
-          "title": "Hành Trình Xuyên Thái Bình Dương",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+3"
+          "title": "Ánh sáng mời gọi bóng tối",
+          "desc": "Nhóm của Senku đặt chân đến đất Mỹ chưa kịp vui mừng đã bị tấn công bởi súng máy.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_003_1761045294464.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 4,
-          "title": "Tiếng Gọi Từ Không Gian",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+4"
+          "title": "Dr. X",
+          "desc": "Gen được phái đi thương thuyết với phe địch, tại đó anh gặp một nhà khoa học kỳ lạ không kém Senku.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_004_1761045296840.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 5,
-          "title": "Bí Ẩn Why-Man",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+5"
+          "title": "Bác học đối đầu",
+          "desc": "Mục tiêu của hai vương quốc là tấn công chớp nhoáng và khống chế thủ lĩnh khoa học của đối phương để giành chiến thắng.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_005_1761045298581.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 6,
-          "title": "Động Cơ Phản Lực Khoa Học",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+6"
+          "title": "Khoa học tinh tế",
+          "desc": "Qua một câu trích dẫn của Luna, Senku phát hiện ra Dr.Xeno chính là sư phụ khoa học của cậu.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_006_1761045300393.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 7,
-          "title": "Hợp Tác Toàn Cầu",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+7"
+          "title": "Hai nhà bác học",
+          "desc": "Dr. Xeno là người thầy hướng dẫn Senku những kiến thức khoa học từ năm 10 tuổi cho đến tận khi hoá đá.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_007_1761045302280.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 8,
-          "title": "Thám Tử Trí Tuệ",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+8"
+          "title": "Khóa mục tiêu",
+          "desc": "Dù biết rõ danh tính của Senku, Xeno vẫn quyết định ra lệnh cho Stanley Snyder trừ khử cậu ấy.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_008_1761045304223.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 9,
-          "title": "Hồi Sinh 7 Tỷ Người",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+9"
+          "title": "Ngọn đuốc khoa học",
+          "desc": "Senku tuy thoát chết nhưng lại bị trọng thương, cậu tạm thời giao lại vị trí thủ lĩnh khoa học cho Chrome.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_009_1761045306051.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 10,
-          "title": "Con Đường Lên Mặt Trăng",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+10"
+          "title": "Con đường nhuộm màu đất",
+          "desc": "Với sự chi viện của Taiju, nhóm trinh sát nhanh chóng đào hầm xuyên thẳng đến pháo đài của Dr Xeno.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_010_1761045308009.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 11,
-          "title": "Trạm Không Gian Hy Vọng",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+11"
+          "title": "Người biết luật chơi, kẻ viết luật chơi",
+          "desc": "Hai phe đang thế hoà nhau, trong khi Stanley chiếm tàu của Senku thì Chrome bắt được Xeno.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_011_1761045310317.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         },
         {
           "ep": 12,
-          "title": "Tương Lai Của Nhân Loại",
-          "youtube": "https://www.youtube.com/results?search_query=Ani-One+Dr+Stone+Science+Future+tap+12"
+          "title": "Tái ngộ",
+          "desc": "Nhóm Senku dẫn theo Xeno chơi trò đuổi bắt vòng quanh thế giới với Stanley.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_012_1761045312403.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 13,
+          "title": "Ngắm cùng một mặt trăng",
+          "desc": "Senku và Xeno cùng hợp tác tính toán tìm nơi khởi nguồn của tia hóa đá.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_013_1761045314572.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 14,
+          "title": "Cuộc đua trái đất",
+          "desc": "Nhóm Senku gặp gỡ Chelsea, nhà địa lý học vừa thoát hóa đá được một năm.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_014_1761045317506.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 15,
+          "title": "Trận chiến đột phá vòng vây",
+          "desc": "Với sự hỗ trợ từ Chelsea, nhóm Senku thu hoạch cao su làm lốp xe máy, giúp họ đột phá vòng vây của Stanley.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_015_1761045319421.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 16,
+          "title": "Cơ chế của Medusa",
+          "desc": "Joel, một người làm đồng hồ từ Rolex, được hồi sinh để cùng tham gia nghiên cứu Medusa.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_016_1761045321369.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 17,
+          "title": "Vừa ghê rợn nhưng lại vừa đẹp đẽ",
+          "desc": "Nhóm Senku vượt qua dãy núi Andes bằng cáp treo và đối mặt nhiều nguy hiểm từ thiên nhiên ở rừng Amazon.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_017_1761045323605.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 18,
+          "title": "Trái tim kim cương",
+          "desc": "Senku phát hiện lượng Medusa khổng lồ hết năng lượng, nên dùng làm vỏ bọc cho tàu chống lại radar của nhóm Stanley.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_018_1761045325594.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 19,
+          "title": "Thánh Địa Đá",
+          "desc": "Nhóm Senku gấp rút xây pháo đài tại Araxá và hoàn thiện Medusa để chống lại nhóm Stanley đang tiến đến.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_019_1761045327476.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 20,
+          "title": "Thứ từng suýt biến mất trước đây",
+          "desc": "Suika và Francois bị nhóm Stanley bắt giữ khi đang tiến về nơi trú ẩn xa căn cứ chính.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_020_1761045329200.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 21,
+          "title": "Dr. Stone của chúng ta",
+          "desc": "Nhóm Senku đối mặt với cuộc tấn công tàn bạo của Stanley, Joel nỗ lực hoàn thiện pin kim cương để kích hoạt Medusa.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_021_1761045331047.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 22,
+          "title": "Cho đến ngày gặp lại",
+          "desc": "Medusa kích hoạt thành công, hóa đá toàn nhân loại. Suika hồi sinh sau 2 năm, một mình đương đầu với thế giới hoang vu.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_022_1761045333082.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 23,
+          "title": "Nhà khoa học cô đơn",
+          "desc": "Dựa vào ghi chép của Senku, Suika miệt mài thử nghiệm các phương pháp tạo nước hồi sinh, cuối cùng đánh thức được Senku.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/11/07/DrStoneSeason4_2025_JP_023_1762507569038.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 24,
+          "title": "Một thế giới hoàn toàn mới",
+          "desc": "Senku tạo nước hồi sinh đánh thức các thành viên còn lại, đồng thời hợp tác cùng Xeno chế tạo tàu vũ trụ bay lên Mặt Trăng.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2025/10/21/DrStoneSeason4_2025_JP_024_1761045336653.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 25,
+          "title": "Động cơ tương lai",
+          "desc": "Xeno chính thức gia nhập, cùng Senku chế tạo tàu vũ trụ bay lên Mặt Trăng.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2026/04/01/DrStoneSeason4_2025_JP_025_1775051204071.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 26,
+          "title": "Lửa",
+          "desc": "Thông điệp từ Why-Man càng thôi thúc nhóm Senku lên Mặt Trăng.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2026/04/09/DrStoneSeason4_2025_JP_026_1775735086504.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 27,
+          "title": "Vũ trụ được viết bằng ngôn ngữ của toán học",
+          "desc": "Thiên tài với trí tuệ ngang một triệu người chính là Sai, anh trai của Ryusui.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2026/04/16/DrStoneSeason4_2025_JP_027_1776343330457.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 28,
+          "title": "Khởi đầu của máy tính",
+          "desc": "Senku chế tạo thành công máy tính cấp một, thuyết phục Sai gia nhập nhóm.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2026/04/22/DrStoneSeason4_2025_JP_028_1776860588405.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 29,
+          "title": "Sự thật về tên lửa",
+          "desc": "Medusa là linh kiện quan trọng nhất của tên lửa cho chuyến bay lên Mặt Trăng.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2026/04/29/DrStoneSeason4_2025_JP_029_1777478310009.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 30,
+          "title": "Từ đá tới không gian",
+          "desc": "Nhóm Senku trở lại Nhật Bản, chế tạo tên lửa và giải cứu người bị hóa đá.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2026/05/06/DrStoneSeason4_2025_JP_030_1778064729262.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 31,
+          "title": "Sự thật tiềm ẩn",
+          "desc": "Có TV và máy tính, nhóm Senku bắt đầu kế hoạch phóng vệ tinh lên Mặt Trăng.",
+          "thumb": "https://images.fptplay53.net/media/OTT/VOD/thumb/2026/05/14/DrStoneSeason4_2025_JP_031_1778749793547.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 32,
+          "title": "Kẻ thách thức khoa học",
+          "desc": "Sau hành trình đầy gian nan, Senku và Xeno cuối cùng đã phóng thành công vệ tinh lên không gian.",
+          "thumb": "https://images.fptplay53.net/media/OTT_BAK/2026/05/22/thumbnailfile1779361015028_1779443203544.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 33,
+          "title": "Muốn có tất cả",
+          "desc": "Ba dũng sĩ phi hành gia đối đầu Why-Man là Ryusui, Senku và Kohaku.",
+          "thumb": "https://images.fptplay53.net/media/OTT_BAK/2026/05/28/thumbnailfile1779946711087_1779946762396.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 34,
+          "title": "Đếm ngược",
+          "desc": "Gánh vác trọng trách điều khiển tàu vũ trụ, Stanley sẽ đảm nhận vai trò phi công chính.",
+          "thumb": "https://images.fptplay53.net/media/OTT_BAK/2026/06/03/thumbnailfile1780493103135_1780493146386.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
+        },
+        {
+          "ep": 35,
+          "title": "Bước tiến khổng lồ",
+          "desc": "Với tư cách là nhà khoa học đại diện cho thế giới đá, Senku là người đầu tiên đặt chân lên Mặt Trăng.",
+          "thumb": "https://images.fptplay53.net/media/OTT_ECS/2026/06/10/thumbnailfile1781086079002_1781089412362.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/tap-35-114029.html"
+        },
+        {
+          "ep": 36,
+          "title": "Why-Man",
+          "desc": "Đối với sinh vật máy móc như Why-Man, trạng thái hóa đá là cách để trốn tránh cái chết vĩnh viễn.",
+          "thumb": "https://images.fptplay53.net/media/OTT_ECS/2026/06/18/thumbnailfile1781785676031_1781785734678.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/tap-36-114144.html"
+        },
+        {
+          "ep": 37,
+          "title": "Thứ mở đường cho tương lai",
+          "desc": "Senku, Kohaku, Stanley và Ryusui trở về Trái Đất an toàn nhờ sự hỗ trợ của Medusa.",
+          "thumb": "https://images.fptplay53.net/media/OTT_ECS/2026/06/25/thumbnailfile1782376624794_1782376758569.jpg",
+          "vietSubUrl": "https://www.animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html"
         }
       ]
     }
@@ -563,27 +784,6 @@
       "quote": "Tôi muốn tất cả! Lòng tham chính là động lực phát triển của thế giới!"
     },
     {
-      "id": "francois",
-      "name": "Francois",
-      "nameJp": "フランソワ",
-      "role": "Quản Gia & Bếp Trưởng 5 Sao",
-      "faction": "science",
-      "voice": "Sakamoto Maaya",
-      "tags": [
-        "Quản gia",
-        "Ẩm thực",
-        "Hoàn hảo"
-      ],
-      "thumb": "assets/images/characters/hd/francois.png",
-      "stats": {
-        "iq": 85,
-        "strength": 50,
-        "agility": 100
-      },
-      "desc": "Người quản gia và đầu bếp đa năng của Ryusui, luôn tạo ra những bữa ăn thịnh soạn từ thiên nhiên hoang dã.",
-      "quote": "Phục vụ hoàn hảo mong muốn của quý khách là niềm vinh hạnh của tôi."
-    },
-    {
       "id": "tsukasa",
       "name": "Shishiō Tsukasa",
       "nameJp": "獅子王 司",
@@ -626,27 +826,6 @@
       "quote": "Tôi chỉ đứng về phe chiến thắng thôi, và khoa học chắc chắn sẽ thắng!"
     },
     {
-      "id": "hyoga",
-      "name": "Hyoga",
-      "nameJp": "氷月",
-      "role": "Thương Thủ Vô Song",
-      "faction": "might",
-      "voice": "Ishida Akira",
-      "tags": [
-        "Thương thuật",
-        "Lạnh lùng",
-        "Tinh nhuệ"
-      ],
-      "thumb": "assets/images/characters/hd/hyoga.png",
-      "stats": {
-        "iq": 80,
-        "strength": 85,
-        "agility": 100
-      },
-      "desc": "Cánh tay đắc lực của Tsukasa với ngọn giáo Kan-ryū thần tốc. Tôn sùng tư tưởng kẻ mạnh hoàn hảo.",
-      "quote": "Chỉ những người làm việc đúng đắn mới xứng đáng được tồn tại."
-    },
-    {
       "id": "ukyo",
       "name": "Saionji Ukyō",
       "nameJp": "西園寺 羽京",
@@ -687,48 +866,6 @@
       },
       "desc": "Chiến binh mạnh nhất làng Ishigami với đôi mắt thần thánh và tốc độ chớp nhoáng. Là người đầu tiên tin tưởng và bảo vệ Senku.",
       "quote": "Tôi thích ánh mắt tràn ngập niềm tin vào tương lai của anh đấy, Senku!"
-    },
-    {
-      "id": "ruri",
-      "name": "Ruri",
-      "nameJp": "ルリ",
-      "role": "Nữ Tư Tế / Người Lưu Giữ Lịch Sử",
-      "faction": "village",
-      "voice": "Ueda Reina",
-      "tags": [
-        "Tư tế",
-        "Truyền thuyết",
-        "Dịu dàng"
-      ],
-      "thumb": "assets/images/characters/hd/ruri.png",
-      "stats": {
-        "iq": 75,
-        "strength": 20,
-        "agility": 60
-      },
-      "desc": "Chị gái của Kohaku, người ghi nhớ 'Trăm Câu Chuyện' để truyền lại tri thức nhân loại sau hàng nghìn năm. Được Senku cứu khỏi bệnh viêm phổi.",
-      "quote": "Tên của bạn... có phải là Ishigami Senku không?"
-    },
-    {
-      "id": "kinro",
-      "name": "Kinro & Ginro",
-      "nameJp": "金狼 & 銀狼",
-      "role": "Cặp Lính Gác Cầu Làng Ishigami",
-      "faction": "village",
-      "voice": "Maeno Tomoaki & Murase Ayumu",
-      "tags": [
-        "Kỷ luật",
-        "Lanh lợi",
-        "Hài hước"
-      ],
-      "thumb": "assets/images/characters/hd/kinro.png",
-      "stats": {
-        "iq": 60,
-        "strength": 80,
-        "agility": 85
-      },
-      "desc": "Kinro nghiêm túc, kỷ luật thép (được Senku tặng kính chữa mờ mắt); Ginro nhát gan nhưng linh hoạt và luôn tạo ra những bất ngờ khó đoán.",
-      "quote": "Quy tắc là quy tắc! Không ai được phép qua cây cầu này!"
     },
     {
       "id": "byakuya",

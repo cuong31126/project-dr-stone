@@ -1,7 +1,8 @@
 /**
  * js/cinema.js
  * Hệ thống Rạp Chiếu Phim Khoa Học Dr. Stone
- * Hỗ trợ 70 tập (Season 1, 2, 3, 4), Phân trang nhẹ 12 tập/trang, Nguồn đôi Ani-One & AnimeVietsub, Watch Tracker
+ * Chuẩn hóa 5 Phần (95 Tập): Season 1 (24), Season 2 (11), Anime Special Ryusui (1), Season 3 (22), Season 4 (37)
+ * Phân trang 12 tập/trang, Nguồn Ani-One (S1) & AnimeVietsub Full HD (Trọn bộ), Watch Tracker + SP CitizenPass
  */
 
 'use strict';
@@ -14,22 +15,21 @@ const CINEMA_CONFIG = {
     LAST_WATCHED: 'drstone_last_watched_info'
   },
   ANIMEVIETSUB_URLS: {
-    1: (ep) => `https://animevietsub.tv/phim/dr-stone-a3374/tap-${ep}.html`,
-    2: (ep) => `https://animevietsub.tv/phim/dr-stone-stone-wars-a3861/tap-${ep}.html`,
-    3: (ep) => `https://animevietsub.tv/phim/dr-stone-new-world-a4674/tap-${ep}.html`,
-    4: (ep) => `https://animevietsub.tv/phim/dr-stone-science-future-a5214/tap-${ep}.html`
+    1: (ep) => `https://animevietsub.li/phim/dr-stone-a3374/tap-${ep}.html`,
+    2: (ep) => `https://animevietsub.li/phim/dr-stone-stone-wars-a3861/tap-${ep}.html`,
+    special: (ep) => `https://animevietsub.li/phim/dr-stone-ryusui-i1-a4285/tap-01-85140.html`,
+    3: (ep) => `https://animevietsub.li/phim/dr-stone-new-world-a4674/tap-${ep}.html`,
+    4: (ep) => `https://animevietsub.li/phim/dr-stone-4th-season-i4-a5533/xem-phim.html`
   },
   ANIONE_URLS: {
-    1: 'https://www.youtube.com/playlist?list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx',
-    2: 'https://www.youtube.com/playlist?list=PLxSscENEp7Jjd9DclPvIJd8fmLnYFiA-c',
-    3: 'https://www.youtube.com/playlist?list=PLOVZwvNm10lXwY00kVyHn3aF5o4LMsL47',
-    4: 'https://www.youtube.com/results?search_query=Ani-One+Vietnam+Dr+Stone+Science+Future'
+    1: 'https://www.youtube.com/playlist?list=PLOVZwvNm10lXf4AofFk4Jmjp7HvfN67dx'
+    // Bỏ link Ani-One từ Season 2 trở đi theo chỉ đạo
   }
 };
 
 let cinemaData = null;
 let allEpisodes = [];
-let currentSeason = 'all'; // 'all' | 1 | 2 | 3 | 4
+let currentSeason = 'all'; // 'all' | '1' | '2' | 'special' | '3' | '4'
 let currentStatus = 'all'; // 'all' | 'unwatched' | 'watched' | 'bookmarked'
 let searchQuery = '';
 let currentPage = 1;
@@ -44,7 +44,7 @@ async function initCinema() {
   cinemaData = await fetchEpisodes();
   if (!cinemaData) return;
 
-  // Làm phẳng toàn bộ danh sách 70 tập
+  // Làm phẳng toàn bộ danh sách 95 tập (5 Phần theo đúng trình tự thời gian)
   allEpisodes = [];
   cinemaData.seasons.forEach(s => {
     s.episodes.forEach(e => {
@@ -103,7 +103,8 @@ function toggleWatched(seasonId, epNum) {
   } else {
     map[key] = true;
     if (window.CitizenPass) {
-      window.CitizenPass.addSciencePoints(25, `Đã đánh dấu hoàn thành Tập ${epNum} (Season ${seasonId})!`);
+      const epLabel = String(seasonId) === 'special' ? 'Anime Special (Ryusui)' : `Tập ${epNum} (Season ${seasonId})`;
+      window.CitizenPass.addSciencePoints(25, `Đã đánh dấu hoàn thành ${epLabel}!`);
     }
   }
   setWatchedMap(map);
@@ -119,7 +120,8 @@ function markWatchedOnPlay(seasonId, epNum, sourceName) {
   setWatchedMap(map);
 
   if (isNew && window.CitizenPass) {
-    window.CitizenPass.addSciencePoints(25, `Khởi động Tập ${epNum} (Season ${seasonId}) qua nguồn ${sourceName}!`);
+    const epLabel = String(seasonId) === 'special' ? 'Anime Special (Ryusui)' : `Tập ${epNum} (Season ${seasonId})`;
+    window.CitizenPass.addSciencePoints(25, `Khởi động ${epLabel} qua nguồn ${sourceName}!`);
   }
 
   localStorage.setItem(
@@ -158,7 +160,8 @@ function toggleBookmark(seasonId, epNum) {
   if (idx === -1) {
     bm[key].push(epNum);
     if (window.CitizenPass) {
-      window.CitizenPass.addSciencePoints(15, `Đã lưu Tập ${epNum} (Season ${seasonId}) vào danh sách xem sau!`);
+      const epLabel = String(seasonId) === 'special' ? 'Anime Special (Ryusui)' : `Tập ${epNum} (Season ${seasonId})`;
+      window.CitizenPass.addSciencePoints(15, `Đã lưu ${epLabel} vào danh sách xem sau!`);
     }
   } else {
     bm[key].splice(idx, 1);
@@ -171,7 +174,7 @@ function toggleBookmark(seasonId, epNum) {
 function updateProgressHUD() {
   const watchedMap = getWatchedMap();
   const watchedCount = Object.keys(watchedMap).length;
-  const totalCount = allEpisodes.length || 70;
+  const totalCount = allEpisodes.length || 95;
   const pct = Math.min(100, Math.round((watchedCount / totalCount) * 100));
 
   const countEl = document.getElementById('hud-watched-count');
@@ -187,16 +190,16 @@ function updateProgressHUD() {
   let tierColor = "text-[#6b7a99]";
 
   if (pct === 100) {
-    tierName = "👑 Thiên Tài 10 Tỷ % · Senku Ishigami (Hoàn thành 100%)";
+    tierName = "👑 Thiên Tài 10 Tỷ % · Senku Ishigami (Hoàn thành 100% 95 Tập)";
     tierColor = "text-[#39ff14]";
   } else if (pct >= 75) {
-    tierName = "⚡ Bậc Thầy Vương Quốc Khoa Học";
+    tierName = "⚡ Bậc Thầy Vương Quốc Khoa Học (Khám phá Tương Lai)";
     tierColor = "text-[#00d4ff]";
   } else if (pct >= 50) {
-    tierName = "🚢 Nhà Thám Hiểm Thuyền Perseus";
+    tierName = "🚢 Thuyền Trưởng Vượt Đại Dương (Hành trình Perseus)";
     tierColor = "text-[#ffd700]";
   } else if (pct >= 25) {
-    tierName = "🏹 Chiến Binh Làng Ishigami";
+    tierName = "🏹 Chiến Binh Làng Ishigami (Stone Wars)";
     tierColor = "text-[#f97316]";
   } else if (pct > 0) {
     tierName = "🧪 Tập Sự Giả Kim Chrome";
@@ -215,8 +218,8 @@ function getFilteredEpisodes() {
   const query = searchQuery.trim().toLowerCase();
 
   return allEpisodes.filter(ep => {
-    // 1. Lọc Season
-    if (currentSeason !== 'all' && ep.seasonId !== Number(currentSeason)) {
+    // 1. Lọc Season (chấp nhận cả '1', '2', 'special', '3', '4')
+    if (currentSeason !== 'all' && String(ep.seasonId) !== String(currentSeason)) {
       return false;
     }
 
@@ -228,11 +231,11 @@ function getFilteredEpisodes() {
     if (currentStatus === 'unwatched' && watched) return false;
     if (currentStatus === 'bookmarked' && !bookmarked) return false;
 
-    // 3. Tìm kiếm
+    // 3. Tìm kiếm linh hoạt
     if (query) {
       const matchTitle = ep.title.toLowerCase().includes(query);
       const matchEpNum = `tập ${ep.ep}`.includes(query) || `ep ${ep.ep}`.includes(query) || `${ep.ep}` === query;
-      const matchSeason = `season ${ep.seasonId}`.includes(query) || `s${ep.seasonId}`.includes(query);
+      const matchSeason = `season ${ep.seasonId}`.includes(query) || `s${ep.seasonId}`.includes(query) || (String(ep.seasonId) === 'special' && (query.includes('special') || query.includes('ryusui')));
       if (!matchTitle && !matchEpNum && !matchSeason) return false;
     }
 
@@ -275,7 +278,14 @@ function renderEpisodes() {
   renderPagination(totalPages);
 }
 
-/* ── TẠO HTML CARD TẬP PHIM (VỚI NÚT XEM TẠI RẠP & 2 NGUỒN PHỤ) ── */
+function getEpisodeVietsubUrl(ep) {
+  if (ep.vietSubUrl) return ep.vietSubUrl;
+  const sId = ep.seasonId;
+  const builder = CINEMA_CONFIG.ANIMEVIETSUB_URLS[sId];
+  return typeof builder === 'function' ? builder(ep.ep) : 'https://animevietsub.li/';
+}
+
+/* ── TẠO HTML CARD TẬP PHIM (CHUẨN 5 PHẦN · NGUỒN CHÍNH XÁC) ── */
 function createEpisodeCardHTML(ep) {
   const watched = isWatched(ep.seasonId, ep.ep);
   const bookmarked = isBookmarked(ep.seasonId, ep.ep);
@@ -291,25 +301,28 @@ function createEpisodeCardHTML(ep) {
   if (!thumb) {
     if (ep.seasonId === 2) {
       thumb = 'assets/images/episodes/drstone-season-2-stonewars.jpg';
+    } else if (String(ep.seasonId) === 'special') {
+      thumb = 'assets/images/episodes/tap1ss3.jpg';
     } else if (ep.seasonId === 4) {
       thumb = 'assets/images/episodes/drstone-season-4-sciencefuture.jpg';
     } else if (ep.seasonId === 3) {
-      thumb = `assets/images/episodes/tap${ep.ep}ss3.jpg`;
+      thumb = `assets/images/episodes/tap${ep.ep + 1}ss3.jpg`;
     } else {
       thumb = 'assets/images/episodes/drstone-season-2-stonewars.jpg';
     }
   }
 
   // URL nguồn xem
-  const anioneUrl = ep.youtube || CINEMA_CONFIG.ANIONE_URLS[ep.seasonId] || CINEMA_CONFIG.ANIONE_URLS[3];
-  const animevietsubUrl = CINEMA_CONFIG.ANIMEVIETSUB_URLS[ep.seasonId](ep.ep);
+  const anioneUrl = ep.youtube || (ep.seasonId === 1 ? CINEMA_CONFIG.ANIONE_URLS[1] : null);
+  const animevietsubUrl = getEpisodeVietsubUrl(ep);
 
-  // Huy hiệu mùa
+  // Huy hiệu mùa & màu sắc chuẩn token
   const seasonColors = {
-    1: { badge: 'bg-[#e67e22] text-black', text: 'text-[#e67e22]' },
-    2: { badge: 'bg-[#c0392b] text-white', text: 'text-[#ef4444]' },
-    3: { badge: 'bg-[#39ff14] text-black', text: 'text-[#39ff14]' },
-    4: { badge: 'bg-[#a855f7] text-white', text: 'text-[#c084fc]' }
+    1: { badge: 'bg-[#e67e22] text-black', text: 'text-[#e67e22]', label: 'S1' },
+    2: { badge: 'bg-[#c0392b] text-white', text: 'text-[#ef4444]', label: 'S2' },
+    special: { badge: 'bg-[#ffd700] text-black', text: 'text-[#ffd700]', label: 'SPECIAL' },
+    3: { badge: 'bg-[#00d4ff] text-black', text: 'text-[#00d4ff]', label: 'S3' },
+    4: { badge: 'bg-[#a855f7] text-white', text: 'text-[#c084fc]', label: 'S4' }
   };
   const color = seasonColors[ep.seasonId] || seasonColors[3];
 
@@ -317,18 +330,21 @@ function createEpisodeCardHTML(ep) {
     ? 'border-[#00f5a0]/40 shadow-[0_4px_25px_rgba(0,245,160,0.15)]'
     : 'border-white/10 hover:border-[#00d4ff]/40';
 
-  const fallbackCover = ep.seasonId === 4
+  const fallbackCover = String(ep.seasonId) === '4'
     ? 'assets/images/episodes/drstone-season-4-sciencefuture.jpg'
     : 'assets/images/episodes/drstone-season-2-stonewars.jpg';
+
+  const isSpecial = String(ep.seasonId) === 'special';
+  const isSeason1 = Number(ep.seasonId) === 1;
 
   return `
     <div class="group relative rounded-2xl overflow-hidden bg-[#0a0f1e]/90 border ${cardBorderClass} transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between"
          data-season="${ep.seasonId}" data-ep="${ep.ep}">
 
-      <!-- Thumbnail & Header Badges (Click để mở Rạp Chiếu) -->
+      <!-- Thumbnail & Header Badges: Season 1 mở Rạp Chiếu, Season 2+ mở trực tiếp AnimeVietsub -->
       <div class="relative aspect-video overflow-hidden bg-black/60 cursor-pointer"
-           onclick="openCinemaModal(${ep.seasonId}, ${ep.ep})"
-           title="Nhấn để mở xem trong Rạp Chiếu Phim">
+           onclick="${isSeason1 ? `openCinemaModal('${ep.seasonId}', ${ep.ep})` : `window.open('${animevietsubUrl}', '_blank'); markWatchedOnPlay('${ep.seasonId}', ${ep.ep}, 'AnimeVietsub');`}"
+           title="${isSeason1 ? 'Nhấn để mở xem trong Rạp Chiếu Phim' : 'Nhấn để mở xem Full HD trên AnimeVietsub (+25 SP)'}">
         <img src="${thumb}" alt="${ep.title}" loading="lazy"
              onerror="this.onerror=null; this.src='${fallbackCover}';"
              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
@@ -337,7 +353,7 @@ function createEpisodeCardHTML(ep) {
 
         <!-- Center Glowing Play Button -->
         <div class="absolute inset-0 flex items-center justify-center opacity-85 group-hover:opacity-100 group-hover:scale-110 transition-all pointer-events-none z-10">
-          <div class="w-12 h-12 rounded-full bg-black/70 border border-[#00d4ff]/60 backdrop-blur-md flex items-center justify-center text-[#00d4ff] text-base font-black shadow-[0_0_20px_rgba(0,212,255,0.4)] group-hover:border-[#39ff14] group-hover:text-[#39ff14] group-hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all">
+          <div class="w-12 h-12 rounded-full bg-black/70 border ${isSeason1 ? 'border-[#00d4ff]/60 text-[#00d4ff]' : 'border-cyan-400/60 text-cyan-300'} backdrop-blur-md flex items-center justify-center text-base font-black shadow-[0_0_20px_rgba(0,212,255,0.4)] group-hover:border-[#39ff14] group-hover:text-[#39ff14] group-hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all">
             ▶
           </div>
         </div>
@@ -345,26 +361,30 @@ function createEpisodeCardHTML(ep) {
         <!-- Badges Top Left -->
         <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 z-10">
           <span class="text-[0.62rem] font-['Orbitron'] font-black px-2 py-0.5 rounded ${color.badge}">
-            TẬP ${String(ep.ep).padStart(2, '0')}
+            ${isSpecial ? 'SPECIAL · TẬP 01' : `TẬP ${String(ep.ep).padStart(2, '0')}`}
           </span>
           <span class="text-[0.6rem] font-['Rajdhani'] font-bold px-1.5 py-0.5 rounded bg-black/70 text-gray-300 border border-white/10">
-            S${ep.seasonId}
+            ${color.label}
           </span>
+          ${isSpecial ? `
+            <span class="text-[0.58rem] font-black px-1.5 py-0.5 rounded bg-[#ffd700]/20 border border-[#ffd700]/40 text-[#ffd700] uppercase tracking-wider">
+              CHÍNH TRUYỆN
+            </span>
+          ` : ''}
           ${ep.seasonId === 4 ? `
             <span class="text-[0.58rem] font-black px-1.5 py-0.5 rounded bg-gradient-to-r from-[#a855f7] to-[#ec4899] text-white uppercase tracking-wider">
-              MỚI
+              MỚI (37 TẬP)
             </span>
           ` : ''}
         </div>
 
         <!-- Bookmark Button (Top Right) -->
         <button type="button"
-                onclick="event.stopPropagation(); toggleBookmark(${ep.seasonId}, ${ep.ep})"
-                class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full flex items-center justify-center transition-all z-20 ${
-                  bookmarked
-                    ? 'bg-[#ffd700] text-black shadow-[0_0_10px_rgba(255,215,0,0.5)]'
-                    : 'bg-black/60 text-gray-400 hover:text-white hover:bg-black/80'
-                }"
+                onclick="event.stopPropagation(); toggleBookmark('${ep.seasonId}', ${ep.ep})"
+                class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full flex items-center justify-center transition-all z-20 ${bookmarked
+      ? 'bg-[#ffd700] text-black shadow-[0_0_10px_rgba(255,215,0,0.5)]'
+      : 'bg-black/60 text-gray-400 hover:text-white hover:bg-black/80'
+    }"
                 title="${bookmarked ? 'Bỏ lưu tập phim' : 'Lưu xem sau'}">
           🔖
         </button>
@@ -385,42 +405,60 @@ function createEpisodeCardHTML(ep) {
             <span>${ep.seasonYear}</span>
           </div>
           <h3 class="font-['Rajdhani'] text-base sm:text-lg font-bold text-white leading-tight line-clamp-2 group-hover:text-[#00d4ff] transition-colors cursor-pointer"
-              onclick="openCinemaModal(${ep.seasonId}, ${ep.ep})">
+              onclick="${isSeason1 ? `openCinemaModal('${ep.seasonId}', ${ep.ep})` : `window.open('${animevietsubUrl}', '_blank'); markWatchedOnPlay('${ep.seasonId}', ${ep.ep}, 'AnimeVietsub');`}">
             ${ep.title}
           </h3>
+          ${ep.desc ? `
+            <p class="text-xs text-[#8a9bb8] line-clamp-2 mt-1.5 leading-relaxed font-normal">
+              ${ep.desc}
+            </p>
+          ` : ''}
         </div>
 
-        <!-- BỘ ĐIỀU KHIỂN XEM PHIM & RẠP CHIẾU -->
+        <!-- BỘ ĐIỀU KHIỂN XEM PHIM -->
         <div class="space-y-2 mt-4 pt-3 border-t border-white/5">
           
-          <!-- Nút Chính: Xem Trong Rạp (Modal) -->
-          <button type="button"
-                  onclick="openCinemaModal(${ep.seasonId}, ${ep.ep})"
-                  class="w-full py-2 px-3 rounded-xl text-xs font-['Rajdhani'] font-black uppercase tracking-wider bg-gradient-to-r from-[#00d4ff]/20 via-[#39ff14]/20 to-[#00d4ff]/20 hover:from-[#00d4ff] hover:to-[#39ff14] text-white hover:text-black border border-[#00d4ff]/40 hover:border-transparent transition-all flex items-center justify-center gap-2 shadow-sm">
-            <span>▶ Xem Trong Rạp</span>
-            <span class="text-[0.65rem] opacity-75 font-normal">(+25 SP)</span>
-          </button>
+          ${isSeason1 ? `
+            <!-- Season 1: Có Video nhúng YouTube nên có nút Xem Trong Rạp -->
+            <button type="button"
+                    onclick="openCinemaModal('${ep.seasonId}', ${ep.ep})"
+                    class="w-full py-2 px-3 rounded-xl text-xs font-['Rajdhani'] font-black uppercase tracking-wider bg-gradient-to-r from-[#00d4ff]/20 via-[#39ff14]/20 to-[#00d4ff]/20 hover:from-[#00d4ff] hover:to-[#39ff14] text-white hover:text-black border border-[#00d4ff]/40 hover:border-transparent transition-all flex items-center justify-center gap-2 shadow-sm">
+              <span>▶ Xem Trong Rạp</span>
+              <span class="text-[0.65rem] opacity-75 font-normal">(+25 SP)</span>
+            </button>
 
-          <!-- 2 Nguồn Xem Phụ (External Links) -->
-          <div class="grid grid-cols-2 gap-1.5">
-            <a href="${anioneUrl}" target="_blank" rel="noopener noreferrer"
-               onclick="markWatchedOnPlay(${ep.seasonId}, ${ep.ep}, 'Ani-One')"
-               class="py-1.5 px-2 rounded-lg text-[0.65rem] font-['Rajdhani'] font-bold uppercase tracking-wider bg-red-600/10 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/25 transition-all flex items-center justify-center gap-1 text-center truncate"
-               title="Mở trên YouTube Ani-One">
-              <span>🔴 Ani-One</span>
-            </a>
+            <!-- 2 Nguồn Xem Phụ của Season 1 -->
+            <div class="grid grid-cols-2 gap-1.5">
+              <a href="${anioneUrl}" target="_blank" rel="noopener noreferrer"
+                 onclick="markWatchedOnPlay('${ep.seasonId}', ${ep.ep}, 'Ani-One')"
+                 class="py-1.5 px-2 rounded-lg text-[0.65rem] font-['Rajdhani'] font-bold uppercase tracking-wider bg-red-600/10 hover:bg-red-600 text-red-400 hover:text-white border border-red-500/25 transition-all flex items-center justify-center gap-1 text-center truncate"
+                 title="Mở trên YouTube Ani-One Vietnam">
+                <span>🔴 Ani-One</span>
+              </a>
 
-            <a href="${animevietsubUrl}" target="_blank" rel="noopener noreferrer"
-               onclick="markWatchedOnPlay(${ep.seasonId}, ${ep.ep}, 'AnimeVietsub')"
-               class="py-1.5 px-2 rounded-lg text-[0.65rem] font-['Rajdhani'] font-bold uppercase tracking-wider bg-purple-600/10 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/25 transition-all flex items-center justify-center gap-1 text-center truncate"
-               title="Mở trên AnimeVietsub HD">
-              <span>🟣 Vietsub HD</span>
-            </a>
-          </div>
+              <a href="${animevietsubUrl}" target="_blank" rel="noopener noreferrer"
+                 onclick="markWatchedOnPlay('${ep.seasonId}', ${ep.ep}, 'AnimeVietsub')"
+                 class="py-1.5 px-2 rounded-lg text-[0.65rem] font-['Rajdhani'] font-bold uppercase tracking-wider bg-purple-600/10 hover:bg-purple-600 text-purple-300 hover:text-white border border-purple-500/25 transition-all flex items-center justify-center gap-1 text-center truncate"
+                 title="Mở trên AnimeVietsub HD">
+                <span>🟣 Vietsub HD</span>
+              </a>
+            </div>
+          ` : `
+            <!-- Season 2, Special Ryusui, Season 3, Season 4: BỎ nút Xem Trong Rạp, chỉ có nút Xem Full HD AnimeVietsub (Màu Xanh Biển Perseus) -->
+            <div>
+              <a href="${animevietsubUrl}" target="_blank" rel="noopener noreferrer"
+                 onclick="markWatchedOnPlay('${ep.seasonId}', ${ep.ep}, 'AnimeVietsub')"
+                 class="w-full py-2.5 px-3 rounded-xl text-xs font-['Rajdhani'] font-black uppercase tracking-wider bg-gradient-to-r from-cyan-600/20 via-blue-600/25 to-cyan-500/20 hover:from-cyan-500 hover:to-blue-600 text-cyan-200 hover:text-white border border-cyan-500/35 hover:border-cyan-400 transition-all flex items-center justify-center gap-2 text-center shadow-[0_4px_15px_rgba(6,182,212,0.15)] hover:shadow-[0_4px_25px_rgba(6,182,212,0.35)]"
+                 title="Mở xem bản Full HD trên AnimeVietsub">
+                <span>🌊 Xem Phim Full HD</span>
+                <span class="text-[0.68rem] opacity-85 text-cyan-300 group-hover:text-white">(+25 SP ↗)</span>
+              </a>
+            </div>
+          `}
 
           <div class="flex items-center justify-between text-[0.58rem] font-['Rajdhani'] font-bold uppercase tracking-wider text-[#6b7a99] pt-1">
             <span>Tiến độ:</span>
-            <button type="button" onclick="toggleWatched(${ep.seasonId}, ${ep.ep})" class="hover:text-[#00f5a0] transition-colors">
+            <button type="button" onclick="toggleWatched('${ep.seasonId}', ${ep.ep})" class="hover:text-[#00f5a0] transition-colors">
               ${watched ? 'Hủy đánh dấu' : 'Đánh dấu đã xem'}
             </button>
           </div>
@@ -458,11 +496,10 @@ function renderPagination(totalPages) {
     html += `
       <button type="button"
               onclick="goToPage(${i})"
-              class="w-9 h-9 rounded-xl text-xs font-['Orbitron'] font-bold transition-all ${
-                isActive
-                  ? 'bg-gradient-to-r from-[#00d4ff] to-[#39ff14] text-black shadow-[0_0_15px_rgba(0,212,255,0.4)]'
-                  : 'bg-white/5 border border-white/10 text-[#6b7a99] hover:text-white hover:border-white/20'
-              }">
+              class="w-9 h-9 rounded-xl text-xs font-['Orbitron'] font-bold transition-all ${isActive
+        ? 'bg-[#00d4ff] text-black shadow-[0_0_15px_rgba(0,212,255,0.4)]'
+        : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/30'
+      }">
         ${i}
       </button>
     `;
@@ -483,14 +520,8 @@ function renderPagination(totalPages) {
 }
 
 function goToPage(page) {
-  const filtered = getFilteredEpisodes();
-  const totalPages = Math.ceil(filtered.length / CINEMA_CONFIG.PAGE_SIZE) || 1;
-  if (page < 1 || page > totalPages) return;
-
   currentPage = page;
   renderEpisodes();
-
-  // Cuộn nhẹ về đầu danh sách tập
   const target = document.getElementById('episodes-grid-top');
   if (target) {
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -577,10 +608,10 @@ function extractYouTubeId(url) {
 }
 
 function openCinemaModal(seasonId, epNum) {
-  const ep = allEpisodes.find(e => e.seasonId === Number(seasonId) && e.ep === Number(epNum));
+  const ep = allEpisodes.find(e => String(e.seasonId) === String(seasonId) && e.ep === Number(epNum));
   if (!ep) return;
 
-  currentModalSeason = Number(seasonId);
+  currentModalSeason = seasonId;
   currentModalEp = Number(epNum);
 
   const modal = document.getElementById('cinema-modal');
@@ -598,28 +629,67 @@ function openCinemaModal(seasonId, epNum) {
   if (!modal || !iframe) return;
 
   // 1. Cập nhật tiêu đề & huy hiệu mùa
-  if (titleEl) titleEl.textContent = `Tập ${ep.ep}: ${ep.title}`;
+  const isSpecial = String(ep.seasonId) === 'special';
+  const isSeason1 = Number(ep.seasonId) === 1;
+
+  if (titleEl) {
+    if (isSpecial) {
+      titleEl.textContent = `Anime Special: ${ep.title} (Chính Truyện)`;
+    } else {
+      titleEl.textContent = `Tập ${ep.ep}: ${ep.title}`;
+    }
+  }
+
   if (badgeEl) {
-    badgeEl.textContent = `S${ep.seasonId} · TẬP ${String(ep.ep).padStart(2, '0')}`;
     const badgeColors = {
       1: 'bg-[#e67e22] text-black',
       2: 'bg-[#c0392b] text-white',
-      3: 'bg-[#39ff14] text-black',
+      special: 'bg-[#ffd700] text-black',
+      3: 'bg-[#00d4ff] text-black',
       4: 'bg-[#a855f7] text-white'
     };
+
+    if (isSpecial) {
+      badgeEl.textContent = 'SPECIAL · RYUSUI (CHÍNH TRUYỆN)';
+    } else {
+      badgeEl.textContent = `S${ep.seasonId} · TẬP ${String(ep.ep).padStart(2, '0')}`;
+    }
     badgeEl.className = `text-[0.62rem] sm:text-xs font-['Orbitron'] font-black px-2.5 py-0.5 rounded shadow-sm shrink-0 ${badgeColors[ep.seasonId] || badgeColors[3]}`;
   }
 
-  // 2. Link ngoài
-  const anioneUrl = ep.youtube || CINEMA_CONFIG.ANIONE_URLS[ep.seasonId] || CINEMA_CONFIG.ANIONE_URLS[3];
-  const animevietsubUrl = CINEMA_CONFIG.ANIMEVIETSUB_URLS[ep.seasonId](ep.ep);
+  // 2. Link ngoài: Chỉ hiện Ani-One cho Season 1; từ Season 2 trở đi CHỈ hiện AnimeVietsub
+  const anioneUrl = ep.youtube || (isSeason1 ? CINEMA_CONFIG.ANIONE_URLS[1] : null);
+  const animevietsubUrl = getEpisodeVietsubUrl(ep);
 
-  if (extAniOne) extAniOne.href = anioneUrl;
-  if (extVietsub) extVietsub.href = animevietsubUrl;
-  if (fallbackAniOne) fallbackAniOne.href = anioneUrl;
-  if (fallbackVietsub) fallbackVietsub.href = animevietsubUrl;
+  if (extAniOne) {
+    if (isSeason1 && anioneUrl) {
+      extAniOne.href = anioneUrl;
+      extAniOne.style.display = 'inline-flex';
+    } else {
+      extAniOne.style.display = 'none';
+    }
+  }
 
-  // 3. Xử lý Video ID & Lazy Iframe Loading (Siêu nhẹ: chỉ load khi bấm)
+  if (extVietsub) {
+    extVietsub.href = animevietsubUrl;
+    extVietsub.style.display = 'inline-flex';
+  }
+
+  if (fallbackAniOne) {
+    if (isSeason1 && anioneUrl) {
+      fallbackAniOne.href = anioneUrl;
+      fallbackAniOne.style.display = 'inline-flex';
+    } else {
+      fallbackAniOne.style.display = 'none';
+    }
+  }
+
+  if (fallbackVietsub) {
+    fallbackVietsub.href = animevietsubUrl;
+    fallbackVietsub.style.display = 'inline-flex';
+  }
+
+  // 3. Xử lý Video ID & Lazy Iframe Loading (Siêu nhẹ: chỉ load khi có player)
   const ytId = extractYouTubeId(ep.youtube);
   if (ytId) {
     iframe.src = `https://www.youtube-nocookie.com/embed/${ytId}?autoplay=1&rel=0&modestbranding=1`;
@@ -632,11 +702,21 @@ function openCinemaModal(seasonId, epNum) {
       fallback.classList.remove('hidden');
       const fbTitle = document.getElementById('cinema-fallback-title');
       const fbDesc = document.getElementById('cinema-fallback-desc');
-      if (fbTitle) fbTitle.textContent = `${ep.seasonTitle} Tập ${ep.ep}: ${ep.title}`;
+      if (fbTitle) {
+        if (isSpecial) {
+          fbTitle.textContent = `Anime Special: ${ep.title} (Chính Truyện)`;
+        } else {
+          fbTitle.textContent = `${ep.seasonTitle} Tập ${ep.ep}: ${ep.title}`;
+        }
+      }
       if (fbDesc) {
-        fbDesc.textContent = ep.seasonId === 4
-          ? 'Season 4 (Science Future) hiện phát sóng bản quyền trên các nền tảng streaming đối tác. Bạn có thể xem ngay bản Full HD Vietsub bên dưới!'
-          : 'Tập phim thuộc danh sách phát mở rộng. Vui lòng bấm để thưởng thức trọn vẹn trên Ani-One hoặc AnimeVietsub.';
+        if (isSpecial) {
+          fbDesc.textContent = 'Tập phim Anime Special thuộc mạch truyện chính kết nối giữa Season 2 và Season 3. Mời bạn bấm mở xem trọn vẹn bản Full HD Vietsub bên dưới!';
+        } else if (String(ep.seasonId) === '4') {
+          fbDesc.textContent = 'Season 4 (Science Future) trọn bộ 37 tập phát sóng bản quyền. Mời bạn bấm mở xem ngay bản Full HD Vietsub bên dưới!';
+        } else {
+          fbDesc.textContent = 'Tập phim sẵn sàng để thưởng thức trên nguồn AnimeVietsub Full HD. Mời bạn bấm mở xem ngay bên dưới!';
+        }
       }
     }
   }
@@ -648,7 +728,8 @@ function openCinemaModal(seasonId, epNum) {
     watchedMap[ep.key] = true;
     setWatchedMap(watchedMap);
     if (window.CitizenPass) {
-      window.CitizenPass.addSciencePoints(25, `Thưởng xem phim: Đã hoàn thành Tập ${ep.ep} (Season ${ep.seasonId})!`);
+      const epLabel = isSpecial ? 'Anime Special (Ryusui)' : `Tập ${ep.ep} (${ep.seasonTitle})`;
+      window.CitizenPass.addSciencePoints(25, `Thưởng xem phim: Đã hoàn thành ${epLabel}!`);
     }
     updateProgressHUD();
     renderEpisodes();
@@ -657,8 +738,8 @@ function openCinemaModal(seasonId, epNum) {
   // Cập nhật trạng thái nút "Đã xem" trong modal
   updateModalWatchedButton();
 
-  // 5. Cập nhật nút Tập Trước / Tập Sau
-  const curIdx = allEpisodes.findIndex(e => e.seasonId === currentModalSeason && e.ep === currentModalEp);
+  // 5. Cập nhật nút Tập Trước / Tập Sau (theo đúng thứ tự 95 tập)
+  const curIdx = allEpisodes.findIndex(e => String(e.seasonId) === String(currentModalSeason) && e.ep === currentModalEp);
   if (prevBtn) {
     prevBtn.disabled = curIdx <= 0;
   }
@@ -685,7 +766,7 @@ function closeCinemaModal() {
 }
 
 function playNextEpisode() {
-  const curIdx = allEpisodes.findIndex(e => e.seasonId === currentModalSeason && e.ep === currentModalEp);
+  const curIdx = allEpisodes.findIndex(e => String(e.seasonId) === String(currentModalSeason) && e.ep === currentModalEp);
   if (curIdx !== -1 && curIdx < allEpisodes.length - 1) {
     const nextEp = allEpisodes[curIdx + 1];
     openCinemaModal(nextEp.seasonId, nextEp.ep);
@@ -693,7 +774,7 @@ function playNextEpisode() {
 }
 
 function playPrevEpisode() {
-  const curIdx = allEpisodes.findIndex(e => e.seasonId === currentModalSeason && e.ep === currentModalEp);
+  const curIdx = allEpisodes.findIndex(e => String(e.seasonId) === String(currentModalSeason) && e.ep === currentModalEp);
   if (curIdx > 0) {
     const prevEp = allEpisodes[curIdx - 1];
     openCinemaModal(prevEp.seasonId, prevEp.ep);
@@ -765,4 +846,3 @@ window.openCinemaModal = openCinemaModal;
 window.closeCinemaModal = closeCinemaModal;
 window.playNextEpisode = playNextEpisode;
 window.playPrevEpisode = playPrevEpisode;
-

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Dr. Stone Fan Website — Vương quốc Khoa học phản công. Khám phá 4 season, 70 tập phim và 109 cư dân thế giới đá của anime Dr. Stone.">
+    content="Dr. Stone Fan Website — Vương quốc Khoa học phản công. Khám phá 5 phần, 95 tập phim và 109 cư dân thế giới đá của anime Dr. Stone.">
   <title>DR. STONE — Vương Quốc Khoa Học</title>
 
   <!-- Tailwind CSS v4 CDN -->
@@ -50,7 +50,7 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
 </head>
 
-<body class="bg-[#050810] text-[#e8f4f8] font-['Inter'] overflow-x-hidden">
+<body class="bg-[#050810] text-[#e8f4f8] font-['Inter'] overflow-x-clip">
 
   <!-- ═══════════════════════════════════════════
      LOADER
@@ -77,7 +77,7 @@
   <!-- ═══════════════════════════════════════════
      APP WRAPPER
      ═══════════════════════════════════════════ -->
-  <div id="app" class="relative z-10">
+  <div id="app" class="relative z-10 overflow-x-clip w-full">
 
     <!-- ─────────────────────────────────────────
        NAVBAR
@@ -106,6 +106,9 @@
         <li><a href="#science-lab"
             class="nav-link px-4 py-2 text-sm font-['Rajdhani'] font-semibold uppercase tracking-wider text-[#00e5ff] hover:text-[#e8f4f8] rounded-lg hover:bg-[#00e5ff]/10 border border-[#00e5ff]/30"
             data-section="science-lab">🧪 Khoa Học 3D</a></li>
+        <li><a href="#daily-gacha-section"
+            class="nav-link px-3.5 py-2 text-sm font-['Rajdhani'] font-bold uppercase tracking-wider text-[#39ff14] hover:text-white rounded-lg hover:bg-[#39ff14]/10 border border-[#39ff14]/30"
+            data-section="daily-gacha">🗿 Hồi Sinh</a></li>
         <li><a href="#characters"
             class="nav-link px-4 py-2 text-sm font-['Rajdhani'] font-semibold uppercase tracking-wider text-[#6b7a99] hover:text-[#e8f4f8] rounded-lg hover:bg-white/5"
             data-section="characters">Nhân Vật</a></li>
@@ -149,6 +152,9 @@
       <a href="#science-lab"
         class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#00e5ff] border-b border-white/10">🧪
         Khoa Học 3D</a>
+      <a href="#daily-gacha-section"
+        class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#39ff14] border-b border-white/10">🗿
+        Thí Nghiệm Hồi Sinh</a>
       <a href="#characters"
         class="mobile-nav-link w-full py-4 px-4 font-['Rajdhani'] text-xl font-bold uppercase tracking-wider text-[#6b7a99] border-b border-white/10">Nhân
         Vật</a>
@@ -219,12 +225,12 @@
       <!-- Stats -->
       <div class="hero-anim hero-anim-5 flex items-center gap-8 mt-12">
         <div class="text-center">
-          <span id="stat-seasons" class="block font-['Orbitron'] text-3xl font-black text-[#00d4ff]">4</span>
-          <span class="text-[0.62rem] tracking-[0.2em] uppercase text-[#6b7a99]">Seasons</span>
+          <span id="stat-seasons" class="block font-['Orbitron'] text-3xl font-black text-[#00d4ff]">5</span>
+          <span class="text-[0.62rem] tracking-[0.2em] uppercase text-[#6b7a99]">Phần Phim</span>
         </div>
         <div class="w-px h-8 bg-white/15"></div>
         <div class="text-center">
-          <span id="stat-eps" class="block font-['Orbitron'] text-3xl font-black text-[#00d4ff]">70</span>
+          <span id="stat-eps" class="block font-['Orbitron'] text-3xl font-black text-[#00d4ff]">95</span>
           <span class="text-[0.62rem] tracking-[0.2em] uppercase text-[#6b7a99]">Tập Phim</span>
         </div>
         <div class="w-px h-8 bg-white/15"></div>
@@ -403,55 +409,131 @@
             </div>
           </div>
 
-          <!-- 1. VÙNG HIỂN THỊ ĐỊA CẦU 3D THREE.JS TƯƠNG TÁC -->
+          <!-- 1. VÙNG HIỂN THỊ ĐỊA CẦU 3D THREE.JS TƯƠNG TÁC (TỐI GIẢN, KHÔNG BỊ CHỮ/NÚT ĐÈ) -->
           <div id="perseus-3d-globe-wrapper"
-            class="relative w-full h-[460px] sm:h-[540px] cursor-grab active:cursor-grabbing bg-radial from-[#071326] via-[#050814] to-[#02040a] select-none">
-            <!-- Floating HUD Controls Over 3D Globe -->
-            <div class="absolute top-3 left-3 pointer-events-none flex flex-col gap-1.5 z-10">
-              <span
-                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#00d4ff]/10 border border-[#00d4ff]/25 text-[0.68rem] font-['Orbitron'] text-[#00d4ff] backdrop-blur-md">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#39ff14] animate-ping"></span>
-                <span>🎮 KÉO CHUỘT XOAY 360° · LĂN CHUỘT PHÓNG TO</span>
-              </span>
-              <span
-                class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#ef4444]/10 border border-[#ef4444]/30 text-[0.66rem] font-['Orbitron'] text-[#ff6b6b] backdrop-blur-md">
-                <span>💥 TÂM CHẤN HÓA ĐÁ: AMAZON (3°S, 60°W)</span>
-              </span>
+            class="relative w-full h-[440px] sm:h-[540px] cursor-grab active:cursor-grabbing bg-radial from-[#071326] via-[#050814] to-[#02040a] select-none">
+          </div>
+
+          <!-- 2. VÙNG HIỂN THỊ BẢN ĐỒ 2D VÀ TUYẾN ĐƯỜNG VẼ TRÊN ẢNH 4K -->
+          <div id="perseus-2d-map-wrapper" class="hidden flex-col w-full bg-[#050810]">
+            <!-- Bản đồ thế giới 4K với lớp phủ đường line SVG phát quang -->
+            <div class="relative overflow-hidden w-full aspect-[2/1] border-b border-white/10 select-none">
+              <img src="./assets/earth-daymap-4k.jpg"
+                alt="Bản đồ thế giới 4K - Tuyến hải trình Perseus & Thám hiểm Senku"
+                class="w-full h-full object-cover object-center">
+              
+              <!-- SVG Overlay vẽ trực tiếp các tuyến đường khớp với quả địa cầu 3D -->
+              <svg class="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 4096 2048" preserveAspectRatio="none">
+                <defs>
+                  <filter id="glow-green" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="8" flood-color="#00f5a0" flood-opacity="0.9"/>
+                  </filter>
+                  <filter id="glow-red" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#ff3b5c" flood-opacity="0.8"/>
+                  </filter>
+                  <filter id="glow-gold" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="7" flood-color="#ffd700" flood-opacity="0.9"/>
+                  </filter>
+                </defs>
+
+                <!-- 1. Tuyến Senku (Đại Quyển Hàng Lộ - Xanh lá vươn lên Bắc Thái Bình Dương) -->
+                <!-- Nhánh Tây Thái Bình Dương (từ Nhật Bản lên biên 180°) -->
+                <path d="M 3638 618 Q 3880 430 4096 441" fill="none" stroke="#00f5a0" stroke-width="7" filter="url(#glow-green)" stroke-dasharray="14,6"/>
+                <!-- Nhánh Đông Thái Bình Dương (từ biên 180° xuống California) -->
+                <path d="M 0 441 Q 300 450 655 594" fill="none" stroke="#00f5a0" stroke-width="7" filter="url(#glow-green)" stroke-dasharray="14,6"/>
+
+                <!-- 2. Tuyến Ryusui (Đường Hằng Hướng - Đỏ đi ngang vĩ tuyến) -->
+                <line x1="3638" y1="618" x2="4096" y2="605" stroke="#ff3b5c" stroke-width="5" filter="url(#glow-red)" stroke-dasharray="8,6" opacity="0.85"/>
+                <line x1="0" y1="605" x2="655" y2="594" stroke="#ff3b5c" stroke-width="5" filter="url(#glow-red)" stroke-dasharray="8,6" opacity="0.85"/>
+
+                <!-- 3. Tuyến Thám Hiểm Lục Địa (Vàng kim: California -> Trung Mỹ -> Amazon) -->
+                <path d="M 655 594 Q 920 800 1143 922 T 1365 1059" fill="none" stroke="#ffd700" stroke-width="7" filter="url(#glow-gold)" stroke-dasharray="12,5"/>
+
+                <!-- Các điểm ghim tọa độ phát quang -->
+                <!-- Nhật Bản / Ishigami -->
+                <circle cx="3638" cy="618" r="14" fill="#00f5a0" filter="url(#glow-green)"/>
+                <text x="3638" y="585" fill="#ffffff" font-family="'Orbitron', sans-serif" font-size="28" font-weight="bold" text-anchor="middle">NHẬT BẢN</text>
+
+                <!-- California -->
+                <circle cx="655" cy="594" r="14" fill="#00d4ff" filter="url(#glow-green)"/>
+                <text x="655" y="560" fill="#ffffff" font-family="'Orbitron', sans-serif" font-size="28" font-weight="bold" text-anchor="middle">CALIFORNIA</text>
+
+                <!-- Tâm chấn Amazon -->
+                <circle cx="1365" cy="1059" r="16" fill="#ff2255" filter="url(#glow-red)"/>
+                <text x="1365" y="1115" fill="#ff4477" font-family="'Orbitron', sans-serif" font-size="28" font-weight="bold" text-anchor="middle">AMAZON (TÂM CHẤN)</text>
+              </svg>
+
+              <div class="absolute inset-0 bg-gradient-to-t from-[#050810] via-transparent to-transparent pointer-events-none"></div>
             </div>
 
-            <div class="absolute top-3 right-3 z-10 flex items-center gap-2">
-              <button id="btn-toggle-globe-theme" type="button"
-                class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-[#00f5a0]/20 border border-white/10 hover:border-[#00f5a0]/40 text-[0.68rem] font-['Orbitron'] text-[#c5d4ea] hover:text-[#00f5a0] backdrop-blur-md transition-all cursor-pointer flex items-center gap-1">
-                <span>🛰️ Vệ Tinh HD</span>
-              </button>
-              <button id="btn-reset-globe" type="button" title="Đặt lại góc nhìn Nam Mỹ"
-                class="px-2.5 py-1 rounded-lg bg-white/5 hover:bg-[#00d4ff]/20 border border-white/10 hover:border-[#00d4ff]/40 text-[0.68rem] font-['Orbitron'] text-[#c5d4ea] hover:text-[#00d4ff] backdrop-blur-md transition-all cursor-pointer flex items-center gap-1">
-                <span>🎯 Góc Nam Mỹ</span>
-              </button>
+            <!-- Hồ sơ khoa học & Cuộc tranh luận Senku vs Ryusui (Đã tinh giản tối đa) -->
+            <div class="p-4 sm:p-6 bg-gradient-to-b from-[#0a1226]/90 to-[#050810] flex flex-col gap-4 text-xs font-['Rajdhani']">
+              <div>
+                <h4 class="font-['Orbitron'] font-bold text-sm sm:text-base text-white flex items-center gap-2">
+                  <span class="text-[#00d4ff]">🌐</span> NGHỊCH LÝ HÌNH HỌC: "ĐI VÒNG MÀ LẠI NHANH HƠN"
+                </h4>
+                <p class="text-[#8fa0ba] text-xs font-['Inter'] mt-0.5">
+                  Cuộc đối đầu chiến thuật giữa Thuyền Trưởng Ryusui và Nhà Khoa Học Senku trước giờ tàu Perseus nhổ neo sang Tân Thế Giới.
+                </p>
+              </div>
+
+              <!-- 2 Thẻ so sánh tinh gọn đối đầu giữa Ryusui và Senku -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                <!-- Thẻ Ryusui -->
+                <div class="p-3.5 rounded-xl bg-red-950/20 border border-red-500/30 hover:border-red-500/60 transition-all flex flex-col gap-2">
+                  <div class="flex items-center justify-between">
+                    <span class="font-['Orbitron'] font-bold text-red-400 text-xs">
+                      ĐƯỜNG RYUSUI (HẰNG HƯỚNG / RHUMB LINE)
+                    </span>
+                    <span class="px-2 py-0.5 rounded bg-red-500/20 text-red-300 font-['Orbitron'] font-bold text-[0.68rem]">70 NGÀY</span>
+                  </div>
+                  <p class="text-[#c5d4ea] text-[0.78rem] leading-relaxed font-['Inter']">
+                    Giữ nguyên một góc lái bánh lái cố định, dễ điều hướng. Tuy nhiên do Trái Đất hình cầu, tuyến đường bị kéo dài ra.
+                  </p>
+                  <p class="text-red-300/90 text-[0.74rem] font-['Inter'] border-t border-red-500/20 pt-1.5">
+                    <strong class="text-red-300">Rủi ro:</strong> Đến Mỹ vào giữa mùa đông ➜ lỡ mất vụ thu hoạch ngô để làm cồn hồi sinh Nital!
+                  </p>
+                </div>
+
+                <!-- Thẻ Senku -->
+                <div class="p-3.5 rounded-xl bg-cyan-950/25 border border-[#00d4ff]/40 hover:border-[#00d4ff]/70 transition-all flex flex-col gap-2 shadow-[0_0_15px_rgba(0,212,255,0.08)]">
+                  <div class="flex items-center justify-between">
+                    <span class="font-['Orbitron'] font-bold text-[#00d4ff] text-xs">
+                      ĐƯỜNG SENKU (ĐẠI QUYỂN / GREAT CIRCLE)
+                    </span>
+                    <span class="px-2 py-0.5 rounded bg-[#00d4ff]/20 text-cyan-300 font-['Orbitron'] font-bold text-[0.68rem]">40 NGÀY</span>
+                  </div>
+                  <p class="text-[#c5d4ea] text-[0.78rem] leading-relaxed font-['Inter']">
+                    Vòng lên phương Bắc (cận Aleutian 51.2°N) — đường trắc địa ngắn nhất nối hai điểm trên mặt cầu, rút ngắn được 30 ngày lênh đênh.
+                  </p>
+                  <p class="text-emerald-300/90 text-[0.74rem] font-['Inter'] border-t border-[#00d4ff]/20 pt-1.5">
+                    <strong class="text-[#39ff14]">Thành tựu:</strong> Cập bến California kịp lúc vụ mùa ngô chín rộ, sẵn sàng tái thiết nền văn minh!
+                  </p>
+                </div>
+              </div>
+
+              <!-- Ván Poker Sòng Bạc Perseus Casino (Tinh gọn) -->
+              <div class="p-3.5 rounded-xl bg-amber-500/5 border border-[#ffd700]/25 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                <span class="text-xl p-2 rounded-lg bg-[#ffd700]/10 border border-[#ffd700]/30 shrink-0">♠️</span>
+                <div class="text-[0.76rem] text-[#c5d4ea] leading-relaxed font-['Inter']">
+                  <strong class="text-[#ffd700] font-['Orbitron'] text-xs uppercase tracking-wider block mb-0.5">
+                    Ván Bài Poker Chốt Hạ: Khoa Học & Thị Lực 11/10 Của Kohaku
+                  </strong>
+                  Để phân định thắng thua, Gen đã tổ chức ván bài Poker. Senku đã vận dụng tâm lý học vi biểu cảm kết hợp cùng đôi mắt siêu phàm của Kohaku (đọc rõ phản chiếu quân bài trên tròng mắt Ryusui) để giành chiến thắng tuyệt đối, đưa tàu Perseus rẽ sóng phương Bắc!
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- 2. VÙNG HIỂN THỊ BẢN ĐỒ 2D (ẨN MẶC ĐỊNH) -->
-          <div id="perseus-2d-map-wrapper" class="hidden relative overflow-hidden aspect-[16/9] w-full">
-            <img src="./assets/images/drstone-stone-world-map.jpg"
-              alt="Giao diện bản đồ chiến thuật toàn cầu của chiến hạm Perseus - Dr. Stone"
-              class="w-full h-full object-cover object-center group-hover:scale-102 transition-transform duration-700">
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-[#050814]/70 via-transparent to-transparent pointer-events-none">
-            </div>
-            <div class="hologram-sheen"></div>
-          </div>
-
-          <!-- Bottom caption bar -->
+          <!-- Bottom caption bar (Tinh gọn, chuẩn xác địa lý & phân chặng) -->
           <div
-            class="px-4 py-3 bg-[#0a1226]/90 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-['Rajdhani']">
+            class="px-4 py-3 bg-[#0a1226]/95 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-xs font-['Rajdhani']">
             <div class="flex items-center gap-2 text-[#c5d4ea]">
-              <span class="text-[#00d4ff] font-bold">🗺️ Lộ trình:</span>
-              <span>Nhật Bản (Khởi hành) ➜ Đảo Kho Báu ➜ Bắc Mỹ (California) ➜ Kênh Panama ➜ Nam Mỹ (Amazon) ➜ Mặt
-                Trăng.</span>
+              <span class="text-[#00d4ff] font-bold">Lộ trình:</span>
+              <span>Nhật Bản ➜ Quần đảo Izu ➜ Đại Quyển (Aleutian 51.2°N) ➜ California (Tàu Perseus) ➜ Trung Mỹ ➜ Amazon (Senku Mini).</span>
             </div>
             <span class="text-[#39ff14] font-['Orbitron'] text-[0.7rem] font-semibold">
-              QUẢ CẦU THREE.JS WEBGL · 360° INTERACTIVE
+              HẢI TRÌNH PERSEUS · 3D GREAT CIRCLE
             </span>
           </div>
         </div>
@@ -460,79 +542,192 @@
         <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
           <!-- Waypoint 1 -->
           <a href="#arc-village"
-            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#00f5a0]/15 border border-white/10 hover:border-[#00f5a0]/50 transition-all flex flex-col gap-1.5 group cursor-pointer">
+            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-[#00d4ff]/20 shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:border-[#00f5a0]/60 hover:bg-[#00f5a0]/10 transition-all flex flex-col gap-1.5 group cursor-pointer">
             <div class="flex items-center justify-between">
-              <span class="text-lg">🗾</span>
+              <span class="text-base">🗾</span>
               <span
-                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#00f5a0]/20 text-[#00f5a0]">TRẠM
-                1</span>
+                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#00f5a0]/20 text-[#00f5a0] border border-[#00f5a0]/30">TRẠM 1</span>
             </div>
             <span
-              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#00f5a0] transition-colors">Làng
-              Ishigami</span>
-            <span class="text-[0.68rem] text-[#6b7a99]">Nhật Bản · Thần Dược Sulfa</span>
+              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#00f5a0] transition-colors">Làng Ishigami</span>
+            <span class="text-[0.68rem] text-[#8fa0ba]">Nhật Bản · Thần Dược Sulfa</span>
           </a>
 
-          <!-- Waypoint 2 -->
+          <!-- Waypoint 2 (Đã chuẩn hóa vị trí Quần đảo Izu sát phía Nam Tokyo) -->
           <a href="#arc-treasure"
-            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#00d4ff]/15 border border-white/10 hover:border-[#00d4ff]/50 transition-all flex flex-col gap-1.5 group cursor-pointer">
+            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-[#00d4ff]/20 shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:border-[#00d4ff]/60 hover:bg-[#00d4ff]/10 transition-all flex flex-col gap-1.5 group cursor-pointer">
             <div class="flex items-center justify-between">
-              <span class="text-lg">🏝️</span>
+              <span class="text-base">🏝️</span>
               <span
-                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#00d4ff]/20 text-[#00d4ff]">TRẠM
-                2</span>
+                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#00d4ff]/20 text-[#00d4ff] border border-[#00d4ff]/30">TRẠM 2</span>
             </div>
             <span
-              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#00d4ff] transition-colors">Đảo
-              Kho Báu</span>
-            <span class="text-[0.68rem] text-[#6b7a99]">Thái Bình Dương · Medusa</span>
+              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#00d4ff] transition-colors">Đảo Kho Báu</span>
+            <span class="text-[0.68rem] text-[#8fa0ba]">Quần đảo Izu · Bạch Kim & Medusa</span>
           </a>
 
           <!-- Waypoint 3 -->
           <a href="#arc-america"
-            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#f97316]/15 border border-white/10 hover:border-[#f97316]/50 transition-all flex flex-col gap-1.5 group cursor-pointer">
+            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-[#00d4ff]/20 shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:border-[#ffd700]/60 hover:bg-[#ffd700]/10 transition-all flex flex-col gap-1.5 group cursor-pointer">
             <div class="flex items-center justify-between">
               <span class="text-lg">🌽</span>
               <span
-                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#f97316]/20 text-[#f97316]">TRẠM
-                3</span>
+                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#ffd700]/20 text-[#ffd700] border border-[#ffd700]/30">TRẠM 3</span>
             </div>
             <span
-              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#f97316] transition-colors">Tân
-              Thành Phố Mỹ</span>
-            <span class="text-[0.68rem] text-[#6b7a99]">Bắc Mỹ · Tiến Sĩ Xeno</span>
+              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#ffd700] transition-colors">Tân Thành Phố Mỹ</span>
+            <span class="text-[0.68rem] text-[#8fa0ba]">Bắc Mỹ · Tiến Sĩ Xeno</span>
           </a>
 
           <!-- Waypoint 4 -->
           <a href="#arc-south-america"
-            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#ef4444]/15 border border-white/10 hover:border-[#ef4444]/50 transition-all flex flex-col gap-1.5 group cursor-pointer">
+            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-[#00d4ff]/20 shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:border-[#ff0055]/60 hover:bg-[#ff0055]/10 transition-all flex flex-col gap-1.5 group cursor-pointer">
             <div class="flex items-center justify-between">
               <span class="text-lg">🌴</span>
               <span
-                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#ef4444]/20 text-[#ef4444]">TRẠM
-                4</span>
+                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#ff0055]/20 text-[#ff0055] border border-[#ff0055]/30">TRẠM 4</span>
             </div>
             <span
-              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#ef4444] transition-colors">Rừng
-              Nam Mỹ</span>
-            <span class="text-[0.68rem] text-[#6b7a99]">Amazon · Tâm Chấn Hóa Đá</span>
+              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#ff0055] transition-colors">Rừng Nam Mỹ</span>
+            <span class="text-[0.68rem] text-[#8fa0ba]">Amazon · Tâm Chấn Hóa Đá</span>
           </a>
 
           <!-- Waypoint 5 -->
           <a href="#arc-moon"
-            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.03] hover:bg-[#a855f7]/15 border border-white/10 hover:border-[#a855f7]/50 transition-all flex flex-col gap-1.5 group cursor-pointer col-span-2 sm:col-span-1">
+            class="waypoint-btn p-3.5 rounded-2xl bg-white/[0.04] backdrop-blur-xl border border-[#00d4ff]/20 shadow-[0_8px_32px_rgba(0,0,0,0.5)] hover:border-[#a855f7]/60 hover:bg-[#a855f7]/10 transition-all flex flex-col gap-1.5 group cursor-pointer col-span-2 sm:col-span-1">
             <div class="flex items-center justify-between">
               <span class="text-lg">🌕</span>
               <span
-                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#a855f7]/20 text-[#a855f7]">ĐÍCH
-                ĐẾN</span>
+                class="text-[0.6rem] font-['Orbitron'] font-bold px-1.5 py-0.5 rounded bg-[#a855f7]/20 text-[#a855f7] border border-[#a855f7]/30">ĐÍCH ĐẾN</span>
             </div>
             <span
-              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#a855f7] transition-colors">Mặt
-              Trăng Vũ Trụ</span>
-            <span class="text-[0.68rem] text-[#6b7a99]">Không Gian · Why-man</span>
+              class="font-['Rajdhani'] font-bold text-sm text-white group-hover:text-[#a855f7] transition-colors">Mặt Trăng Vũ Trụ</span>
+            <span class="text-[0.68rem] text-[#8fa0ba]">Không Gian · Why-man</span>
           </a>
         </div>
+      </div>
+
+      <!-- ── PHÒNG THÍ NGHIỆM HỒI SINH TƯỢNG ĐÁ (DAILY CHEMICAL DEPETRIFICATION GACHA) ── -->
+      <div id="daily-gacha-section" class="mb-14 rounded-2xl overflow-hidden border border-[#00d4ff]/30 bg-[#050810]/95 shadow-[0_8px_32px_rgba(0,0,0,0.5)] p-5 sm:p-7 relative z-20">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-3 border-b border-white/10 pb-4 mb-6">
+          <div>
+            <div class="flex items-center gap-2 text-[0.72rem] font-['Orbitron'] font-bold text-[#39ff14] uppercase tracking-wider mb-1">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#39ff14] animate-ping"></span>
+              <span>PHÒNG THÍ NGHIỆM HỒI SINH · DUNG DỊCH NITAL</span>
+            </div>
+            <h3 class="text-lg sm:text-2xl font-['Rajdhani'] font-bold text-white">
+              Đổ Nước Hồi Sinh — Thức Tỉnh Cư Dân Kỷ Nguyên 5738
+            </h3>
+          </div>
+          <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-white/10 text-xs font-['Orbitron']">
+            <span class="text-[#8fa0ba]">Tiến độ:</span>
+            <span id="gacha-unlocked-count" class="font-bold text-[#00d4ff]">0 / 12</span>
+            <span class="text-emerald-400 font-bold">Cư Dân</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+          <!-- Cột Trái: Tượng Đá Hóa Thạch Kỳ Bí -->
+          <div class="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-black/40 border border-white/10 relative overflow-hidden group">
+            <div class="relative w-44 h-44 sm:w-52 sm:h-52 rounded-2xl overflow-hidden border-2 border-[#00d4ff]/40 shadow-[0_0_30px_rgba(0,212,255,0.2)] flex items-center justify-center bg-radial from-[#0d1b2a] to-black">
+              <!-- Ảnh tượng đá bí ẩn nứt nẻ -->
+              <img id="mystery-stone-statue" src="assets/images/characters/portraits/senku-ishigami.png" alt="Tượng đá hóa thạch"
+                class="w-full h-full object-cover filter grayscale contrast-150 brightness-75 transition-all duration-700 select-none pointer-events-none" />
+              <!-- Hiệu ứng vết nứt phát quang -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-2 left-2 px-2 py-0.5 rounded bg-black/60 border border-white/20 text-[0.6rem] font-['Orbitron'] text-gray-300">
+                🗿 TƯỢNG ĐÁ PHONG ẤN
+              </div>
+            </div>
+
+            <!-- Thanh Nạp Năng Lượng Nital -->
+            <div class="w-full max-w-xs mt-5">
+              <div class="flex items-center justify-between text-[0.68rem] font-['Rajdhani'] font-bold text-gray-400 mb-1.5">
+                <span>DUNG DỊCH NITAL (HNO₃ + C₂H₅OH)</span>
+                <span class="text-[#39ff14]">100% CỒN NGUYÊN CHẤT</span>
+              </div>
+              <div class="w-full h-2.5 rounded-full bg-white/10 overflow-hidden p-0.5 border border-white/15">
+                <div id="nital-charge-bar" class="h-full rounded-full nital-liquid-glow transition-all duration-75" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- Nút Tương Tác: Chạm & Giữ Để Đổ Nital -->
+            <button id="btn-hold-depetrify" type="button"
+              class="mt-4 px-6 py-3 rounded-xl bg-gradient-to-r from-[#00d4ff] via-[#39ff14] to-[#00d4ff] text-black font-['Orbitron'] text-xs font-black uppercase tracking-wider shadow-[0_0_25px_rgba(57,255,20,0.5)] hover:shadow-[0_0_35px_rgba(0,212,255,0.8)] active:scale-95 transition-all cursor-pointer flex items-center gap-2 select-none">
+              <span>🧪</span> <span>CHẠM & GIỮ ĐỂ ĐỔ DUNG DỊCH</span>
+            </button>
+            <span class="text-[0.65rem] text-[#8fa0ba] font-['Inter'] mt-1.5 text-center">
+              Nhấn giữ 1 giây trên màn hình để nhỏ giọt dung dịch Nital làm vỡ lớp đá!
+            </span>
+          </div>
+
+          <!-- Cột Phải: Bộ Sưu Tập 12 Cư Dân Kỷ Nguyên 5738 -->
+          <div class="lg:col-span-7 flex flex-col gap-3">
+            <div class="flex items-center justify-between text-xs font-['Rajdhani'] font-bold text-gray-400">
+              <span>BỘ SƯU TẬP 12 TƯỢNG ĐÁ CẦU CỨU:</span>
+              <div class="flex items-center gap-3 text-[0.68rem]">
+                <span class="text-[#ffd700]">SSR 18%</span>
+                <span class="text-[#00d4ff]">SR 37%</span>
+                <span class="text-[#39ff14]">R 45%</span>
+              </div>
+            </div>
+
+            <!-- Lưới 12 avatar (Khởi đầu ở trạng thái hóa đá xám xịt) -->
+            <div id="gacha-collection-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2.5 max-h-[380px] overflow-y-auto pr-1">
+              <!-- Sẽ được render tự động qua js/daily-gacha.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Kết Quả Hồi Sinh Thành Công -->
+      <div id="gacha-result-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="relative w-full max-w-sm rounded-3xl overflow-hidden border border-[#00d4ff]/50 bg-[#0a1226]/95 p-6 text-center shadow-[0_0_50px_rgba(0,212,255,0.4)] animate-depetrify-break">
+          <button id="btn-close-gacha-modal" type="button" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-sm cursor-pointer">✕</button>
+          
+          <span class="inline-block px-3 py-1 rounded-full bg-[#39ff14]/20 border border-[#39ff14]/40 text-[#39ff14] text-[0.68rem] font-['Orbitron'] font-black uppercase mb-3">
+            ✨ HỒI SINH THÀNH CÔNG!
+          </span>
+
+          <div class="relative w-32 h-32 mx-auto rounded-2xl overflow-hidden border-2 border-amber-400 shadow-[0_0_30px_rgba(255,215,0,0.5)] mb-3">
+            <img id="gacha-result-img" src="" alt="Nhân vật hồi sinh" class="w-full h-full object-cover">
+            <span id="gacha-result-tier" class="absolute top-1.5 right-1.5 px-2 py-0.5 rounded font-['Orbitron'] font-black text-xs">SSR</span>
+          </div>
+
+          <h3 id="gacha-result-name" class="font-['Orbitron'] text-xl font-black text-white mb-0.5">Senku Ishigami</h3>
+          <p id="gacha-result-title" class="text-xs font-['Rajdhani'] font-bold text-[#00d4ff] mb-3">Nhà Khoa Học Thiên Tài</p>
+
+          <p id="gacha-result-quote" class="text-xs font-['Inter'] italic text-gray-300 px-2 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 mb-4 leading-relaxed">
+            "10 tỷ phần trăm tao sẽ dùng khoa học cứu rỗi nhân loại!"
+          </p>
+
+          <div class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs font-['Rajdhani'] font-bold text-emerald-400 mb-4">
+            <span>ĐIỂM THƯỞNG KHOA HỌC:</span>
+            <span id="gacha-result-sp" class="font-['Orbitron'] text-sm text-[#39ff14] font-black">+100 SP</span>
+          </div>
+
+          <button id="btn-gacha-test-again" type="button" class="w-full py-2.5 rounded-xl bg-[#00d4ff]/20 hover:bg-[#00d4ff]/30 text-[#00d4ff] border border-[#00d4ff]/40 text-xs font-['Orbitron'] font-bold uppercase transition-all cursor-pointer">
+            Tiếp Tục Thí Nghiệm
+          </button>
+        </div>
+      </div>
+
+      <!-- ── TikTok Mini BGM Player Cố Định Góc Màn Hình ── -->
+      <div class="fixed bottom-5 left-5 z-50 flex items-center gap-3">
+        <button id="btn-tiktok-bgm-toggle" type="button" title="Bật/Tắt nhạc nền Dr. Stone"
+          class="group relative flex items-center gap-2.5 px-3.5 py-2 rounded-full bg-[#0a1226]/90 border border-[#00d4ff]/40 shadow-[0_4px_20px_rgba(0,212,255,0.25)] backdrop-blur-xl hover:border-[#00d4ff] hover:scale-105 transition-all cursor-pointer">
+          <!-- Đĩa Than Xoay TikTok Mini -->
+          <div id="tiktok-bgm-disc" class="w-7 h-7 rounded-full border border-[#00d4ff] bg-gradient-to-tr from-black via-[#07152b] to-[#00d4ff]/40 flex items-center justify-center shrink-0">
+            <span class="w-2 h-2 rounded-full bg-[#00d4ff]"></span>
+          </div>
+          <div class="flex flex-col text-left">
+            <span class="text-[0.65rem] font-['Orbitron'] font-bold text-[#00d4ff] line-clamp-1">NEBULITE · BREATH</span>
+            <span class="text-[0.58rem] font-['Rajdhani'] text-[#8fa0ba] flex items-center gap-1">
+              <span>BGM Hype</span>
+              <span id="tiktok-bgm-waves" class="hidden text-[#39ff14] font-bold">ılıılı</span>
+            </span>
+          </div>
+        </button>
       </div>
 
       <!-- ── Phần 3: Trục Dòng Thời Gian Khoa Học Phục Hưng (8 Giai Đoạn Nối Liền Súc Tích) ── -->
@@ -868,10 +1063,11 @@
         <!-- Canvas container -->
         <div id="pt-container"
           class="relative w-full h-[540px] sm:h-[620px] cursor-pointer active:cursor-grabbing bg-radial from-[#071326] via-[#050814] to-[#02040a] select-none">
-          <!-- Instruction bottom badge -->
+          <!-- Instruction bottom badge (Responsive, no horizontal overflow) -->
           <div
-            class="absolute bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-10 px-4 py-1.5 rounded-full bg-[#050810]/80 border border-white/10 text-[0.7rem] font-['Rajdhani'] text-[#94a3b8] backdrop-blur-md text-center whitespace-nowrap">
-            🖱️ Nhấp chuột để đổi: Quả Cầu ➜ Xoắn Ốc ➜ Ma Trận ➜ Bảng Phẳng • Kéo xoay 360° • Lăn chuột phóng to
+            class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 pointer-events-none z-10 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-[#050810]/85 border border-white/10 text-[0.62rem] sm:text-[0.7rem] font-['Rajdhani'] text-[#94a3b8] backdrop-blur-md text-center max-w-[92vw]">
+            <span class="sm:hidden">🖱️ Chạm đổi hình thái 3D • Kéo xoay 360°</span>
+            <span class="hidden sm:inline">🖱️ Nhấp chuột để đổi: Quả Cầu ➜ Xoắn Ốc ➜ Ma Trận ➜ Bảng Phẳng • Kéo xoay 360° • Lăn chuột phóng to</span>
           </div>
         </div>
       </div>
@@ -907,7 +1103,7 @@
         <button class="char-filter-btn active font-['Rajdhani'] text-xs md:text-sm font-bold uppercase
               tracking-wider px-4 md:px-5 py-2 rounded-full border
               border-[#00e5ff] bg-[#00e5ff]/15 text-[#00e5ff]
-              transition-all duration-200" data-filter="all">Tất Cả (16)</button>
+              transition-all duration-200" data-filter="all">Tất Cả (12)</button>
         <button class="char-filter-btn font-['Rajdhani'] text-xs md:text-sm font-bold uppercase
               tracking-wider px-4 md:px-5 py-2 rounded-full border
               border-white/15 bg-white/5 text-[#6b7a99]
@@ -933,6 +1129,15 @@
       <!-- Character grid (rendered by JS) -->
       <div id="char-grid" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5">
         <!-- Cards injected by episodes.js -->
+      </div>
+
+      <!-- Toggle 4 default vs 12 all characters -->
+      <div class="text-center mt-8" id="char-toggle-container">
+        <button id="btn-toggle-chars" type="button"
+          class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-[#00d4ff]/40 bg-[#00d4ff]/10 hover:bg-[#00d4ff]/20 text-[#00d4ff] hover:text-white font-['Rajdhani'] font-bold text-sm uppercase tracking-wider transition-all duration-300 shadow-[0_0_15px_rgba(0,212,255,0.15)] hover:shadow-[0_0_25px_rgba(0,212,255,0.3)] cursor-pointer">
+          <span id="char-toggle-text">⚡ Xem Thêm 8 Nhân Vật Khác</span>
+          <span id="char-toggle-icon" class="text-xs transition-transform duration-300">▼</span>
+        </button>
       </div>
 
       <!-- CTA Button to 109 Full Characters Directory Page -->
@@ -1319,7 +1524,7 @@
 
       </div>
 
-      <!-- CTA to Full 70 Episodes / 4 Seasons Portal -->
+      <!-- CTA to Full 95 Episodes / 5 Parts Portal -->
       <div class="mt-16 text-center" data-reveal>
         <a href="cactapphim.html" class="inline-flex items-center gap-3 px-9 py-4 rounded-full
                 bg-gradient-to-r from-[#00d4ff]/20 via-[#39ff14]/20 to-[#ffd700]/20
@@ -1328,11 +1533,11 @@
                 text-white font-['Orbitron'] text-sm sm:text-base font-bold uppercase tracking-widest
                 shadow-[0_0_30px_rgba(0,212,255,0.25)] hover:shadow-[0_0_40px_rgba(57,255,20,0.4)]
                 transition-all duration-300 hover:scale-105 group">
-          <span>🎬 Khám Phá Toàn Bộ 70 Tập Phim (Trọn Bộ 4 Mùa)</span>
+          <span>🎬 Khám Phá Toàn Bộ 95 Tập Phim (Trọn Bộ 5 Phần)</span>
           <span class="text-[#39ff14] group-hover:translate-x-1.5 transition-transform text-lg">➜</span>
         </a>
         <p class="text-xs text-[#8a9bb8] mt-3 font-['Rajdhani'] font-medium">
-          Đầy đủ Season 1 (24 tập), Season 2 (11 tập), Season 3 (23 tập) và Season 4 mới nhất · Phân trang 12 tập/trang
+          Đầy đủ Season 1 (24 tập), Season 2 (11 tập), Special Ryusui (1 tập), Season 3 (22 tập) và Season 4 (37 tập) · Phân trang 12 tập/trang
           · Watch Tracker HUD.
         </p>
       </div>
@@ -1625,6 +1830,9 @@
 
   <!-- Citizen Pass 3D System -->
   <script src="js/citizen-pass.js"></script>
+
+  <!-- Daily Depetrification Gacha & TikTok BGM Player -->
+  <script type="module" src="js/daily-gacha.js"></script>
 
   <!-- Visitor Tracker (Telegram / Discord Webhook) -->
   <script src="js/visitor-tracker.js" defer></script>

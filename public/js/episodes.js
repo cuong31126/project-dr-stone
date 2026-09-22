@@ -74,21 +74,59 @@ function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
 /* ──────────────────────────────────────────
    CHARACTER CARDS
    ────────────────────────────────────────── */
+let isCharGridExpanded = false;
+
 function renderCharacters(characters) {
   const grid = document.getElementById('char-grid');
   if (!grid) return;
   grid.innerHTML = '';
 
+  const defaultIds = ['senku', 'taiju', 'yuzuriha', 'chrome'];
+
   characters.forEach((c, i) => {
     const delay = (i % 4) + 1;
-    grid.insertAdjacentHTML('beforeend', characterCard(c, delay));
+    const isDefault = defaultIds.includes(c.id);
+    grid.insertAdjacentHTML('beforeend', characterCard(c, delay, isDefault));
   });
 
   // Observe for reveal
   observeReveal(grid.querySelectorAll('.char-card'));
+
+  // Setup toggle button for extra characters
+  initCharToggle();
 }
 
-function characterCard(c, delay) {
+function initCharToggle() {
+  const btn = document.getElementById('btn-toggle-chars');
+  const text = document.getElementById('char-toggle-text');
+  const icon = document.getElementById('char-toggle-icon');
+  if (!btn || btn.dataset.bound === 'true') return;
+  btn.dataset.bound = 'true';
+
+  btn.addEventListener('click', () => {
+    isCharGridExpanded = !isCharGridExpanded;
+    const extraCards = document.querySelectorAll('.char-card.char-extra');
+    
+    extraCards.forEach(card => {
+      if (isCharGridExpanded) {
+        card.classList.remove('hidden');
+        card.style.display = '';
+      } else {
+        card.classList.add('hidden');
+        card.style.display = 'none';
+      }
+    });
+
+    if (text) {
+      text.textContent = isCharGridExpanded ? 'Thu Gọn Lại 4 Nhân Vật Ban Đầu' : '⚡ Xem Thêm 8 Nhân Vật Khác';
+    }
+    if (icon) {
+      icon.style.transform = isCharGridExpanded ? 'rotate(180deg)' : 'rotate(0deg)';
+    }
+  });
+}
+
+function characterCard(c, delay, isDefault) {
   const factionMap = {
     science: {
       name: 'Vương Quốc Khoa Học',
@@ -131,8 +169,8 @@ function characterCard(c, delay) {
   ).join('');
 
   return `
-  <div class="char-card flip-card h-[430px] [perspective:1000px] cursor-pointer"
-       data-faction="${c.faction || 'science'}" data-reveal data-delay="${delay}">
+  <div class="char-card flip-card h-[340px] sm:h-[390px] [perspective:1000px] cursor-pointer group ${isDefault ? '' : 'char-extra hidden'}"
+       data-faction="${c.faction || 'science'}" data-default="${isDefault ? 'true' : 'false'}" data-reveal data-delay="${delay}">
     <div class="flip-card-inner relative w-full h-full">
 
       <!-- FRONT -->
@@ -140,81 +178,86 @@ function characterCard(c, delay) {
            bg-[#0a0f1d]/90 backdrop-blur-xl
            border ${faction.border}
            shadow-[0_8px_32px_rgba(0,0,0,0.6)]
+           flex flex-col justify-between
            transition-all duration-300">
         
         <!-- Faction Ribbon Top -->
-        <div class="absolute top-2.5 right-2.5 z-10">
-          <span class="text-[0.6rem] font-bold px-2.5 py-0.5 rounded-full border backdrop-blur-md ${faction.badge}">
+        <div class="absolute top-2 right-2 z-10">
+          <span class="text-[0.55rem] sm:text-[0.6rem] font-bold px-2 py-0.5 rounded-full border backdrop-blur-md ${faction.badge}">
             ${faction.name}
           </span>
         </div>
 
-        <div class="h-[250px] overflow-hidden relative bg-[#050810]">
+        <!-- Character Portrait: object-contain with balanced framing (No Face Zoom-In) -->
+        <div class="h-[185px] sm:h-[220px] overflow-hidden relative bg-radial from-[#10192e] via-[#080d1a] to-[#04060d] flex items-center justify-center p-1.5 sm:p-2">
           <img src="${c.thumb}" alt="${c.name}" loading="lazy"
                onerror="this.onerror=null; this.src='assets/images/characters/hd/senku.png';"
-               class="w-full h-full object-cover object-top
-                      transition-transform duration-700 hover:scale-105">
+               class="w-full h-full object-contain object-bottom drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)]
+                      transition-transform duration-500 group-hover:scale-105">
           <div class="absolute inset-0 bg-gradient-to-t
-               from-[#0a0f1d] via-[#0a0f1d]/30 to-transparent"></div>
+               from-[#0a0f1d] via-transparent to-transparent pointer-events-none"></div>
         </div>
 
-        <div class="p-4">
-          <span class="inline-block text-[0.62rem] font-bold tracking-wider uppercase
-               px-2.5 py-0.5 rounded border ${faction.badge} mb-1.5 truncate max-w-full block text-center">${c.role}</span>
-          <h3 class="font-['Rajdhani'] text-lg font-bold leading-tight truncate text-white">${c.name}</h3>
-          <p class="text-xs text-[#6b7a99] mt-0.5 truncate">${c.nameJp}</p>
-          <div class="flex items-center justify-between mt-2 pt-2 border-t border-white/5 text-[0.62rem] text-[#4d6185]">
-            <span>Chỉ số: IQ ${iq} · STR ${str}</span>
-            <span class="text-[#00d4ff] hover:underline">Xem thẻ ↻</span>
+        <!-- Character Info Bottom -->
+        <div class="p-3 sm:p-3.5 flex-1 flex flex-col justify-between">
+          <div>
+            <span class="inline-block text-[0.55rem] sm:text-[0.6rem] font-bold tracking-wider uppercase
+                 px-2 py-0.5 rounded border ${faction.badge} mb-1 truncate max-w-full block text-center">${c.role}</span>
+            <h3 class="font-['Rajdhani'] text-base sm:text-lg font-bold leading-tight truncate text-white">${c.name}</h3>
+            <p class="text-[0.68rem] text-[#6b7a99] truncate">${c.nameJp}</p>
+          </div>
+          <div class="flex items-center justify-between pt-1.5 border-t border-white/5 text-[0.58rem] sm:text-[0.62rem] text-[#4d6185]">
+            <span>IQ ${iq} · STR ${str}</span>
+            <span class="text-[#00d4ff] group-hover:underline">Chi tiết ↻</span>
           </div>
         </div>
       </div>
 
       <!-- BACK -->
-      <div class="flip-back absolute inset-0 rounded-2xl p-4 flex flex-col justify-between
+      <div class="flip-back absolute inset-0 rounded-2xl p-3 sm:p-4 flex flex-col justify-between
            ${faction.glow} backdrop-blur-xl">
         
         <!-- Header -->
         <div>
-          <div class="flex items-start justify-between gap-2">
+          <div class="flex items-start justify-between gap-1.5">
             <div>
-              <span class="text-[0.58rem] font-bold tracking-widest uppercase ${faction.badge} px-2 py-0.5 rounded">
+              <span class="text-[0.52rem] sm:text-[0.58rem] font-bold tracking-widest uppercase ${faction.badge} px-1.5 py-0.5 rounded">
                 ${faction.name}
               </span>
-              <h3 class="font-['Rajdhani'] text-lg font-bold text-white mt-1 leading-tight">${c.name}</h3>
-              <p class="text-[0.7rem] text-[#6b7a99]">${c.nameJp} · CV: ${c.voice || 'N/A'}</p>
+              <h3 class="font-['Rajdhani'] text-base sm:text-lg font-bold text-white mt-1 leading-tight">${c.name}</h3>
+              <p class="text-[0.65rem] sm:text-[0.7rem] text-[#6b7a99] truncate">${c.nameJp} · CV: ${c.voice || 'N/A'}</p>
             </div>
           </div>
 
-          <p class="text-[0.74rem] text-gray-300 leading-relaxed mt-2 line-clamp-3">${c.desc}</p>
+          <p class="text-[0.68rem] sm:text-[0.74rem] text-gray-300 leading-relaxed mt-1.5 line-clamp-2 sm:line-clamp-3">${c.desc}</p>
         </div>
 
         <!-- Stats Bars -->
-        <div class="space-y-1.5 my-2 bg-black/30 p-2.5 rounded-xl border border-white/5">
+        <div class="space-y-1 my-1.5 bg-black/30 p-2 sm:p-2.5 rounded-xl border border-white/5">
           <div>
-            <div class="flex justify-between text-[0.65rem] font-bold text-gray-300 mb-0.5">
+            <div class="flex justify-between text-[0.58rem] sm:text-[0.62rem] font-bold text-gray-300 mb-0.5">
               <span>Trí Tuệ (IQ)</span>
               <span class="text-[#00e5ff] font-mono">${iq}%</span>
             </div>
-            <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+            <div class="w-full bg-white/10 h-1 sm:h-1.5 rounded-full overflow-hidden">
               <div class="bg-gradient-to-r from-[#00e5ff] to-[#3b82f6] h-full rounded-full" style="width: ${iq}%"></div>
             </div>
           </div>
           <div>
-            <div class="flex justify-between text-[0.65rem] font-bold text-gray-300 mb-0.5">
+            <div class="flex justify-between text-[0.58rem] sm:text-[0.62rem] font-bold text-gray-300 mb-0.5">
               <span>Sức Mạnh (STR)</span>
               <span class="text-[#ef4444] font-mono">${str}%</span>
             </div>
-            <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+            <div class="w-full bg-white/10 h-1 sm:h-1.5 rounded-full overflow-hidden">
               <div class="bg-gradient-to-r from-[#ef4444] to-[#f97316] h-full rounded-full" style="width: ${str}%"></div>
             </div>
           </div>
           <div>
-            <div class="flex justify-between text-[0.65rem] font-bold text-gray-300 mb-0.5">
-              <span>Nhanh Nhẹn / Khéo (AGI)</span>
+            <div class="flex justify-between text-[0.58rem] sm:text-[0.62rem] font-bold text-gray-300 mb-0.5">
+              <span>Nhanh Nhẹn (AGI)</span>
               <span class="text-[#fbbf24] font-mono">${agi}%</span>
             </div>
-            <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+            <div class="w-full bg-white/10 h-1 sm:h-1.5 rounded-full overflow-hidden">
               <div class="bg-gradient-to-r from-[#fbbf24] to-[#84cc16] h-full rounded-full" style="width: ${agi}%"></div>
             </div>
           </div>
@@ -223,8 +266,8 @@ function characterCard(c, delay) {
         <!-- Quote & Tags -->
         <div>
           ${c.quote ? `
-          <div class="relative pl-2.5 border-l-2 border-white/30 bg-white/[0.02] py-1 pr-1.5 rounded-r mb-2.5">
-            <p class="text-[0.68rem] italic text-amber-200/90 leading-tight line-clamp-2">
+          <div class="relative pl-2 border-l-2 border-white/30 bg-white/[0.02] py-0.5 pr-1 rounded-r mb-1.5">
+            <p class="text-[0.62rem] sm:text-[0.68rem] italic text-amber-200/90 leading-tight line-clamp-1 sm:line-clamp-2">
               “${c.quote}”
             </p>
           </div>
@@ -271,9 +314,34 @@ function initCharFilter() {
       btn.classList.remove('border-white/15', 'bg-white/5', 'text-[#6b7a99]');
 
       // Filter character cards
+      const toggleContainer = document.getElementById('char-toggle-container');
       document.querySelectorAll('.char-card').forEach(card => {
-        const show = filter === 'all' || card.dataset.faction === filter;
-        card.style.display = show ? '' : 'none';
+        if (filter === 'all') {
+          if (isCharGridExpanded) {
+            card.classList.remove('hidden');
+            card.style.display = '';
+          } else {
+            const isDef = card.dataset.default === 'true';
+            if (isDef) {
+              card.classList.remove('hidden');
+              card.style.display = '';
+            } else {
+              card.classList.add('hidden');
+              card.style.display = 'none';
+            }
+          }
+          if (toggleContainer) toggleContainer.style.display = '';
+        } else {
+          const matches = card.dataset.faction === filter;
+          if (matches) {
+            card.classList.remove('hidden');
+            card.style.display = '';
+          } else {
+            card.classList.add('hidden');
+            card.style.display = 'none';
+          }
+          if (toggleContainer) toggleContainer.style.display = 'none';
+        }
       });
     });
   });
