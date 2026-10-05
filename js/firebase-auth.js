@@ -150,6 +150,8 @@ export async function loginWithGoogle() {
     console.error('❌ Lỗi đăng nhập Google Auth:', err);
     if (err.code === 'auth/operation-not-allowed') {
       alert('⚠️ CHƯA BẬT GOOGLE SIGN-IN TRÊN FIREBASE CONSOLE!\n\nCách kích hoạt (mất 30 giây):\n1. Vào link: https://console.firebase.google.com/project/iotdemo31126/authentication/providers\n2. Bấm vào nhà cung cấp "Google"\n3. Bật công tắc "Enable"\n4. Chọn Email hỗ trợ dự án (Project support email) rồi bấm nút "Save"\n5. Quay lại đây đăng nhập là thành công 100%!');
+    } else if (err.code === 'auth/unauthorized-domain') {
+      alert('⚠️ TÊN MIỀN MỚI CHƯA ĐƯỢC THÊM VÀO FIREBASE!\n\nCách thêm tên miền (mất 30 giây):\n1. Vào link: https://console.firebase.google.com/project/iotdemo31126/authentication/settings\n2. Bấm vào tab "Authorized domains" (Miền được ủy quyền)\n3. Bấm "Add domain" và điền:\n   - eyeukhoahoc365.tech\n   - www.eyeukhoahoc365.tech\n4. Bấm Save và quay lại đây đăng nhập Google là xong ngay!');
     } else if (err.code === 'auth/popup-blocked') {
       alert('⚠️ Trình duyệt vừa chặn popup đăng nhập Google. Vui lòng cho phép popup để tiếp tục!');
     } else if (err.code !== 'auth/popup-closed-by-user') {
