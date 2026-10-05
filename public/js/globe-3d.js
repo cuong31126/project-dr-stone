@@ -34,27 +34,144 @@ class PerseusHologramGlobe {
     this.shockwaveTime = 0;
     this.seaProgress = 0;
     this.landProgress = 0;
+    this.bikeProgress = 0;
+    this.raftProgress = 0;
     this.isPaused = false;
 
     // Hướng ánh sáng mặt trời trong không gian (nghiêng từ góc Tây Bắc tạo vệt ngày/đêm)
     this.sunDirection = new THREE.Vector3(-2.2, 0.7, 1.4).normalize();
 
-    // Tọa độ các trạm hải trình chuẩn xác 100% Cốt truyện Dr. Stone
+    // Tọa độ các trạm hải trình vòng quanh thế giới chuẩn xác 100% Cốt truyện Dr. Stone
     this.waypoints = [
-      // 1. Trạm khởi nguyên: Làng Ishigami (Bán đảo Izu / Vịnh Tokyo)
-      { id: 'arc-village', name: 'Làng Ishigami (Nhật Bản)', lat: 35.65, lon: 139.75, color: 0x00f5a0, label: 'TRẠM 1', sp: 15 },
-
-      // 2. Trạm Đảo Kho Báu: Đảo Aogashima / Quần đảo Izu (Sát ngay phía Nam Tokyo)
-      { id: 'arc-treasure', name: 'Đảo Kho Báu (Quần đảo Izu)', lat: 32.46, lon: 139.77, color: 0x00d4ff, label: 'TRẠM 2', sp: 20 },
-
-      // 3. Trạm Bắc Mỹ: California (Vùng đất bắp / ngô)
-      { id: 'arc-america', name: 'Tân Thành Phố Mỹ (California)', lat: 37.77, lon: -122.42, color: 0xffd700, label: 'TRẠM 3', sp: 25 },
-
-      // 4. Trạm Nam Mỹ: Tâm Chấn Hóa Đá Medusa (Manaus, Amazon)
-      { id: 'arc-south-america', name: 'Tâm Chấn Hóa Đá (Manaus, Amazon)', lat: -3.12, lon: -60.02, color: 0xff2255, label: 'TÂM CHẤN', isEpicenter: true, sp: 30 },
-
-      // 5. Trạm Cuối: Mặt Trăng (Why-man)
-      { id: 'arc-moon', name: 'Mặt Trăng (Why-man)', lat: 0, lon: 0, color: 0xdde4ec, label: 'ĐÍCH ĐẾN', isMoon: true, sp: 50 }
+      // 1. Nhật Bản
+      {
+        id: 'arc-japan',
+        name: 'Làng Ishigami (Nhật Bản)',
+        city: 'Vịnh Tokyo, Nhật Bản',
+        vehicle: 'Chiến hạm Perseus 3D',
+        resource: 'Khởi nguyên nền văn minh',
+        desc: 'Senku cùng Vương Quốc Khoa Học đóng chiến hạm Perseus, chế tạo radar & động cơ đẩy vươn ra biển lớn.',
+        lat: 35.68,
+        lon: 139.76,
+        color: 0x00f5a0,
+        label: '01. NHẬT BẢN',
+        sp: 15
+      },
+      // 2. Mỹ: Corn City
+      {
+        id: 'arc-corn',
+        name: 'Thành Phố Ngô (Corn City)',
+        city: 'California / Sacramento, Mỹ',
+        vehicle: 'Chiến hạm Perseus (Đại Quyển 51.2°N)',
+        resource: 'Ngô (Sản xuất rượu cồn hồi sinh)',
+        desc: 'Vượt Bắc Thái Bình Dương đến San Francisco/Sacramento. Đối đầu nhóm TS. Xeno và lập Corn City.',
+        lat: 38.58,
+        lon: -121.49,
+        color: 0xffd700,
+        label: '02. MỸ (CORN CITY)',
+        sp: 20
+      },
+      // 2b. Ecuador: Trạm Đổ Bộ Xe Máy
+      {
+        id: 'arc-ecuador',
+        name: 'Cửa Biển Ecuador (Trạm Xe Máy)',
+        city: 'Vịnh Guayaquil, Ecuador',
+        vehicle: 'Xe Máy Cào Cào Vượt Dãy Andes',
+        resource: 'Lắp ráp Xe Máy 2 bánh',
+        desc: 'Nhóm đi thuyền xuôi biển bờ Tây xuống Ecuador, đổ bộ lắp ráp xe máy phóng vượt đỉnh tuyết Andes.',
+        lat: -2.20,
+        lon: -80.90,
+        color: 0x00e5ff,
+        label: '02b. ECUADOR (XE MÁY)',
+        isTransit: true,
+        sp: 20
+      },
+      // 3. Nam Mỹ: Superalloy City & Tâm Chấn Amazon
+      {
+        id: 'arc-south-america',
+        name: 'Thành Phố Siêu Hợp Kim (Superalloy City)',
+        city: 'Araxá & Lưu vực Amazon, Brazil',
+        vehicle: 'Bè Gỗ Xuôi Dòng Sông Amazon',
+        resource: 'Sắt, Nickel & Mỏ Quặng Siêu Hợp Kim',
+        desc: 'Đóng bè gỗ xuôi dòng sông Amazon qua tâm chấn Medusa tới Araxá. Nơi Suika mất nhiều năm tự thức tỉnh.',
+        lat: -19.59,
+        lon: -46.94,
+        color: 0xff2255,
+        label: '03. NAM MỸ (SUPERALLOY)',
+        isEpicenter: true,
+        sp: 25
+      },
+      // 4. Tây Ban Nha: Fluorite City
+      {
+        id: 'arc-fluorite',
+        name: 'Thành Phố Fluorite (Fluorite City)',
+        city: 'Asturias / Madrid, Tây Ban Nha',
+        vehicle: 'Tàu Buồm Vượt Đại Tây Dương',
+        resource: 'Đá Fluorite (Làm thấu kính viễn vọng & IC)',
+        desc: 'Băng qua Đại Tây Dương đến bờ biển Tây Ban Nha, khai thác quặng fluorite tinh khiết làm linh kiện máy tính.',
+        lat: 40.41,
+        lon: -3.70,
+        color: 0x9b51e0,
+        label: '04. TÂY BAN NHA (FLUORITE)',
+        sp: 25
+      },
+      // 5. Ấn Độ: Math City
+      {
+        id: 'arc-math',
+        name: 'Thành Phố Toán Học (Math City)',
+        city: 'Mumbai / Goa, Ấn Độ',
+        vehicle: 'Hải Trình Địa Trung Hải ➜ Kênh Suez',
+        resource: 'Thiên tài Toán Học Sai Nanami',
+        desc: 'Vượt qua Kênh Suez và Biển Đỏ đến Ấn Độ, tìm kiếm và hồi sinh Sai Nanami để lập trình quỹ đạo tên lửa.',
+        lat: 19.07,
+        lon: 72.87,
+        color: 0x00d4ff,
+        label: '05. ẤN ĐỘ (MATH CITY)',
+        sp: 30
+      },
+      // 6. Indonesia: Rubber City
+      {
+        id: 'arc-rubber',
+        name: 'Thành Phố Cao Su (Rubber City)',
+        city: 'Kalimantan / Sumatra, Indonesia',
+        vehicle: 'Hải Trình Vịnh Bengal ➜ Eo Malacca',
+        resource: 'Cao Su Tự Nhiên (Vỏ bọc cách điện & Bánh xe)',
+        desc: 'Tiến vào rừng nhiệt đới Đông Nam Á, khai thác mủ cao su tự nhiên phục vụ bọc dây điện cho siêu máy tính.',
+        lat: -0.78,
+        lon: 113.92,
+        color: 0xff9900,
+        label: '06. INDONESIA (RUBBER)',
+        sp: 30
+      },
+      // 7. Úc: Aluminum City
+      {
+        id: 'arc-aluminum',
+        name: 'Thành Phố Nhôm (Aluminum City)',
+        city: 'Weipa / Queensland, Úc',
+        vehicle: 'Hải Trình Biển Timor ➜ Bắc Úc',
+        resource: 'Bauxite (Luyện Nhôm) & Uranium',
+        desc: 'Cập cảng nước Úc thu thập quặng Bauxite luyện vỏ hợp kim nhôm siêu nhẹ và Uranium phục vụ lò phản ứng.',
+        lat: -12.63,
+        lon: 141.88,
+        color: 0x39ff14,
+        label: '07. ÚC (ALUMINUM CITY)',
+        sp: 35
+      },
+      // 8. Đích: Mặt Trăng
+      {
+        id: 'arc-moon',
+        name: 'Bệ Phóng Tên Lửa Mặt Trăng (Why-man)',
+        city: 'Hồi Hương Nhật Bản ➜ Mặt Trăng',
+        vehicle: 'Tên Lửa Khoa Học Đa Tầng',
+        resource: 'Lắp ráp Siêu Máy Tính & Bệ Phóng',
+        desc: 'Quay về Nhật Bản kết nối toàn bộ mạng lưới 6 thành phố vệ tinh, đóng tàu vũ trụ phóng thẳng lên Mặt Trăng!',
+        lat: 0,
+        lon: 0,
+        color: 0xdde4ec,
+        label: 'ĐÍCH: MẶT TRĂNG',
+        isMoon: true,
+        sp: 50
+      }
     ];
 
     this.initScene();
@@ -451,24 +568,92 @@ class PerseusHologramGlobe {
     );
   }
 
-  // 🌐 KHẮC PHỤC CÁC ĐƯỜNG LINE BỊ CẮT VÀ THIẾT LẬP LỘ TRÌNH CHUẨN
+  // 🏍️ MÔ HÌNH XE MÁY CÀO CÀO 3D MINI (VƯỢT ĐÈO TUYẾT DÃY ANDES)
+  buildMotorcycleModel() {
+    const bike = new THREE.Group();
+    // 2 Bánh xe địa hình
+    const wheelGeo = new THREE.TorusGeometry(0.018, 0.005, 8, 16);
+    const wheelMat = new THREE.MeshBasicMaterial({ color: 0x11161d });
+    const wheelF = new THREE.Mesh(wheelGeo, wheelMat);
+    wheelF.position.set(0, 0.02, 0.038);
+    bike.add(wheelF);
+    const wheelR = new THREE.Mesh(wheelGeo, wheelMat);
+    wheelR.position.set(0, 0.02, -0.038);
+    bike.add(wheelR);
+
+    // Khung sườn xe cào cào thể thao màu cam neon đặc trưng
+    const frameGeo = new THREE.BoxGeometry(0.016, 0.02, 0.055);
+    const frameMat = new THREE.MeshStandardMaterial({ color: 0xff6600, roughness: 0.35, metalness: 0.6 });
+    const frame = new THREE.Mesh(frameGeo, frameMat);
+    frame.position.set(0, 0.026, 0);
+    bike.add(frame);
+
+    // Bình xăng & yên xe
+    const seatGeo = new THREE.BoxGeometry(0.014, 0.008, 0.03);
+    const seatMat = new THREE.MeshBasicMaterial({ color: 0x222222 });
+    const seat = new THREE.Mesh(seatGeo, seatMat);
+    seat.position.set(0, 0.037, -0.01);
+    bike.add(seat);
+
+    // Đèn pha phát quang vàng rực
+    const lightGeo = new THREE.SphereGeometry(0.009, 8, 8);
+    const lightMat = new THREE.MeshBasicMaterial({ color: 0xffea00 });
+    const light = new THREE.Mesh(lightGeo, lightMat);
+    light.position.set(0, 0.035, 0.04);
+    bike.add(light);
+
+    bike.scale.set(1.4, 1.4, 1.4);
+    return bike;
+  }
+
+  // 🪵 MÔ HÌNH BÈ GỖ 3D MINI (XUÔI DÒNG SÔNG AMAZON QUA TÂM CHẤN MEDUSA)
+  buildRaftModel() {
+    const raft = new THREE.Group();
+    // 5 thân cây gỗ ghép kết bè
+    for (let i = -2; i <= 2; i++) {
+      const logGeo = new THREE.CylinderGeometry(0.0075, 0.0075, 0.08, 8);
+      logGeo.rotateX(Math.PI / 2);
+      const logMat = new THREE.MeshStandardMaterial({ color: 0x7a4b26, roughness: 0.85 });
+      const log = new THREE.Mesh(logGeo, logMat);
+      log.position.set(i * 0.014, 0.008, 0);
+      raft.add(log);
+    }
+
+    // Cọc buồm và tấm bạt xanh ngọc Senku
+    const mastGeo = new THREE.CylinderGeometry(0.002, 0.002, 0.055, 6);
+    const mastMat = new THREE.MeshBasicMaterial({ color: 0xcd853f });
+    const mast = new THREE.Mesh(mastGeo, mastMat);
+    mast.position.set(0, 0.032, 0);
+    raft.add(mast);
+
+    const sailGeo = new THREE.PlaneGeometry(0.035, 0.03);
+    const sailMat = new THREE.MeshBasicMaterial({ color: 0x00f5a0, side: THREE.DoubleSide });
+    const sail = new THREE.Mesh(sailGeo, sailMat);
+    sail.position.set(0, 0.042, 0);
+    raft.add(sail);
+
+    raft.scale.set(1.4, 1.4, 1.4);
+    return raft;
+  }
+
+  // 🌐 THIẾT LẬP TOÀN BỘ 7 CHẶNG HẢI TRÌNH & PHƯƠNG TIỆN CHUẨN XÁC 100% CỐT TRUYỆN
   createVoyageRoutesAndVehicles() {
-    const ALT = 0.022; // Độ cao an toàn bám sát bề mặt, không bao giờ bị chìm vào lòng đất
+    const ALT = 0.022; // Độ cao an toàn bám sát bề mặt địa cầu
 
     // ═══════════════════════════════════════════════════════════════
-    // 1. CHẶNG 1: ĐẠI QUYỂN HÀNG LỘ (XANH LÁ) — NHẬT BẢN ➜ CALIFORNIA
+    // 1. CHẶNG 1: ĐẠI QUYỂN HÀNG LỘ (XANH LÁ) — NHẬT BẢN ➜ CORN CITY (CALIFORNIA)
     // ═══════════════════════════════════════════════════════════════
     const seaPoints = [
-      this.latLonToVector3(35.65, 139.75, this.radius, ALT),    // 1. Làng Ishigami (Nhật Bản)
-      this.latLonToVector3(32.46, 139.77, this.radius, ALT),    // 2. Quần đảo Izu (Đảo Kho Báu)
-      this.latLonToVector3(35.65, 139.75, this.radius, ALT),    // 3. Hồi hương Nhật Bản
-      this.latLonToVector3(43.5, 156.0, this.radius, ALT),      // 4. Biển Kuril
-      this.latLonToVector3(48.5, 172.0, this.radius, ALT),      // 5. Tiến vào Bắc Thái Bình Dương
-      this.latLonToVector3(51.2, -178.0, this.radius, ALT),     // 6. Đỉnh vòng cung Aleutian (51.2°N)
-      this.latLonToVector3(49.0, -160.0, this.radius, ALT),     // 7. Xuôi nam qua Vịnh Alaska
-      this.latLonToVector3(45.0, -142.0, this.radius, ALT),     // 8. Tiếp cận bờ Tây
-      this.latLonToVector3(40.0, -130.0, this.radius, ALT),     // 9. Vùng biển duyên hải
-      this.latLonToVector3(37.77, -122.42, this.radius, ALT)    // 10. Cập cảng California (chính xác chân ghim)
+      this.latLonToVector3(35.68, 139.76, this.radius, ALT),    // Làng Ishigami (Nhật Bản)
+      this.latLonToVector3(32.46, 139.77, this.radius, ALT),    // Quần đảo Izu (Đảo Kho Báu)
+      this.latLonToVector3(35.68, 139.76, this.radius, ALT),    // Hồi hương Nhật Bản xuất phát
+      this.latLonToVector3(43.5, 156.0, this.radius, ALT),      // Biển Kuril
+      this.latLonToVector3(48.5, 172.0, this.radius, ALT),      // Bắc Thái Bình Dương
+      this.latLonToVector3(51.2, -178.0, this.radius, ALT),     // Đỉnh vòng cung Aleutian (51.2°N)
+      this.latLonToVector3(49.0, -160.0, this.radius, ALT),     // Vịnh Alaska
+      this.latLonToVector3(45.0, -142.0, this.radius, ALT),     // Tiếp cận duyên hải bờ Tây
+      this.latLonToVector3(40.0, -130.0, this.radius, ALT),     // Vùng biển Bắc California
+      this.latLonToVector3(38.58, -121.49, this.radius, ALT)    // Corn City (Sacramento / San Francisco)
     ];
 
     this.seaCurve = new THREE.CatmullRomCurve3(seaPoints);
@@ -480,17 +665,14 @@ class PerseusHologramGlobe {
     });
     this.globeGroup.add(new THREE.Mesh(seaTubeGeo, seaTubeMat));
 
-    // ═══════════════════════════════════════════════════════════════
-    // 2. ĐƯỜNG ĐỎ CỦA RYUSUI: ĐI THẲNG THEO VĨ TUYẾN, BÁM MẶT BIỂN (KHÔNG BỊ CẮT)
-    // ═══════════════════════════════════════════════════════════════
-    // Nội suy 14 điểm đều đặn theo kinh độ từ Tokyo đến California, vĩ độ giữ thẳng quanh 35-37°N
+    // Đường Hằng Hướng (Đỏ) của Ryusui đi thẳng theo vĩ tuyến
     const rhumbPoints = [];
     const numRhumb = 14;
-    const startLon = 139.75;
-    const endLon = -122.42 + 360; // 237.58
+    const startLon = 139.76;
+    const endLon = -121.49 + 360;
     for (let i = 0; i <= numRhumb; i++) {
       const t = i / numRhumb;
-      const lat = 35.65 + (37.77 - 35.65) * t; // Đường thẳng tắp theo vĩ tuyến
+      const lat = 35.68 + (38.58 - 35.68) * t;
       let lon = startLon + (endLon - startLon) * t;
       if (lon > 180) lon -= 360;
       rhumbPoints.push(this.latLonToVector3(lat, lon, this.radius, ALT));
@@ -510,34 +692,180 @@ class PerseusHologramGlobe {
     this.globeGroup.add(this.shipGroup);
 
     // ═══════════════════════════════════════════════════════════════
-    // 3. CHẶNG 2: ĐƯỜNG VÀNG LỤC ĐỊA — NỐI TRỌN VẸN CALIFORNIA ➜ AMAZON (KHÔNG BỊ ĐỨT 2 ĐẦU)
+    // 2a. CHẶNG 2A: ĐƯỜNG BIỂN BỜ TÂY THÁI BÌNH DƯƠNG — CORN CITY ➜ CỬA BIỂN ECUADOR
     // ═══════════════════════════════════════════════════════════════
-    // Bố trí 14 điểm trung gian dày đặc bám sát theo lục địa châu Mỹ, xuất phát đúng California và chạm đúng tâm chấn Amazon
-    const landPoints = [
-      this.latLonToVector3(37.77, -122.42, this.radius, ALT),   // 1. Chân ghim California
-      this.latLonToVector3(34.05, -118.24, this.radius, ALT),   // 2. Los Angeles
-      this.latLonToVector3(29.0, -111.0, this.radius, ALT),     // 3. Vịnh California / Bắc Mexico
-      this.latLonToVector3(24.0, -104.0, this.radius, ALT),     // 4. Cao nguyên Mexico
-      this.latLonToVector3(19.4, -99.1, this.radius, ALT),      // 5. Trung tâm Mexico
-      this.latLonToVector3(15.5, -92.5, this.radius, ALT),      // 6. Nam Mexico / Guatemala
-      this.latLonToVector3(12.0, -86.0, this.radius, ALT),      // 7. Nicaragua
-      this.latLonToVector3(9.0, -79.5, this.radius, ALT),       // 8. Kênh đào Panama
-      this.latLonToVector3(7.0, -76.0, this.radius, ALT),       // 9. Vịnh Darien / Colombia
-      this.latLonToVector3(4.5, -73.0, this.radius, ALT),       // 10. Dãy Andes / Bogota
-      this.latLonToVector3(1.0, -68.5, this.radius, ALT),       // 11. Lưu vực sông Rio Negro
-      this.latLonToVector3(-1.0, -64.0, this.radius, ALT),      // 12. Tiếp cận lưu vực Amazon
-      this.latLonToVector3(-2.2, -61.5, this.radius, ALT),      // 13. Cận cảnh Manaus
-      this.latLonToVector3(-3.12, -60.02, this.radius, ALT)     // 14. Đúng tâm chấn Manaus, Amazon
+    const route2SeaPoints = [
+      this.latLonToVector3(38.58, -121.49, this.radius, ALT),   // Corn City
+      this.latLonToVector3(34.05, -119.5, this.radius, ALT),    // Bờ biển Los Angeles
+      this.latLonToVector3(27.8, -115.0, this.radius, ALT),     // Bán đảo Baja California
+      this.latLonToVector3(20.5, -106.0, this.radius, ALT),     // Ngoài khơi Tây Mexico
+      this.latLonToVector3(14.5, -95.0, this.radius, ALT),      // Vịnh Tehuantepec (Trung Mỹ)
+      this.latLonToVector3(9.5, -86.0, this.radius, ALT),       // Vùng biển Costa Rica
+      this.latLonToVector3(6.5, -81.0, this.radius, ALT),       // Vịnh Panama
+      this.latLonToVector3(1.5, -80.5, this.radius, ALT),       // Tiếp cận xích đạo Ecuador
+      this.latLonToVector3(-2.20, -80.90, this.radius, ALT)     // Cửa biển Ecuador (Vịnh Guayaquil - Trạm xe máy)
     ];
-
-    this.landCurve = new THREE.CatmullRomCurve3(landPoints);
-    const landTubeGeo = new THREE.TubeGeometry(this.landCurve, 140, 0.005, 8, false);
-    const landTubeMat = new THREE.MeshBasicMaterial({
-      color: 0xffd700, // Vàng kim khoa học sắc nét
+    this.route2SeaCurve = new THREE.CatmullRomCurve3(route2SeaPoints);
+    const route2SeaGeo = new THREE.TubeGeometry(this.route2SeaCurve, 120, 0.005, 8, false);
+    const route2SeaMat = new THREE.MeshBasicMaterial({
+      color: 0x00e5ff,
       transparent: true,
       opacity: 0.95
     });
-    this.globeGroup.add(new THREE.Mesh(landTubeGeo, landTubeMat));
+    this.globeGroup.add(new THREE.Mesh(route2SeaGeo, route2SeaMat));
+
+    // ═══════════════════════════════════════════════════════════════
+    // 2b. CHẶNG 2B: VƯỢT DÃY NÚI TUYẾT ANDES BẰNG XE MÁY — ECUADOR ➜ THƯỢNG NGUỒN AMAZON
+    // ═══════════════════════════════════════════════════════════════
+    const bikePoints = [
+      this.latLonToVector3(-2.20, -80.90, this.radius, ALT),          // Cửa biển Ecuador (Vịnh Guayaquil)
+      this.latLonToVector3(-1.80, -79.80, this.radius, ALT),          // Đồng bằng hạ lưu Guayas
+      this.latLonToVector3(-1.46, -78.82, this.radius, ALT + 0.016),   // Chân núi tuyết Andes / Đỉnh Chimborazo
+      this.latLonToVector3(-1.00, -78.40, this.radius, ALT + 0.018),   // Đèo cao núi tuyết Andes
+      this.latLonToVector3(-0.95, -77.80, this.radius, ALT + 0.008),   // Hạ đèo xuống sườn đông Andes (Tena)
+      this.latLonToVector3(-0.80, -75.50, this.radius, ALT)           // Thượng nguồn sông Amazon (Bến đóng bè gỗ)
+    ];
+    this.bikeCurve = new THREE.CatmullRomCurve3(bikePoints);
+    const bikeTubeGeo = new THREE.TubeGeometry(this.bikeCurve, 60, 0.0048, 8, false);
+    const bikeTubeMat = new THREE.MeshBasicMaterial({
+      color: 0xff9900, // Cam Neon nổi bật đặc trưng cho xe máy leo núi
+      transparent: true,
+      opacity: 0.95
+    });
+    this.globeGroup.add(new THREE.Mesh(bikeTubeGeo, bikeTubeMat));
+
+    // 🏍️ Xe máy cào cào 3D Mini vượt đèo tuyết Andes
+    this.bikeGroup = this.buildMotorcycleModel();
+    this.globeGroup.add(this.bikeGroup);
+
+    // ═══════════════════════════════════════════════════════════════
+    // 2c. CHẶNG 2C: XUÔI DÒNG SÔNG AMAZON BẰNG BÈ GỖ — THƯỢNG NGUỒN ➜ MANAUS ➜ ARAXÁ
+    // ═══════════════════════════════════════════════════════════════
+    const raftPoints = [
+      this.latLonToVector3(-0.80, -75.50, this.radius, ALT),    // Thượng nguồn Sông Napo / Amazon
+      this.latLonToVector3(-1.50, -72.00, this.radius, ALT),    // Dòng chính Amazon (Iquitos)
+      this.latLonToVector3(-2.50, -66.00, this.radius, ALT),    // Rừng mưa Amazon sâu thẳm
+      this.latLonToVector3(-3.12, -60.02, this.radius, ALT),    // Manaus (TÂM CHẤN TIA HÓA ĐÁ MEDUSA)
+      this.latLonToVector3(-5.50, -56.00, this.radius, ALT),    // Xuôi dòng sông Tapajós
+      this.latLonToVector3(-10.0, -52.00, this.radius, ALT),    // Cao nguyên Trung tâm Brazil
+      this.latLonToVector3(-15.5, -48.50, this.radius, ALT),    // Tiếp cận bang Minas Gerais
+      this.latLonToVector3(-19.59, -46.94, this.radius, ALT)    // Superalloy City (Araxá, Brazil)
+    ];
+    this.raftCurve = new THREE.CatmullRomCurve3(raftPoints);
+    const raftTubeGeo = new THREE.TubeGeometry(this.raftCurve, 120, 0.005, 8, false);
+    const raftTubeMat = new THREE.MeshBasicMaterial({
+      color: 0x39ff14, // Xanh lục ngọc dòng sông rừng nhiệt đới Amazon
+      transparent: true,
+      opacity: 0.95
+    });
+    this.globeGroup.add(new THREE.Mesh(raftTubeGeo, raftTubeMat));
+
+    // 🪵 Bè Gỗ 3D Mini xuôi dòng sông Amazon
+    this.raftGroup = this.buildRaftModel();
+    this.globeGroup.add(this.raftGroup);
+
+    // ═══════════════════════════════════════════════════════════════
+    // 3. CHẶNG 3: VƯỢT ĐẠI TÂY DƯƠNG — ARAXÁ ➜ TÂY BAN NHA (FLUORITE CITY)
+    // ═══════════════════════════════════════════════════════════════
+    const route3Points = [
+      this.latLonToVector3(-19.59, -46.94, this.radius, ALT),   // Araxá, Brazil
+      this.latLonToVector3(-23.0, -43.0, this.radius, ALT),     // Ra bờ biển Rio de Janeiro
+      this.latLonToVector3(-15.0, -35.0, this.radius, ALT),     // Nam Đại Tây Dương
+      this.latLonToVector3(0.0, -28.0, this.radius, ALT),       // Vượt Xích Đạo Đại Tây Dương
+      this.latLonToVector3(18.0, -22.0, this.radius, ALT),      // Quần đảo Cape Verde
+      this.latLonToVector3(28.5, -16.0, this.radius, ALT),      // Quần đảo Canary
+      this.latLonToVector3(36.5, -9.0, this.radius, ALT),       // Mũi Bồ Đào Nha
+      this.latLonToVector3(40.41, -3.70, this.radius, ALT)      // Fluorite City (Tây Ban Nha)
+    ];
+    this.route3Curve = new THREE.CatmullRomCurve3(route3Points);
+    const route3Geo = new THREE.TubeGeometry(this.route3Curve, 100, 0.0045, 8, false);
+    const route3Mat = new THREE.MeshBasicMaterial({
+      color: 0x9b51e0, // Tím Fluorite huyền bí
+      transparent: true,
+      opacity: 0.85
+    });
+    this.globeGroup.add(new THREE.Mesh(route3Geo, route3Mat));
+
+    // ═══════════════════════════════════════════════════════════════
+    // 4. CHẶNG 4: ĐỊA TRUNG HẢI & KÊNH SUEZ — TÂY BAN NHA ➜ ẤN ĐỘ (MATH CITY)
+    // ═══════════════════════════════════════════════════════════════
+    const route4Points = [
+      this.latLonToVector3(40.41, -3.70, this.radius, ALT),     // Tây Ban Nha
+      this.latLonToVector3(36.14, -5.35, this.radius, ALT),     // Eo biển Gibraltar
+      this.latLonToVector3(37.0, 5.0, this.radius, ALT),        // Biển Tây Địa Trung Hải
+      this.latLonToVector3(34.0, 18.0, this.radius, ALT),       // Giữa Địa Trung Hải
+      this.latLonToVector3(31.5, 31.0, this.radius, ALT),       // Cửa Kênh Suez (Ai Cập)
+      this.latLonToVector3(24.0, 37.0, this.radius, ALT),       // Biển Đỏ (Red Sea)
+      this.latLonToVector3(12.6, 43.3, this.radius, ALT),       // Eo biển Bab-el-Mandeb
+      this.latLonToVector3(14.0, 55.0, this.radius, ALT),       // Vịnh Aden / Biển Ả Rập
+      this.latLonToVector3(19.07, 72.87, this.radius, ALT)      // Math City (Mumbai, Ấn Độ)
+    ];
+    this.route4Curve = new THREE.CatmullRomCurve3(route4Points);
+    const route4Geo = new THREE.TubeGeometry(this.route4Curve, 110, 0.0045, 8, false);
+    const route4Mat = new THREE.MeshBasicMaterial({
+      color: 0x00d4ff, // Xanh Neon Kỹ Thuật Số Toán Học
+      transparent: true,
+      opacity: 0.85
+    });
+    this.globeGroup.add(new THREE.Mesh(route4Geo, route4Mat));
+
+    // ═══════════════════════════════════════════════════════════════
+    // 5. CHẶNG 5: VỊNH BENGAL & EO MALACCA — ẤN ĐỘ ➜ INDONESIA (RUBBER CITY)
+    // ═══════════════════════════════════════════════════════════════
+    const route5Points = [
+      this.latLonToVector3(19.07, 72.87, this.radius, ALT),     // Mumbai, Ấn Độ
+      this.latLonToVector3(7.0, 79.0, this.radius, ALT),        // Vòng qua Sri Lanka
+      this.latLonToVector3(6.0, 88.0, this.radius, ALT),        // Vịnh Bengal
+      this.latLonToVector3(4.0, 98.0, this.radius, ALT),        // Cửa Eo biển Malacca
+      this.latLonToVector3(1.3, 103.8, this.radius, ALT),       // Singapore / Malacca
+      this.latLonToVector3(-0.78, 113.92, this.radius, ALT)     // Rubber City (Indonesia)
+    ];
+    this.route5Curve = new THREE.CatmullRomCurve3(route5Points);
+    const route5Geo = new THREE.TubeGeometry(this.route5Curve, 80, 0.0045, 8, false);
+    const route5Mat = new THREE.MeshBasicMaterial({
+      color: 0xffaa00, // Hổ phách cao su tự nhiên
+      transparent: true,
+      opacity: 0.85
+    });
+    this.globeGroup.add(new THREE.Mesh(route5Geo, route5Mat));
+
+    // ═══════════════════════════════════════════════════════════════
+    // 6. CHẶNG 6: BIỂN TIMOR — INDONESIA ➜ ÚC (ALUMINUM CITY)
+    // ═══════════════════════════════════════════════════════════════
+    const route6Points = [
+      this.latLonToVector3(-0.78, 113.92, this.radius, ALT),    // Indonesia
+      this.latLonToVector3(-6.0, 118.0, this.radius, ALT),      // Biển Java / Flores
+      this.latLonToVector3(-10.0, 126.0, this.radius, ALT),     // Biển Timor
+      this.latLonToVector3(-11.5, 134.0, this.radius, ALT),     // Vùng biển Bắc Úc
+      this.latLonToVector3(-12.63, 141.88, this.radius, ALT)    // Aluminum City (Weipa, Queensland, Úc)
+    ];
+    this.route6Curve = new THREE.CatmullRomCurve3(route6Points);
+    const route6Geo = new THREE.TubeGeometry(this.route6Curve, 70, 0.0045, 8, false);
+    const route6Mat = new THREE.MeshBasicMaterial({
+      color: 0x76c843, // Xanh lục quặng nhôm & uranium
+      transparent: true,
+      opacity: 0.85
+    });
+    this.globeGroup.add(new THREE.Mesh(route6Geo, route6Mat));
+
+    // ═══════════════════════════════════════════════════════════════
+    // 7. CHẶNG 7: BIỂN SAN HÔ & THÁI BÌNH DƯƠNG — ÚC ➜ HỒI HƯƠNG NHẬT BẢN
+    // ═══════════════════════════════════════════════════════════════
+    const route7Points = [
+      this.latLonToVector3(-12.63, 141.88, this.radius, ALT),   // Weipa, Úc
+      this.latLonToVector3(-5.0, 148.0, this.radius, ALT),      // Biển Bismarck / Papua
+      this.latLonToVector3(7.0, 145.0, this.radius, ALT),       // Quần đảo Mariana
+      this.latLonToVector3(22.0, 142.0, this.radius, ALT),      // Quần đảo Ogasawara
+      this.latLonToVector3(35.68, 139.76, this.radius, ALT)     // Hồi Hương Nhật Bản (Lắp ráp Tên Lửa)
+    ];
+    this.route7Curve = new THREE.CatmullRomCurve3(route7Points);
+    const route7Geo = new THREE.TubeGeometry(this.route7Curve, 80, 0.0045, 8, false);
+    const route7Mat = new THREE.MeshBasicMaterial({
+      color: 0x80d0ff, // Lam khói tên lửa vũ trụ
+      transparent: true,
+      opacity: 0.85
+    });
+    this.globeGroup.add(new THREE.Mesh(route7Geo, route7Mat));
   }
 
   createMoon() {
@@ -721,29 +1049,77 @@ class PerseusHologramGlobe {
     }
   }
 
+  selectWaypoint(wp) {
+    if (!wp) return;
+    this.awardWaypointPoints(wp);
+
+    if (wp.isMoon) {
+      this.targetRotation.x = 0;
+      this.targetRotation.y = 0;
+      this.camera.position.z = 8.5;
+    } else {
+      this.focusCoordinates(wp.lat, wp.lon);
+    }
+
+    this.updateMissionTelemetryCard(wp);
+
+    // Cập nhật trạng thái active cho các nút bấm trong UI
+    document.querySelectorAll('.waypoint-btn').forEach(btn => {
+      const target = btn.getAttribute('data-target') || (btn.getAttribute('href') || '').replace('#', '');
+      if (target === wp.id) {
+        btn.classList.add('active-waypoint', 'border-[#00d4ff]', 'bg-[#00d4ff]/25', 'text-[#00d4ff]', 'shadow-[0_0_15px_rgba(0,212,255,0.4)]');
+        btn.classList.remove('border-white/10', 'bg-white/[0.04]', 'text-[#8fa0ba]');
+      } else {
+        btn.classList.remove('active-waypoint', 'border-[#00d4ff]', 'bg-[#00d4ff]/25', 'text-[#00d4ff]', 'shadow-[0_0_15px_rgba(0,212,255,0.4)]');
+        btn.classList.add('border-white/10', 'bg-white/[0.04]', 'text-[#8fa0ba]');
+      }
+    });
+  }
+
+  updateMissionTelemetryCard(wp) {
+    const titleEl = document.getElementById('odyssey-telemetry-title');
+    const badgeEl = document.getElementById('odyssey-telemetry-badge');
+    const cityEl = document.getElementById('odyssey-telemetry-city');
+    const vehicleEl = document.getElementById('odyssey-telemetry-vehicle');
+    const resourceEl = document.getElementById('odyssey-telemetry-resource');
+    const descEl = document.getElementById('odyssey-telemetry-desc');
+    const coordsEl = document.getElementById('odyssey-telemetry-coords');
+
+    if (titleEl) titleEl.textContent = wp.name;
+    if (badgeEl) badgeEl.textContent = wp.label;
+    if (cityEl) cityEl.textContent = wp.city;
+    if (vehicleEl) vehicleEl.textContent = wp.vehicle;
+    if (resourceEl) resourceEl.textContent = wp.resource;
+    if (descEl) descEl.textContent = wp.desc;
+    if (coordsEl) {
+      if (wp.isMoon) {
+        coordsEl.textContent = 'QUỸ ĐẠO MẶT TRĂNG · VỆ TINH TỰ NHIÊN (384.400 KM)';
+      } else {
+        const latStr = wp.lat >= 0 ? `${wp.lat.toFixed(2)}°N` : `${Math.abs(wp.lat).toFixed(2)}°S`;
+        const lonStr = wp.lon >= 0 ? `${wp.lon.toFixed(2)}°E` : `${Math.abs(wp.lon).toFixed(2)}°W`;
+        coordsEl.textContent = `TỌA ĐỘ VỆ TINH: ${latStr}, ${lonStr}`;
+      }
+    }
+  }
+
   bindWaypointButtons() {
     const btns = document.querySelectorAll('.waypoint-btn');
     btns.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        const href = btn.getAttribute('href');
-        if (href && href.startsWith('#')) {
-          const targetId = href.substring(1);
-          const wp = this.waypoints.find(w => w.id === targetId);
-          if (wp) {
-            e.preventDefault();
-            this.awardWaypointPoints(wp);
-
-            if (wp.isMoon) {
-              this.targetRotation.x = 0;
-              this.targetRotation.y = 0;
-              this.camera.position.z = 8.5;
-            } else {
-              this.focusCoordinates(wp.lat, wp.lon);
-            }
-          }
+        const targetId = btn.getAttribute('data-target') || (btn.getAttribute('href') || '').replace('#', '');
+        const wp = this.waypoints.find(w => w.id === targetId);
+        if (wp) {
+          e.preventDefault();
+          this.selectWaypoint(wp);
         }
       });
     });
+
+    // Mặc định chọn trạm đầu tiên (Nhật Bản) hoặc giữ nguyên
+    const defaultWp = this.waypoints[0];
+    if (defaultWp) {
+      this.updateMissionTelemetryCard(defaultWp);
+    }
   }
 
   animate() {
@@ -801,22 +1177,48 @@ class PerseusHologramGlobe {
       this.shipGroup.position.addScaledVector(currentPoint.clone().normalize(), bobbing);
     }
 
-    // 🧪 2. SENKU MINI 3D THÁM HIỂM LỤC ĐỊA (California ➜ Amazon)
+    // 🏍️ 2. XE MÁY CÀO CÀO VƯỢT ĐÈO TUYẾT DÃY ANDES (Ecuador ➜ Thượng nguồn Amazon)
+    this.bikeProgress = (this.bikeProgress + 0.0035) % 1;
+    if (this.bikeGroup && this.bikeCurve) {
+      const bPoint = this.bikeCurve.getPointAt(this.bikeProgress);
+      const bNext = this.bikeCurve.getPointAt((this.bikeProgress + 0.01) % 1);
+
+      this.bikeGroup.position.copy(bPoint);
+      const bTangent = bNext.clone().sub(bPoint).normalize();
+      this.bikeGroup.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), bTangent);
+
+      // Rung động cơ xe máy
+      const engineVibe = Math.sin(now * 0.03) * 0.0015;
+      this.bikeGroup.position.addScaledVector(bPoint.clone().normalize(), engineVibe);
+    }
+
+    // 🪵 3. BÈ GỖ XUÔI DÒNG SÔNG AMAZON (Thượng nguồn ➜ Manaus ➜ Araxá)
+    this.raftProgress = (this.raftProgress + 0.0018) % 1;
+    if (this.raftGroup && this.raftCurve) {
+      const rPoint = this.raftCurve.getPointAt(this.raftProgress);
+      const rNext = this.raftCurve.getPointAt((this.raftProgress + 0.008) % 1);
+
+      this.raftGroup.position.copy(rPoint);
+      const rTangent = rNext.clone().sub(rPoint).normalize();
+      this.raftGroup.quaternion.setFromUnitVectors(new THREE.Vector3(0, 0, 1), rTangent);
+
+      // Trôi êm nhấp nhô trên dòng nước Amazon
+      const riverBobbing = Math.sin(now * 0.005) * 0.003;
+      this.raftGroup.position.addScaledVector(rPoint.clone().normalize(), riverBobbing);
+    }
+
+    // 🧪 4. SENKU MINI 3D THÁM HIỂM TẠI TRẠM ĐÍCH
     this.landProgress = (this.landProgress + 0.0016) % 1;
-    if (this.senkuGroup && this.landCurve) {
-      const currentPoint = this.landCurve.getPointAt(this.landProgress);
-      const nextProgress = (this.landProgress + 0.004) % 1;
-      const nextPoint = this.landCurve.getPointAt(nextProgress);
-
-      this.senkuGroup.position.copy(currentPoint);
-
-      // Đứng thẳng hướng vuông góc với tâm Trái Đất
-      const normal = currentPoint.clone().normalize();
-      this.senkuGroup.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
-
-      // Bước đi nhấp nhô nhẹ
-      const stepBobbing = Math.abs(Math.sin(now * 0.006)) * 0.003;
-      this.senkuGroup.position.addScaledVector(normal, stepBobbing);
+    if (this.senkuGroup) {
+      if (this.route2SeaCurve) {
+        // Senku chỉ huy hải trình trên đường biển bờ Tây
+        const sPoint = this.route2SeaCurve.getPointAt(this.landProgress);
+        this.senkuGroup.position.copy(sPoint);
+        const normal = sPoint.clone().normalize();
+        this.senkuGroup.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), normal);
+        const stepBob = Math.abs(Math.sin(now * 0.006)) * 0.003;
+        this.senkuGroup.position.addScaledVector(normal, stepBob);
+      }
     }
 
     // Quỹ đạo Mặt Trăng xoay chậm quanh Trái Đất
@@ -832,7 +1234,21 @@ class PerseusHologramGlobe {
 
 function initDrStoneGlobe() {
   const container = document.getElementById('perseus-3d-globe-wrapper');
-  if (container && !window.drStoneGlobe) {
+  if (!container || window.drStoneGlobe) return;
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (!window.drStoneGlobe) {
+            window.drStoneGlobe = new PerseusHologramGlobe('perseus-3d-globe-wrapper');
+          }
+          observer.disconnect();
+        }
+      });
+    }, { rootMargin: '300px 0px' });
+    observer.observe(container);
+  } else {
     window.drStoneGlobe = new PerseusHologramGlobe('perseus-3d-globe-wrapper');
   }
 }

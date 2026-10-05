@@ -11,10 +11,8 @@ import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 const canvas = document.getElementById('bg-canvas');
 if (canvas) {
   const bg = new DrStoneScene(canvas);
-  // Kiểm tra senku.glb — load nếu tồn tại
-  fetch('assets/models/senku.glb', { method: 'HEAD' })
-    .then(r => { if (r.ok) bg.loadModel('assets/models/senku.glb'); })
-    .catch(() => bg.createGeometricPlaceholder());
+  // Tải mô hình 3D Senku bất đồng bộ, khi tải xong tự động chèn vào đầu trang
+  bg.loadModel('assets/models/senku.glb');
 }
 
 /* ──────────────────────────────────────────
@@ -314,8 +312,7 @@ function DrStoneScene(canvas) {
         console.log(`Loading Senku: ${pct}%`);
       },
       (err) => {
-        console.warn('Model load error, using placeholder:', err);
-        this.createGeometricPlaceholder();
+        console.warn('Senku 3D model load error:', err);
       }
     );
   };

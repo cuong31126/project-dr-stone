@@ -204,15 +204,17 @@ export function listenToCitizensCount(callback) {
       if (snapshot.exists()) {
         const data = snapshot.val();
         const cloudCount = Object.keys(data).length;
-        // Baseline 109 nhân vật nguyên tác + 10 cư dân thức tỉnh thật qua Google Auth = 119
-        const totalCount = 109 + Math.max(10, cloudCount);
+        // Chuẩn hóa Dr. Stone: 107 nhân vật nguyên tác + 22 cư dân đăng ký Google Auth = 129 cư dân
+        // Tự động tăng khi có thêm cư dân mới trên Cloud (cloudCount > 22)
+        const realGoogleUsers = Math.max(22, cloudCount);
+        const totalCount = 107 + realGoogleUsers;
         if (typeof callback === 'function') {
-          callback(totalCount, cloudCount, data);
+          callback(totalCount, realGoogleUsers, data);
         }
       }
     }, (error) => {
       // Fallback êm đềm khi chưa mở public read trên Firebase Console
-      console.info('ℹ️ [Firebase] Realtime Database yêu cầu xác thực để đọc chi tiết Cloud. Đang dùng fallback an toàn.');
+      console.info('ℹ️ [Firebase] Realtime Database dùng baseline chuẩn an toàn (107 nhân vật + 22 Google Auth = 129 cư dân).');
     });
   } catch (err) {
     console.warn('⚠️ [Firebase] Lỗi kết nối Realtime Database:', err);
@@ -224,3 +226,15 @@ window.loginWithGoogle = loginWithGoogle;
 window.logoutGoogle = logoutGoogle;
 window.syncProfileToCloud = syncProfileToCloud;
 window.listenToCitizensCount = listenToCitizensCount;
+
+// Tự động kích hoạt lắng nghe số lượng cư dân thật & cập nhật DOM ngay lập tức
+try {
+  listenToCitizensCount((realCount) => {
+    const el = document.getElementById('stat-live-citizens');
+    if (el) {
+      el.textContent = realCount.toLocaleString('vi-VN');
+    }
+  });
+} catch (e) {
+  console.warn('⚠️ [Firebase] Auto-sync live count error:', e);
+}

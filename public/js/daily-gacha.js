@@ -145,16 +145,23 @@ class DailyGachaSystem {
     this.holdTimer = null;
     this.holdProgress = 0;
 
-    // Khởi tạo Audio BGM Player
-    this.bgmAudio = new Audio('assets/audio/bgm-breath.mp3');
-    this.bgmAudio.loop = true;
-    this.bgmAudio.volume = 0.45;
+    // Khởi tạo Audio BGM Player (On-demand Lazy Load)
+    this.bgmAudio = null;
     this.isPlayingBgm = false;
 
     this.initUI();
     this.initBGMPlayer();
     this.renderCollectionGrid();
     this.bindEvents();
+  }
+
+  getBgmAudio() {
+    if (!this.bgmAudio) {
+      this.bgmAudio = new Audio('assets/audio/bgm-breath.mp3');
+      this.bgmAudio.loop = true;
+      this.bgmAudio.volume = 0.45;
+    }
+    return this.bgmAudio;
   }
 
   loadUnlockedIds() {
@@ -234,7 +241,8 @@ class DailyGachaSystem {
   }
 
   playBGM() {
-    this.bgmAudio.play().then(() => {
+    const audio = this.getBgmAudio();
+    audio.play().then(() => {
       this.isPlayingBgm = true;
       localStorage.setItem('drstone_bgm_enabled', 'true');
       if (this.bgmDisc) this.bgmDisc.classList.add('animate-spin-slow', 'shadow-[0_0_20px_#00d4ff]');
@@ -245,7 +253,9 @@ class DailyGachaSystem {
   }
 
   pauseBGM() {
-    this.bgmAudio.pause();
+    if (this.bgmAudio) {
+      this.bgmAudio.pause();
+    }
     this.isPlayingBgm = false;
     localStorage.setItem('drstone_bgm_enabled', 'false');
     if (this.bgmDisc) this.bgmDisc.classList.remove('animate-spin-slow', 'shadow-[0_0_20px_#00d4ff]');

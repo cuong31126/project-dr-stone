@@ -77,6 +77,30 @@ Khi cần help về:
 - **Bug / Debug** → kích hoạt skill `drstone-debug`
 - **Tính năng mới** → kích hoạt skill `drstone-feature`
 
+## 🔒 BẢO MẬT & QUY TẮC CHỐNG LỘ THÔNG TIN (CRITICAL SECURITY)
+
+> ⚠️ **BẮT BUỘC CHO AI:** Mỗi khi hoàn thành bất kỳ tác vụ nào hoặc chuẩn bị hướng dẫn/thực hiện commit & push lên GitHub, AI PHẢI tự động kiểm tra và đảm bảo 100% không bị lộ bất kỳ thông tin cá nhân, API keys, webhook hay credentials nhạy cảm nào.
+
+### 1. Danh Sách Thông Tin Nhạy Cảm TUYỆT ĐỐI KHÔNG Được Commit Lên GitHub:
+- ❌ **Discord Webhook URLs:** Tuyệt đối không hardcode link `https://discord.com/api/webhooks/...` trong file client-side (`js/`, `*.html`). Mọi webhook phải được gọi qua Serverless API backend (`/api/discord-notify.js`) và đọc từ biến môi trường `process.env.DISCORD_WEBHOOK_URL`.
+- ❌ **Telegram Bot Tokens & Chat IDs:** Không hardcode bot token dạng `123456:ABC-DEF1234ghIkl-...`.
+- ❌ **Firebase Admin Private Keys / Service Account Credentials.**
+- ❌ **Mật khẩu, Private Keys, OAuth Secrets, JWT Tokens, Access Tokens.**
+- ❌ **Thông tin cá nhân nhạy cảm:** Email cá nhân, số điện thoại riêng tư, CMND/CCCD, đường dẫn ổ đĩa tuyệt đối cục bộ chứa tên user máy tính (như `C:\Users\Quoc Cuong\...`).
+- ❌ **File môi trường:** `.env`, `.env.local`, `.env.*.local` (Phải luôn nằm trong `.gitignore`).
+
+### 2. Quy Trình Kiểm Tra Bảo Mật Tự Động Trước Khi Push (Pre-Push Security Checklist):
+Trước khi xác nhận commit / push, AI phải tự rà soát:
+```markdown
+□ Đã kiểm tra git status và git diff xem có file .env hay secret key nào bị thêm vào không.
+□ Không có webhook / API key nào bị hardcode trong source code frontend (HTML/CSS/JS).
+□ File `.env` và `.env.local` đã được liệt kê trong `.gitignore`.
+□ Các API gọi Discord/Telegram đều đi qua backend proxy (/api/*) an toàn.
+□ Không có đường dẫn local cứng hoặc thông tin nhạy cảm của tác giả trong code public.
+```
+
+---
+
 ## 🏃 Test Commands
 
 ```bash
@@ -99,4 +123,5 @@ fix:   Sửa bug
 style: Thay đổi UI/CSS không ảnh hưởng logic
 refactor: Tái cấu trúc code
 docs:  Cập nhật documentation
+security: Tối ưu bảo mật, chặn lộ key
 ```
