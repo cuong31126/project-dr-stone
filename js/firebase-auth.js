@@ -6,19 +6,19 @@
  */
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
-import { 
-  getAuth, 
-  signInWithPopup, 
-  GoogleAuthProvider, 
-  signOut 
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut
 } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js';
-import { 
-  getDatabase, 
-  ref, 
-  set, 
-  get, 
-  update, 
-  onValue 
+import {
+  getDatabase,
+  ref,
+  set,
+  get,
+  update,
+  onValue
 } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js';
 
 // Cấu hình Firebase project iotdemo31126
@@ -82,12 +82,12 @@ export async function loginWithGoogle() {
       }
       try {
         const userRef = ref(db, `citizens/${user.uid}`);
-        await update(userRef, { 
+        await update(userRef, {
           lastLogin: profile.lastLogin,
-          googlePhotoURL: profile.googlePhotoURL || '' 
+          googlePhotoURL: profile.googlePhotoURL || ''
         });
         console.log('🔄 Đã đồng bộ hồ sơ Cloud của cư dân:', profile.nickname);
-      } catch (e) {}
+      } catch (e) { }
 
       if (window.CitizenPass) {
         window.CitizenPass.saveProfile(profile);
@@ -132,7 +132,7 @@ export async function loginWithGoogle() {
       if (window.CitizenPass) {
         window.CitizenPass.saveProfile(profile);
         window.CitizenPass.showToast('🧪 THỨC TỈNH THÀNH CÔNG!', `Chào mừng cư dân mới <b>${profile.nickname}</b>! (+100 SP)`, 'emerald');
-        
+
         // Mở modal tùy chỉnh để người dùng chọn Phe Phái & Vai Trò
         setTimeout(() => {
           window.CitizenPass.openRegistrationModal(true, true);
@@ -148,14 +148,10 @@ export async function loginWithGoogle() {
     return profile;
   } catch (err) {
     console.error('❌ Lỗi đăng nhập Google Auth:', err);
-    if (err.code === 'auth/operation-not-allowed') {
-      alert('⚠️ CHƯA BẬT GOOGLE SIGN-IN TRÊN FIREBASE CONSOLE!\n\nCách kích hoạt (mất 30 giây):\n1. Vào link: https://console.firebase.google.com/project/iotdemo31126/authentication/providers\n2. Bấm vào nhà cung cấp "Google"\n3. Bật công tắc "Enable"\n4. Chọn Email hỗ trợ dự án (Project support email) rồi bấm nút "Save"\n5. Quay lại đây đăng nhập là thành công 100%!');
-    } else if (err.code === 'auth/unauthorized-domain') {
-      alert('⚠️ TÊN MIỀN MỚI CHƯA ĐƯỢC THÊM VÀO FIREBASE!\n\nCách thêm tên miền (mất 30 giây):\n1. Vào link: https://console.firebase.google.com/project/iotdemo31126/authentication/settings\n2. Bấm vào tab "Authorized domains" (Miền được ủy quyền)\n3. Bấm "Add domain" và điền:\n   - eyeukhoahoc365.tech\n   - www.eyeukhoahoc365.tech\n4. Bấm Save và quay lại đây đăng nhập Google là xong ngay!');
-    } else if (err.code === 'auth/popup-blocked') {
+    if (err.code === 'auth/popup-blocked') {
       alert('⚠️ Trình duyệt vừa chặn popup đăng nhập Google. Vui lòng cho phép popup để tiếp tục!');
     } else if (err.code !== 'auth/popup-closed-by-user') {
-      alert('Đăng nhập Google thất bại: ' + (err.message || 'Lỗi không xác định'));
+      console.warn('Google Auth notice:', err.message);
     }
     return null;
   }

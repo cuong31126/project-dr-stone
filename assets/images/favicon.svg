@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#050810" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    
+    <!-- Potion / Liquid Gradient (Senku Green to Science Cyan) -->
+    <linearGradient id="potionGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#00d4ff" />
+      <stop offset="50%" stop-color="#39ff14" />
+      <stop offset="100%" stop-color="#70ff00" />
+    </linearGradient>
+
+    <!-- Glass Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <radialGradient id="liquidGlow" cx="50%" cy="75%" r="40%">
+      <stop offset="0%" stop-color="#39ff14" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Circular Base Badge -->
+  <rect width="100" height="100" rx="26" fill="url(#bgGrad)" />
+  <rect width="96" height="96" x="2" y="2" rx="24" fill="none" stroke="#00d4ff" stroke-width="2" stroke-opacity="0.4" />
+
+  <!-- Background Chemical Glow -->
+  <circle cx="50" cy="65" r="24" fill="url(#liquidGlow)" />
+
+  <!-- Erlenmeyer Flask Outline -->
+  <!-- Neck: 42 to 58 at top y=18, neck down to y=38 -->
+  <!-- Body: expands from (42,38)/(58,38) down to (20,78)/(80,78) with rounded base -->
+  <path d="M 44 20 L 56 20 L 56 38 L 78 74 C 81 79 77 84 71 84 L 29 84 C 23 84 19 79 22 74 L 44 38 Z"
+        fill="#0b1329" stroke="#00d4ff" stroke-width="4" stroke-linejoin="round" />
+
+  <!-- Flask Lip -->
+  <rect x="40" y="16" width="20" height="5" rx="2.5" fill="#00d4ff" />
+
+  <!-- Chemical Liquid inside Flask -->
+  <path d="M 33 60 Q 42 56 50 60 T 67 60 L 76 74 C 77.5 76.5 75.5 80 72 80 L 28 80 C 24.5 80 22.5 76.5 24 74 Z"
+        fill="url(#potionGrad)" filter="url(#glow)" />
+
+  <!-- Bubbles inside Potion -->
+  <circle cx="42" cy="70" r="3" fill="#ffffff" opacity="0.8" />
+  <circle cx="58" cy="68" r="2" fill="#ffffff" opacity="0.7" />
+  <circle cx="50" cy="74" r="2.5" fill="#ffffff" opacity="0.9" />
+  <circle cx="48" cy="52" r="1.8" fill="#39ff14" filter="url(#glow)" />
+  <circle cx="53" cy="44" r="1.2" fill="#00d4ff" filter="url(#glow)" />
+
+  <!-- Lightning / Science Crack (Senku's Mark) -->
+  <path d="M 49 26 L 46 36 L 53 37 L 47 48" fill="none" stroke="#ffd700" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" />
+
+  <!-- Glass Highlight Reflection -->
+  <path d="M 28 72 L 46 42 L 46 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.4" />
+</svg>
